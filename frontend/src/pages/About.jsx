@@ -16,7 +16,7 @@ function About() {
   }, [])
 
   const backgroundStyle = {
-    backgroundImage: `url("https://img.freepik.com/premium-photo/group-happy-playful-indian-children-running-outdoors-park-asian-kids-playing-garden_979520-4965.jpg")`,
+    backgroundImage: `url("https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769166218/White_and_Blue_Modern_Air_Conditioning_Installation_Services_Facebook_Post_Landscape_1920_x_600_mm_1920_x_600_mm_3_otucuu.svg")`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
@@ -24,11 +24,36 @@ function About() {
   }
 
   const values = [
-    { title: "Integrity", text: "We promise honesty and transparency with everyone, we maintain our word with commitment." },
-    { title: "Customer Pivotal", text: "We win when our customers are satisfied. Even the customer's little requirement is more valuable to us." },
-    { title: "Purpose Driven", text: "We are committed to making a positive impact on society and environment, by aligning our mission, vision, values and actions." },
-    { title: "Diversity & Inclusion", text: "We value and embrace diversity, fostering a culture that is inclusive and promotes mutual respect." },
-    { title: "Continuous Improvement", text: "We act on the small improvements; over time these changes have a bigger impact on solving challenges." }
+    { 
+      title: "Integrity", 
+      text: "We promise honesty and transparency with everyone, we maintain our word with commitment.",
+      extra: "We believe that trust is the foundation of every successful partnership and the bedrock of our reputation."
+    },
+    { 
+      title: "Customer Pivotal", 
+      text: "We win when our customers are satisfied. Even the customer's little requirement is more valuable to us.",
+      extra: "Your comfort is our priority; we listen, adapt, and deliver beyond expectations for every home and office."
+    },
+    { 
+      title: "Purpose Driven", 
+      text: "We are committed to making a positive impact on society and environment, by aligning our mission and actions.",
+      extra: "Our innovations are designed with the planet's health in mind, ensuring a greener tomorrow for all."
+    },
+    { 
+      title: "Diversity & Inclusion", 
+      text: "We value and embrace diversity, fostering a culture that is inclusive and promotes mutual respect.",
+      extra: "Great ideas come from everywhere; we celebrate every unique perspective within our growing Windsmit family."
+    },
+    { 
+      title: "Continuous Improvement", 
+      text: "We act on the small improvements; over time these changes have a bigger impact on solving challenges.",
+      extra: "Excellence is a journey, not a destination. We evolve our technology and services every single day."
+    },
+    { 
+      title: "Sustainability", 
+      text: "We prioritize eco-friendly HVAC solutions to reduce carbon footprints across India.",
+      extra: "By integrating solar and energy-efficient cooling, we lead the way in responsible climate control."
+    }
   ]
 
   return (
@@ -39,11 +64,11 @@ function About() {
         <div className="absolute inset-0 bg-black/20"></div>
       </div>
 
-      {/* Rotating Image Overlay */}
-      <div className="relative -mt-40 flex justify-center z-20">
-        <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden ">
+      {/* Rotating Image Overlay - Pulled higher with -mt-48 */}
+      <div className="relative -mt-38 flex justify-center z-20">
+        <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden shadow-2xl border-8 border-white">
           <img
-            src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769078801/Blue_and_Yellow_Modern_Air_Conditioner_Sale_Promotion_Instagram_Post_1080_x_1080_px_x4ejtl.svg"
+            src="https://indiaclimatecollaborative.org/public/uploads/our_work/1/1722229640_1.webp"
             alt="Windsmit Air Conditioner"
             className="w-full h-full object-cover transition-transform duration-75 ease-out"
             style={{ transform: `rotate(${scrollRotation}deg)` }}
@@ -53,23 +78,23 @@ function About() {
 
       <div className="max-w-6xl mx-auto px-6">
         
-        {/* About Us Heading */}
-        <div className="flex justify-center my-16">
-          <div className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-green-600 to-yellow-400 rounded-2xl blur opacity-25"></div>
-            <div className="relative bg-white border-2 border-green-600/20 px-16 py-5 rounded-2xl ">
-              <h1 className="text-4xl md:text-5xl font-black text-[#1b5e20] tracking-tight">
-                About Us
-              </h1>
-            </div>
+        {/* About Us Heading - Tightened margins to move up */}
+        <div className="flex justify-center mt-6 mb-10">
+          <div className="relative">
+            <h1 className="text-4xl md:text-5xl font-black text-black tracking-tight relative z-10">
+              About Us
+            </h1>
+            <div className="absolute -bottom-5 left-0 w-full h-2 bg-yellow-400/50 rounded-full"></div>
           </div>
         </div>
 
         {/* Main Intro Text */}
         <div className="text-center mb-24">
           <p className="text-lg md:text-xl leading-relaxed text-gray-800 max-w-4xl mx-auto font-['Georgia',serif] mb-8">
-           Windsmit Air is an emerging group in the city starting in 2022. We help in maintaining good indoor air quality through adequate ventilation with filtration and provide thermal comfort.
+          Windsmit Air is an emerging group in the city starting in 2022. We help in maintaining good indoor air quality through adequate ventilation with filtration and provide thermal comfort.
 We offer perfect HVAC equipment design, installation, commissioning and maintenance services to control the inside climate conditions for part of residential structures such as single-family homes, apartment buildings, hotels, marriage halls, medium to large industrial and office buildings such as skyscrapers, hospitals, and malls. We are committed to modernizing India's infrastructure with greener, intelligent and smart buildings by providing entire building automation controls for energy savings and enhanced life of equipment.
+
+
           </p>
           <div className="inline-block p-[2px] bg-gradient-to-r from-green-500 to-yellow-500 rounded-lg">
              <div className="bg-white/90 backdrop-blur px-8 py-4 rounded-lg">
@@ -80,63 +105,83 @@ We offer perfect HVAC equipment design, installation, commissioning and maintena
           </div>
         </div>
 
-        {/* Vision Section (Text Left, Image Right) */}
-        <div className="bg-white rounded-[2rem] p-8 md:p-12 shadow-xl mb-12 border border-green-50 transition-all hover:shadow-2xl">
-          <div className="flex flex-col md:flex-row items-center gap-12">
-            <div className="w-full md:w-1/2">
-              <div className="inline-block px-4 py-1 rounded-full bg-green-100 text-green-700 font-bold text-sm mb-4 uppercase tracking-widest">Our Future</div>
-              <h2 className="text-4xl font-black text-[#2e7d32] mb-6">VISION</h2>
-              <p className="text-gray-700 leading-relaxed text-lg font-medium">
-                Our two-fold vision aims to be the premier provider of innovative, cost-effective, sustainable HVAC solutions to every remote corner of the nation, while educating people about the importance of indoor air quality for health and wellness.
-              </p>
-            </div>
-            <div className="w-full md:w-1/2">
-              <img 
-                src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769159573/visio._jjozfx.png" 
-                alt="Vision" 
-                className="w-full h-auto rounded-3xl object-cover shadow-lg border-4 border-white"
-              />
-            </div>
-          </div>
-        </div>
+        {/* Vision & Mission Sections */}
+        <div className="space-y-12 mb-24">
+          {/* Vision */}
+          <div className="p-8 md:p-12 transition-all">
+            <div className="flex flex-col md:flex-row items-center gap-12">
+              <div className="w-full md:w-1/2 text-left">
+                <div className="inline-block px-4 py-1 rounded-full bg-green-100 text-green-700 font-bold text-sm mb-4 uppercase tracking-widest">Our Future</div>
+                <h2 className="text-4xl font-black text-[#2e7d32] mb-6">VISION</h2>
+                <p className="text-gray-700 leading-relaxed text-lg font-medium">
+Our two-fold vision aims to be the premier provider of innovative, cost effective, sustainable HVAC solutions and services, to every remote corner of the nation, while educating people about the critical importance of the indoor air quality for health and wellness. Simultaneously to provide a stable and supportive platform to empower talented individuals who are passionate and have potential about creating positive change in their communities and society.
 
-        {/* Mission Section (Image Left, Text Right) */}
-        <div className="bg-white rounded-[2rem] p-8 md:p-12 shadow-xl mb-24 border border-green-50 transition-all hover:shadow-2xl">
-          <div className="flex flex-col md:flex-row-reverse items-center gap-12">
-            <div className="w-full md:w-1/2">
-              <div className="inline-block px-4 py-1 rounded-full bg-yellow-100 text-yellow-700 font-bold text-sm mb-4 uppercase tracking-widest">Our Purpose</div>
-              <h2 className="text-4xl font-black text-[#2e7d32] mb-6">MISSION</h2>
-              <p className="text-gray-700 leading-relaxed text-lg font-medium">
-                At Windsmit Air, our sole purpose is to create a comfortable yet sustainable future, providing high-quality HVAC solutions that prioritize the preservation of natural resources to minimize environmental impact and promote energy efficiency.
-              </p>
-            </div>
-            <div className="w-full md:w-1/2">
-              <img 
-                src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769159581/vision222_oqft8h.png" 
-                alt="Mission" 
-                className="w-full h-auto rounded-3xl object-cover shadow-lg border-4 border-white"
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* OUR VALUES SECTION */}
-        <div className="mt-20">
-          <div className="text-center mb-12">
-             <h2 className="text-3xl md:text-4xl font-black text-green-900 mb-2">OUR VALUES</h2>
-             <div className="h-1.5 w-24 bg-yellow-400 mx-auto rounded-full"></div>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {values.map((val, index) => (
-              <div key={index} className="group relative bg-white p-8 rounded-2xl shadow-md border-b-4 border-transparent hover:border-green-500 transition-all duration-300 hover:-translate-y-2">
-                <div className="text-5xl font-black text-green-50/50 absolute top-4 right-4 group-hover:text-green-100 transition-colors">0{index + 1}</div>
-                <h3 className="text-xl font-bold text-green-800 mb-4 relative z-10">{val.title}</h3>
-                <p className="text-gray-600 leading-relaxed relative z-10">{val.text}</p>
+                </p>
               </div>
-            ))}
+              <div className="w-full md:w-1/2">
+                <img 
+                  src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769159573/visio._jjozfx.png" 
+                  alt="Vision" 
+                  className="w-full h-auto rounded-3xl object-cover shadow-lg border-4 border-white"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Mission */}
+          <div className="p-8 md:p-12 transition-all">
+            <div className="flex flex-col md:flex-row-reverse items-center gap-12">
+              <div className="w-full md:w-1/2 text-left">
+                <div className="inline-block px-4 py-1 rounded-full bg-yellow-100 text-yellow-700 font-bold text-sm mb-4 uppercase tracking-widest">Our Purpose</div>
+                <h2 className="text-4xl font-black text-[#2e7d32] mb-6">MISSION</h2>
+                <p className="text-gray-700 leading-relaxed text-lg font-medium">
+                 At Windsmit Air, our sole purpose is to create comfortable yet sustainable future, without compromising over-all occupant experience by providing High quality HVAC solutions that prioritize the preservation of natural resources to minimize our environmental impact and promote energy efficiency. Through our dedication to sustainable practices, we aim to build a better future for generations to come.
+              </p>
+</div>
+              <div className="w-full md:w-1/2">
+                <img 
+                  src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769159581/vision222_oqft8h.png" 
+                  alt="Mission" 
+                  className="w-full h-auto rounded-3xl object-cover shadow-lg border-4 border-white"
+                />
+              </div>
+            </div>
           </div>
         </div>
+
+<div className="mt-20">
+  <div className="text-center mb-16">
+    <h2 className="text-3xl md:text-4xl font-black text-green-900 mb-2">OUR VALUES</h2>
+    <div className="h-1.5 w-24 bg-yellow-400 mx-auto rounded-full"></div>
+  </div>
+  
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {values.map((val, index) => (
+      <div 
+        key={index} 
+        // Changed rounded-full to rounded-2xl for rectangle shape
+        // Removed aspect-square to allow height to fit content naturally
+        className="relative bg-white flex flex-col items-start justify-start text-left p-8 rounded-2xl shadow-md border-t-4 border-green-600 transition-all duration-300"
+      >
+        {/* Value Number - Positioned to the right for a modern feel */}
+        
+        <h3 className="text-xl font-bold text-green-800 mb-4 relative z-10 uppercase tracking-tight">
+          {val.title}
+        </h3>
+        
+        <div className="h-1 w-12 bg-yellow-400 mb-4 rounded-full"></div>
+
+        <p className="text-gray-700 text-sm leading-relaxed relative z-10 font-medium">
+          {val.text}
+        </p>
+        
+        <p className="mt-4 text-xs text-green-700 font-bold italic relative z-10 bg-green-50 p-3 rounded-lg border-l-2 border-green-600 w-full">
+          {val.extra}
+        </p>
+      </div>
+    ))}
+  </div>
+</div>
 
       </div>
     </div>
