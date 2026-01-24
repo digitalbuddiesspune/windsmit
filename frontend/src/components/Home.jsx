@@ -227,59 +227,100 @@ function Home() {
     <div className="w-full bg-slate-50 font-sans text-slate-800">
       
       {/* --- HERO SECTION --- */}
-      <section className="relative w-full min-h-[90vh] sm:min-h-[75vh] md:min-h-[80vh] lg:min-h-[85vh] overflow-hidden bg-slate-900 flex items-center">
-        <div className="relative w-full h-full">
-          {banners.map((banner, index) => (
-            <div
-              key={banner.id}
-              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                index === currentBanner ? 'opacity-100 z-10' : 'opacity-0 z-0'
-              }`}
-            >
-              {/* IMAGE: Responsive display */}
-              <img
-                src={banner.image}
-                alt={banner.alt}
-                className="w-full h-full object-cover sm:object-cover sm:object-left opacity-90"
-              />
+      <section className="relative w-full overflow-hidden bg-slate-900">
+        {/* Mobile-only background image */}
+        <div className="relative sm:hidden">
+          <img
+            src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769261511/497afe2e9cac98cc156cb917956f6939_ogbgpx.jpg"
+            alt="HVAC System"
+            className="w-full h-auto opacity-90"
+          />
+          {/* GRADIENT: Strong overlay for mobile */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/90"></div>
+          
+          {/* Hero Content Overlay - Mobile */}
+          <div className="absolute inset-0 z-20 flex items-center justify-center px-4 py-12">
+            <div className="max-w-xl w-full text-white text-center">
+              {/* Green horizontal line */}
+              <div className="w-16 h-1 bg-emerald-500 mb-5 mx-auto"></div>
               
-              {/* GRADIENT: Strong overlay for mobile, subtle for desktop */}
-              <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/90 sm:bg-gradient-to-l sm:from-slate-950/95 sm:via-slate-900/85 sm:to-transparent"></div>
-            </div>
-          ))}
-
-          {/* Hero Content Overlay */}
-          <div className="relative z-20 w-full px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 py-12 sm:py-0">
-            <div className="max-w-7xl mx-auto">
-              <div className="max-w-xl mx-auto sm:mx-0 sm:ml-auto text-white text-center sm:text-left">
-                {/* Green horizontal line */}
-                <div className="w-16 sm:w-20 h-1 bg-emerald-500 mb-5 sm:mb-6 mx-auto sm:mx-0"></div>
-                
-                {/* Main Heading */}
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-5 sm:mb-6 tracking-tight">
-                  Engineered for <br className="hidden sm:block" />
-                  <span className="text-emerald-400 block sm:inline">Pure Comfort.</span>
-                </h1>
-                
-                {/* Description */}
-                <p className="text-base sm:text-lg md:text-xl lg:text-xl text-slate-100 mb-7 sm:mb-8 md:mb-10 leading-relaxed max-w-xl mx-auto sm:mx-0">
-                  Windsmit Air delivers premium HVAC, Air Conditioning, and Building Management solutions designed for health and efficiency.
-                </p>
-                
-                {/* Buttons */}
-                <div className="flex flex-row gap-2 sm:gap-4 justify-center sm:justify-start flex-wrap">
-                  <button className="group relative px-4 sm:px-8 py-3 sm:py-3.5 bg-emerald-500 text-white text-sm sm:text-base font-semibold overflow-hidden transition-all duration-300 ease-out hover:bg-emerald-600 hover:shadow-xl hover:shadow-emerald-500/30 rounded-lg sm:rounded-full whitespace-nowrap">
-                    <span className="relative z-10">Explore Solutions</span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  </button>
-                  <button className="group relative px-4 sm:px-8 py-3 sm:py-3.5 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white text-sm sm:text-base font-semibold overflow-hidden transition-all duration-300 ease-out hover:bg-white/20 hover:border-white/50 rounded-lg sm:rounded-full whitespace-nowrap">
-                    <span className="relative z-10">Contact Us</span>
-                    <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  </button>
-                </div>
+              {/* Main Heading */}
+              <h1 className="text-4xl font-bold leading-[1.1] mb-5 tracking-tight">
+                Engineered for <br />
+                <span className="text-emerald-400">Pure Comfort.</span>
+              </h1>
+              
+              {/* Description */}
+              <p className="text-base text-slate-100 mb-7 leading-relaxed">
+                Windsmit Air delivers premium HVAC, Air Conditioning, and Building Management solutions designed for health and efficiency.
+              </p>
+              
+              {/* Buttons */}
+              <div className="flex flex-row gap-2 justify-center flex-wrap">
+                <button className="group relative px-4 py-3 bg-emerald-500 text-white text-sm font-semibold overflow-hidden transition-all duration-300 ease-out hover:bg-emerald-600 hover:shadow-xl hover:shadow-emerald-500/30 rounded-lg whitespace-nowrap">
+                  <span className="relative z-10">Explore Solutions</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </button>
+                <button className="group relative px-4 py-3 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white text-sm font-semibold overflow-hidden transition-all duration-300 ease-out hover:bg-white/20 hover:border-white/50 rounded-lg whitespace-nowrap">
+                  <span className="relative z-10">Contact Us</span>
+                  <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </button>
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Desktop banner images */}
+        <div className="hidden sm:block relative">
+          {banners.map((banner, index) => (
+            <div
+              key={banner.id}
+              className={`relative transition-opacity duration-1000 ease-in-out ${
+                index === currentBanner ? 'opacity-100 z-10' : 'absolute inset-0 opacity-0 z-0'
+              }`}
+            >
+              {/* IMAGE: Desktop display in original dimensions */}
+              <img
+                src={banner.image}
+                alt={banner.alt}
+                className="w-full h-auto opacity-90"
+              />
+              
+              {/* GRADIENT: Subtle overlay for desktop */}
+              <div className="absolute inset-0 bg-gradient-to-l from-slate-950/95 via-slate-900/85 to-transparent"></div>
+              
+              {/* Hero Content Overlay - Desktop */}
+              <div className="absolute inset-0 z-20 flex items-center justify-end px-12 lg:px-16 xl:px-24">
+                <div className="max-w-xl text-white text-left">
+                  {/* Green horizontal line */}
+                  <div className="w-20 h-1 bg-emerald-500 mb-6"></div>
+                  
+                  {/* Main Heading */}
+                  <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6 tracking-tight">
+                    Engineered for <br />
+                    <span className="text-emerald-400">Pure Comfort.</span>
+                  </h1>
+                  
+                  {/* Description */}
+                  <p className="text-lg md:text-xl lg:text-xl text-slate-100 mb-8 md:mb-10 leading-relaxed max-w-xl">
+                    Windsmit Air delivers premium HVAC, Air Conditioning, and Building Management solutions designed for health and efficiency.
+                  </p>
+                  
+                  {/* Buttons */}
+                  <div className="flex flex-row gap-4 justify-start">
+                    <button className="group relative px-8 py-3.5 bg-emerald-500 text-white text-base font-semibold overflow-hidden transition-all duration-300 ease-out hover:bg-emerald-600 hover:shadow-xl hover:shadow-emerald-500/30 rounded-full whitespace-nowrap">
+                      <span className="relative z-10">Explore Solutions</span>
+                      <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </button>
+                    <button className="group relative px-8 py-3.5 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white text-base font-semibold overflow-hidden transition-all duration-300 ease-out hover:bg-white/20 hover:border-white/50 rounded-full whitespace-nowrap">
+                      <span className="relative z-10">Contact Us</span>
+                      <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
