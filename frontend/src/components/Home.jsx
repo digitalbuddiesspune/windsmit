@@ -229,34 +229,22 @@ function Home() {
       {/* --- HERO SECTION --- */}
       <section className="relative w-full min-h-[90vh] sm:min-h-[75vh] md:min-h-[80vh] lg:min-h-[85vh] overflow-hidden bg-slate-900 flex items-center">
         <div className="relative w-full h-full">
-          {/* Mobile-only image */}
-          <div className="absolute inset-0 sm:hidden">
-            <img
-              src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769260576/hvac_231473096-1024x683_ct9yaf.jpg"
-              alt="HVAC System"
-              className="w-full h-full object-cover opacity-90"
-            />
-            {/* GRADIENT: Strong overlay for mobile */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/90"></div>
-          </div>
-
-          {/* Desktop images */}
           {banners.map((banner, index) => (
             <div
               key={banner.id}
-              className={`hidden sm:block absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
                 index === currentBanner ? 'opacity-100 z-10' : 'opacity-0 z-0'
               }`}
             >
-              {/* IMAGE: Desktop display */}
+              {/* IMAGE: Responsive display */}
               <img
                 src={banner.image}
                 alt={banner.alt}
-                className="w-full h-full object-cover object-left opacity-90"
+                className="w-full h-full object-cover sm:object-cover sm:object-left opacity-90"
               />
               
-              {/* GRADIENT: Subtle overlay for desktop */}
-              <div className="absolute inset-0 bg-gradient-to-l from-slate-950/95 via-slate-900/85 to-transparent"></div>
+              {/* GRADIENT: Strong overlay for mobile, subtle for desktop */}
+              <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/90 sm:bg-gradient-to-l sm:from-slate-950/95 sm:via-slate-900/85 sm:to-transparent"></div>
             </div>
           ))}
 
