@@ -145,18 +145,31 @@ function Navbar() {
 
       {/* --- Full Screen Mobile Menu Overlay --- */}
       <div 
-        className={`fixed inset-0 z-[90] bg-white/95 backdrop-blur-xl lg:hidden transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] ${
+        className={`fixed inset-0 z-[90] bg-white lg:hidden transition-all duration-300 ease-in-out ${
           isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
         }`}
       >
-        <div className="h-full flex flex-col justify-center px-6 sm:px-8 pt-16 sm:pt-20 pb-8">
-          <div className="flex flex-col space-y-5 sm:space-y-6">
+        <div className="h-full flex flex-col px-4 sm:px-6 pt-20 pb-6 overflow-y-auto">
+          {/* Close button area */}
+          <div className="flex justify-end mb-4">
+            <button
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+              aria-label="Close menu"
+            >
+              <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
+          <div className="flex flex-col space-y-4 flex-1">
             <MobileNavLink to="/" label="Home" delay="100ms" onClick={() => setIsMobileMenuOpen(false)} />
             <MobileNavLink to="/about" label="About Us" delay="150ms" onClick={() => setIsMobileMenuOpen(false)} />
             
             {/* Mobile Services Section */}
-            <div className="border-l-2 border-gray-100 pl-3 sm:pl-4 py-2 space-y-2 sm:space-y-3" style={{ animationDelay: '200ms' }}>
-              <p className="text-xs sm:text-sm font-semibold text-gray-400 uppercase tracking-widest mb-2">Services</p>
+            <div className="border-l-2 border-gray-200 pl-4 py-2 space-y-2.5">
+              <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-3">Services</p>
               <MobileSubLink label="Air Conditioning" onClick={() => setIsMobileMenuOpen(false)} />
               <MobileSubLink label="HVAC Systems" onClick={() => setIsMobileMenuOpen(false)} />
               <MobileSubLink label="BMS Integration" onClick={() => setIsMobileMenuOpen(false)} />
@@ -167,7 +180,7 @@ function Navbar() {
             <Link 
               to="/contact" 
               onClick={() => setIsMobileMenuOpen(false)}
-              className="mt-6 sm:mt-8 bg-[#fff212] text-black text-center py-3 sm:py-4 rounded-xl text-base sm:text-lg font-bold shadow-lg shadow-yellow-200 transform active:scale-95 transition-all"
+              className="mt-4 bg-[#fff212] text-black text-center py-3.5 rounded-xl text-base font-bold shadow-lg shadow-yellow-200 transform active:scale-95 transition-all"
             >
               Get in Touch
             </Link>
@@ -212,7 +225,7 @@ const MobileNavLink = ({ to, label, delay, onClick }) => (
   <Link 
     to={to} 
     onClick={onClick}
-    className="text-3xl sm:text-4xl font-bold text-gray-900 hover:text-[#4CAF50] transition-colors tracking-tight"
+    className="text-2xl sm:text-3xl font-bold text-gray-900 hover:text-[#4CAF50] transition-colors tracking-tight py-2"
   >
     {label}
   </Link>
@@ -222,7 +235,7 @@ const MobileSubLink = ({ label, onClick }) => (
   <a 
     href="#" 
     onClick={onClick}
-    className="block text-base sm:text-lg font-medium text-gray-600 hover:text-black"
+    className="block text-sm sm:text-base font-medium text-gray-600 hover:text-[#4CAF50] transition-colors py-1.5"
   >
     {label}
   </a>

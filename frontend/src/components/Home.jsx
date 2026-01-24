@@ -227,7 +227,7 @@ function Home() {
     <div className="w-full bg-slate-50 font-sans text-slate-800">
       
       {/* --- HERO SECTION --- */}
-      <section className="relative w-full h-[70vh] sm:h-[75vh] md:h-[80vh] lg:h-[85vh] overflow-hidden bg-slate-900">
+      <section className="relative w-full h-[85vh] sm:h-[75vh] md:h-[80vh] lg:h-[85vh] overflow-hidden bg-slate-900">
         <div className="relative w-full h-full">
           {banners.map((banner, index) => (
             <div
@@ -236,23 +236,23 @@ function Home() {
                 index === currentBanner ? 'opacity-100 z-10' : 'opacity-0 z-0'
               }`}
             >
-              {/* IMAGE: Displayed in original dimensions */}
+              {/* IMAGE: Responsive display */}
               <img
                 src={banner.image}
                 alt={banner.alt}
-                className="w-auto h-full object-contain object-left opacity-90"
+                className="w-full h-full object-cover sm:object-contain sm:object-left opacity-90"
               />
               
-              {/* GRADIENT: Dark gradient on right for text readability */}
-              <div className="absolute inset-0 bg-gradient-to-l from-slate-950 via-slate-900/90 to-transparent sm:via-slate-900/60"></div>
+              {/* GRADIENT: Dark gradient overlay for text readability */}
+              <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-900/70 to-slate-950/90 sm:bg-gradient-to-l sm:from-slate-950 sm:via-slate-900/90 sm:to-transparent"></div>
             </div>
           ))}
 
           {/* Hero Content Overlay */}
-          <div className="absolute inset-0 z-20 flex items-center justify-end px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
-            <div className="max-w-xl text-white relative text-left pl-4 sm:pl-6 md:pl-12 lg:pl-16">
+          <div className="absolute inset-0 z-20 flex items-center justify-center sm:justify-end px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
+            <div className="max-w-xl w-full sm:w-auto text-white relative text-center sm:text-left">
               {/* Green horizontal line */}
-              <div className="w-12 sm:w-16 h-1 bg-emerald-500 mb-4 sm:mb-6"></div>
+              <div className="w-12 sm:w-16 h-1 bg-emerald-500 mb-4 sm:mb-6 mx-auto sm:mx-0"></div>
               
               {/* Main Heading */}
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-4 sm:mb-6 tracking-tight">
@@ -261,18 +261,18 @@ function Home() {
               </h1>
               
               {/* Description */}
-              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-200 mb-6 sm:mb-8 md:mb-10 leading-relaxed max-w-xl">
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-200 mb-6 sm:mb-8 md:mb-10 leading-relaxed max-w-xl mx-auto sm:mx-0">
                 Windsmit Air delivers premium HVAC, Air Conditioning, and Building Management solutions designed for health and efficiency.
               </p>
               
               {/* Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                <button className="group relative px-6 sm:px-8 py-2.5 sm:py-3.5 bg-emerald-500 text-white text-sm sm:text-base font-semibold overflow-hidden transition-all duration-500 ease-out hover:bg-emerald-600 hover:shadow-2xl hover:shadow-emerald-500/50 hover:text-white">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center sm:justify-start">
+                <button className="group relative px-6 sm:px-8 py-3 sm:py-3.5 bg-emerald-500 text-white text-sm sm:text-base font-semibold overflow-hidden transition-all duration-500 ease-out hover:bg-emerald-600 hover:shadow-2xl hover:shadow-emerald-500/50 rounded-lg sm:rounded-full">
                   <span className="relative z-10">Explore Solutions</span>
                   <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <div className="absolute inset-0 -translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-out bg-white/10"></div>
                 </button>
-                <button className="group relative px-6 sm:px-8 py-2.5 sm:py-3.5 bg-slate-800/90 backdrop-blur-sm border border-white/20 text-white text-sm sm:text-base font-semibold overflow-hidden transition-all duration-500 ease-out hover:bg-slate-900 hover:border-white/40 hover:shadow-2xl hover:shadow-slate-900/50">
+                <button className="group relative px-6 sm:px-8 py-3 sm:py-3.5 bg-slate-800/90 backdrop-blur-sm border border-white/20 text-white text-sm sm:text-base font-semibold overflow-hidden transition-all duration-500 ease-out hover:bg-slate-900 hover:border-white/40 hover:shadow-2xl hover:shadow-slate-900/50 rounded-lg sm:rounded-full">
                   <span className="relative z-10">Contact Us</span>
                   <div className="absolute inset-0 bg-gradient-to-r from-slate-700 to-slate-900 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <div className="absolute inset-0 translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-out bg-white/5"></div>
