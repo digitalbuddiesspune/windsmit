@@ -19,35 +19,20 @@ function Services() {
   return (
     <div className="bg-white min-h-screen">
       {/* Top Banner */}
-      <div className="w-full pt-6 px-4 md:px-10">
-        <div className="rounded-2xl overflow-hidden shadow-lg border-b-4 border-yellow-400">
-          <img 
-            src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769250517/Untitled_1920_x_700_px_3_dsndjw.svg" 
-            alt="Services" 
-            className="w-full h-[250px] md:h-[400px] object-cover"
-          />
-        </div>
-      </div>
       
       {/* Full Width Black Section */}
-      <section className="bg-black py-20 mt-12 w-full overflow-hidden">
+      <section className="bg-black py-20 w-full overflow-hidden">
         <div className="max-w-6xl mx-auto px-6">
           
           {/* Section Heading - Font weight decreased */}
           <div className="text-center mb-12">
-            <span className="text-yellow-500 font-medium uppercase tracking-widest text-xs">Professional Cooling</span>
-            <h2 className="text-4xl md:text-5xl font-light text-white mt-2 mb-4">
+            <h2 className="text-4xl md:text-5xl font-medium text-white mt-10 mb-4">
               Air <span className="text-yellow-500">Conditioning</span>
             </h2>
-            {/* Added Random Paragraph */}
-            <p className="text-gray-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed font-light">
-              We provide cutting-edge climate control solutions tailored for your unique environment. 
-              Our systems are engineered for whisper-quiet performance and maximum energy efficiency, 
-              ensuring your space stays perfectly cool even during the peak of summer.
-            </p>
-            <div className="w-16 h-1 bg-yellow-500 mx-auto mt-6"></div>
+            {/* Yellow/Green underline */}
+            <div className="w-24 h-1 bg-gradient-to-r from-yellow-500 to-green-500 mx-auto mb-8"></div>
           </div>
-          
+
           <div className="relative py-4 max-w-5xl mx-auto">
             <Swiper
               effect={'coverflow'}
@@ -97,8 +82,8 @@ function Services() {
               ))}
             </Swiper>
 
-            {/* Accordion-Style Bottom Navigation */}
-            <div className="flex items-center justify-center mt-10 space-x-8">
+            {/* Accordion-Style Bottom Navigation - Moved up */}
+            <div className="flex items-center justify-center mt-6 space-x-8">
                <button className="custom-prev flex items-center group cursor-pointer">
                   <span className="text-white/30 group-hover:text-yellow-500 transition-colors text-2xl font-light mr-3">01</span>
                   <div className="w-12 h-[1px] bg-white/20 group-hover:bg-yellow-500 transition-all"></div>
@@ -114,6 +99,18 @@ function Services() {
                </button>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* White Background Section with Paragraph */}
+      <section className="bg-white py-16 w-full">
+        <div className="max-w-6xl mx-auto px-6">
+          <p className="text-green-700 max-w-2xl mx-auto text-sm md:text-base leading-relaxed font-medium">
+            We provide a wide range of advanced room air conditioning solutions including High Wall (Split), Cassette, Window, Tower, and Ductable Air Conditioners, tailored to meet diverse residential and commercial needs.
+
+            Our expert team carefully evaluates key factors such as room size, ceiling height, section space, north–south orientation, solar heat gain, insulation levels, and usage patterns to ensure the most energy-efficient and comfortable cooling solution.
+          </p>
+          <div className="w-16 h-1 bg-yellow-500 mx-auto mt-6"></div>
         </div>
       </section>
 

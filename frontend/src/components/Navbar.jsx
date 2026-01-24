@@ -85,7 +85,7 @@ function Navbar() {
                   }`}
                 >
                   <div className="w-[280px] xl:w-[300px] bg-white rounded-2xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] border border-gray-100 overflow-hidden p-2">
-                    <DropdownLink title="Air Conditioning" desc="Installation & Repairs" />
+                    <DropdownLink title="Air Conditioning" desc="Installation & Repairs" to="/services" />
                     <DropdownLink title="HVAC Systems" desc="Commercial Solutions" />
                     <DropdownLink title="BMS Integration" desc="Building Management" />
                     <DropdownLink title="Annual Maintenance" desc="Service Contracts" />
@@ -214,11 +214,11 @@ const NavItem = ({ to, label, isActive, isScrolled }) => (
   </Link>
 )
 
-const DropdownLink = ({ title, desc }) => (
-  <a href="#" className="flex flex-col px-4 py-3 rounded-xl hover:bg-gray-50 transition-colors group">
+const DropdownLink = ({ title, desc, to }) => (
+  <Link to={to || "#"} className="flex flex-col px-4 py-3 rounded-xl hover:bg-gray-50 transition-colors group">
     <span className="text-sm font-semibold text-gray-900 group-hover:text-black">{title}</span>
     <span className="text-xs text-gray-500 group-hover:text-gray-600">{desc}</span>
-  </a>
+  </Link>
 )
 
 const MobileNavLink = ({ to, label, delay, onClick }) => (

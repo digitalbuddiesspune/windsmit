@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Home from './components/Home'
 import About from './pages/About'
+import Services from './pages/Services'
 import Blog from './pages/Blog'
 import BlogPostDetail from './pages/BlogPostDetail'
 import Admin from './pages/Admin'
@@ -20,6 +21,7 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:id" element={<BlogPostDetail />} />
+                 <Route path="/services" element={<Services />} />
             </Routes>
           </>
         } />
