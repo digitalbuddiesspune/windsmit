@@ -25,15 +25,15 @@ function Services() {
         <div className="max-w-6xl mx-auto px-6">
           
           {/* Section Heading - Font weight decreased */}
-          <div className="text-center mb-12">
+          <div className="text-center">
             <h2 className="text-4xl md:text-5xl font-medium text-white mt-10 mb-4">
-              Air <span className="text-yellow-500">Conditioning</span>
+              Air Conditioning
             </h2>
             {/* Yellow/Green underline */}
-            <div className="w-24 h-1 bg-gradient-to-r from-yellow-500 to-green-500 mx-auto mb-8"></div>
+            <div className="w-24 h-1 bg-yellow-500 to-green-500 mx-auto"></div>
           </div>
 
-          <div className="relative py-4 max-w-5xl mx-auto">
+          <div className="relative max-w-5xl mx-auto">
             <Swiper
               effect={'coverflow'}
               grabCursor={true}
@@ -83,7 +83,7 @@ function Services() {
             </Swiper>
 
             {/* Accordion-Style Bottom Navigation - Moved up */}
-            <div className="flex items-center justify-center mt-6 space-x-8">
+            <div className="flex items-center justify-center space-x-8">
                <button className="custom-prev flex items-center group cursor-pointer">
                   <span className="text-white/30 group-hover:text-yellow-500 transition-colors text-2xl font-light mr-3">01</span>
                   <div className="w-12 h-[1px] bg-white/20 group-hover:bg-yellow-500 transition-all"></div>
@@ -95,7 +95,7 @@ function Services() {
                <button className="custom-next flex items-center group cursor-pointer">
                   <span className="mr-3 text-[10px] text-white/50 uppercase tracking-widest group-hover:text-white">Next</span>
                   <div className="w-12 h-[1px] bg-white/20 group-hover:bg-yellow-500 transition-all"></div>
-                  <span className="text-white/30 group-hover:text-yellow-500 transition-colors text-2xl font-light ml-3">02</span>
+                  <span className="text-white/30 group-hover:text-yellow-500 transition-colors text-2xl font-light ml-3">04</span>
                </button>
             </div>
           </div>
