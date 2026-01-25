@@ -110,7 +110,7 @@ function Navbar() {
                {/* Premium CTA Button */}
                <Link 
                 to="/contact" 
-                className="relative overflow-hidden group bg-black text-white px-5 xl:px-7 py-2 xl:py-2.5 rounded-full text-xs xl:text-[14px] font-medium transition-all hover:shadow-lg hover:shadow-yellow-400/20"
+                className="relative overflow-hidden group bg-black text-white px-5 xl:px-7 py-2 xl:py-2.5 rounded-full text-xs xl:text-[14px] font-medium transition-all"
                >
                  <span className="relative z-10 group-hover:text-[#fff212] transition-colors duration-300 flex items-center gap-1.5 xl:gap-2">
                    <span className="hidden xl:inline">Let's Talk</span>
