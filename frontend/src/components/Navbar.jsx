@@ -94,6 +94,7 @@ function Navbar() {
               </div>
 
               <NavItem to="/blog" label="Blogs" isActive={location.pathname === '/blog'} isScrolled={isScrolled} />
+              <NavItem to="/contact" label="Contact" isActive={location.pathname === '/contact'} isScrolled={isScrolled} />
             </div>
 
             {/* --- Right Actions --- */}
@@ -177,6 +178,7 @@ function Navbar() {
             </div>
 
             <MobileNavLink to="/blog" label="Blogs" delay="250ms" onClick={() => setIsMobileMenuOpen(false)} />
+            <MobileNavLink to="/contact" label="Contact" delay="300ms" onClick={() => setIsMobileMenuOpen(false)} />
             
             <Link 
               to="/contact" 
@@ -211,7 +213,7 @@ const NavItem = ({ to, label, isActive, isScrolled }) => (
       {label}
     </span>
     {/* Animated Underline */}
-    <span className={`absolute bottom-1 left-1/2 -translate-x-1/2 h-[2px] bg-[#fff212] transition-all duration-300 ${isActive ? 'w-4' : 'w-0 group-hover:w-full'}`}></span>
+    <span className={`absolute bottom-1 left-1/2 -translate-x-1/2 h-[2px] bg-emerald-500 transition-all duration-300 ${isActive ? 'w-4' : 'w-0 group-hover:w-full'}`}></span>
   </Link>
 )
 

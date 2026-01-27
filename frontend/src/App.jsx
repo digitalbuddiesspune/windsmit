@@ -5,6 +5,7 @@ import About from './pages/About'
 import Services from './pages/Services'
 import Blog from './pages/Blog'
 import BlogPostDetail from './pages/BlogPostDetail'
+import Contact from './pages/Contact'
 import Admin from './pages/Admin'
 import './App.css'
 
@@ -21,7 +22,8 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:id" element={<BlogPostDetail />} />
-                 <Route path="/services" element={<Services />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/contact" element={<Contact />} />
             </Routes>
           </>
         } />
