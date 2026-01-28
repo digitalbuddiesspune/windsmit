@@ -86,8 +86,8 @@ function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-slate-900 mb-1">Phone</h3>
-                    <a href="tel:+1234567890" className="text-slate-600 hover:text-emerald-600 transition-colors">
-                      +1 (234) 567-890
+                    <a href="tel:+919021097544" className="text-slate-600 hover:text-emerald-600 transition-colors">
+                      +91 90210 97544
                     </a>
                   </div>
                 </div>
@@ -101,8 +101,8 @@ function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-slate-900 mb-1">Email</h3>
-                    <a href="mailto:info@windsmitair.com" className="text-slate-600 hover:text-emerald-600 transition-colors">
-                      info@windsmitair.com
+                    <a href="mailto:windsmit.air@gmail.com" className="text-slate-600 hover:text-emerald-600 transition-colors">
+                      windsmit.air@gmail.com
                     </a>
                   </div>
                 </div>
@@ -117,9 +117,11 @@ function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-slate-900 mb-1">Address</h3>
-                    <p className="text-slate-600">
-                      123 HVAC Street<br />
-                      Building Solutions City, BS 12345
+                    <p className="text-slate-600 leading-relaxed">
+                      Shri Sant Nagaji Maharaj Sanskrutik Bhavan<br />
+                      <span className="text-slate-700 font-medium">संत नगाजीमहाराज सांस्कृतिक भवन</span><br />
+                      CA Road, Nagpur<br />
+                      <span className="text-sm text-slate-500">(Near Gandhi Statue)</span>
                     </p>
                   </div>
                 </div>
@@ -167,7 +169,7 @@ function Contact() {
                       value={formData.name}
                       onChange={handleChange}
                       className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
-                      placeholder="Your name"
+                      placeholder="full name"
                     />
                   </div>
                   <div>
@@ -199,7 +201,7 @@ function Contact() {
                       value={formData.phone}
                       onChange={handleChange}
                       className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
-                      placeholder="+1 (234) 567-890"
+                      placeholder="enter number"
                     />
                   </div>
                   <div>
@@ -214,7 +216,7 @@ function Contact() {
                       value={formData.subject}
                       onChange={handleChange}
                       className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
-                      placeholder="What is this regarding?"
+                      placeholder="subject"
                     />
                   </div>
                 </div>
@@ -264,11 +266,39 @@ function Contact() {
       </section>
 
       {/* Map Section */}
-      <section className="py-16 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-8 text-center">Find Us</h2>
-          <div className="rounded-2xl overflow-hidden shadow-lg border border-slate-200 h-96 bg-slate-200 flex items-center justify-center">
-            <p className="text-slate-500">Map integration can be added here</p>
+      <section className="py-12 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 bg-slate-50">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-6">
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-2">Find Us</h2>
+            <p className="text-sm text-slate-600">
+              Visit us at our location in Nagpur
+            </p>
+          </div>
+          <div className="rounded-xl overflow-hidden shadow-md border border-slate-200 h-64 md:h-80 bg-slate-200">
+            <iframe
+              src="https://www.google.com/maps?q=Shri+Sant+Nagaji+Maharaj+Sanskrutik+Bhavan,+CA+Road,+Nagpur,+Maharashtra,+India&output=embed"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Windsmit Air Location - Shri Sant Nagaji Maharaj Sanskrutik Bhavan, CA Road, Nagpur"
+              className="w-full h-full"
+            ></iframe>
+          </div>
+          <div className="mt-4 text-center">
+            <a
+              href="https://www.google.com/maps/search/Shri+Sant+Nagaji+Maharaj+Sanskrutik+Bhavan,+CA+Road,+Nagpur,+Near+Gandhi+Statue"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-500 text-white text-sm font-semibold rounded-lg hover:bg-emerald-600 transition-colors shadow-sm"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+              Open in Google Maps
+            </a>
           </div>
         </div>
       </section>

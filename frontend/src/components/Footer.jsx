@@ -58,14 +58,14 @@ function Footer() {
                 </Link>
               </li>
               <li>
-                <a href="#" className="text-sm text-gray-400 hover:text-[#4CAF50] transition-colors duration-300 inline-block">
+                <Link to="/services" className="text-sm text-gray-400 hover:text-[#4CAF50] transition-colors duration-300 inline-block">
                   Services
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-sm text-gray-400 hover:text-[#4CAF50] transition-colors duration-300 inline-block">
+                <Link to="/contact" className="text-sm text-gray-400 hover:text-[#4CAF50] transition-colors duration-300 inline-block">
                   Contact
-                </a>
+                </Link>
               </li>
               <li>
                 <Link to="/blog" className="text-sm text-gray-400 hover:text-[#4CAF50] transition-colors duration-300 inline-block">
@@ -80,29 +80,29 @@ function Footer() {
             <h3 className="text-white font-semibold text-base mb-6 uppercase tracking-wider">Services</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="text-sm text-gray-400 hover:text-[#4CAF50] transition-colors duration-300 inline-block">
+                <Link to="/services" className="text-sm text-gray-400 hover:text-[#4CAF50] transition-colors duration-300 inline-block">
                   Air Conditioning
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-sm text-gray-400 hover:text-[#4CAF50] transition-colors duration-300 inline-block">
+                <Link to="/services" className="text-sm text-gray-400 hover:text-[#4CAF50] transition-colors duration-300 inline-block">
                   Commercial HVAC
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-sm text-gray-400 hover:text-[#4CAF50] transition-colors duration-300 inline-block">
+                <Link to="/services" className="text-sm text-gray-400 hover:text-[#4CAF50] transition-colors duration-300 inline-block">
                   BMS Systems
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-sm text-gray-400 hover:text-[#4CAF50] transition-colors duration-300 inline-block">
+                <Link to="/services" className="text-sm text-gray-400 hover:text-[#4CAF50] transition-colors duration-300 inline-block">
                   Maintenance & AMC
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-sm text-gray-400 hover:text-[#4CAF50] transition-colors duration-300 inline-block">
+                <Link to="/services" className="text-sm text-gray-400 hover:text-[#4CAF50] transition-colors duration-300 inline-block">
                   Retrofitting
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -117,24 +117,26 @@ function Footer() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
                 <span className="text-sm text-gray-400 leading-relaxed">
-                  123 Industrial Estate,<br />
-                  City, State - 123456
+                  Shri Sant Nagaji Maharaj Sanskrutik Bhavan<br />
+                  <span className="text-gray-500">संत नगाजीमहाराज सांस्कृतिक भवन</span><br />
+                  CA Road, Nagpur<br />
+                  <span className="text-xs text-gray-500">(Near Gandhi Statue)</span>
                 </span>
               </li>
               <li className="flex items-center">
                 <svg className="w-5 h-5 text-[#4CAF50] mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                <a href="tel:+919876543210" className="text-sm text-gray-400 hover:text-[#4CAF50] transition-colors duration-300">
-                  +91 98765 43210
+                <a href="tel:+919021097544" className="text-sm text-gray-400 hover:text-[#4CAF50] transition-colors duration-300">
+                  +91 90210 97544
                 </a>
               </li>
               <li className="flex items-center">
                 <svg className="w-5 h-5 text-[#4CAF50] mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <a href="mailto:info@windsmitair.com" className="text-sm text-gray-400 hover:text-[#4CAF50] transition-colors duration-300">
-                  info@windsmitair.com
+                <a href="mailto:windsmit.air@gmail.com" className="text-sm text-gray-400 hover:text-[#4CAF50] transition-colors duration-300">
+                  windsmit.air@gmail.com
                 </a>
               </li>
             </ul>

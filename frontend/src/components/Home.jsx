@@ -10,7 +10,7 @@ const expertiseData = [
     tabLabel: "Air Conditioning",
     heading: "Precision Cooling Systems",
     description: "We engineer cooling solutions that go beyond simple temperature control. Our systems are designed for optimal humidity regulation, energy efficiency, and silent operation suitable for luxury residences and corporate offices.",
-    image: "https://images.unsplash.com/photo-1616763355548-1b606f439f86?q=80&w=2070&auto=format&fit=crop",
+    image: "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769533390/cool-air-6_n0el5h.gif",
     features: ["Inverter Technology", "Multi-Zone Control", "Eco-friendly Refrigerants", "Smart WiFi Integration"]
   },
   {
@@ -18,7 +18,7 @@ const expertiseData = [
     tabLabel: "Commercial HVAC",
     heading: "Industrial Grade Ventilation",
     description: "Large-scale air handling for commercial infrastructure. We specialize in ductwork design that maximizes airflow while minimizing noise and energy loss, ensuring your workspace meets all air quality standards.",
-    image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2070&auto=format&fit=crop",
+    image: "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769532495/ABUIABADGAAgwuujiQYoovWJhAIwgAU44AM_500x500.gif_penmhb.gif",
     features: ["Custom AHU Design", "VRF/VRV Systems", "Fresh Air Injection", "Negative Pressure Rooms"]
   },
   {
@@ -26,7 +26,7 @@ const expertiseData = [
     tabLabel: "BMS Automation",
     heading: "Intelligent Building Control",
     description: "Future-proof your facility with our Building Management Systems. Monitor energy usage, detect faults instantly, and automate climate schedules from a central dashboard.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
+    image: "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769507436/downloadFile_a5gosb.gif",
     features: ["IoT Sensors", "Remote Monitoring", "Auto-Fault Detection", "Energy Analytics"]
   },
   {
@@ -34,7 +34,7 @@ const expertiseData = [
     tabLabel: "Retrofitting",
     heading: "System Modernization",
     description: "Upgrade your aging infrastructure without a complete tear-down. Our retrofitting services replace critical components to boost efficiency and extend the lifespan of your existing HVAC setup.",
-    image: "https://plus.unsplash.com/premium_photo-1663089688180-444ff0066e5d?q=80&w=2070&auto=format&fit=crop",
+    image: "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769532246/original-f8d808f97930122a95a552cab6a30133_jnjhvk.gif",
     features: ["Compressor Upgrades", "Duct Sealing", "Digital Thermostat Install", "Filter Upgrades"]
   }
 ]
@@ -106,7 +106,7 @@ function OurExpertise() {
   const [activeTab, setActiveTab] = useState(0)
 
   return (
-    <section className="bg-slate-900 py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 border-t border-slate-800">
+    <section className="bg-slate-900 py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
       <div className="max-w-7xl mx-auto">
         
         {/* Section Header */}
@@ -122,22 +122,20 @@ function OurExpertise() {
           </p>
         </div>
 
-        {/* Tabbed Interface Layout */}
-        <div className="flex flex-col lg:flex-row gap-6 sm:gap-8 lg:gap-12">
-          
-          {/* Left Column: Navigation Tabs */}
-          <div className="lg:w-1/3 flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0">
+        {/* Category Tabs - Single Row */}
+        <div className="mb-6 sm:mb-8">
+          <div className="flex flex-row gap-2 sm:gap-3 justify-center overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-slate-600 scrollbar-track-slate-800">
             {expertiseData.map((item, index) => (
               <button
                 key={item.id}
                 onClick={() => setActiveTab(index)}
-                className={`text-left px-4 sm:px-6 py-4 sm:py-5 rounded-lg transition-all duration-300 border-l-4 lg:border-l-4 border-b-4 lg:border-b-0 group whitespace-nowrap lg:whitespace-normal ${
+                className={`flex-shrink-0 text-left px-4 sm:px-6 py-3 sm:py-4 rounded-lg transition-all duration-300 border-l-4 group whitespace-nowrap ${
                   activeTab === index
                     ? "bg-slate-800 border-emerald-500 shadow-lg shadow-black/20"
                     : "bg-transparent border-slate-700 hover:bg-slate-800/50 hover:border-slate-500"
                 }`}
               >
-                <h3 className={`text-base sm:text-lg font-bold mb-1 transition-colors ${
+                <h3 className={`text-sm sm:text-base font-bold mb-1 transition-colors ${
                   activeTab === index ? "text-white" : "text-slate-400 group-hover:text-slate-200"
                 }`}>
                   {item.tabLabel}
@@ -150,48 +148,48 @@ function OurExpertise() {
               </button>
             ))}
           </div>
+        </div>
 
-          {/* Right Column: Active Content Display */}
-          <div className="lg:w-2/3 relative min-h-[400px] sm:min-h-[450px] md:min-h-[500px]">
-            {expertiseData.map((item, index) => (
-              activeTab === index && (
-                <div 
-                  key={item.id}
-                  className="w-full h-full bg-slate-800 rounded-2xl overflow-hidden shadow-2xl border border-slate-700 flex flex-col md:flex-row animate-fadeIn"
-                >
-                   {/* Image Side */}
-                   <div className="md:w-1/2 relative h-64 sm:h-80 md:h-auto">
-                     <img 
-                       src={item.image} 
-                       alt={item.heading}
-                       className="absolute inset-0 w-full h-full object-cover"
-                     />
-                     <div className="absolute inset-0 bg-emerald-900/20 mix-blend-multiply"></div>
-                   </div>
+        {/* Content Display - Full Width Below Tabs */}
+        <div className="relative min-h-[400px] sm:min-h-[450px] md:min-h-[500px]">
+          {expertiseData.map((item, index) => (
+            activeTab === index && (
+              <div 
+                key={item.id}
+                className="w-full h-full bg-slate-800 rounded-2xl overflow-hidden shadow-2xl border border-slate-700 flex flex-col md:flex-row animate-fadeIn"
+              >
+                 {/* Image Side */}
+                 <div className="md:w-1/2 relative h-64 sm:h-80 md:h-auto">
+                   <img 
+                     src={item.image} 
+                     alt={item.heading}
+                     className="absolute inset-0 w-full h-full object-cover"
+                   />
+                   <div className="absolute inset-0 bg-emerald-900/20 mix-blend-multiply"></div>
+                 </div>
 
-                   {/* Content Side */}
-                   <div className="md:w-1/2 p-6 sm:p-8 md:p-10 flex flex-col justify-center">
-                     <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4">
-                       {item.heading}
-                     </h3>
-                     <p className="text-slate-300 leading-relaxed mb-4 sm:mb-6 text-sm sm:text-base">
-                       {item.description}
-                     </p>
-                     
-                     <div className="space-y-2 sm:space-y-3 mt-auto">
-                       <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Key Features</h4>
-                       {item.features.map((feature, i) => (
-                         <div key={i} className="flex items-center text-slate-200 text-xs sm:text-sm">
-                           <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mr-3 flex-shrink-0"></div>
-                           {feature}
-                         </div>
-                       ))}
-                     </div>
+                 {/* Content Side */}
+                 <div className="md:w-1/2 p-6 sm:p-8 md:p-10 flex flex-col justify-center">
+                   <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4">
+                     {item.heading}
+                   </h3>
+                   <p className="text-slate-300 leading-relaxed mb-4 sm:mb-6 text-sm sm:text-base">
+                     {item.description}
+                   </p>
+                   
+                   <div className="space-y-2 sm:space-y-3 mt-auto">
+                     <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Key Features</h4>
+                     {item.features.map((feature, i) => (
+                       <div key={i} className="flex items-center text-slate-200 text-xs sm:text-sm">
+                         <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mr-3 flex-shrink-0"></div>
+                         {feature}
+                       </div>
+                     ))}
                    </div>
-                </div>
-              )
-            ))}
-          </div>
+                 </div>
+              </div>
+            )
+          ))}
         </div>
       </div>
       
@@ -377,7 +375,7 @@ function Home() {
 
       {/* --- STORIES SECTION --- */}
       {showStories && stories.length > 0 && (
-        <section className="px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 py-8 bg-slate-50 border-b border-slate-200">
+        <section className="px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 py-8 bg-slate-50">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-6">
               <span className="inline-block px-2.5 py-0.5 bg-emerald-50 text-emerald-600 font-semibold uppercase tracking-widest text-[10px] rounded-full mb-2">
@@ -531,108 +529,10 @@ function Home() {
         </div>
       </section>
 
-      {/* --- SERVICES SECTION --- */}
-      <section className="py-12 sm:py-16 md:py-4 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 bg-gradient-to-b from-white via-slate-50 to-white">
-        <div className="max-w-7xl mx-auto">
-          {/* Compact Header */}
-          <div className="text-center max-w-xl mx-auto mb-10 sm:mb-12">
-            <span className="inline-block px-3 py-1 bg-emerald-50 text-emerald-600 font-semibold uppercase tracking-widest text-xs rounded-full mb-4">
-              Our Expertise
-            </span>
-            <h2 className="text-3xl sm:text-4xl md:text-4xl font-bold text-slate-900 mb-4 leading-tight">
-              Comprehensive <span className="text-emerald-600">HVAC Solutions</span>
-            </h2>
-            <p className="text-sm sm:text-lg text-slate-600">
-              Tailored engineering from installation to maintenance, ensuring optimal indoor air quality.
-            </p>
-          </div>
-
-          {/* Compact Services Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-start">
-            {servicesList.map((service, index) => {
-              const isOpen = openServices[service.id];
-              
-              return (
-                <div
-                  key={service.id}
-                  className="group relative bg-white rounded-xl p-6 sm:p-8 border-2 border-slate-200 hover:border-emerald-400 transition-all duration-300 overflow-hidden self-start"
-                >
-                  {/* Subtle Background Pattern */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/50 via-transparent to-transparent"></div>
-                  </div>
-
-                  <div className="relative z-10">
-                    {/* Header with Icon */}
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className="flex-shrink-0">
-                        <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center text-white shadow-lg shadow-emerald-500/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                          <svg className="w-7 h-7 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                            {service.id === 1 && <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />}
-                            {service.id === 2 && <path strokeLinecap="round" strokeLinejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />}
-                            {service.id === 3 && <path strokeLinecap="round" strokeLinejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />}
-                            {service.id === 4 && <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />}
-                          </svg>
-                        </div>
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-2 group-hover:text-emerald-600 transition-colors duration-300">
-                          {service.title}
-                        </h3>
-                        <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-                          {service.description}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Expandable Content */}
-                    <div className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                      isOpen ? 'max-h-[500px] opacity-100 mt-4' : 'max-h-0 opacity-0'
-                    }`}>
-                      <div className="pt-4 border-t border-slate-200">
-                        <ul className="space-y-2.5">
-                          {service.items.map((item, idx) => (
-                            <li 
-                              key={idx}
-                              className="flex items-center text-sm sm:text-base text-slate-700 group/item"
-                            >
-                              <div className="flex-shrink-0 w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center mr-3 group-hover/item:bg-emerald-500 transition-colors duration-300">
-                                <svg className="w-3 h-3 text-emerald-600 group-hover/item:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                                </svg>
-                              </div>
-                              <span className="group-hover/item:text-emerald-700 transition-colors duration-300">{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-
-                    {/* Toggle Button */}
-                    <button
-                      onClick={() => toggleService(service.id)}
-                      className="mt-4 flex items-center gap-2 text-sm font-semibold text-emerald-600 hover:text-emerald-700 transition-colors duration-300 group/btn"
-                    >
-                      <span>{isOpen ? 'Show Less' : 'View Details'}</span>
-                      <svg 
-                        className={`w-4 h-4 transform transition-all duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'} group-hover/btn:translate-y-0.5`}
-                        fill="none" 
-                        stroke="currentColor" 
-                        viewBox="0 0 24 24"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      
 
       {/* --- STATS SECTION --- */}
-      <section className="bg-slate-900 py-12 sm:py-16 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 border-b border-slate-800">
+      <section className="bg-slate-900 py-12 sm:py-16 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 text-center divide-y sm:divide-y-0 sm:divide-x divide-slate-800">
            <div className="p-4 sm:p-6">
              <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2">2022</span>
@@ -654,7 +554,7 @@ function Home() {
         <div className="grid lg:grid-cols-2">
             <div className="h-64 sm:h-80 md:h-96 lg:h-[500px] w-full relative bg-slate-900 overflow-hidden order-2 lg:order-1">
                 <img 
-                  src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769251333/Black_and_White_Modern_Electrical_Service_Instagram_Post_qrne40.svg" 
+                  src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769517424/Black_and_White_Modern_Electrical_Service_Instagram_Post_2_rd97w6.svg" 
                   alt="Technician at work" 
                   className="w-full h-full object-cover object-left"
                 />
