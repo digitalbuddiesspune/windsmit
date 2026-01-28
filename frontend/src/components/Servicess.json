@@ -1,0 +1,186 @@
+{
+  "repairServices": [
+    {
+      "title": "AC Deep Cleaning Service",
+      "price": "₹599",
+      "shortDesc": "Deep internal cleaning to improve cooling efficiency and air quality.",
+      "details": [
+        "Complete indoor & outdoor unit deep cleaning",
+        "Removes dust, mold & bacteria buildup",
+        "Improves cooling performance",
+        "Reduces power consumption",
+        "Extends AC life",
+        "Safe & eco-friendly process"
+      ],
+      "types": ["Split AC", "Window AC", "Cassette AC", "Ductable AC"]
+    },
+    {
+      "title": "AC Fan Not Working",
+      "price": "₹499",
+      "shortDesc": "Routine maintenance for smooth AC operation.",
+      "details": [
+        "Filter cleaning & inspection",
+        "Basic indoor unit wash",
+        "Electrical & thermostat check",
+        "Performance testing",
+        "Noise & vibration check",
+        "Preventive maintenance"
+      ],
+      "types": ["Split AC", "Window AC"]
+    },
+    {
+      "title": "AC Water Leakage Issue",
+      "price": "₹1,799",
+      "shortDesc": "Gas top-up & leakage check for efficient cooling.",
+      "details": [
+        "Leak detection & rectification",
+        "Vacuuming of system",
+        "Accurate gas charging",
+        "Cooling performance testing",
+        "Pressure level verification",
+        "Safe refrigerant handling"
+      ],
+      "types": ["Split AC", "Cassette AC", "Ductable AC"]
+    },
+    {
+      "title": "AC Anti RUst Service",
+      "price": "₹1,299",
+      "shortDesc": "Professional AC installation with safety standards.",
+      "details": [
+        "Indoor & outdoor unit mounting",
+        "Copper piping connection",
+        "Drain & wiring setup",
+        "Vacuuming before start",
+        "Performance testing",
+        "Clean finishing"
+      ],
+      "types": ["Split AC", "Cassette AC", "Ductable AC"]
+    },
+    {
+      "title": "AC Freezing UP/Ice Forming Issue",
+      "price": "₹799",
+      "shortDesc": "Safe removal of AC without gas loss.",
+      "details": [
+        "Gas recovery",
+        "Electrical disconnection",
+        "Indoor & outdoor unit removal",
+        "Pipe insulation safety",
+        "No damage assurance",
+        "Clean dismantling"
+      ],
+      "types": ["Split AC", "Window AC"]
+    },
+    {
+      "title": "AC Less / No Cooling Issue",
+      "price": "₹699",
+      "shortDesc": "Fix water dripping and drainage issues.",
+      "details": [
+        "Drain pipe cleaning",
+        "Indoor tray inspection",
+        "Clog removal",
+        "Cooling coil check",
+        "Leak testing",
+        "Permanent solution"
+      ],
+      "types": ["Split AC", "Cassette AC"]
+    },
+    {
+      "title": "AC Turning off Issue",
+      "price": "₹1,499 ",
+      "shortDesc": "Advanced electronic control board repair.",
+      "details": [
+        "PCB diagnostics",
+        "Component replacement",
+        "Voltage testing",
+        "Error code resolution",
+        "Cooling calibration",
+        "Warranty on repair"
+      ],
+      "types": ["Split AC", "Cassette AC", "Ductable AC"]
+    },
+    {
+      "title": "AC Warm Air Issue",
+      "price": "₹999",
+      "shortDesc": "Restore proper airflow & noise-free operation.",
+      "details": [
+        "Motor inspection",
+        "Bearing lubrication",
+        "Winding check",
+        "Noise issue fixing",
+        "Speed calibration",
+        "Performance testing"
+      ],
+      "types": ["Split AC", "Cassette AC"]
+    },
+    {
+      "title": "AC Noise Issue",
+      "price": "₹2,999 ",
+      "shortDesc": "Major compressor fault diagnosis & repair.",
+      "details": [
+        "Compressor health check",
+        "Electrical testing",
+        "Gas pressure analysis",
+        "Overload protection check",
+        "Cooling performance test",
+        "Expert handling"
+      ],
+      "types": ["Split AC", "Ductable AC"]
+    },
+    {
+      "title": "AC Power On Issue",
+      "price": "₹699",
+      "shortDesc": "Low cooling or uneven cooling solutions.",
+      "details": [
+        "Gas pressure check",
+        "Coil inspection",
+        "Fan airflow testing",
+        "Thermostat calibration",
+        "Electrical diagnosis",
+        "Complete performance tuning"
+      ],
+      "types": ["Split AC", "Window AC"]
+    },
+    {
+      "title": "AC Drainage Issue",
+      "price": "₹1,499 ",
+      "shortDesc": "Professional service for ceiling cassette ACs.",
+      "details": [
+        "360° airflow cleaning",
+        "Drain pump check",
+        "Panel removal & wash",
+        "Cooling coil service",
+        "Electrical testing",
+        "Commercial-grade service"
+      ],
+      "types": ["Cassette AC"]
+    },
+    {
+      "title": "AC Smell Issue",
+      "price": "₹2,499 ",
+      "shortDesc": "Heavy-duty service for centralized systems.",
+      "details": [
+        "Duct inspection",
+        "Airflow balancing",
+        "Indoor unit cleaning",
+        "Electrical & control check",
+        "Cooling optimization",
+        "Industrial safety standards"
+      ],
+      "types": ["Ductable AC"]
+    },
+    {
+      "title": "Ductable AC Repair & Servicess",
+      "price": "₹2,999",
+      "shortDesc": "Year-round worry-free AC maintenance.",
+      "details": [
+        "Scheduled servicing",
+        "Priority breakdown support",
+        "Discount on spare parts",
+        "Performance monitoring",
+        "Extended AC lifespan",
+        "Best value plan"
+      ],
+      "types": ["Split AC", "Cassette AC", "Ductable AC"]
+    }
+  ]
+}
