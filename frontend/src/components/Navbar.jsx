@@ -84,18 +84,12 @@ function Navbar() {
                       : 'opacity-0 translate-y-2 invisible'
                   }`}
                 >
-                  <div
-  className={`w-[280px] xl:w-[300px] rounded-2xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] overflow-hidden p-2 border ${
-    isScrolled
-      ? 'bg-white border-gray-100'
-      : 'bg-white/10 backdrop-blur-md border-gray-100/30'
-  }`}
->
-  <DropdownLink title="Air Conditioning" desc="Installation & Repairs" to="/services" isScrolled={isScrolled} />
-  <DropdownLink title="HVAC Systems" desc="Commercial Solutions" to="/services" isScrolled={isScrolled} />
-  <DropdownLink title="BMS Integration" desc="Building Management" to="/services" isScrolled={isScrolled} />
-  <DropdownLink title="Annual Maintenance" desc="Service Contracts" to="/services" isScrolled={isScrolled} />
-</div>
+                  <div className="w-[280px] xl:w-[300px] bg-white rounded-2xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] border border-gray-100 overflow-hidden p-2">
+                    <DropdownLink title="Air Conditioning" desc="Installation & Repairs" to="/services" />
+                    <DropdownLink title="HVAC Systems" desc="Commercial Solutions" to="/Acservices" />
+                    <DropdownLink title="BMS Integration" desc="Building Management" to="/services" />
+                    <DropdownLink title="Annual Maintenance" desc="Service Contracts" to="/services" />
+                  </div>
                 </div>
               </div>
 

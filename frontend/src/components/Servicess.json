@@ -1,0 +1,285 @@
+{
+  "residentialServices": [
+    {
+      "id": "res-1",
+      "title": "AC Deep Cleaning",
+      "price": "₹599",
+      "shortDesc": "Deep internal cleaning to improve cooling efficiency and air quality.",
+      "details": [
+        "Complete indoor & outdoor unit deep cleaning",
+        "Removes dust, mold & bacteria buildup",
+        "Improves cooling performance",
+        "Reduces power consumption",
+        "Extends AC life",
+        "Safe & eco-friendly process"
+      ],
+      "icon": "FaBroom",
+      "types": [
+        "Split AC",
+        "Window AC",
+        "Cassette AC"
+      ]
+    },
+    {
+      "id": "res-2",
+      "title": "Gas Charging",
+      "price": "₹1,799",
+      "shortDesc": "Gas top-up & leakage check for efficient cooling.",
+      "details": [
+        "Leak detection & rectification",
+        "Vacuuming of system",
+        "Accurate gas charging",
+        "Cooling performance testing",
+        "Pressure level verification",
+        "Safe refrigerant handling"
+      ],
+      "icon": "FaWind",
+      "types": [
+        "Split AC",
+        "Cassette AC",
+        "Ductable AC"
+      ]
+    },
+    {
+      "id": "res-3",
+      "title": "Repair & Diagnosis",
+      "price": "₹399",
+      "shortDesc": "Expert diagnosis for any AC issue.",
+      "details": [
+        "Noise problem fixation",
+        "Water leakage repair",
+        "Sensor & PCB repair",
+        "Capacitor replacement",
+        "Compressor check",
+        "On-spot diagnosis"
+      ],
+      "icon": "FaTools",
+      "types": [
+        "All AC Types"
+      ]
+    },
+    {
+      "id": "res-4",
+      "title": "Professional Installation",
+      "price": "₹1,299",
+      "shortDesc": "Safety-first installation with proper insulation.",
+      "details": [
+        "Indoor & outdoor unit mounting",
+        "Copper piping connection",
+        "Drain & wiring setup",
+        "Vacuuming before start",
+        "Performance testing",
+        "Clean finishing"
+      ],
+      "icon": "FaHammer",
+      "types": [
+        "Split AC",
+        "Cassette AC"
+      ]
+    },
+    {
+      "id": "res-5",
+      "title": "Uninstallation Service",
+      "price": "₹699",
+      "shortDesc": "Safe removal of AC unit without gas loss.",
+      "details": [
+        "Pump down to save gas",
+        "Careful dismantling of units",
+        "Sealing of pipes",
+        "Packing assistance (optional)",
+        "Site cleanup"
+      ],
+      "icon": "FaTools",
+      "types": [
+        "Split AC",
+        "Window AC"
+      ]
+    },
+    {
+      "id": "res-6",
+      "title": "PCB Repair",
+      "price": "₹1,499",
+      "shortDesc": "Advanced electronics repair for inverter ACs.",
+      "details": [
+        "Component level repair",
+        "Sensor replacement",
+        "Voltage testing",
+        "Circuit troubleshooting",
+        "Warranty on repair"
+      ],
+      "icon": "FaTools",
+      "types": [
+        "Inverter Split AC",
+        "VRF"
+      ]
+    },
+    {
+      "id": "res-7",
+      "title": "Capacitor Replacement",
+      "price": "₹650",
+      "shortDesc": "Fix starting issues and fan failures.",
+      "details": [
+        "High-quality capacitor used",
+        "Wiring check",
+        "Amperage testing",
+        "Fan motor check"
+      ],
+      "icon": "FaTools",
+      "types": [
+        "Window AC",
+        "Split AC"
+      ]
+    },
+    {
+      "id": "res-8",
+      "title": "Copper Piping (Per Ft)",
+      "price": "₹250",
+      "shortDesc": "High-grade copper insulation piping.",
+      "details": [
+        "Thick insulation",
+        "Leak-proof joints",
+        "Proper bending & routing",
+        "Concealed piping support"
+      ],
+      "icon": "FaHammer",
+      "types": [
+        "Split AC",
+        "VRF",
+        "Cassette"
+      ]
+    },
+    {
+      "id": "res-9",
+      "title": "Water Leakage Fix",
+      "price": "₹499",
+      "shortDesc": "Stop water dripping instantly.",
+      "details": [
+        "Drain tray cleaning",
+        "Drain pipe unclogging",
+        "Level adjustment",
+        "Crack sealing"
+      ],
+      "icon": "FaTools",
+      "types": [
+        "Split AC",
+        "Cassette AC"
+      ]
+    },
+    {
+      "id": "res-10",
+      "title": "Compressor Replacement",
+      "price": "On Quote",
+      "shortDesc": "Heart of the AC replacement service.",
+      "details": [
+        "Old compressor removal",
+        "Nitrogen flushing",
+        "New compressor installation",
+        "Gas charging",
+        "Vacuumizing"
+      ],
+      "icon": "FaTools",
+      "types": [
+        "All Types"
+      ]
+    },
+    {
+      "id": "res-11",
+      "title": "Fan Motor Repair",
+      "price": "₹1,200",
+      "shortDesc": "Fix noisy or stopped fans.",
+      "details": [
+        "Bearing replacement",
+        "Winding check",
+        "Blade balancing",
+        "Motor housing cleaning"
+      ],
+      "icon": "FaTools",
+      "types": [
+        "Window AC",
+        "Split AC"
+      ]
+    },
+    {
+      "id": "res-12",
+      "title": "Remote Control",
+      "price": "₹450",
+      "shortDesc": "Genuine or compatible high-quality remotes.",
+      "details": [
+        "Range testing",
+        "Battery included",
+        "Functionality check"
+      ],
+      "icon": "FaTools",
+      "types": [
+        "All Brands"
+      ]
+    },
+    {
+      "id": "res-13",
+      "title": "Smart AC Upgrade",
+      "price": "₹1,999",
+      "shortDesc": "Convert old AC to Smart AC (WiFi).",
+      "details": [
+        "WiFi module installation",
+        "App configuration",
+        "Voice control setup (Alexa/Google)",
+        "Mobile control demo"
+      ],
+      "icon": "FaWind",
+      "types": [
+        "Split AC",
+        "Cassette AC"
+      ]
+    }
+  ],
+  "commercialServices": [
+    {
+      "id": "com-1",
+      "title": "VRF/VRV Systems",
+      "desc": "Advanced variable refrigerant flow systems for large commercial spaces.",
+      "features": [
+        "Energy efficient zoning",
+        "Quiet operation",
+        "Space-saving design",
+        "Centralized control"
+      ],
+      "image": "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769606429/IMG_8217_1_alotmv.png"
+    },
+    {
+      "id": "com-2",
+      "title": "Ductable & Packaged AC",
+      "desc": "Heavy-duty cooling for offices, showrooms, and banquet halls.",
+      "features": [
+        "Uniform air distribution",
+        "Aesthetic ceiling integration",
+        "High static pressure units",
+        "Fresh air intake options"
+      ],
+      "image": "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769606443/IMG_8220_ahyxjl.png"
+    },
+    {
+      "id": "com-3",
+      "title": "AHU & Ventilation",
+      "desc": "Custom Air Handling Units for hospitals, industries, and malls.",
+      "features": [
+        "Treated fresh air units (TFA)",
+        "Air filtration & purification",
+        "Humidity control",
+        "Energy recovery wheels"
+      ],
+      "image": "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769606405/IMG_8214_hry6ni.png"
+    },
+    {
+      "id": "com-4",
+      "title": "Annual Maintenance (AMC)",
+      "desc": "Comprehensive maintenance contracts for hassle-free operations.",
+      "features": [
+        "Scheduled preventive services",
+        "Priority breakdown support",
+        "Genuine spare parts",
+        "Dedicated technical team"
+      ],
+      "image": "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769513344/cassette-ac-dealer-removebg-preview22_ecx7yj.png"
+    }
+  ]
+}
