@@ -64,60 +64,69 @@ function WhyChooseUs() {
   ]
 
   return (
-    <section className="w-full bg-white">
-      <div className="grid lg:grid-cols-2 min-h-[600px]">
-        {/* Left Panel - Background Image with Overlay */}
-        <div className="relative bg-slate-900 flex items-center justify-center lg:justify-start px-6 md:px-12 lg:px-16 py-16 lg:py-24 order-2 lg:order-1 min-h-[500px] lg:min-h-[600px]">
-          {/* Background Image */}
-          <div 
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage: 'url(https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769498907/ac-repairman-repairs-cooling-system-service-illustration-svg-download-png-10616201_xacavx.png)'
-            }}
-          ></div>
-          
-          {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-black/70"></div>
-          
-          {/* Title Content */}
-          <div className="relative z-10 text-white px-4">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              Why choose <br />
-              <span className="text-emerald-400">Windsmit Air?</span>
-            </h2>
-          </div>
+    <>
+      {/* ===== Section Heading (OUTSIDE IMAGE) ===== */}
+      <section className="relative z-10 w-full py-16 bg-slate-900 text-center overflow-hidden">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white">
+          Why choose <br />
+          <span className="text-emerald-400">Windsmit Air?</span>
+        </h2>
+        <div className="absolute -bottom-px left-0 right-0 z-20 pointer-events-none">
+          <svg
+            viewBox="0 0 1200 120"
+            preserveAspectRatio="none"
+            className="w-full h-16 sm:h-20 md:h-24 lg:h-28 block"
+            aria-hidden="true"
+          >
+            <path
+              d="M0,0 C150,90 350,0 600,70 C850,140 1050,20 1200,70 L1200,120 L0,120 Z"
+              fill="#0f172a"
+            />
+          </svg>
         </div>
+      </section>
 
-        {/* Right Panel - Features Grid */}
-        <div className="bg-white px-6 md:px-12 lg:px-16 py-12 lg:py-16 order-1 lg:order-2 flex items-center min-h-[500px] lg:min-h-[600px]">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 w-full">
+      {/* ===== Features Section ===== */}
+      <section
+        className="w-full relative bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: 'url(https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769605425/3fbc0260-c7ea-4230-bd93-80d6639437d2.png)'
+        }}
+      >
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 py-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 items-stretch">
+
             {features.map((feature) => (
-              <div 
-                key={feature.id}
-                className="flex flex-col"
-              >
-                {/* Icon */}
-                <div className="mb-4">
-                  <div className="w-14 h-14 rounded-lg bg-emerald-500 flex items-center justify-center text-white shadow-lg">
+              <div key={feature.id} className="group h-full">
+                <div className="h-full min-h-[220px] md:min-h-[240px] flex items-start gap-4 rounded-2xl p-5 md:p-6 border border-white/30 bg-white/10 backdrop-blur-md hover:bg-white/15 transition">
+                  <div className="w-12 h-12 md:w-14 md:h-14 rounded-lg bg-emerald-500 flex items-center justify-center text-white shrink-0 shadow-md">
                     {feature.icon}
                   </div>
+
+                  <div>
+                    <h3 className="text-lg md:text-xl font-bold text-gray-400 mb-1.5">
+                      {feature.title}
+                    </h3>
+                    <p
+                      className="text-sm md:text-[15px] leading-relaxed text-gray-300"
+                      style={{
+                        display: '-webkit-box',
+                        WebkitBoxOrient: 'vertical',
+                        WebkitLineClamp: 5,
+                        overflow: 'hidden'
+                      }}
+                    >
+                      {feature.description}
+                    </p>
+                  </div>
                 </div>
-                
-                {/* Title */}
-                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3">
-                  {feature.title}
-                </h3>
-                
-                {/* Description */}
-                <p className="text-sm md:text-base text-slate-600 leading-relaxed">
-                  {feature.description}
-                </p>
               </div>
             ))}
+
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   )
 }
 

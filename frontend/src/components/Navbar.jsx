@@ -237,10 +237,27 @@ const NavItem = ({ to, label, isActive, isScrolled }) => (
   </Link>
 )
 
-const DropdownLink = ({ title, desc, to }) => (
-  <Link to={to || "#"} className="flex flex-col px-4 py-3 rounded-xl hover:bg-gray-50 transition-colors group">
-    <span className="text-sm font-semibold text-gray-900 group-hover:text-black">{title}</span>
-    <span className="text-xs text-gray-500 group-hover:text-gray-600">{desc}</span>
+const DropdownLink = ({ title, desc, to, isScrolled }) => (
+  <Link
+    to={to || "#"}
+    className={`flex flex-col px-4 py-3 rounded-xl transition-colors group ${
+      isScrolled ? 'hover:bg-gray-50' : 'hover:bg-white/10'
+    }`}
+  >
+    <span
+      className={`text-sm font-semibold ${
+        isScrolled ? 'text-gray-900 group-hover:text-black' : 'text-white'
+      }`}
+    >
+      {title}
+    </span>
+    <span
+      className={`text-xs ${
+        isScrolled ? 'text-gray-600 group-hover:text-gray-700' : 'text-gray-200 group-hover:text-gray-50'
+      }`}
+    >
+      {desc}
+    </span>
   </Link>
 )
 
