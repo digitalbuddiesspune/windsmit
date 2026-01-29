@@ -29,38 +29,64 @@ const Services = () => {
   ];
 
   // Data for "Room Air Conditioning" Section
-  const acProducts = [
-    {
-      url: "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769512747/Untitled_1080_x_1080_px_1_msyvy1.svg",
-      title: "High Wall Split AC",
-      desc: "Sleek cooling for modern homes.",
-      content: "High Wall Split ACs are the most popular choice for residential spaces. They offer whisper-quiet operation and advanced air purification filters. Designed to blend seamlessly with your interior decor, these units provide precise temperature control. They are highly energy-efficient, helping reduce electricity bills significantly."
-    },
-    {
-      url: "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769515524/Gemini_Generated_Image_e3nicqe3nicqe3ni-removebg-preview_1_agc0pc.png",
-      title: "Cassette AC",
-      desc: "Uniform 360° airflow.",
-      content: "Cassette ACs are ideal for commercial spaces with false ceilings. They provide 360-degree uniform airflow, ensuring no hot spots in the room. The unit is discreetly tucked away, with only the decorative panel visible."
-    },
-    {
-      url: "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769515422/Gemini_Generated_Image_28yeej28yeej28ye-removebg-preview_1_iirkfz.png",
-      title: "Ductable AC",
-      desc: "Centralized solutions for large spaces.",
-      content: "Ductable ACs provide a centralized cooling solution for entire floors or large zones. They offer a clean aesthetic as only the supply and return grilles are visible. Highly recommended for premium residences and banquet halls."
-    },
-    {
-      url: "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769519496/Gemini_Generated_Image_k1c2bwk1c2bwk1c2-removebg-preview_ucj0tq.png",
-      title: "Window AC",
-      desc: "Economical cooling for compact spaces.",
-      content: "Window ACs remain a classic, reliable, and cost-effective cooling option. These all-in-one units are easy to install in a standard window or wall opening. They are incredibly durable and require minimal maintenance."
-    },
-    {
-      url: "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769515403/Gemini_Generated_Image_qrdcjeqrdcjeqrdc-removebg-preview_1_p6wuig.png",
-      title: "Tower AC",
-      desc: "High-capacity floor standing units.",
-      content: "Tower ACs are high-capacity, floor-standing units designed for rapid cooling. They are the go-to solution for areas where wall or ceiling mounting is not feasible. Ideal for gyms and conference rooms."
-    }
-  ];
+const acProducts = [
+  {
+    url: "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769512747/Untitled_1080_x_1080_px_1_msyvy1.svg",
+    title: "High Wall Split AC",
+    desc: "Sleek cooling for modern homes.",
+    content: [
+      "High Wall Split ACs are the most preferred cooling solution for modern residential spaces.",
+      "Offer silent operation with advanced filtration for cleaner indoor air.",
+      "Compact indoor units blend seamlessly with contemporary interiors.",
+      "Designed for precise temperature control and long-term energy efficiency."
+    ]
+  },
+  {
+    url: "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769515524/Gemini_Generated_Image_e3nicqe3nicqe3ni-removebg-preview_1_agc0pc.png",
+    title: "Cassette AC",
+    desc: "Uniform 360° airflow.",
+    content: [
+      "Cassette ACs are ideal for commercial areas with false ceilings.",
+      "Provide uniform 360-degree airflow for consistent cooling across the space.",
+      "Only the elegant panel is visible, keeping interiors clean and uncluttered.",
+      "Widely used in offices, retail outlets, and hospitality environments."
+    ]
+  },
+  {
+    url: "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769515422/Gemini_Generated_Image_28yeej28yeej28ye-removebg-preview_1_iirkfz.png",
+    title: "Ductable AC",
+    desc: "Centralized solutions for large spaces.",
+    content: [
+      "Ductable AC systems deliver centralized cooling for large areas and multiple rooms.",
+      "Maintain a premium aesthetic with concealed ducting and visible grilles only.",
+      "Ensure uniform temperature distribution across entire floors or zones.",
+      "Commonly used in banquet halls, villas, and large commercial buildings."
+    ]
+  },
+  {
+    url: "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769519496/Gemini_Generated_Image_k1c2bwk1c2bwk1c2-removebg-preview_ucj0tq.png",
+    title: "Window AC",
+    desc: "Economical cooling for compact spaces.",
+    content: [
+      "Window ACs are a reliable and cost-effective cooling option for small spaces.",
+      "All-in-one design allows easy installation in windows or wall openings.",
+      "Known for durability and consistent performance over long periods.",
+      "Ideal for bedrooms, small offices, and budget-conscious installations."
+    ]
+  },
+  {
+    url: "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769515403/Gemini_Generated_Image_qrdcjeqrdcjeqrdc-removebg-preview_1_p6wuig.png",
+    title: "Tower AC",
+    desc: "High-capacity floor standing units.",
+    content: [
+      "Tower ACs are powerful floor-standing units built for high cooling demand.",
+      "Deliver rapid cooling for large, open, or crowded spaces.",
+      "Perfect where wall or ceiling mounting is not practical.",
+      "Commonly installed in gyms, halls, showrooms, and conference rooms."
+    ]
+  }
+];
+
 
   const visibleServices = showAllServices ? servicesData.residentialServices : servicesData.residentialServices.slice(0, 4);
 
@@ -193,7 +219,7 @@ const Services = () => {
               transition={{ duration: 0.8 }}
               className="relative flex justify-center"
             >
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+              <div className="relative  overflow-hidden">
                 <img src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769592342/Untitled_1080_x_1080_px_blzpqc.png" alt="Windsmit Quality" className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-8">
                   <div className="text-white">
@@ -208,75 +234,105 @@ const Services = () => {
       </section>
 
       {/* 3. NEW SECTION: ROOM AIR CONDITIONING (Horizontal Cards) */}
-      <section className="py-24 bg-white relative">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-20">
-            <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">
-              Room <span className="text-green-600">Air Conditioning</span>
-            </h2>
-            <div className="w-24 h-1.5 bg-yellow-400 mx-auto rounded-full" />
-            <p className="text-gray-500 mt-6 max-w-2xl mx-auto text-lg">
-              Discover the perfect cooling solution tailored for your space.
+      {/* 3. ROOM AIR CONDITIONING – HVAC STYLE LAYOUT */}
+<section className="py-24 px-6 bg-white">
+  <div className="max-w-7xl mx-auto">
+
+    {/* Heading */}
+    <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+      <div className="max-w-2xl">
+        <h4 className="text-green-600 font-bold mb-2 uppercase tracking-wider">
+          Room Cooling Solutions
+        </h4>
+        <h2 className="text-4xl font-bold text-gray-900 leading-tight">
+          Room <span className="text-green-600">Air Conditioning</span>
+        </h2>
+      </div>
+      <p className="text-gray-500 max-w-md text-right hidden md:block">
+        Tailored AC systems engineered for efficiency, comfort, and reliability.
+      </p>
+    </div>
+
+    {/* Cards */}
+    <div className="grid gap-16">
+      {acProducts.map((product, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ margin: "-100px", once: true }}
+          transition={{ duration: 0.6 }}
+          className={`flex flex-col md:flex-row items-center gap-12 ${
+            index % 2 !== 0 ? 'md:flex-row-reverse' : ''
+          }`}
+        >
+
+          {/* Image */}
+          <div className="w-full md:w-1/2 h-[420px] overflow-hidden rounded-3xl shadow-2xl relative group">
+            <img
+              src={product.url}
+              alt={product.title}
+              className="w-full h-full object-contain bg-white p-10 transform group-hover:scale-110 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-green-600/5 group-hover:bg-transparent transition-colors duration-500" />
+          </div>
+
+          {/* Content */}
+          <div className="w-full md:w-1/2 space-y-6">
+            <h3 className="text-3xl font-bold text-gray-900">
+              {product.title}
+            </h3>
+
+            <p className="text-green-600 font-semibold italic flex items-center gap-2">
+              <FaSnowflake /> {product.desc}
             </p>
-          </div>
 
-          <div className="space-y-12">
-            {acProducts.map((product, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6 }}
-                className="group flex flex-col md:flex-row items-stretch bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300"
+           <div className="space-y-3">
+  {product.content.map((point, i) => (
+    <div key={i} className="flex items-start gap-3 text-gray-600">
+      <FaCheckCircle className="text-green-500 mt-1 shrink-0" />
+      <p className="leading-relaxed">{point}</p>
+    </div>
+  ))}
+</div>
+
+
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <button
+                onClick={() =>
+                  window.location.href = `https://wa.me/919021097544?text=Interested in ${product.title}`
+                }
+                className="px-8 py-3 bg-gray-900 text-white font-bold rounded-sm hover:bg-green-600 transition-all uppercase tracking-wide text-sm"
               >
-                {/* Image Side */}
-                <div className="w-full md:w-5/12 bg-white flex items-center justify-center p-8 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-green-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <img
-                    src={product.url}
-                    alt={product.title}
-                    className="relative z-10 w-full h-[250px] md:h-[300px] object-contain transform group-hover:scale-110 transition-transform duration-700 drop-shadow-lg"
-                  />
-                </div>
+                Check Pricing
+              </button>
 
-                {/* Content Side */}
-                <div className="w-full md:w-7/12 p-8 md:p-12 flex flex-col justify-center">
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="px-3 py-1 bg-green-100 text-green-700 text-xs font-bold uppercase tracking-wider rounded-full">
-                      Premium Cooling
-                    </span>
-                  </div>
-                  <h3 className="text-3xl font-bold text-gray-900 mb-3 group-hover:text-green-600 transition-colors">
-                    {product.title}
-                  </h3>
-                  <div className="text-gray-500 font-medium italic mb-6 flex items-center gap-2">
-                    <FaSnowflake className="text-green-400" /> {product.desc}
-                  </div>
-                  <p className="text-gray-600 text-lg leading-relaxed mb-8 flex-grow">
-                    {product.content}
-                  </p>
-
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <button
-                      onClick={() => window.location.href = `https://wa.me/919021097544?text=Interested in ${product.title}`}
-                      className="px-8 py-3 bg-gray-900 text-white font-bold rounded-xl hover:bg-green-600 transition-colors shadow-lg hover:shadow-green-600/30 text-center"
-                    >
-                      Check Pricing
-                    </button>
-                    <button
-                      onClick={() => setSelectedService({ title: product.title, price: "On Request", details: [product.desc, product.content, "Professional Installation", "1 Year Warranty"] })}
-                      className="px-8 py-3 border-2 border-gray-200 text-gray-700 font-bold rounded-xl hover:border-green-600 hover:text-green-600 transition-colors text-center"
-                    >
-                      Specifications
-                    </button>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+              <button
+                onClick={() =>
+                  setSelectedService({
+                    title: product.title,
+                    price: "On Request",
+                    details: [
+                      product.desc,
+                      product.content,
+                      "Professional Installation",
+                      "Energy Efficient Operation",
+                      "1 Year Warranty"
+                    ],
+                  })
+                }
+                className="px-8 py-3 border-2 border-gray-900 text-gray-900 font-bold rounded-sm hover:bg-gray-900 hover:text-white transition-all uppercase tracking-wide text-sm"
+              >
+                View Specifications
+              </button>
+            </div>
           </div>
-        </div>
-      </section>
+
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* 4. RESIDENTIAL SERVICES GRID */}
       <section className="py-24 px-6 bg-gray-50">
@@ -303,17 +359,17 @@ const Services = () => {
                     transition={{ duration: 0.3 }}
                     className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all border border-gray-100 flex flex-col items-center text-center group"
                   >
-                    <div className="w-16 h-16 bg-green-50 text-green-600 rounded-2xl flex items-center justify-center text-2xl mb-4 group-hover:bg-green-600 group-hover:text-white transition-all duration-300 shadow-inner">
+                    <div className="w-16 h-16 bg-green-50 text-white rounded-2xl flex items-center justify-center bg-green-600 text-2xl mb-4 group-hover:bg-green-600 group-hover:text-white transition-all duration-300 shadow-inner">
                       <Icon />
                     </div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-green-600 transition-colors">{service.title}</h3>
-                    <p className="text-green-600 font-bold text-lg mb-3">{service.price}</p>
+                    <h3 className="text-2xl font-bold text-green-600 h-[65px] mb-2 group-hover:text-green-600 transition-colors">{service.title}</h3>
+                    <p className="text-black font-bold text-4xl mb-3">{service.price}</p>
                     <p className="text-gray-500 text-sm mb-6 line-clamp-3 leading-relaxed">
                       {service.shortDesc}
                     </p>
                     <button
                       onClick={() => setSelectedService(service)}
-                      className="mt-auto w-full py-2.5 rounded-xl border border-gray-200 text-gray-600 text-sm font-semibold hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-all"
+                      className="mt-auto w-full py-2.5 rounded-xl border text-white  border-gray-200 text-gray-600 text-sm font-semibold bg-gray-900 hover:bg-white hover:text-black hover:border-gray-900 transition-all"
                     >
                       View Details
                     </button>
