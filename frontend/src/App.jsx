@@ -7,6 +7,8 @@ import Blog from './pages/Blog'
 import BlogPostDetail from './pages/BlogPostDetail'
 import Contact from './pages/Contact'
 import Admin from './pages/Admin'
+import HvacServices from './pages/HvacServices'
+import Bms from './pages/Bms'
 import './App.css'
 
 function App() {
@@ -23,6 +25,8 @@ function App() {
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:id" element={<BlogPostDetail />} />
               <Route path="/services" element={<Services />} />
+              <Route path="/Acservices" element={<HvacServices />} />
+              <Route path="/bms" element={<Bms />} />
               <Route path="/contact" element={<Contact />} />
             </Routes>
           </>
