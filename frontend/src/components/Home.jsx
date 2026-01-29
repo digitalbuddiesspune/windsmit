@@ -11,7 +11,7 @@ const expertiseData = [
     tabLabel: "Air Conditioning",
     heading: "Precision Cooling Systems",
     description: "We engineer cooling solutions that go beyond simple temperature control. Our systems are designed for optimal humidity regulation, energy efficiency, and silent operation suitable for luxury residences and corporate offices.",
-    image: "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769533390/cool-air-6_n0el5h.gif",
+    image: "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769507264/downloadFile_tcfalp.gif",
     features: ["Inverter Technology", "Multi-Zone Control", "Eco-friendly Refrigerants", "Smart WiFi Integration"]
   },
   {

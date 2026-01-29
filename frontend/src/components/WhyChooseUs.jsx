@@ -67,6 +67,9 @@ function WhyChooseUs() {
     <>
       {/* ===== Section Heading (OUTSIDE IMAGE) ===== */}
       <section className="relative z-10 w-full py-16 bg-slate-900 text-center overflow-hidden">
+        <span className="text-emerald-500 font-bold uppercase tracking-widest text-xs sm:text-sm mb-2 block">
+            Travel to deliver
+          </span>
         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white">
           Why choose <br />
           <span className="text-emerald-400">Windsmit Air?</span>
