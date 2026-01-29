@@ -86,7 +86,7 @@ function Navbar() {
                 >
                   <div className="w-[280px] xl:w-[300px] bg-white rounded-2xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] border border-gray-100 overflow-hidden p-2">
                     <DropdownLink title="Air Conditioning" desc="Installation & Repairs" to="/services" />
-                    <DropdownLink title="HVAC Systems" desc="Commercial Solutions" to="/services" />
+                    <DropdownLink title="HVAC Systems" desc="Commercial Solutions" to="/Acservices" />
                     <DropdownLink title="BMS Integration" desc="Building Management" to="/services" />
                     <DropdownLink title="Annual Maintenance" desc="Service Contracts" to="/services" />
                   </div>
@@ -172,7 +172,7 @@ function Navbar() {
             <div className="border-l-2 border-gray-200 pl-4 py-2 space-y-2.5">
               <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-3">Services</p>
               <MobileSubLink to="/services" label="Air Conditioning" desc="Installation & Repairs" onClick={() => setIsMobileMenuOpen(false)} />
-              <MobileSubLink to="/services" label="HVAC Systems" desc="Commercial Solutions" onClick={() => setIsMobileMenuOpen(false)} />
+              <MobileSubLink to="/Acservices" label="HVAC Systems" desc="Commercial Solutions" onClick={() => setIsMobileMenuOpen(false)} />
               <MobileSubLink to="/services" label="BMS Integration" desc="Building Management" onClick={() => setIsMobileMenuOpen(false)} />
               <MobileSubLink to="/services" label="Annual Maintenance" desc="Service Contracts" onClick={() => setIsMobileMenuOpen(false)} />
             </div>
