@@ -17,41 +17,42 @@ function About() {
   }, [])
 
   const backgroundStyle = {
-    backgroundImage: `url("https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769166218/White_and_Blue_Modern_Air_Conditioning_Installation_Services_Facebook_Post_Landscape_1920_x_600_mm_1920_x_600_mm_3_otucuu.svg")`,
+    backgroundImage: `url("https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769668233/Untitled_1920_x_1000_px_2_vny2su.svg")`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-    height: '65vh'
+    height: '100vh',      // desktop/tablet
+    minHeight: '100svh'   // mobile dynamic viewport (iOS/Android)
   }
 
   const values = [
-    { 
-      title: "Integrity", 
+    {
+      title: "Integrity",
       text: "We promise honesty and transparency with everyone, we maintain our word with commitment.",
       extra: "We believe that trust is the foundation of every successful partnership and the bedrock of our reputation."
     },
-    { 
-      title: "Customer Pivotal", 
+    {
+      title: "Customer Pivotal",
       text: "We win when our customers are satisfied. Even the customer's little requirement is more valuable to us.",
       extra: "Your comfort is our priority; we listen, adapt, and deliver beyond expectations for every home and office."
     },
-    { 
-      title: "Purpose Driven", 
+    {
+      title: "Purpose Driven",
       text: "We are committed to making a positive impact on society and environment, by aligning our mission and actions.",
       extra: "Our innovations are designed with the planet's health in mind, ensuring a greener tomorrow for all."
     },
-    { 
-      title: "Diversity & Inclusion", 
+    {
+      title: "Diversity & Inclusion",
       text: "We value and embrace diversity, fostering a culture that is inclusive and promotes mutual respect.",
       extra: "Great ideas come from everywhere; we celebrate every unique perspective within our growing Windsmit family."
     },
-    { 
-      title: "Continuous Improvement", 
+    {
+      title: "Continuous Improvement",
       text: "We act on the small improvements; over time these changes have a bigger impact on solving challenges.",
       extra: "Excellence is a journey, not a destination. We evolve our technology and services every single day."
     },
-    { 
-      title: "Sustainability", 
+    {
+      title: "Sustainability",
       text: "We prioritize eco-friendly HVAC solutions to reduce carbon footprints across India.",
       extra: "By integrating solar and energy-efficient cooling, we lead the way in responsible climate control."
     }
@@ -59,10 +60,22 @@ function About() {
 
   return (
     <div className="bg-white min-h-screen">
-      {/* Hero Section */}
-      <div className="relative flex flex-col" style={backgroundStyle}>
+      <div className="relative flex flex-col min-h-screen" style={backgroundStyle}>
         <div className="absolute inset-0 bg-black/20"></div>
-        
+        {/* Hero Content */}
+        <div className="relative z-10 flex-1 flex flex-col justify-center items-start px-4 sm:px-6 md:px-8 lg:px-12 lg:pl-16 xl:pl-20">
+           
+          <div className="max-w-4xl space-y-6 lg:ml-0 xl:ml-0">
+            <p className="text-lg md:text-xl text-left text-gray-300 leading-relaxed">
+              Windsmit Air is an emerging group in the city starting in 2022. We help in maintaining good indoor air quality through adequate ventilation with filtration and provide thermal comfort.
+            </p>
+            <p className="text-lg md:text-xl text-left text-gray-300 leading-relaxed">
+              We offer perfect HVAC equipment design, installation, commissioning and maintenance services to control the inside climate conditions for part of residential structures such as single-family homes, apartment buildings, hotels, marriage halls, medium to large industrial and office buildings such as skyscrapers, hospitals, and malls. We are committed to modernizing India's infrastructure with greener, intelligent and smart buildings by providing entire building automation controls for energy savings and enhanced life of equipment.
+            </p>
+
+          </div>
+        </div>
+
         {/* Rotating Image Overlay - Centered at border */}
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-20 flex justify-center">
           <div className="w-52 h-52 md:w-60 md:h-60 rounded-full overflow-hidden p-2">
@@ -77,7 +90,7 @@ function About() {
       </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 pt-20 md:pt-24">
-        
+
         {/* About Us Heading */}
         <div className="text-center mb-16 md:mb-20">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
@@ -88,12 +101,6 @@ function About() {
 
         {/* Main Intro Text */}
         <div className="max-w-4xl mx-auto mb-20 md:mb-24">
-          <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-6 text-center">
-            Windsmit Air is an emerging group in the city starting in 2022. We help in maintaining good indoor air quality through adequate ventilation with filtration and provide thermal comfort.
-          </p>
-          <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-8 text-center">
-            We offer perfect HVAC equipment design, installation, commissioning and maintenance services to control the inside climate conditions for part of residential structures such as single-family homes, apartment buildings, hotels, marriage halls, medium to large industrial and office buildings such as skyscrapers, hospitals, and malls. We are committed to modernizing India's infrastructure with greener, intelligent and smart buildings by providing entire building automation controls for energy savings and enhanced life of equipment.
-          </p>
           <div className="bg-gray-50 border-l-4 border-[#4CAF50] p-6 md:p-8 rounded-r-lg">
             <p className="text-lg md:text-xl text-gray-800 font-semibold italic text-center">
               "We are committed to modernizing India's infrastructure with greener, intelligent and smart buildings."
@@ -102,6 +109,7 @@ function About() {
         </div>
 
         {/* Vision & Mission Sections */}
+        <div className="w-full px-0 sm:px-0 md:px-0 lg:px-2 xl:px-2"> 
         <div className="space-y-20 md:space-y-24 mb-20 md:mb-24">
           {/* Vision */}
           <div>
@@ -119,9 +127,9 @@ function About() {
               </div>
               <div className="w-full md:w-1/2">
                 <div className="rounded-lg overflow-hidden">
-                  <img 
-                    src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769238611/Untitled_design_2_w1lmdm.png" 
-                    alt="Vision" 
+                  <img
+                    src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769238611/Untitled_design_2_w1lmdm.png"
+                    alt="Vision"
                     className="w-full h-auto object-cover"
                   />
                 </div>
@@ -145,15 +153,16 @@ function About() {
               </div>
               <div className="w-full md:w-1/2">
                 <div className="rounded-lg overflow-hidden shadow-lg">
-                  <img 
-                    src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769237073/ChatGPT_Image_Jan_24_2026_12_12_37_PM_pxjwos.jpg" 
-                    alt="Mission" 
+                  <img
+                    src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769237073/ChatGPT_Image_Jan_24_2026_12_12_37_PM_pxjwos.jpg"
+                    alt="Mission"
                     className="w-full h-auto object-cover"
                   />
                 </div>
               </div>
             </div>
           </div>
+        </div>
         </div>
 
         {/* Values Section */}
@@ -165,14 +174,14 @@ function About() {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Our Values</h2>
             <div className="h-1 w-20 bg-[#FFEB3B] mx-auto rounded-full"></div>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {values.map((val, index) => {
               const isOpen = expandedIndex === index;
 
               return (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className="bg-white border border-gray-200 rounded-lg p-6 transition-all duration-300 hover:shadow-md cursor-pointer"
                   onClick={() => setExpandedIndex(isOpen ? null : index)}
                 >
@@ -181,9 +190,8 @@ function About() {
                       {val.title}
                     </h3>
                     <button
-                      className={`flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-colors ${
-                        isOpen ? 'bg-[#4CAF50] text-white' : 'bg-gray-100 text-gray-600'
-                      }`}
+                      className={`flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-colors ${isOpen ? 'bg-[#4CAF50] text-white' : 'bg-gray-100 text-gray-600'
+                        }`}
                       aria-label={isOpen ? 'Close' : 'Expand'}
                     >
                       <span className="text-lg font-bold leading-none">

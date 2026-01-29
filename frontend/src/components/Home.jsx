@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Footer from './Footer'
 import WhyChooseUs from './WhyChooseUs'
+import Testimonials from './Testimonials'
 
 // --- 1. DATA CONSTANTS ---
 
@@ -216,6 +217,9 @@ function Home() {
   const [stories, setStories] = useState([])
   const [activeStory, setActiveStory] = useState(null)
   const [showStories, setShowStories] = useState(true)
+  const [projectCount, setProjectCount] = useState(0)
+const [hasAnimatedProjects, setHasAnimatedProjects] = useState(false)
+const projectsRef = useRef(null)
 
   // Auto-slide logic
   useEffect(() => {
@@ -244,6 +248,36 @@ function Home() {
     }
     fetchStoriesSetting()
   }, [])
+  useEffect(() => {
+  if (!projectsRef.current || hasAnimatedProjects) return
+  const el = projectsRef.current
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const entry = entries[0]
+      if (!entry.isIntersecting) return
+
+      setHasAnimatedProjects(true)
+      const target = 100
+      const duration = 1500
+      const startTime = performance.now()
+
+      const tick = (now) => {
+        const progress = Math.min((now - startTime) / duration, 1)
+        const value = Math.floor(progress * target)
+        setProjectCount(value)
+        if (progress < 1) requestAnimationFrame(tick)
+      }
+
+      requestAnimationFrame(tick)
+      observer.unobserve(el)
+    },
+    { threshold: 0.4 }
+  )
+
+  observer.observe(el)
+  return () => observer.disconnect()
+}, [hasAnimatedProjects])
 
   // Fetch stories for \"Instagram-like\" story section
   useEffect(() => {
@@ -466,68 +500,89 @@ function Home() {
 
       {/* --- IDENTITY SECTION --- */}
       <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 bg-white">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
-          
-          {/* Left Content */}
-          <div className="space-y-6 sm:space-y-8 md:space-y-10">
-            <div>
-              <div className="flex items-center gap-3 mb-3 sm:mb-4">
-                <span className="h-px w-8 sm:w-12 bg-emerald-500"></span>
-                <span className="text-emerald-600 font-semibold uppercase tracking-widest text-xs sm:text-sm">Our Identity</span>
-              </div>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight">
-                Breathing Life into <br className="hidden sm:block" />Every Space
-              </h2>
-            </div>
+  <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
+    
+    {/* Left Content */}
+    <div className="space-y-6 sm:space-y-8 md:space-y-10">
+      <div>
+        <div className="flex items-center gap-3 mb-3 sm:mb-4">
+          <span className="h-px w-8 sm:w-12 bg-emerald-500"></span>
+          <span className="text-emerald-600 font-semibold uppercase tracking-widest text-xs sm:text-sm">Our Identity</span>
+        </div>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight">
+          Breathing Life into <br className="hidden sm:block" />Every Space
+        </h2>
+      </div>
 
-            <div className="space-y-6 sm:space-y-8">
-              <div className="flex gap-4 sm:gap-5">
-                <div className="flex-shrink-0 mt-1">
-                   <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
-                    <span className="font-bold text-base sm:text-lg">W</span>
-                   </div>
-                </div>
-                <div>
-                  <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2">The Name</h3>
-                  <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-                    <span className="font-semibold text-emerald-700">Windsmit Air</span> signifies "smiling air" (SMIT). It reflects our core attitude: providing clean, pure, and happy air through superior design and engineering.
-                  </p>
-                </div>
-              </div>
+      <div className="space-y-6 sm:space-y-8">
 
-              <div className="flex gap-4 sm:gap-5">
-                 <div className="flex-shrink-0 mt-1">
-                   <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                    </svg>
-                   </div>
-                </div>
-                <div>
-                  <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2">The Philosophy</h3>
-                  <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-                    Our logo pays gratitude to the sun (energy) and trees (healthy air). The flags symbolize the "Winning" direction of the wind. We combine nature's principles with modern engineering.
-                  </p>
-                </div>
-              </div>
+        {/* The Name */}
+        <div className="flex gap-4 sm:gap-5">
+          <div className="flex-shrink-0 mt-1">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
+              {/* USER ICON */}
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                  d="M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                  d="M4 20a8 8 0 0116 0" />
+              </svg>
             </div>
           </div>
-
-          {/* Right Image */}
-          <div className="relative order-first lg:order-last">
-            <div className="relative rounded-lg overflow-hidden aspect-[4/3]">
-              <img
-                src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769173734/output-onlinegiftools_1_ftxcaj.gif"
-                alt="Clean Air Environment"
-                className="w-full h-full object-cover transition-transform ease-out"
-              />
-            </div>
-            {/* Decorative Elements */}
-            <div className="hidden sm:block absolute -bottom-4 sm:-bottom-6 -left-4 sm:-left-6 w-16 h-16 sm:w-24 sm:h-24 bg-emerald-50 rounded-full -z-10"></div>
-            <div className="hidden sm:block absolute -top-4 sm:-top-6 -right-4 sm:-right-6 w-20 h-20 sm:w-32 sm:h-32 bg-yellow-50 rounded-full -z-10"></div>
+          <div>
+            <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2">The Name</h3>
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+              <span className="font-semibold text-emerald-700">Windsmit Air</span> signifies "smiling air" (SMIT). It reflects our core attitude: providing clean, pure, and happy air through superior design and engineering.
+            </p>
           </div>
         </div>
-      </section>
+
+        {/* The Philosophy */}
+        <div className="flex gap-4 sm:gap-5">
+          <div className="flex-shrink-0 mt-1">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-yellow-500 flex items-center justify-center text-yellow-600">
+              
+              {/* YOUR BULB ICON */}
+              <img 
+                src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769586124/Untitled_design_teizv6.svg"
+                alt="Philosophy Icon"
+                className="h-8 w-8 sm:h-10 sm:w-10 object-contain"
+              />
+
+            </div>
+          </div>
+          <div>
+            <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2">The Philosophy</h3>
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+              Our logo pays gratitude to the sun (energy) and trees (healthy air). The flags symbolize the "Winning" direction of the wind. We combine nature's principles with modern engineering.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    {/* Right Image */}
+    <div className="relative order-first lg:order-last">
+      <div className="relative rounded-lg overflow-hidden aspect-[4/3]">
+        <img
+          src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769173734/output-onlinegiftools_1_ftxcaj.gif"
+          alt="Clean Air Environment"
+          className="w-full h-full object-cover transition-transform ease-out"
+        />
+      </div>
+
+      {/* Decorative Elements */}
+      <div className="hidden sm:block absolute -bottom-4 sm:-bottom-6 -left-4 sm:-left-6 w-16 h-16 sm:w-24 sm:h-24 bg-emerald-50 rounded-full -z-10"></div>
+      <div className="hidden sm:block absolute -top-4 sm:-top-6 -right-4 sm:-right-6 w-20 h-20 sm:w-32 sm:h-32 bg-yellow-50 rounded-full -z-10"></div>
+    </div>
+  </div>
+</section>
+
+
+
+  
+
 
       
 
@@ -539,7 +594,13 @@ function Home() {
              <span className="text-emerald-400 text-xs sm:text-sm font-medium uppercase tracking-wider">Year Established</span>
            </div>
            <div className="p-4 sm:p-6">
-             <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2">100+</span>
+             <span
+  ref={projectsRef}
+  className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2"
+>
+  {projectCount}
+  <span className="ml-1">+</span>
+</span>
              <span className="text-emerald-400 text-xs sm:text-sm font-medium uppercase tracking-wider">Successful Projects</span>
            </div>
            <div className="p-4 sm:p-6">
@@ -581,7 +642,10 @@ function Home() {
 
       {/* --- INCLUDED COMPONENTS --- */}
       <OurExpertise />
-      <WhyChooseUs />
+<div className="w-full h-0.5 bg-gray-700"></div>
+<WhyChooseUs />
+<div className="w-full h-0.5 bg-gray-700"></div>
+<Testimonials />
       <Footer />
     </div>
   )

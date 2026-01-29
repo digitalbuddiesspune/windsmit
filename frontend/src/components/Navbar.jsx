@@ -84,12 +84,18 @@ function Navbar() {
                       : 'opacity-0 translate-y-2 invisible'
                   }`}
                 >
-                  <div className="w-[280px] xl:w-[300px] bg-white rounded-2xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] border border-gray-100 overflow-hidden p-2">
-                    <DropdownLink title="Air Conditioning" desc="Installation & Repairs" to="/services" />
-                    <DropdownLink title="HVAC Systems" desc="Commercial Solutions" to="/services" />
-                    <DropdownLink title="BMS Integration" desc="Building Management" to="/services" />
-                    <DropdownLink title="Annual Maintenance" desc="Service Contracts" to="/services" />
-                  </div>
+                  <div
+  className={`w-[280px] xl:w-[300px] rounded-2xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] overflow-hidden p-2 border ${
+    isScrolled
+      ? 'bg-white border-gray-100'
+      : 'bg-white/10 backdrop-blur-md border-gray-100/30'
+  }`}
+>
+  <DropdownLink title="Air Conditioning" desc="Installation & Repairs" to="/services" isScrolled={isScrolled} />
+  <DropdownLink title="HVAC Systems" desc="Commercial Solutions" to="/services" isScrolled={isScrolled} />
+  <DropdownLink title="BMS Integration" desc="Building Management" to="/services" isScrolled={isScrolled} />
+  <DropdownLink title="Annual Maintenance" desc="Service Contracts" to="/services" isScrolled={isScrolled} />
+</div>
                 </div>
               </div>
 
@@ -178,7 +184,7 @@ function Navbar() {
             <div className="border-l-2 border-gray-200 pl-4 py-2 space-y-2.5">
               <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-3">Services</p>
               <MobileSubLink to="/services" label="Air Conditioning" desc="Installation & Repairs" onClick={() => setIsMobileMenuOpen(false)} />
-              <MobileSubLink to="/services" label="HVAC Systems" desc="Commercial Solutions" onClick={() => setIsMobileMenuOpen(false)} />
+              <MobileSubLink to="/Acservices" label="HVAC Systems" desc="Commercial Solutions" onClick={() => setIsMobileMenuOpen(false)} />
               <MobileSubLink to="/services" label="BMS Integration" desc="Building Management" onClick={() => setIsMobileMenuOpen(false)} />
               <MobileSubLink to="/services" label="Annual Maintenance" desc="Service Contracts" onClick={() => setIsMobileMenuOpen(false)} />
             </div>
@@ -237,10 +243,27 @@ const NavItem = ({ to, label, isActive, isScrolled }) => (
   </Link>
 )
 
-const DropdownLink = ({ title, desc, to }) => (
-  <Link to={to || "#"} className="flex flex-col px-4 py-3 rounded-xl hover:bg-gray-50 transition-colors group">
-    <span className="text-sm font-semibold text-gray-900 group-hover:text-black">{title}</span>
-    <span className="text-xs text-gray-500 group-hover:text-gray-600">{desc}</span>
+const DropdownLink = ({ title, desc, to, isScrolled }) => (
+  <Link
+    to={to || "#"}
+    className={`flex flex-col px-4 py-3 rounded-xl transition-colors group ${
+      isScrolled ? 'hover:bg-gray-50' : 'hover:bg-white/10'
+    }`}
+  >
+    <span
+      className={`text-sm font-semibold ${
+        isScrolled ? 'text-gray-900 group-hover:text-black' : 'text-white'
+      }`}
+    >
+      {title}
+    </span>
+    <span
+      className={`text-xs ${
+        isScrolled ? 'text-gray-600 group-hover:text-gray-700' : 'text-gray-200 group-hover:text-gray-50'
+      }`}
+    >
+      {desc}
+    </span>
   </Link>
 )
 
