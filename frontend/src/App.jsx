@@ -9,6 +9,7 @@ import Contact from './pages/Contact'
 import Admin from './pages/Admin'
 import HvacServices from './pages/HvacServices'
 import Bms from './pages/Bms'
+import AnnualMaintenance from './pages/AnnualMaintenance'
 import './App.css'
 
 function App() {
@@ -24,9 +25,10 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:id" element={<BlogPostDetail />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/Acservices" element={<HvacServices />} />
-              <Route path="/bms" element={<Bms />} />
+              <Route path="/service" element={<Services />} />
+              <Route path="/hvacservice" element={<HvacServices />} />
+              <Route path="/bmsservice" element={<Bms />} />
+              <Route path="/annual-maintenance" element={<AnnualMaintenance />} />
               <Route path="/contact" element={<Contact />} />
             </Routes>
           </>
