@@ -5,11 +5,19 @@ function About() {
   const [scrollRotation, setScrollRotation] = useState(0)
   const [expandedIndex, setExpandedIndex] = useState(null)
 
-  useEffect(() => {
+    useEffect(() => {
+    let ticking = false
+    
     const handleScroll = () => {
-      const scrollPosition = window.scrollY
-      const rotation = scrollPosition * 1
-      setScrollRotation(rotation)
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrollPosition = window.scrollY
+          const rotation = scrollPosition * 0.5 // Slower rotation for smoother effect
+          setScrollRotation(rotation)
+          ticking = false
+        })
+        ticking = true
+      }
     }
 
     window.addEventListener('scroll', handleScroll)
@@ -21,8 +29,8 @@ function About() {
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-    height: '100vh',      // desktop/tablet
-    minHeight: '100svh'   // mobile dynamic viewport (iOS/Android)
+    height: '100vh',
+    minHeight: '100svh'
   }
 
   const values = [
@@ -60,27 +68,33 @@ function About() {
 
   return (
     <div className="bg-white min-h-screen">
+
+      {/* ================= HERO ================= */}
       <div className="relative flex flex-col min-h-screen" style={backgroundStyle}>
         <div className="absolute inset-0 bg-black/20"></div>
-        {/* Hero Content */}
+
+
         <div className="relative z-10 flex-1 flex flex-col justify-center items-start px-4 sm:px-6 md:px-8 lg:px-12 lg:pl-16 xl:pl-20">
-           
           <div className="max-w-4xl space-y-6 lg:ml-0 xl:ml-0">
+            <div className="text-center mb-16 md:mb-20">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl text-left font-bold text-gray-300 mb-6">
+                About Us
+              </h1>
+              <div className="h-1 w-24 bg-[#FFEB3B]   rounded-full mb-8 left-0"></div>
+            </div>
             <p className="text-lg md:text-xl text-left text-gray-300 leading-relaxed">
               Windsmit Air is an emerging group in the city starting in 2022. We help in maintaining good indoor air quality through adequate ventilation with filtration and provide thermal comfort.
             </p>
             <p className="text-lg md:text-xl text-left text-gray-300 leading-relaxed">
               We offer perfect HVAC equipment design, installation, commissioning and maintenance services to control the inside climate conditions for part of residential structures such as single-family homes, apartment buildings, hotels, marriage halls, medium to large industrial and office buildings such as skyscrapers, hospitals, and malls. We are committed to modernizing India's infrastructure with greener, intelligent and smart buildings by providing entire building automation controls for energy savings and enhanced life of equipment.
             </p>
-
           </div>
         </div>
 
-        {/* Rotating Image Overlay - Centered at border */}
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-20 flex justify-center">
           <div className="w-52 h-52 md:w-60 md:h-60 rounded-full overflow-hidden p-2">
             <img
-              src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769257673/Black_and_White_Modern_Electrical_Service_Instagram_Post_1_gfje7r.svg"
+              src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769693001/fan_hlwv5q.svg"
               alt="Windsmit Air Conditioner"
               className="w-full h-full object-contain transition-transform duration-75 ease-out"
               style={{ transform: `rotate(${scrollRotation}deg)` }}
@@ -89,15 +103,11 @@ function About() {
         </div>
       </div>
 
+      {/* ================= NORMAL WIDTH CONTENT ================= */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 pt-20 md:pt-24">
 
         {/* About Us Heading */}
-        <div className="text-center mb-16 md:mb-20">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-            About Us
-          </h1>
-          <div className="h-1 w-24 bg-[#FFEB3B] mx-auto rounded-full mb-8"></div>
-        </div>
+
 
         {/* Main Intro Text */}
         <div className="max-w-4xl mx-auto mb-20 md:mb-24">
@@ -107,10 +117,13 @@ function About() {
             </p>
           </div>
         </div>
+      </div>
 
-        {/* Vision & Mission Sections */}
-        <div className="w-full px-0 sm:px-0 md:px-0 lg:px-2 xl:px-2"> 
+
+      {/* ================= FULL WIDTH VISION & MISSION ================= */}
+      <section className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20">
         <div className="space-y-20 md:space-y-24 mb-20 md:mb-24">
+
           {/* Vision */}
           <div>
             <div className="flex flex-col md:flex-row items-start gap-8 md:gap-12">
@@ -128,7 +141,7 @@ function About() {
               <div className="w-full md:w-1/2">
                 <div className="rounded-lg overflow-hidden">
                   <img
-                    src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769238611/Untitled_design_2_w1lmdm.png"
+                    src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769159573/visio._jjozfx.png"
                     alt="Vision"
                     className="w-full h-auto object-cover"
                   />
@@ -154,7 +167,7 @@ function About() {
               <div className="w-full md:w-1/2">
                 <div className="rounded-lg overflow-hidden shadow-lg">
                   <img
-                    src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769237073/ChatGPT_Image_Jan_24_2026_12_12_37_PM_pxjwos.jpg"
+                    src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769680116/kids_qnw0sq.jpg"
                     alt="Mission"
                     className="w-full h-auto object-cover"
                   />
@@ -162,8 +175,13 @@ function About() {
               </div>
             </div>
           </div>
+
         </div>
-        </div>
+      </section>
+
+
+      {/* ================= NORMAL WIDTH VALUES ================= */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
 
         {/* Values Section */}
         <div className="mb-20 md:mb-24">
@@ -190,7 +208,7 @@ function About() {
                       {val.title}
                     </h3>
                     <button
-                      className={`flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-colors ${isOpen ? 'bg-[#4CAF50] text-white' : 'bg-gray-100 text-gray-600'
+                      className={`flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-colors ${isOpen ? 'bg-[#4CAF50] text-white' : 'bg-[#4CAF50]/10 text-[#4CAF50]'
                         }`}
                       aria-label={isOpen ? 'Close' : 'Expand'}
                     >
@@ -200,7 +218,6 @@ function About() {
                     </button>
                   </div>
 
-                  {/* Content Section */}
                   <div className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
                     <div className="pt-4 space-y-3">
                       <p className="text-sm text-gray-600 leading-relaxed">
@@ -219,7 +236,65 @@ function About() {
           </div>
         </div>
 
+        {/* ================= OWNER SECTION ================= */}
+        <section className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 py-20 md:py-24 bg-white">
+          <div className="w-full">
+
+            {/* Section Header */}
+            <div className="text-center mb-16 md:mb-20">
+              <span className="inline-block px-3 py-1 bg-[#4CAF50]/10 text-[#4CAF50] text-xs font-semibold uppercase tracking-wider rounded-full mb-4">
+                Leadership
+              </span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                Meet Our Founder
+              </h2>
+              <div className="h-1 w-20 bg-[#FFEB3B] mx-auto rounded-full"></div>
+            </div>
+
+            {/* Owner Content */}
+            <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+
+              {/* Owner Info - Left Side */}
+              <div className="w-full lg:w-1/2 space-y-6">
+                <div className="space-y-4">
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900">
+                    Leading with Excellence and Innovation
+                  </h3>
+
+                  <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
+                    With over a decade of experience in HVAC solutions and building management systems, our founder has established Windsmit Air as a trusted name in the industry. Their vision combines cutting-edge technology with sustainable practices to deliver exceptional comfort solutions.
+                  </p>
+
+                  <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
+                    Committed to excellence and customer satisfaction, they lead our team with a focus on innovation, quality, and environmental responsibility. Under their guidance, Windsmit Air continues to revolutionize the HVAC landscape across India.
+                  </p>
+                </div>
+              </div>
+
+              {/* Owner Image - Right Side */}
+              <div className="w-full lg:w-1/2">
+                <div className="relative">
+                  <div className="rounded-2xl overflow-hidden shadow-2xl">
+                    <img
+                      src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769680116/kids_qnw0sq.jpg"
+                      alt="Founder of Windsmit Air"
+                      className="w-full h-auto object-cover"
+                    />
+                  </div>
+
+                  {/* Decorative Elements */}
+                  <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-[#FFEB3B] rounded-2xl opacity-20 hidden lg:block"></div>
+                  <div className="absolute -top-6 -left-6 w-16 h-16 bg-[#4CAF50] rounded-full opacity-20 hidden lg:block"></div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+
       </div>
+
       <Footer />
     </div>
   )
