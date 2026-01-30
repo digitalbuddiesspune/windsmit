@@ -149,7 +149,7 @@ const HvacServices = () => {
                     <img
                       src={img}
                       alt={`Hero Slide ${i}`}
-                      className="max-h-full w-auto object-contain drop-shadow-[0_20px_50px_rgba(59,130,246,0.3)]"
+                      className="max-h-[300px] w-auto object-contain drop-shadow-[0_20px_50px_rgba(59,130,246,0.3)]"
                     />
                   </SwiperSlide>
                 ))}
@@ -164,21 +164,19 @@ const HvacServices = () => {
               className="text-white text-center md:text-left order-2 flex flex-col justify-center h-full"
             >
              
-              <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+              <h1 className="text-4xl md:text-7xl font-bold mb-6 leading-tight">
                 Advanced Engineering <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
+                <span className="text-transparent text-7xl bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
                   HVAC Systems
                 </span>
               </h1>
-              <p className="text-gray-400 text-lg md:text-xl mb-10 max-w-lg mx-auto md:mx-0 font-light leading-relaxed">
-                Serving Nagpur's commercial landscape with precise climate control, ventilation, and automation systems since 2022.
-              </p>
+              
 
               <div className="flex flex-col sm:flex-row gap-5 justify-center md:justify-start">
-                <a href="tel:+919021097544" className="flex items-center justify-center gap-3 px-8 py-4 bg-blue-600 text-white font-bold rounded-sm hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-500/30">
+                <a href="tel:+919021097544" className="flex items-center justify-center gap-3 px-8 py-4 bg-blue-600 text-white font-bold rounded-full hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-500/30">
                   <FaPhoneAlt /> Consult Engineer
                 </a>
-                <a href="#projects" className="flex items-center justify-center gap-3 px-8 py-4 border border-white/30 text-white font-bold rounded-sm hover:bg-white hover:text-slate-900 transition-all backdrop-blur-sm">
+                <a href="#projects" className="flex items-center justify-center gap-3 px-8 py-4 border border-white/30 text-white font-bold rounded-full hover:bg-white hover:text-slate-900 transition-all backdrop-blur-sm">
                   View Solutions <FaArrowRight />
                 </a>
               </div>
@@ -316,12 +314,7 @@ const HvacServices = () => {
                     )}
                   </div>
 
-                  <button
-                    onClick={() => setSelectedService(service)}
-                    className="mt-4 px-8 py-3 border-2 border-slate-900 text-slate-900 font-bold rounded-sm hover:bg-slate-900 hover:text-white transition-all uppercase tracking-wider text-sm"
-                  >
-                    View System Specs
-                  </button>
+                 
                 </div>
               </motion.div>
             ))}
