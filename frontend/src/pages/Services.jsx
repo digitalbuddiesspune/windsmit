@@ -307,24 +307,7 @@ const acProducts = [
                 Check Pricing
               </button>
 
-              <button
-                onClick={() =>
-                  setSelectedService({
-                    title: product.title,
-                    price: "On Request",
-                    details: [
-                      product.desc,
-                      product.content,
-                      "Professional Installation",
-                      "Energy Efficient Operation",
-                      "1 Year Warranty"
-                    ],
-                  })
-                }
-                className="px-8 py-3 border-2 border-gray-900 text-gray-900 font-bold rounded-sm hover:bg-gray-900 hover:text-white transition-all uppercase tracking-wide text-sm"
-              >
-                View Specifications
-              </button>
+      
             </div>
           </div>
 

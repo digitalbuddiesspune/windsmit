@@ -300,12 +300,7 @@ const Bms = () => {
                                         </div>
                                     </div>
 
-                                    <button
-                                        onClick={() => setSelectedService(service)}
-                                        className="mt-4 px-8 py-3 border-2 border-slate-900 text-slate-900 font-bold rounded-sm hover:bg-slate-900 hover:text-white transition-all uppercase tracking-wider text-sm"
-                                    >
-                                        View Specs
-                                    </button>
+                                    
                                 </div>
                             </motion.div>
                         ))}
