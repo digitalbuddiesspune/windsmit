@@ -152,9 +152,9 @@ function Footer() {
               © {new Date().getFullYear()} Windsmit Air. All rights reserved.
             </p>
             <div className="flex items-center gap-6 text-xs md:text-sm text-gray-500">
-              <a href="#" className="hover:text-[#4CAF50] transition-colors duration-300">Privacy Policy</a>
-              <a href="#" className="hover:text-[#4CAF50] transition-colors duration-300">Terms of Service</a>
-              <a href="#" className="hover:text-[#4CAF50] transition-colors duration-300">Cookie Policy</a>
+              <Link to="/privacy-policy" className="hover:text-[#4CAF50] transition-colors duration-300">Privacy Policy</Link>
+              <Link to="/terms-of-service" className="hover:text-[#4CAF50] transition-colors duration-300">Terms of Service</Link>
+              <Link to="/cookie-policy" className="hover:text-[#4CAF50] transition-colors duration-300">Cookie Policy</Link>
             </div>
           </div>
         </div>
