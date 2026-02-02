@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import Footer from '../components/Footer'
+import { FaRegCommentDots } from "react-icons/fa";
 
 function Contact() {
 
@@ -104,7 +105,8 @@ const handleSubmit = async (e) => {
 
       {/* Hero Section */}
 
-     <section className="relative overflow-hidden px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 min-h-[90vh] flex flex-col justify-center border-b border-slate-900">
+{/* Hero Section */}
+<section className="relative overflow-hidden px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 py-16 md:min-h-[90vh] flex flex-col justify-center border-b border-slate-900">
 
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_35%,rgba(16,185,129,0.18),transparent_55%)]"></div>
 
@@ -122,7 +124,7 @@ const handleSubmit = async (e) => {
 
           <div className="mt-6 flex flex-col gap-4 sm:gap-6">
 
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold leading-[1.1]">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.1]">
 
               Let’s talk about your <br className="hidden md:block" />
 
@@ -276,13 +278,7 @@ const handleSubmit = async (e) => {
 
                       <p className="mt-1 text-sm text-slate-200 leading-relaxed">
 
-                        Shri Sant Nagaji Maharaj Sanskrutik Bhavan<br />
-
-                        <span className="text-slate-300">संत नगाजीमहाराज सांस्कृतिक भवन</span><br />
-
-                        CA Road, Nagpur <span className="text-slate-400">(Near Gandhi Statue)</span>
-
-                      </p>
+House No 357, Akbari House, B/H Sadoday Complex, Central Avenue, Darodkar Sq, Gandhi Putla Chowk, Nagpur-440032, Maharashtra                      </p>
 
                     </div>
 
@@ -363,10 +359,11 @@ const handleSubmit = async (e) => {
               <div className="flex items-start justify-between gap-4">
 
                 <div>
-
-                  <h2 className="text-xl sm:text-2xl font-bold text-white">Send a message</h2>
-
-                  <p className="mt-2 text-sm text-slate-300">
+<h2 className="flex items-center gap-2 text-xl sm:text-2xl font-bold text-white">
+  <FaRegCommentDots className="text-[#fff212] text-lg shrink-0" />
+  Send a message
+</h2>
+               <p className="mt-2 text-sm text-slate-300">
 
                     We usually reply within 24 hours.
 
@@ -640,8 +637,7 @@ const handleSubmit = async (e) => {
 
                 <p className="mt-2 text-sm text-slate-300 leading-relaxed">
 
-                  Shri Sant Nagaji Maharaj Sanskrutik Bhavan, CA Road, Nagpur <span className="text-slate-400">(Near Gandhi Statue)</span>
-
+                  House No 357, Akbari House, B/H Sadoday Complex, Central Avenue, Darodkar Sq, Gandhi Putla Chowk, Nagpur-440032, Maharashtra
                 </p>
 
                 <div className="mt-4 space-y-2 text-sm text-slate-300">
@@ -695,26 +691,17 @@ const handleSubmit = async (e) => {
               <div className="md:w-3/5 h-72 sm:h-80 md:h-auto bg-slate-950/30 border-t md:border-t-0 md:border-l border-slate-800">
 
                 <iframe
+  src="https://www.google.com/maps?q=House+No+357+Akbari+House+B/H+Sadoday+Complex+Central+Avenue+Darodkar+Sq+Gandhi+Putla+Chowk+Nagpur+440032+Maharashtra+India&output=embed"
+  width="100%"
+  height="100%"
+  style={{ border: 0 }}
+  allowFullScreen=""
+  loading="lazy"
+  referrerPolicy="no-referrer-when-downgrade"
+  title="Windsmit Air Location"
+  className="w-full h-full"
+/>
 
-                  src="https://www.google.com/maps?q=Shri+Sant+Nagaji+Maharaj+Sanskrutik+Bhavan,+CA+Road,+Nagpur,+Maharashtra,+India&output=embed"
-
-                  width="100%"
-
-                  height="100%"
-
-                  style={{ border: 0 }}
-
-                  allowFullScreen=""
-
-                  loading="lazy"
-
-                  referrerPolicy="no-referrer-when-downgrade"
-
-                  title="Windsmit Air Location - Shri Sant Nagaji Maharaj Sanskrutik Bhavan, CA Road, Nagpur"
-
-                  className="w-full h-full"
-
-                ></iframe>
 
               </div>
 
