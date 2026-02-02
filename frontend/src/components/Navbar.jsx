@@ -54,7 +54,7 @@ function Navbar() {
               <NavItem to="/" label="Home" isActive={location.pathname === '/'} isScrolled={isScrolled} />
               <NavItem to="/about" label="About" isActive={location.pathname === '/about'} isScrolled={isScrolled} />
 
-              {/* Dropdown Trigger */}
+              {/* Services Dropdown Trigger */}
               <div
                 className="relative px-3 xl:px-4 py-2 group cursor-pointer"
                 onMouseEnter={() => setActiveDropdown('services')}
@@ -73,18 +73,20 @@ function Navbar() {
                   </svg>
                 </button>
 
-                {/* The Modern Floating Dropdown */}
-                <div
-                  className={`absolute top-full left-1/2 -translate-x-1/2 pt-4 xl:pt-6 transition-all duration-300 transform origin-top ${activeDropdown === 'services'
-                    ? 'opacity-100 translate-y-0 visible'
-                    : 'opacity-0 translate-y-2 invisible'
-                    }`}
+                {/* Services Dropdown */}
+                <div 
+                  className={`absolute top-full left-1/2 -translate-x-1/2 pt-4 xl:pt-6 transition-all duration-300 transform origin-top ${
+                    activeDropdown === 'services' 
+                      ? 'opacity-100 translate-y-0 visible' 
+                      : 'opacity-0 translate-y-2 invisible'
+                  }`}
                 >
                   <div
-                    className={`w-[280px] xl:w-[300px] rounded-2xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] overflow-hidden p-2 border ${isScrolled
-                      ? 'bg-white border-gray-100'
-                      : 'bg-white/10 backdrop-blur-md border-gray-100/30'
-                      }`}
+                    className={`w-[280px] xl:w-[300px] rounded-2xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] overflow-hidden p-2 border ${
+                      isScrolled
+                        ? 'bg-white border-gray-100'
+                        : 'bg-white/10 backdrop-blur-md border-gray-100/30'
+                    }`}
                   >
                     <DropdownLink title="Air Conditioning" desc="Installation & Repairs" to="/service" isScrolled={isScrolled} />
                     <DropdownLink title="HVAC Systems" desc="Commercial Solutions" to="/hvacservice" isScrolled={isScrolled} />
@@ -94,8 +96,57 @@ function Navbar() {
                 </div>
               </div>
 
+              {/* Solutions Dropdown Trigger */}
+              <div
+                className="relative px-3 xl:px-4 py-2 group cursor-pointer"
+                onMouseEnter={() => setActiveDropdown('solutions')}
+                onMouseLeave={() => setActiveDropdown(null)}
+              >
+                <button className={`flex items-center gap-1.5 text-sm xl:text-[15px] font-medium transition-colors ${
+                  isScrolled 
+                    ? 'text-gray-800 group-hover:text-black' 
+                    : 'text-white group-hover:text-white/80'
+                }`}>
+                  Solutions
+                  <svg
+                    className={`w-3 h-3 xl:w-3.5 xl:h-3.5 transition-transform duration-300 ${activeDropdown === 'solutions' ? '-rotate-180' : ''}`}
+                    fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+
+                {/* Solutions Dropdown - same styling as Services */}
+                <div 
+                  className={`absolute top-full left-1/2 -translate-x-1/2 pt-4 xl:pt-6 transition-all duration-300 transform origin-top ${
+                    activeDropdown === 'solutions' 
+                      ? 'opacity-100 translate-y-0 visible' 
+                      : 'opacity-0 translate-y-2 invisible'
+                  }`}
+                >
+                  <div
+                    className={`w-[280px] xl:w-[300px] rounded-2xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] overflow-hidden p-2 border ${
+                      isScrolled
+                        ? 'bg-white border-gray-100'
+                        : 'bg-white/10 backdrop-blur-md border-gray-100/30'
+                    }`}
+                  >
+                    <DropdownLink title="All Solutions" desc="Complete HVAC & BMS solutions" to="/solutions" isScrolled={isScrolled} />
+                    <DropdownLink title="Residential Homes" desc="Homes & apartments" to="/solutions/residential-homes" isScrolled={isScrolled} />
+                    <DropdownLink title="Commercial Offices" desc="Offices & workplaces" to="/solutions/commercial-offices" isScrolled={isScrolled} />
+                    <DropdownLink title="Educational Institutions" desc="Schools & colleges" to="/solutions/educational-institutions" isScrolled={isScrolled} />
+                    <DropdownLink title="Hospitals" desc="Healthcare facilities" to="/solutions/hospitals" isScrolled={isScrolled} />
+                    <DropdownLink title="Banquet Halls" desc="Events & venues" to="/solutions/banquet-halls" isScrolled={isScrolled} />
+                    <DropdownLink title="Showrooms" desc="Retail & display spaces" to="/solutions/showrooms" isScrolled={isScrolled} />
+                    <DropdownLink title="Restaurants & Cafés" desc="Food & beverage" to="/solutions/restaurants-cafes" isScrolled={isScrolled} />
+                    <DropdownLink title="Industrial & Warehouses" desc="Factories & storage" to="/solutions/industrial-warehouses" isScrolled={isScrolled} />
+                  </div>
+                </div>
+              </div>
+
               <NavItem to="/blog" label="Blogs" isActive={location.pathname === '/blog'} isScrolled={isScrolled} />
-              <NavItem to="/contact" label="Contact" isActive={location.pathname === '/contact'} isScrolled={isScrolled} />
+              <NavItem to="/industrial-collaboration" label="Industrial Collaboration" isActive={location.pathname === '/industrial-collaboration'} isScrolled={isScrolled} />
+              <NavItem to="/contact" label="Contact Us" isActive={location.pathname === '/contact'} isScrolled={isScrolled} />
             </div>
 
             {/* --- Right Actions --- */}
@@ -120,8 +171,7 @@ function Navbar() {
                 className="relative overflow-hidden group bg-black text-white px-5 xl:px-7 py-2 xl:py-2.5 rounded-full text-xs xl:text-[14px] font-medium transition-all"
               >
                 <span className="relative z-10 group-hover:text-[#fff212] transition-colors duration-300 flex items-center gap-1.5 xl:gap-2">
-                  <span className="hidden xl:inline">Let's Talk</span>
-                  <span className="xl:hidden">Talk</span>
+                  Contact Us
                   <svg className="w-3.5 h-3.5 xl:w-4 xl:h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
@@ -179,8 +229,23 @@ function Navbar() {
               <MobileSubLink to="/annual-maintenance" label="Annual Maintenance" desc="Service Contracts" onClick={() => setIsMobileMenuOpen(false)} />
             </div>
 
+            {/* Mobile Solutions Section */}
+            <div className="border-l-2 border-gray-200 pl-4 py-2 space-y-2.5">
+              <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-3">Solutions</p>
+              <MobileSubLink to="/solutions" label="All Solutions" onClick={() => setIsMobileMenuOpen(false)} />
+              <MobileSubLink to="/solutions/residential-homes" label="Residential Homes" onClick={() => setIsMobileMenuOpen(false)} />
+              <MobileSubLink to="/solutions/commercial-offices" label="Commercial Offices" onClick={() => setIsMobileMenuOpen(false)} />
+              <MobileSubLink to="/solutions/educational-institutions" label="Educational Institutions" onClick={() => setIsMobileMenuOpen(false)} />
+              <MobileSubLink to="/solutions/hospitals" label="Hospitals" onClick={() => setIsMobileMenuOpen(false)} />
+              <MobileSubLink to="/solutions/banquet-halls" label="Banquet Halls" onClick={() => setIsMobileMenuOpen(false)} />
+              <MobileSubLink to="/solutions/showrooms" label="Showrooms" onClick={() => setIsMobileMenuOpen(false)} />
+              <MobileSubLink to="/solutions/restaurants-cafes" label="Restaurants & Cafés" onClick={() => setIsMobileMenuOpen(false)} />
+              <MobileSubLink to="/solutions/industrial-warehouses" label="Industrial & Warehouses" onClick={() => setIsMobileMenuOpen(false)} />
+            </div>
+
             <MobileNavLink to="/blog" label="Blogs" delay="250ms" onClick={() => setIsMobileMenuOpen(false)} />
-            <MobileNavLink to="/contact" label="Contact" delay="300ms" onClick={() => setIsMobileMenuOpen(false)} />
+            <MobileNavLink to="/industrial-collaboration" label="Industrial Collaboration" delay="300ms" onClick={() => setIsMobileMenuOpen(false)} />
+            <MobileNavLink to="/contact" label="Contact Us" delay="350ms" onClick={() => setIsMobileMenuOpen(false)} />
 
             {/* WhatsApp Button for Mobile */}
             <a
@@ -201,7 +266,7 @@ function Navbar() {
               onClick={() => setIsMobileMenuOpen(false)}
               className="mt-3 bg-[#fff212] text-black text-center py-3.5 rounded-xl text-base font-bold shadow-lg shadow-yellow-200 transform active:scale-95 transition-all"
             >
-              Get in Touch
+              Contact Us
             </Link>
           </div>
         </div>

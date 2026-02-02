@@ -84,7 +84,7 @@ const servicesList = [
 const banners = [
   {
     id: 3,
-    image: 'https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769341061/Untitled_1920_x_826_px_1920_x_950_px_wcaef7.svg',
+    image: 'https://res.cloudinary.com/dvkxgrcbv/image/upload/v1770034114/6b47c9f2-5157-4808-990c-7b56ac2cdbff.png',
     alt: 'Professional HVAC Engineering'
   }
 ]
@@ -324,14 +324,12 @@ const projectsRef = useRef(null)
           
           {/* Hero Content Overlay - Mobile */}
           <div className="absolute inset-0 z-20 flex items-center justify-center px-4 py-12">
-            <div className="max-w-xl w-full text-white text-center">
-              {/* Green horizontal line */}
-              <div className="w-16 h-1 mb-5 mx-auto" style={{ backgroundColor: '#00b050' }}></div>
+            <div className="max-w-xl w-full text-white text-center"> 
               
               {/* Main Heading */}
               <h1 className="text-xl font-bold leading-[1.1] mb-5 tracking-tight">
-              Because Every Breath Deserves <br />
-                <span style={{ color: '#00b050' }}>Better Air.</span>
+              Because Every Breath <br />
+              Deserves <span style={{ color: '#00b050' }}>Better Air.</span>
               </h1>
               
               {/* Description */}
@@ -383,8 +381,8 @@ const projectsRef = useRef(null)
                   
                   {/* Main Heading */}
                   <h1 className="text-5xl md:text-3xl lg:text-6xl font-bold leading-[1.1] mb-6 tracking-tight">
-                  Because Every Breath Deserves <br />
-                    <span style={{ color: '#00b050' }}>Better Air.</span>
+                  Because Every Breath <br />
+                  Deserves <span style={{ color: '#00b050' }}>Better Air.</span>
                   </h1>
                   
                   {/* Description */}
