@@ -6,7 +6,6 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
-     
     "create-admin": "node scripts/createAdmin.js",
     "check-admin": "node scripts/checkAdmin.js"
   },

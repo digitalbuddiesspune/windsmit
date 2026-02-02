@@ -13,7 +13,7 @@ const Bms = () => {
     const heroImages = [
         "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769681867/ChatGPT_Image_Jan_29_2026_03_44_41_PM_vudkx6.png",
         "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769681843/ChatGPT_Image_Jan_29__2026__03_40_03_PM-removebg-preview_hulp9v.png",
-"https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769681890/smartthermostats-2048px-2898-3x2-1-removebg-preview_qtcfd7.png"    ];
+        "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769681890/smartthermostats-2048px-2898-3x2-1-removebg-preview_qtcfd7.png"];
 
     const bmsData = {
         "title": "BMS",
@@ -137,7 +137,7 @@ const Bms = () => {
                                         <img
                                             src={img}
                                             alt={`Hero Slide ${i}`}
-                                            className="max-h-full w-auto object-contain drop-shadow-[0_20px_50px_rgba(234,179,8,0.3)]"
+                                            className="max-h-[300px] w-auto object-contain drop-shadow-[0_20px_50px_rgba(234,179,8,0.3)]"
                                         />
                                     </SwiperSlide>
                                 ))}
@@ -152,19 +152,19 @@ const Bms = () => {
                             className="text-white text-center md:text-left order-2 flex flex-col justify-center h-full"
                         >
 
-                            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
                                 Smart Building <br />
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-amber-300">
                                     Management Systems
                                 </span>
                             </h1>
-                            
+
 
                             <div className="flex flex-col sm:flex-row gap-5 justify-center md:justify-start">
-                                <a href="tel:+919021097544" className="flex items-center justify-center gap-3 px-8 py-4 bg-yellow-600 text-white font-bold rounded-sm hover:bg-yellow-700 transition-all shadow-lg hover:shadow-yellow-500/30">
+                                <a href="tel:+919021097544" className="flex items-center justify-center gap-3 px-8 py-4 bg-yellow-600 text-white font-bold rounded-full hover:bg-yellow-700 transition-all shadow-lg hover:shadow-yellow-500/30">
                                     <FaPhoneAlt /> Consult Engineer
                                 </a>
-                                <a href="#projects" className="flex items-center justify-center gap-3 px-8 py-4 border border-white/30 text-white font-bold rounded-sm hover:bg-white hover:text-slate-900 transition-all backdrop-blur-sm">
+                                <a href="#projects" className="flex items-center justify-center gap-3 px-8 py-4 border border-white/30 text-white font-bold rounded-full hover:bg-white hover:text-slate-900 transition-all backdrop-blur-sm">
                                     View Solutions <FaArrowRight />
                                 </a>
                             </div>
@@ -300,12 +300,7 @@ const Bms = () => {
                                         </div>
                                     </div>
 
-                                    <button
-                                        onClick={() => setSelectedService(service)}
-                                        className="mt-4 px-8 py-3 border-2 border-slate-900 text-slate-900 font-bold rounded-sm hover:bg-slate-900 hover:text-white transition-all uppercase tracking-wider text-sm"
-                                    >
-                                        View Specs
-                                    </button>
+                                    
                                 </div>
                             </motion.div>
                         ))}

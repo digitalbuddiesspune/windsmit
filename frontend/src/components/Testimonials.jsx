@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 function Testimonials() {
     const [currentIndex, setCurrentIndex] = useState(0)
@@ -30,7 +31,7 @@ function Testimonials() {
             content: "Great service …the staff was very polite and good….they have great machine and team…",
             rating: 5,
             image: "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769587002/avatar3.jpg"
-        } 
+        }
     ]
 
     // Number of cards to show at once
@@ -173,11 +174,11 @@ function Testimonials() {
                 {/* Call to Action */}
                 <div className="text-center mt-12 md:mt-16">
                     <p className="text-slate-400 mb-6 text-sm sm:text-base">
-                        Ready to experience the Windsmit Air difference?
+                        Let’s design the right air for your space.
                     </p>
-                    <button className="px-6 sm:px-8 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/25">
-                        Get Your Free Consultation
-                    </button>
+                    <Link to="/contact" className="inline-block px-6 sm:px-8 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/25">
+                        Request a site visit today!
+                    </Link>
                 </div>
             </div>
         </section>

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import Footer from './Footer'
 import WhyChooseUs from './WhyChooseUs'
 import Testimonials from './Testimonials'
@@ -17,7 +18,7 @@ const expertiseData = [
   {
     id: 2,
     tabLabel: "Commercial HVAC",
-    heading: "Industrial Grade Ventilation",
+    heading: "Reliable Cooling for Businesses",
     description: "Large-scale air handling for commercial infrastructure. We specialize in ductwork design that maximizes airflow while minimizing noise and energy loss, ensuring your workspace meets all air quality standards.",
     image: "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769532495/ABUIABADGAAgwuujiQYoovWJhAIwgAU44AM_500x500.gif_penmhb.gif",
     features: ["Custom AHU Design", "VRF/VRV Systems", "Fresh Air Injection", "Negative Pressure Rooms"]
@@ -83,7 +84,7 @@ const servicesList = [
 const banners = [
   {
     id: 3,
-    image: 'https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769341061/Untitled_1920_x_826_px_1920_x_950_px_wcaef7.svg',
+    image: 'https://res.cloudinary.com/dvkxgrcbv/image/upload/v1770034114/6b47c9f2-5157-4808-990c-7b56ac2cdbff.png',
     alt: 'Professional HVAC Engineering'
   }
 ]
@@ -119,7 +120,7 @@ function OurExpertise() {
             Our Expertise
           </h2>
           <p className="text-sm sm:text-base md:text-lg text-slate-400 leading-relaxed">
-            We combine engineering precision with high-quality components to deliver systems that stand the test of time.
+          “Engineered comfort backed by deep HVAC knowledge, precise execution, and years of hands-on industry experience.”
           </p>
         </div>
 
@@ -323,14 +324,12 @@ const projectsRef = useRef(null)
           
           {/* Hero Content Overlay - Mobile */}
           <div className="absolute inset-0 z-20 flex items-center justify-center px-4 py-12">
-            <div className="max-w-xl w-full text-white text-center">
-              {/* Green horizontal line */}
-              <div className="w-16 h-1 mb-5 mx-auto" style={{ backgroundColor: '#00b050' }}></div>
+            <div className="max-w-xl w-full text-white text-center"> 
               
               {/* Main Heading */}
               <h1 className="text-xl font-bold leading-[1.1] mb-5 tracking-tight">
-                Engineered for <br />
-                <span style={{ color: '#00b050' }}>Pure Comfort.</span>
+              Because Every Breath <br />
+              Deserves <span style={{ color: '#00b050' }}>Better Air.</span>
               </h1>
               
               {/* Description */}
@@ -340,13 +339,13 @@ const projectsRef = useRef(null)
               
               {/* Buttons */}
               <div className="flex flex-row gap-2 justify-center flex-wrap">
-                <button className="group relative px-4 py-3 text-white text-sm font-semibold overflow-hidden transition-all duration-300 ease-out hover:shadow-xl rounded-lg whitespace-nowrap" style={{ backgroundColor: '#00b050' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#009040'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#00b050'}>
+                <Link to="/services" className="group relative px-4 py-3 text-white text-sm font-semibold overflow-hidden transition-all duration-300 ease-out hover:shadow-xl rounded-lg whitespace-nowrap inline-block text-center" style={{ backgroundColor: '#00b050' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#009040'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#00b050'}>
                   <span className="relative z-10">Explore Solutions</span>
-                </button>
-                <button className="group relative px-4 py-3 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white text-sm font-semibold overflow-hidden transition-all duration-300 ease-out hover:bg-white/20 hover:border-white/50 rounded-lg whitespace-nowrap">
+                </Link>
+                <Link to="/contact" className="group relative px-4 py-3 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white text-sm font-semibold overflow-hidden transition-all duration-300 ease-out hover:bg-white/20 hover:border-white/50 rounded-lg whitespace-nowrap inline-block text-center">
                   <span className="relative z-10">Contact Us</span>
                   <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -382,23 +381,23 @@ const projectsRef = useRef(null)
                   
                   {/* Main Heading */}
                   <h1 className="text-5xl md:text-3xl lg:text-6xl font-bold leading-[1.1] mb-6 tracking-tight">
-                    Engineered for <br />
-                    <span style={{ color: '#00b050' }}>Pure Comfort.</span>
+                  Because Every Breath <br />
+                  Deserves <span style={{ color: '#00b050' }}>Better Air.</span>
                   </h1>
                   
                   {/* Description */}
                   <p className="text-lg md:text-xl lg:text-xl text-slate-100 mb-8 md:mb-10 leading-relaxed max-w-xl">
-                    Windsmit Air delivers premium HVAC, Air Conditioning, and Building Management solutions designed for health and efficiency.
+                  Engineering efficient air-conditioning & HVAC solutions for modern homes, offices, and every indian spaces.
                   </p>
                   
                   {/* Buttons */}
                   <div className="flex flex-row gap-3 justify-start">
-                    <button className="px-5 py-2.5 text-white text-sm font-medium rounded-full transition-all duration-200 ease-out hover:shadow-md" style={{ backgroundColor: '#00b050' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#009040'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#00b050'}>
+                    <Link to="/services" className="px-5 py-2.5 text-white text-sm font-medium rounded-full transition-all duration-200 ease-out hover:shadow-md inline-block" style={{ backgroundColor: '#00b050' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#009040'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#00b050'}>
                       Explore Solutions
-                    </button>
-                    <button className="px-5 py-2.5 bg-slate-800/90 text-white text-sm font-medium border border-slate-500/50 rounded-full transition-all duration-200 ease-out hover:bg-slate-700/90 hover:border-slate-400/70">
-                      Contact Us
-                    </button>
+                    </Link>
+                    <Link to="/contact" className="px-5 py-2.5 bg-slate-800/90 text-white text-sm font-medium border border-slate-500/50 rounded-full transition-all duration-200 ease-out hover:bg-slate-700/90 hover:border-slate-400/70 inline-block">
+                      Talk to HVAC Expert
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -510,7 +509,7 @@ const projectsRef = useRef(null)
           <span className="text-emerald-600 font-semibold uppercase tracking-widest text-xs sm:text-sm">Our Identity</span>
         </div>
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight">
-          Breathing Life into <br className="hidden sm:block" />Every Space
+          Breathing Life into <br></br> <span style={{ color: '#00b050' }}>Every Space</span>
         </h2>
       </div>
 
@@ -530,9 +529,9 @@ const projectsRef = useRef(null)
             </div>
           </div>
           <div>
-            <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2">The Name</h3>
+            <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2">A Name That Stands for Happier Air</h3>
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-              <span className="font-semibold text-emerald-700">Windsmit Air</span> signifies "smiling air" (SMIT). It reflects our core attitude: providing clean, pure, and happy air through superior design and engineering.
+            <span style={{ color: '#00b050' }}>Windsmit Air</span> represents our belief that air should not only cool a space but also uplift the people within it. Smit means smile, symbolizing our commitment to creating healthy, pleasant, and positive indoor environments.
             </p>
           </div>
         </div>
@@ -540,7 +539,7 @@ const projectsRef = useRef(null)
         {/* The Philosophy */}
         <div className="flex gap-4 sm:gap-5">
           <div className="flex-shrink-0 mt-1">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-yellow-500 flex items-center justify-center text-yellow-600">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-yellow-300 flex items-center justify-center text-yellow-600">
               
               {/* YOUR BULB ICON */}
               <img 
@@ -552,9 +551,9 @@ const projectsRef = useRef(null)
             </div>
           </div>
           <div>
-            <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2">The Philosophy</h3>
-            <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-              Our logo pays gratitude to the sun (energy) and trees (healthy air). The flags symbolize the "Winning" direction of the wind. We combine nature's principles with modern engineering.
+            <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2">What Our Logo Represents</h3>
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed"> 
+            Our logo pays gratitude to the sun, the source of energy and life, <span className="font-semibold text-yellow-300">Yellow</span> radiates warmth and opportunity, <span style={{ color: '#00b050' }}>Green</span> breathes nature and health. The flags above the “I” guide the wind forward - symbolizing our constant pursuit of progress and a WINning direction in all we do.
             </p>
           </div>
         </div>
@@ -628,12 +627,9 @@ const projectsRef = useRef(null)
                         Contact us today for a consultation. Whether it's a new installation or maintaining an existing system, our experts are ready to help.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                        <button className="px-6 sm:px-8 py-2.5 sm:py-3 bg-slate-900 text-white text-sm sm:text-base font-semibold rounded hover:bg-slate-800 transition-colors">
+                        <Link to="/contact" className="inline-block px-6 sm:px-8 py-2.5 sm:py-3 bg-slate-900 text-white text-sm sm:text-base font-semibold rounded hover:bg-slate-800 transition-colors text-center">
                             Request Quote
-                        </button>
-                        <button className="px-6 sm:px-8 py-2.5 sm:py-3 border-2 border-slate-300 text-slate-700 text-sm sm:text-base font-semibold rounded hover:border-slate-400 hover:text-slate-900 transition-colors">
-                            Contact Support
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>

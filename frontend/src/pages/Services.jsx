@@ -138,7 +138,7 @@ const acProducts = [
           src={img}
           alt={`Hero Slide ${i}`}
           /* max-h-full keeps it within the vertical bounds */
-          className="max-h-full w-auto object-contain drop-shadow-[0_20px_50px_rgba(34,197,94,0.3)]"
+          className="max-h-[300px] w-auto object-contain drop-shadow-[0_20px_50px_rgba(34,197,94,0.3)]"
         />
       </SwiperSlide>
     ))}
@@ -151,7 +151,7 @@ const acProducts = [
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-white text-center md:text-left order-1 md:order-2 flex flex-col justify-center h-full"
             >
-              <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
                 Mastering <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-300">
                   Cool Comfort
@@ -307,24 +307,7 @@ const acProducts = [
                 Check Pricing
               </button>
 
-              <button
-                onClick={() =>
-                  setSelectedService({
-                    title: product.title,
-                    price: "On Request",
-                    details: [
-                      product.desc,
-                      product.content,
-                      "Professional Installation",
-                      "Energy Efficient Operation",
-                      "1 Year Warranty"
-                    ],
-                  })
-                }
-                className="px-8 py-3 border-2 border-gray-900 text-gray-900 font-bold rounded-sm hover:bg-gray-900 hover:text-white transition-all uppercase tracking-wide text-sm"
-              >
-                View Specifications
-              </button>
+      
             </div>
           </div>
 
