@@ -21,6 +21,15 @@ import CookiePolicy from './pages/CookiePolicy'
 import Admin from './pages/Admin'
 import HvacServices from './pages/HvacServices'
 import Bms from './pages/Bms'
+import AllSolutions from './pages/solutions/AllSolutions'
+import ResidentialHomes from './pages/solutions/ResidentialHomes'
+import CommercialOffices from './pages/solutions/CommercialOffices'
+import EducationalInstitutions from './pages/solutions/EducationalInstitutions'
+import Hospitals from './pages/solutions/Hospitals'
+import BanquetHalls from './pages/solutions/BanquetHalls'
+import Showrooms from './pages/solutions/Showrooms'
+import RestaurantsCafes from './pages/solutions/RestaurantsCafes'
+import IndustrialWarehouses from './pages/solutions/IndustrialWarehouses'
 import './App.css'
 
 function App() {
@@ -44,6 +53,15 @@ function App() {
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/terms-of-service" element={<TermsOfService />} />
               <Route path="/cookie-policy" element={<CookiePolicy />} />
+              <Route path="/solutions" element={<AllSolutions />} />
+              <Route path="/solutions/residential-homes" element={<ResidentialHomes />} />
+              <Route path="/solutions/commercial-offices" element={<CommercialOffices />} />
+              <Route path="/solutions/educational-institutions" element={<EducationalInstitutions />} />
+              <Route path="/solutions/hospitals" element={<Hospitals />} />
+              <Route path="/solutions/banquet-halls" element={<BanquetHalls />} />
+              <Route path="/solutions/showrooms" element={<Showrooms />} />
+              <Route path="/solutions/restaurants-cafes" element={<RestaurantsCafes />} />
+              <Route path="/solutions/industrial-warehouses" element={<IndustrialWarehouses />} />
             </Routes>
           </>
         } />
