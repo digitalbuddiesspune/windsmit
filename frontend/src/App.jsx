@@ -31,6 +31,7 @@ import Showrooms from './pages/solutions/Showrooms'
 import RestaurantsCafes from './pages/solutions/RestaurantsCafes'
 import IndustrialWarehouses from './pages/solutions/IndustrialWarehouses'
 import AnnualMaintenance from './pages/AnnualMaintenance'
+import IndustrialCollaboration from './pages/IndustrialCollaboration'
 import './App.css'
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
               <Route path="/hvacservice" element={<HvacServices />} />
               <Route path="/bmsservice" element={<Bms />} />
               <Route path="/annual-maintenance" element={<AnnualMaintenance />} />
+              <Route path="/industrial-collaboration" element={<IndustrialCollaboration />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/terms-of-service" element={<TermsOfService />} />
