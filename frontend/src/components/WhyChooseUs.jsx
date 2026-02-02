@@ -14,7 +14,7 @@ function WhyChooseUs() {
     {
       id: 2,
       title: "Honest pricing & execution",
-      description: "Transparent costs, and execution exactly as promised—no hidden extras, no compromises.",
+      description: "Transparent costs, and execution exactly as promised no hidden extras, no compromises.",
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -24,8 +24,8 @@ function WhyChooseUs() {
     },
     {
       id: 3,
-      title: "Engineer-First, Not Sales-First",
-      description: "Every project is handled with proper heat-load calculations, airflow design, and system logic - not rule-of-thumb selling.",
+      title: "Engineer First, Not Sales First",
+      description: "Every project is handled with proper heat load calculations, airflow design, and system logic not rule-of-thumb selling.",
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
@@ -34,8 +34,8 @@ function WhyChooseUs() {
     },
     {
       id: 4,
-      title: "Right-Capacity, Right-System Promise",
-      description: "We design systems that are right-sized, preventing overcooling, high bills, and long-term failures.",
+      title: "Right Capacity, Right System Promise",
+      description: "We design systems that are right sized, preventing overcooling, high bills, and long-term failures.",
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
@@ -44,8 +44,8 @@ function WhyChooseUs() {
     },
     {
       id: 5,
-      title: "Architect & Interior Designer–Friendly Execution",
-      description: "Clear drawings, coordination support, and site discipline that aligns with design intent — no last-minute chaos.",
+      title: "Architect & Interior Designer Friendly Execution",
+      description: "Clear drawings, coordination support, and site discipline that aligns with design intent no last minute chaos.",
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
@@ -55,7 +55,7 @@ function WhyChooseUs() {
     {
       id: 6,
       title: "Energy Bills Matter to Us",
-      description: "We design HVAC systems with operating cost in mind, not just installation -helping clients save every month.",
+      description: "We design HVAC systems with operating cost in mind, not just installation helping clients save every month.",
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
