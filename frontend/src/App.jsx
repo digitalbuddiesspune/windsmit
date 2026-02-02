@@ -30,6 +30,7 @@ import BanquetHalls from './pages/solutions/BanquetHalls'
 import Showrooms from './pages/solutions/Showrooms'
 import RestaurantsCafes from './pages/solutions/RestaurantsCafes'
 import IndustrialWarehouses from './pages/solutions/IndustrialWarehouses'
+import AnnualMaintenance from './pages/AnnualMaintenance'
 import './App.css'
 
 function App() {
@@ -46,9 +47,10 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:id" element={<BlogPostDetail />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/Acservices" element={<HvacServices />} />
-              <Route path="/bms" element={<Bms />} />
+              <Route path="/service" element={<Services />} />
+              <Route path="/hvacservice" element={<HvacServices />} />
+              <Route path="/bmsservice" element={<Bms />} />
+              <Route path="/annual-maintenance" element={<AnnualMaintenance />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/terms-of-service" element={<TermsOfService />} />
