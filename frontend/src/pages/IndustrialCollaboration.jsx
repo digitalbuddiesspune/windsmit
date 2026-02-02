@@ -9,7 +9,7 @@ const IndustrialCollaboration = () => {
         <div className="bg-white min-h-screen font-sans selection:bg-yellow-100 selection:text-yellow-900">
 
             {/* 1. HERO SECTION */}
-            <section className="relative h-[85vh] min-h-[600px] flex items-center overflow-hidden">
+            <section className="relative h-[85vh] min-h-[650px] flex items-center overflow-hidden">
                 {/* Background Image with Overlay */}
                 <div className="absolute inset-0 z-0">
                     <img
@@ -40,7 +40,7 @@ const IndustrialCollaboration = () => {
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-5">
-                            <a href="#partner-with-us" className="flex items-center justify-center gap-3 px-8 py-4 bg-[#fff212] text-black font-bold rounded-full hover:bg-yellow-400 transition-all shadow-lg hover:shadow-yellow-500/30">
+                            <a href="#partner-with-us" className="flex items-center justify-center gap-3 px-8 py-4  bg-gradient-to-r from-green-400 to-emerald-300 text-black font-bold rounded-full hover:bg-yellow-400 transition-all shadow-lg hover:shadow-yellow-500/30">
                                 Collaborate With Us <FaArrowRight />
                             </a>
                         </div>
@@ -82,7 +82,7 @@ const IndustrialCollaboration = () => {
                                 whileHover={{ y: -10 }}
                                 className="p-8 rounded-2xl bg-gray-50 border border-gray-100 hover:shadow-xl transition-all duration-300 group"
                             >
-                                <div className="w-16 h-16 bg-yellow-100 text-yellow-600 rounded-xl flex items-center justify-center text-3xl mb-6 group-hover:bg-[#fff212] group-hover:text-black transition-colors">
+                                <div className="w-16 h-16 bg-gradient-to-r from-green-400 to-emerald-300 text-black rounded-xl flex items-center justify-center text-3xl mb-6 group-hover:bg-[#fff212] group-hover:text-black transition-colors">
                                     <item.icon />
                                 </div>
                                 <h3 className="text-2xl font-bold text-slate-900 mb-4">{item.title}</h3>
@@ -102,7 +102,7 @@ const IndustrialCollaboration = () => {
                     <div className="flex flex-col md:flex-row gap-16 items-center">
 
                         <div className="w-full md:w-1/2">
-                            <h4 className="text-[#fff212] font-bold tracking-widest uppercase mb-4">Our Promise</h4>
+                            <h4 className="text-green-600 font-bold tracking-widest uppercase mb-4">Our Promise</h4>
                             <h2 className="text-3xl md:text-5xl font-bold mb-8">Why Architects Trust Us</h2>
                             <div className="space-y-6">
                                 {[
@@ -113,7 +113,7 @@ const IndustrialCollaboration = () => {
                                 ].map((model, i) => (
                                     <div key={i} className="flex gap-4">
                                         <div className="mt-1">
-                                            <FaCheckCircle className="text-[#fff212] text-xl" />
+                                            <FaCheckCircle className="text-[#fff212]  bg-green text-xl" />
                                         </div>
                                         <div>
                                             <h4 className="text-xl font-bold text-white mb-2">{model.title}</h4>
@@ -158,7 +158,7 @@ const IndustrialCollaboration = () => {
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                        <a href="tel:+919021097544" className="flex items-center justify-center gap-3 px-8 py-4 bg-black text-white font-bold rounded-full hover:bg-gray-800 transition-all shadow-lg hover:shadow-xl">
+                        <a href="tel:+919021097544" className="flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-green-600 to-green-600 text-white font-bold rounded-full hover:bg-gray-800 transition-all shadow-lg hover:shadow-xl">
                             <FaPhoneAlt /> Call Design Desk
                         </a>
                         <a href="/contact" className="flex items-center justify-center gap-3 px-8 py-4 border-2 border-black text-black font-bold rounded-full hover:bg-black hover:text-white transition-all">
