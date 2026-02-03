@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade, Navigation } from 'swiper/modules'; 
 import { FaBuilding, FaIndustry, FaHospital, FaHotel, FaArrowRight, FaCheckCircle, FaWhatsapp, FaPhoneAlt } from 'react-icons/fa';
 
-// Swiper Styles
+import Footer from '../components/Footer';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/navigation'; // Ensure this is here
@@ -99,20 +99,19 @@ const Bms = () => {
         <div className="bg-white min-h-screen font-sans selection:bg-yellow-100 selection:text-yellow-900">
 
             {/* 1. HERO SECTION - STICKY FULL SCREEN */}
-<section className="relative md:sticky md:top-0 bg-black overflow-hidden min-h-screen md:h-screen pt-24 md:pt-0 flex items-center z-10">
+<section className="relative md:sticky md:top-0 bg-black overflow-x-hidden overflow-y-auto min-h-screen md:h-screen pt-20 pb-12 md:pt-0 md:pb-0 flex items-center z-10">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-yellow-900/20 via-black to-black z-0" />
 
-<div className="max-w-7xl mx-auto px-4 sm:px-6 w-full relative z-10 flex items-center justify-center h-full">
-                    <div className="grid md:grid-cols-2 gap-12 lg:gap-20 w-full items-center">
+<div className="max-w-7xl mx-auto px-4 sm:px-6 w-full min-w-0 relative z-10 flex items-center justify-center h-full">
+                    <div className="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-20 w-full min-w-0 items-center">
 
                         {/* LEFT COLUMN: SWIPER */}
                        <motion.div
     initial={{ opacity: 0, scale: 0.9 }}
     animate={{ opacity: 1, scale: 1 }}
     transition={{ duration: 0.8 }}
-    className="relative order-1 flex flex-col items-center justify-center min-h-[450px] md:h-full w-full group" // Added 'group' class
+    className="relative order-2 md:order-1 flex flex-col items-center justify-center min-h-[280px] sm:min-h-[360px] md:min-h-[450px] md:h-full w-full min-w-0 group"
 >
-    {/* Glow effect */}
     <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] pointer-events-none"
         style={{
@@ -122,8 +121,8 @@ const Bms = () => {
     />
 
     <Swiper
-        modules={[Autoplay, EffectFade, Navigation]} // 1. Added Navigation here
-        navigation={{ // 2. Linked custom buttons
+        modules={[Autoplay, EffectFade, Navigation]}
+        navigation={{
             prevEl: '.swiper-button-prev-custom',
             nextEl: '.swiper-button-next-custom',
         }}
@@ -133,7 +132,7 @@ const Bms = () => {
         centeredSlides={true}
         loop={true}
         autoplay={{ delay: 3000, disableOnInteraction: false }}
-        className="w-full max-w-sm md:max-w-md h-[300px] flex items-center justify-center relative"
+        className="w-full max-w-sm md:max-w-md h-[260px] sm:h-[300px] md:h-[400px] flex items-center justify-center relative"
     >
         {heroImages.map((img, i) => (
             <SwiperSlide
@@ -143,7 +142,7 @@ const Bms = () => {
                 <img
                     src={img}
                     alt={`Hero Slide ${i}`}
-                    className="max-h-[300px] w-auto object-contain drop-shadow-[0_20px_50px_rgba(234,179,8,0.3)]"
+                    className="max-h-[200px] sm:max-h-[260px] md:max-h-[300px] w-auto object-contain drop-shadow-[0_20px_50px_rgba(234,179,8,0.3)]"
                 />
             </SwiperSlide>
         ))}
@@ -171,21 +170,19 @@ const Bms = () => {
                             initial={{ opacity: 0, x: 50 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8 }}
-                            className="text-white text-center md:text-left md:order-2 order1 flex flex-col justify-center h-full"
+                            className="text-white text-center md:text-left order-1 md:order-2 flex flex-col justify-center h-full min-w-0 w-full"
                         >
-
-                            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                                Smart Control  <br />
+                            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight break-words">
+                                Smart Control <br />
                                 Smart Buildings
                             </h1>
 
-
-                            <div className="flex flex-col sm:flex-row gap-5 justify-center md:justify-start">
-                                <a href="tel:+919021097544" className="flex items-center justify-center gap-3 px-8 py-4 bg-yellow-600 text-white font-bold rounded-full hover:bg-yellow-700 transition-all shadow-lg hover:shadow-yellow-500/30">
-                                    <FaPhoneAlt /> Consult Engineer
+                            <div className="flex flex-col sm:flex-row gap-3 sm:gap-5 justify-center md:justify-start w-full max-w-full">
+                                <a href="tel:+919021097544" className="flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto min-h-[48px] px-6 sm:px-8 py-3.5 sm:py-4 bg-yellow-600 text-white font-bold rounded-full hover:bg-yellow-700 transition-all shadow-lg hover:shadow-yellow-500/30 text-sm sm:text-base">
+                                    <FaPhoneAlt className="flex-shrink-0" /> Consult Engineer
                                 </a>
-                                <a href="#projects" className="flex items-center justify-center gap-3 px-8 py-4 border border-white/30 text-white font-bold rounded-full hover:bg-white hover:text-slate-900 transition-all backdrop-blur-sm">
-                                    View Solutions <FaArrowRight />
+                                <a href="#projects" className="flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto min-h-[48px] px-6 sm:px-8 py-3.5 sm:py-4 border-2 border-white text-white font-bold rounded-full hover:bg-white hover:text-slate-900 transition-all backdrop-blur-sm text-sm sm:text-base">
+                                    View Solutions <FaArrowRight className="flex-shrink-0" />
                                 </a>
                             </div>
                         </motion.div>
@@ -305,7 +302,7 @@ const Bms = () => {
                             <h4 className="text-yellow-600 font-bold mb-2">OUR EXPERTISE</h4>
                             <h2 className="text-4xl font-bold text-slate-900 leading-tight">Automation Components</h2>
                         </div>
-                        <p className="text-slate-500 max-w-md text-right hidden md:block">
+                        <p className="text-slate-800 max-w-md text-right hidden md:block">
                             State-of-the-art controllers, sensors, and actuators for precise building management.
                         </p>
                     </div>
@@ -444,6 +441,9 @@ const Bms = () => {
                     </motion.div>
                 )}
             </AnimatePresence>
+            <footer className="relative z-20">
+  <Footer />
+</footer>
 
         </div>
     );
