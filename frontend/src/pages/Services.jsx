@@ -115,19 +115,18 @@ const acProducts = [
     <div className="bg-white min-h-screen font-sans selection:bg-green-100 selection:text-green-900">
 
       {/* 1. HERO SECTION - STICKY FULL SCREEN */}
-<section className="relative md:sticky md:top-0 bg-black overflow-hidden min-h-screen md:h-screen pt-24 md:pt-0 flex items-center z-10">
+<section className="relative md:sticky md:top-0 bg-black overflow-x-hidden overflow-y-auto min-h-screen md:h-screen pt-20 pb-12 md:pt-0 md:pb-0 flex items-center z-10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-green-900/20 via-black to-black z-0" />
 
-<div className="max-w-7xl mx-auto px-4 sm:px-6 w-full relative z-10 flex items-center justify-center h-full">
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-20 w-full items-center">
+<div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 w-full min-w-0 relative z-10 flex items-center justify-center h-full">
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-20 w-full min-w-0 items-center">
 
-            {/* LEFT COLUMN: SWIPER */}
             {/* LEFT COLUMN: SWIPER */}
 <motion.div
   initial={{ opacity: 0, scale: 0.9 }}
   animate={{ opacity: 1, scale: 1 }}
   transition={{ duration: 0.8 }}
-  className="relative order-2 md:order-1 flex flex-col items-center justify-center min-h-[450px] md:h-full w-full group"
+  className="relative order-2 md:order-1 flex flex-col items-center justify-center min-h-[240px] sm:min-h-[320px] md:min-h-[450px] md:h-full w-full min-w-0 group"
 >
   {/* Glow effect */}
   <div 
@@ -150,7 +149,7 @@ const acProducts = [
     centeredSlides={true}
     loop={true}
     autoplay={{ delay: 3000, disableOnInteraction: false }}
-    className="w-full max-w-sm md:max-w-md h-[400px] flex items-center justify-center relative"
+    className="w-full max-w-[280px] sm:max-w-md md:max-w-lg h-[220px] sm:h-[320px] md:h-[400px] lg:h-[420px] flex items-center justify-center relative"
   >
     {heroSwiperImages.map((img, i) => (
       <SwiperSlide 
@@ -160,23 +159,23 @@ const acProducts = [
         <img
           src={img}
           alt={`Hero Slide ${i}`}
-          className="max-h-[300px] w-auto object-contain drop-shadow-[0_20px_50px_rgba(34,197,94,0.3)]"
+          className="max-h-[180px] sm:max-h-[260px] md:max-h-[300px] lg:max-h-[340px] w-auto object-contain drop-shadow-[0_20px_50px_rgba(34,197,94,0.3)]"
         />
       </SwiperSlide>
     ))}
 
     {/* CUSTOM NAVIGATION ARROWS (SVG COPY-PASTE) */}
     
-    {/* Left Arrow */}
-    <button className="swiper-button-prev-custom absolute left-0 top-1/2 -translate-y-1/2 z-20 p-3 text-white/40 hover:text-green-400 transition-all opacity-0 group-hover:opacity-100">
-      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    {/* Left Arrow - visible on touch, hover on desktop */}
+    <button className="swiper-button-prev-custom absolute left-0 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-3 text-white/50 hover:text-green-400 transition-all opacity-70 md:opacity-0 md:group-hover:opacity-100" aria-label="Previous slide">
+      <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 sm:w-8 sm:h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="m15 18-6-6 6-6"/>
       </svg>
     </button>
 
     {/* Right Arrow */}
-    <button className="swiper-button-next-custom absolute right-0 top-1/2 -translate-y-1/2 z-20 p-3 text-white/40 hover:text-green-400 transition-all opacity-0 group-hover:opacity-100">
-      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <button className="swiper-button-next-custom absolute right-0 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-3 text-white/50 hover:text-green-400 transition-all opacity-70 md:opacity-0 md:group-hover:opacity-100" aria-label="Next slide">
+      <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 sm:w-8 sm:h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="m9 18 6-6-6-6"/>
       </svg>
     </button>
@@ -187,24 +186,24 @@ const acProducts = [
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-white text-center md:text-left order-1 md:order-2 flex flex-col justify-center h-full"
+              className="text-white text-center md:text-left order-1 md:order-2 flex flex-col justify-center h-full min-w-0 w-full max-w-full overflow-hidden"
             >
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4 md:mb-6 leading-tight break-words">
                 Mastering <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-300">
                   Cool Comfort
                 </span>
               </h1>
-              <p className="text-gray-400 text-lg md:text-xl mb-10 max-w-lg mx-auto md:mx-0 font-light leading-relaxed">
-                Expert AC installation and maintenance services in Nagpur. ensuring your home stays perfectly cool.
+              <p className="text-gray-300 sm:text-gray-400 text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl mb-5 sm:mb-6 md:mb-10 max-w-full break-words mx-auto md:mx-0 font-light leading-relaxed" style={{ overflowWrap: 'break-word' }}>
+                Expert AC installation and maintenance services in Nagpur. Ensuring your home stays perfectly cool.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-5 justify-center md:justify-start">
-                <a href="tel:+919021097544" className="flex items-center justify-center gap-3 px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-green-400 hover:text-white transition-all shadow-xl hover:shadow-green-500/20 group">
-                  <FaPhoneAlt className="group-hover:rotate-12 transition-transform" /> Call Now
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-5 justify-center md:justify-start w-full max-w-full flex-wrap">
+                <a href="tel:+919021097544" className="flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto min-h-[48px] px-6 sm:px-8 py-3.5 sm:py-4 bg-white text-black font-bold rounded-full hover:bg-green-400 hover:text-white transition-all shadow-xl hover:shadow-green-500/20 group text-sm sm:text-base flex-shrink-0">
+                  <FaPhoneAlt className="group-hover:rotate-12 transition-transform flex-shrink-0" /> Call Now
                 </a>
-                <a href="https://wa.me/919021097544" className="flex items-center justify-center gap-3 px-8 py-4 border border-white/20 text-white font-bold rounded-full hover:bg-white/10 transition-all backdrop-blur-md">
-                  <FaWhatsapp /> WhatsApp Us
+                <a href="https://wa.me/919021097544" className="flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto min-h-[48px] px-6 sm:px-8 py-3.5 sm:py-4 border-2 border-white text-white font-bold rounded-full hover:bg-white/10 transition-all backdrop-blur-md text-sm sm:text-base flex-shrink-0">
+                  <FaWhatsapp className="flex-shrink-0" /> WhatsApp Us
                 </a>
               </div>
             </motion.div>
