@@ -11,6 +11,7 @@ import {
   FaCheckCircle, FaGasPump, FaSearch, FaMicrochip, FaProjectDiagram,
   FaTv, FaWifi
 } from "react-icons/fa";
+import Footer from '../components/Footer';
 
 import servicesData from '../components/Servicess.json';
 
@@ -284,7 +285,7 @@ const acProducts = [
           Room <span className="text-green-600">Air Conditioning</span>
         </h2>
       </div>
-      <p className="text-gray-500 max-w-md text-right hidden md:block">
+      <p className="text-gray-800 max-w-md text-right hidden md:block">
         Tailored AC systems engineered for efficiency, comfort, and reliability.
       </p>
     </div>
@@ -513,6 +514,9 @@ const acProducts = [
     </motion.div>
   )}
 </AnimatePresence>
+<footer className="relative z-20">
+  <Footer />
+</footer>
     </div>
   );
 };

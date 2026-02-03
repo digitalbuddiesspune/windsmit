@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade, Navigation } from 'swiper/modules'; 
 import { FaBuilding, FaIndustry, FaHospital, FaHotel, FaArrowRight, FaCheckCircle, FaWhatsapp, FaPhoneAlt } from 'react-icons/fa';
 
-// Swiper Styles
+import Footer from '../components/Footer';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/navigation'; // Ensure this is here
@@ -305,7 +305,7 @@ const Bms = () => {
                             <h4 className="text-yellow-600 font-bold mb-2">OUR EXPERTISE</h4>
                             <h2 className="text-4xl font-bold text-slate-900 leading-tight">Automation Components</h2>
                         </div>
-                        <p className="text-slate-500 max-w-md text-right hidden md:block">
+                        <p className="text-slate-800 max-w-md text-right hidden md:block">
                             State-of-the-art controllers, sensors, and actuators for precise building management.
                         </p>
                     </div>
@@ -444,6 +444,9 @@ const Bms = () => {
                     </motion.div>
                 )}
             </AnimatePresence>
+            <footer className="relative z-20">
+  <Footer />
+</footer>
 
         </div>
     );

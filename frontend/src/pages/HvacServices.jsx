@@ -7,6 +7,7 @@ import { FaBuilding, FaIndustry, FaHospital, FaHotel, FaArrowRight, FaCheckCircl
 
 import 'swiper/css';
 import 'swiper/css/effect-fade';
+import Footer from '../components/Footer';
 
 // ADDED CSS HERE
 import 'swiper/css/navigation';
@@ -308,7 +309,7 @@ className="w-[90%] mx-auto max-w-sm md:max-w-md h-[350px] md:h-[400px] flex item
               <h4 className="text-blue-600 font-bold mb-2">OUR EXPERTISE</h4>
               <h2 className="text-4xl font-bold text-slate-900 leading-tight">Comprehensive HVAC Infrastructure</h2>
             </div>
-            <p className="text-slate-500 max-w-md text-right hidden md:block">
+            <p className="text-slate-800 max-w-md text-right hidden md:block">
               From VRF systems to large-scale ventilation, we design, install, and maintain extensive setups.
             </p>
           </div>
@@ -466,6 +467,9 @@ className="w-[90%] mx-auto max-w-sm md:max-w-md h-[350px] md:h-[400px] flex item
           </motion.div>
         )}
       </AnimatePresence>
+      <footer className="relative z-20">
+  <Footer />
+</footer>
 
     </div>
   );

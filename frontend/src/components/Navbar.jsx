@@ -91,7 +91,7 @@ function Navbar() {
                     <DropdownLink title="Air Conditioning" desc="Installation & Repairs" to="/service" isScrolled={isScrolled} />
                     <DropdownLink title="HVAC Systems" desc="Commercial Solutions" to="/hvacservice" isScrolled={isScrolled} />
                     <DropdownLink title="BMS Integration" desc="Building Management" to="/bmsservice" isScrolled={isScrolled} />
-                    <DropdownLink title="Annual Maintenance" desc="Service Contracts" to="/annual-maintenance" isScrolled={isScrolled} />
+                   
                   </div>
                 </div>
               </div>
@@ -226,7 +226,6 @@ function Navbar() {
               <MobileSubLink to="/service" label="Air Conditioning" desc="Installation & Repairs" onClick={() => setIsMobileMenuOpen(false)} />
               <MobileSubLink to="/hvacservice" label="HVAC Systems" desc="Commercial Solutions" onClick={() => setIsMobileMenuOpen(false)} />
               <MobileSubLink to="/bmsservice" label="BMS Integration" desc="Building Management" onClick={() => setIsMobileMenuOpen(false)} />
-              <MobileSubLink to="/annual-maintenance" label="Annual Maintenance" desc="Service Contracts" onClick={() => setIsMobileMenuOpen(false)} />
             </div>
 
             {/* Mobile Solutions Section */}
