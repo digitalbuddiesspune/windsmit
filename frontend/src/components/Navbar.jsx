@@ -166,18 +166,7 @@ function Navbar() {
               </a>
 
               {/* Premium CTA Button */}
-              <Link
-                to="/contact"
-                className="relative overflow-hidden group bg-black text-white px-5 xl:px-7 py-2 xl:py-2.5 rounded-full text-xs xl:text-[14px] font-medium transition-all"
-              >
-                <span className="relative z-10 group-hover:text-[#fff212] transition-colors duration-300 flex items-center gap-1.5 xl:gap-2">
-                  Contact Us
-                  <svg className="w-3.5 h-3.5 xl:w-4 xl:h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </span>
-                <div className="absolute inset-0 bg-gray-900 group-hover:bg-black transition-colors duration-300"></div>
-              </Link>
+             
             </div>
 
             {/* --- Mobile Menu Toggle --- */}
@@ -260,13 +249,7 @@ function Navbar() {
               Chat on WhatsApp
             </a>
 
-            <Link
-              to="/contact"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="mt-3 bg-[#fff212] text-black text-center py-3.5 rounded-xl text-base font-bold shadow-lg shadow-yellow-200 transform active:scale-95 transition-all"
-            >
-              Contact Us
-            </Link>
+           
           </div>
         </div>
       </div>
