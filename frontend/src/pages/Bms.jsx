@@ -98,8 +98,8 @@ const Bms = () => {
     return (
         <div className="bg-white min-h-screen font-sans selection:bg-yellow-100 selection:text-yellow-900">
 
-            {/* 1. HERO SECTION (Split Layout) */}
-            <section className="bg-black pt-28 pb-16 md:py-0 overflow-hidden min-h-[90vh] flex items-center relative">
+            {/* 1. HERO SECTION - STICKY FULL SCREEN */}
+<section className="relative md:sticky md:top-0 bg-black overflow-hidden min-h-screen md:h-screen pt-24 md:pt-0 flex items-center z-10">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-yellow-900/20 via-black to-black z-0" />
 
 <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full relative z-10 flex items-center justify-center h-full">
@@ -175,10 +175,8 @@ const Bms = () => {
                         >
 
                             <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                                Smart Building <br />
-                                <span className="text-transparent text-6xl  bg-clip-text bg-gradient-to-r from-yellow-400 to-amber-300">
-                                    Management Systems
-                                </span>
+                                Smart Control  <br />
+                                Smart Buildings
                             </h1>
 
 
@@ -197,7 +195,7 @@ const Bms = () => {
             </section>
 
             {/* 2. ABOUT SECTION */}
-            <section className="py-24 bg-white relative overflow-hidden">
+            <section className="py-24 bg-white relative z-20">
                 <div className="max-w-7xl mx-auto px-6 relative z-10">
                     <div className="grid md:grid-cols-2 gap-16 items-center">
                         {/* Left: Text */}
@@ -213,14 +211,40 @@ const Bms = () => {
                             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-8 leading-tight">
                                 Intelligent <span className="text-yellow-600">Control</span> For <br /> Modern Infrastructure
                             </h2>
-                            <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
-                                <p>
-                                    We provide comprehensive Building Management Systems (BMS) that empower you to monitor, control, and optimize your entire facility's performance. From HVAC to lighting and security, our solutions ensure seamless integration.
-                                </p>
-                                <p>
-                                    Our expert engineers design custom automation strategies that reduce energy consumption and enhance operational efficiency.
-                                </p>
-                            </div>
+                           <div className="space-y-8 text-lg text-slate-600 leading-relaxed">
+
+  <p>
+    Windsmit Air provides seamless <span className="font-semibold text-slate-800">
+    Building Management System (BMS) integration</span> for HVAC and allied building services,
+    enabling centralized control, energy optimization, and real-time system monitoring.
+  </p>
+
+  {/* WHAT WE DO */}
+  <div>
+    <h3 className="text-xl font-bold text-slate-900 mb-3">What We Do</h3>
+
+    <p className="mb-3">We integrate HVAC systems with BMS to ensure:</p>
+
+    <ul className="space-y-2">
+      {[
+        "Centralized monitoring & control",
+        "Improved energy efficiency",
+        "Enhanced indoor comfort",
+        "Lower operating & maintenance costs"
+      ].map((item, i) => (
+        <li key={i} className="flex items-start gap-2">
+          <span className="text-yellow-600 mt-1">✔</span>
+          {item}
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  {/* BENEFITS */}
+ 
+
+</div>
+
                         </motion.div>
 
                         {/* Right: Image */}
@@ -244,7 +268,7 @@ const Bms = () => {
             </section>
 
             {/* 3. INDUSTRIES WE SERVE */}
-            <section className="py-20 bg-yellow-50">
+            <section className="py-20 bg-gray-50 relative z-20">
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Industries We Serve</h2>
@@ -274,11 +298,11 @@ const Bms = () => {
             </section>
 
             {/* 4. DETAILED SERVICES LIST (BMS Items) */}
-            <section id="projects" className="py-24 px-6 bg-white">
+            <section id="projects" className="py-24 px-6 bg-white relative z-20">
                 <div className="max-w-7xl mx-auto">
                     <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
                         <div className="max-w-2xl">
-                            <h4 className="text-yellow-600 font-bold mb-2">我们的 EXPERTISE</h4>
+                            <h4 className="text-yellow-600 font-bold mb-2">OUR EXPERTISE</h4>
                             <h2 className="text-4xl font-bold text-slate-900 leading-tight">Automation Components</h2>
                         </div>
                         <p className="text-slate-500 max-w-md text-right hidden md:block">
@@ -331,7 +355,7 @@ const Bms = () => {
             </section>
 
             {/* 5. PROCESS / TIMELINE */}
-            <section className="py-24 bg-slate-900 text-white relative">
+            <section className="py-24 bg-gray-100 text-gray-900 relative z-20">
                 <div className="max-w-6xl mx-auto px-6 relative z-10">
                     <h2 className="text-3xl font-bold mb-16 text-center">Project Execution Framework</h2>
 
@@ -343,13 +367,30 @@ const Bms = () => {
                             { step: "04", title: "Monitoring", desc: "Testing & Handover." }
                         ].map((item, i) => (
                             <div key={i} className="relative p-6 border border-white/10 rounded-lg hover:bg-white/5 transition-colors group">
-                                <div className="text-5xl font-bold text-white/5 mb-4 group-hover:text-yellow-500/20 transition-colors">{item.step}</div>
+                                <div className="text-5xl font-bold mb-4 text-yellow-500 transition-colors">{item.step}</div>
                                 <h3 className="text-xl font-bold mb-3 text-yellow-400">{item.title}</h3>
                                 <p className="text-gray-400">{item.desc}</p>
                             </div>
                         ))}
                     </div>
                 </div>
+
+                <div className="max-w-4xl mx-auto px-6 mt-20 text-center space-y-6 border-t border-white/10 pt-14">
+
+  <h2 className="text-3xl md:text-4xl font-bold">
+    Make your building intelligent, efficient, and future-ready
+  </h2>
+
+  <a
+    href="tel:+919021097544"
+    className="inline-block px-10 py-4 bg-yellow-500 text-black font-bold rounded-full hover:scale-105 transition-all shadow-xl"
+  >
+    Connect for BMS
+  </a>
+
+</div>
+
+                
             </section>
 
             {/* MODAL */}
