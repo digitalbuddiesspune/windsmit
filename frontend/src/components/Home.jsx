@@ -407,95 +407,37 @@ const projectsRef = useRef(null)
       </section>
 
       {/* --- STORIES SECTION --- */}
-      {showStories && stories.length > 0 && (
-        <section className="px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 py-6 sm:py-8 bg-slate-50">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-4 sm:mb-5">
-              <span className="inline-block px-2.5 py-0.5 bg-emerald-50 text-emerald-600 font-semibold uppercase tracking-widest text-[10px] rounded-full mb-1.5">
-                Project Highlights
-              </span>
-              <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-1">
-                Our Work in Action
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-600 max-w-2xl mx-auto">
-                Explore our recent installations and project showcases
-              </p>
-            </div>
+ {/* --- STORIES SECTION --- */}
+<section className="px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 py-16 sm:py-20 bg-slate-50">
+  <div className="max-w-7xl mx-auto text-center">
+    {/* Section Header */}
+    <div className="mb-8">
+      <span className="inline-block px-2.5 py-0.5 bg-emerald-50 text-emerald-600 font-semibold uppercase tracking-widest text-xs rounded-full mb-1.5">
+        Project Highlights
+      </span>
+       <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 leading-tight"> Our Work in Action</h2>
+      <p className="text-2xl sm:text-sm text-slate-800 max-w-2xl mx-auto">
+        Explore our recent installations and project showcases
+      </p>
+    </div>
 
-            <div className="flex items-center justify-center gap-4 sm:gap-5 overflow-x-auto pb-3 scrollbar-thin scrollbar-thumb-slate-300 scrollbar-track-transparent">
-              {stories.map((story) => (
-                <button
-                  key={story._id}
-                  onClick={() => setActiveStory(story)}
-                  className="group flex-shrink-0 flex flex-col items-center gap-2.5 focus:outline-none"
-                >
-                  <div className="relative">
-                    <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-br from-emerald-500 via-emerald-600 to-teal-600 p-0.5 group-hover:p-1 transition-all duration-300 shadow-lg shadow-emerald-500/20 group-hover:shadow-xl group-hover:shadow-emerald-500/30">
-                      <div className="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden">
-                        <div className="relative w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-800 to-slate-900">
-                          <span className="text-xs sm:text-sm font-bold text-white text-center px-3 leading-tight z-10 relative">
-                            {story.title}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-emerald-500 rounded-full border-2 border-white flex items-center justify-center shadow-lg group-hover:bg-emerald-400 group-hover:scale-110 transition-all duration-300">
-                      <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z"/>
-                      </svg>
-                    </div>
-                  </div>
-                  <span className="text-xs font-semibold text-slate-800 max-w-[90px] truncate group-hover:text-emerald-600 transition-colors">
-                    {story.title}
-                  </span>
-                </button>
-              ))}
-            </div>
-          </div>
+    {/* Centered YouTube Video */}
+    <div className="flex justify-center">
+      <div className="w-full sm:w-3/4 md:w-2/3 lg:w-1/2 aspect-video rounded-xl overflow-hidden shadow-lg">
+        <iframe
+          src="https://www.youtube.com/embed/r7kaIDiYqeY?si=zCJDFwl8bRk-LSOX"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+          className="w-full h-full rounded-xl"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</section>
 
-          {/* Story Modal */}
-          {activeStory && (
-            <div 
-              className="fixed inset-0 z-[120] bg-black/80 backdrop-blur-sm flex items-center justify-center px-4 py-8"
-              onClick={() => setActiveStory(null)}
-            >
-              <div 
-                className="relative bg-slate-900 rounded-xl overflow-hidden max-w-4xl w-full shadow-2xl border border-slate-700"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <button
-                  onClick={() => setActiveStory(null)}
-                  className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/60 backdrop-blur-sm text-white flex items-center justify-center hover:bg-black/80 transition-all hover:scale-110"
-                  aria-label="Close story"
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-                <div className="px-6 py-4 bg-gradient-to-r from-slate-800 to-slate-900 border-b border-slate-700 flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center text-sm font-bold text-white shadow-lg">
-                    WA
-                  </div>
-                  <div>
-                    <p className="text-base font-semibold text-white">
-                      {activeStory.title}
-                    </p>
-                    <p className="text-xs text-slate-400">Windsmit Air</p>
-                  </div>
-                </div>
-                <div className="bg-black flex items-center justify-center aspect-video">
-                  <video
-                    src={activeStory.videoUrl}
-                    controls
-                    autoPlay
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-              </div>
-            </div>
-          )}
-        </section>
-      )}
+
 
       {/* --- IDENTITY SECTION --- */}
       <section className="py-10 sm:py-12 md:py-16 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 bg-white">
@@ -550,7 +492,7 @@ const projectsRef = useRef(null)
           </div>
           <div>
             <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-1.5">What Our Logo Represents</h3>
-            <p className="text-sm sm:text-base text-slate-600 leading-relaxed"> 
+            <p className="text-xs sm:text-base text-slate-600 leading-relaxed"> 
             Our logo pays gratitude to the sun, the source of energy and life, <span className="font-semibold text-yellow-300">Yellow</span> radiates warmth and opportunity, <span style={{ color: '#00b050' }}>Green</span> breathes nature and health. The flags above the “I” guide the wind forward - symbolizing our constant pursuit of progress and a WINning direction in all we do.
             </p>
           </div>
