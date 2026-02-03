@@ -2,211 +2,115 @@
   "residentialServices": [
     {
       "id": "res-1",
-      "title": "AC Deep Cleaning Service",
-      "price": "₹599",
-      "shortDesc": "Complete deep cleaning and sanitization of indoor and outdoor units to improve cooling efficiency, airflow, and indoor air quality.",
+      "title": "AC Gas Charging",
+      "price": "₹1,799",
+      "shortDesc": "Professional refrigerant gas charging service to restore proper cooling performance and energy efficiency.",
       "details": [
-        "Complete indoor & outdoor unit deep cleaning",
-        "Removes dust, mold & bacteria buildup",
-        "Improves cooling performance",
-        "Reduces power consumption",
-        "Extends AC life",
-        "Safe & eco-friendly process"
+        "Refrigerant gas refill",
+        "Leak detection",
+        "Pressure testing",
+        "Cooling performance check",
+        "Safe & eco-friendly process",
+        "Optimal cooling restore"
       ],
-      "icon": "FaBroom",
+      "icon": "FaGasPump",
       "types": ["Split AC", "Window AC", "Cassette AC"]
     },
     {
       "id": "res-2",
-      "title": "AC Fan Not Working",
-      "price": "₹499",
-      "shortDesc": "Professional repair for faulty fan motors or airflow issues to restore proper cooling and smooth AC operation.",
+      "title": "Repair & Diagnosis (Sensor Repair)",
+      "price": "On Quote",
+      "shortDesc": "Complete troubleshooting and repair of faulty temperature or control sensors for accurate cooling and smooth operation.",
       "details": [
-        "Fan motor repair/replacement",
-        "Blade balancing",
-        "Wiring inspection",
-        "Airflow testing",
-        "Capacitor check",
-        "Performance verification"
+        "Full system diagnosis",
+        "Temperature sensor testing",
+        "Thermostat repair",
+        "Sensor replacement",
+        "Error code fixing",
+        "Performance calibration"
       ],
-      "icon": "FaFan",
-      "types": ["Split AC", "Cassette AC", "Ductable AC"]
-    },
-    {
-      "id": "res-3",
-      "title": "AC Water Leakage Issue",
-      "price": "₹699",
-      "shortDesc": "Quick diagnosis and repair of drainage or pipe blockages to stop water leakage and protect your walls and interiors.",
-      "details": [
-        "Drain pipe unclogging",
-        "Tray cleaning",
-        "Slope correction",
-        "Leak sealing",
-        "Water flow testing",
-        "Complete inspection"
-      ],
-      "icon": "FaTint",
+      "icon": "FaSearch",
       "types": ["All AC Types"]
     },
     {
-      "id": "res-4",
-      "title": "AC Anti Rust Services",
-      "price": "₹999",
-      "shortDesc": "Anti-rust coating and protection treatment to prevent corrosion and extend the life of your AC unit in all weather conditions.",
+      "id": "res-3",
+      "title": "PCB Repair",
+      "price": "₹2,199",
+      "shortDesc": "Expert repair of AC circuit boards to fix power, startup, and electronic control issues.",
       "details": [
-        "Anti-rust coating application",
-        "Outdoor unit protection",
-        "Copper pipe insulation",
-        "Moisture protection",
-        "Weatherproof finishing",
-        "Long-term durability"
+        "PCB fault diagnosis",
+        "Component replacement",
+        "IC repair",
+        "Wiring correction",
+        "Voltage testing",
+        "Safe startup verification"
       ],
-      "icon": "FaShieldAlt",
+      "icon": "FaMicrochip",
+      "types": ["Split AC", "Inverter AC", "VRF"]
+    },
+    {
+      "id": "res-4",
+      "title": "Copper Piping (Per Ft)",
+      "price": "₹320",
+      "shortDesc": "High-quality copper piping installation or replacement for efficient refrigerant flow and long-lasting performance.",
+      "details": [
+        "Premium copper pipes",
+        "Leak-proof joints",
+        "Proper insulation",
+        "Secure fitting",
+        "Gas flow optimization",
+        "Durable installation"
+      ],
+      "icon": "FaProjectDiagram",
       "types": ["Split AC", "Cassette AC"]
     },
     {
       "id": "res-5",
-      "title": "AC Freezing Up / Ice Forming Issue",
-      "price": "₹699",
-      "shortDesc": "Fix freezing coils and ice buildup caused by gas imbalance, airflow restriction, or sensor issues for consistent cooling.",
+      "title": "Fan Motor Repair",
+      "price": "On Quote",
+      "shortDesc": "Repair or replacement of faulty fan motors to ensure smooth airflow and silent cooling.",
       "details": [
-        "Coil defrosting",
-        "Gas pressure check",
-        "Filter cleaning",
-        "Airflow correction",
-        "Sensor testing",
-        "Performance restore"
+        "Motor inspection",
+        "Bearing replacement",
+        "Blade balancing",
+        "Lubrication service",
+        "Noise reduction",
+        "Performance testing"
       ],
-      "icon": "FaSnowflake",
-      "types": ["Split AC", "Window AC"]
+      "icon": "FaFan",
+      "types": ["Split AC", "Window AC", "Cassette AC"]
     },
     {
       "id": "res-6",
-      "title": "AC Less / No Cooling Issue",
-      "price": "₹1,499",
-      "shortDesc": "Complete system troubleshooting including gas level check, compressor inspection, and electronic repairs to restore full cooling.",
+      "title": "Remote Control Replacement",
+      "price": "₹650",
+      "shortDesc": "Genuine AC remote control replacement with full compatibility and easy setup.",
       "details": [
-        "Gas top-up",
-        "Compressor inspection",
-        "Leak detection",
-        "Sensor repair",
-        "Circuit troubleshooting",
-        "Cooling performance test"
+        "Original remote supply",
+        "Quick pairing",
+        "Battery included",
+        "All functions supported",
+        "Tested compatibility",
+        "Instant usage"
       ],
-      "icon": "FaWind",
-      "types": ["Inverter Split AC", "VRF"]
-    },
-    {
-      "id": "res-7",
-      "title": "AC Turning Off Issue",
-      "price": "₹299",
-      "shortDesc": "Repair for sudden shutdown problems caused by capacitor, wiring, or power supply faults to ensure uninterrupted operation.",
-      "details": [
-        "Capacitor replacement",
-        "Voltage testing",
-        "Wiring repair",
-        "Overload check",
-        "Thermostat testing",
-        "Stable restart"
-      ],
-      "icon": "FaPowerOff",
-      "types": ["Window AC", "Split AC"]
-    },
-    {
-      "id": "res-8",
-      "title": "AC Warm Air Issue",
-      "price": "₹499",
-      "shortDesc": "Fix warm airflow problems by checking refrigerant levels, piping insulation, and system performance for proper cooling.",
-      "details": [
-        "Gas refill",
-        "Pipe insulation",
-        "Leak-proof joints",
-        "Airflow testing",
-        "Temperature check",
-        "Cooling optimization"
-      ],
-      "icon": "FaThermometerHalf",
-      "types": ["Split AC", "VRF", "Cassette"]
-    },
-    {
-      "id": "res-9",
-      "title": "AC Noise Issue",
-      "price": "₹499 ",
-      "shortDesc": "Reduce unusual noises by servicing fans, motors, and loose components for quieter and smoother AC performance.",
-      "details": [
-        "Loose parts tightening",
-        "Fan balancing",
-        "Motor lubrication",
-        "Bearing replacement",
-        "Vibration control",
-        "Noise testing"
-      ],
-      "icon": "FaVolumeUp",
-      "types": ["Split AC", "Cassette AC"]
-    },
-    {
-      "id": "res-10",
-      "title": "AC Power On Issue",
-      "price": "₹299",
-      "shortDesc": "Quick repair of power failure or startup issues including PCB, wiring, and compressor checks to get your AC running instantly.",
-      "details": [
-        "PCB repair",
-        "Fuse replacement",
-        "Wiring correction",
-        "Power supply check",
-        "Compressor test",
-        "Safe startup"
-      ],
-      "icon": "FaBolt",
-      "types": ["All Types"]
-    },
-    {
-      "id": "res-11",
-      "title": "AC Routine Service",
-      "price": "₹500",
-      "shortDesc": "Regular maintenance service including cleaning, inspection, and performance checks to keep your AC efficient year-round.",
-      "details": [
-        "Filter cleaning",
-        "Coil wash",
-        "Gas pressure check",
-        "Electrical inspection",
-        "General servicing",
-        "Performance report"
-      ],
-      "icon": "FaTools",
-      "types": ["Window AC", "Split AC"]
-    },
-    {
-      "id": "res-12",
-      "title": "AC Drainage Issue",
-      "price": "₹299",
-      "shortDesc": "Clearing clogged drain pipes and trays to prevent water overflow, leakage, and moisture-related damage.",
-      "details": [
-        "Drain pipe unclogging",
-        "Tray cleaning",
-        "Water flow testing",
-        "Slope correction",
-        "Leak prevention",
-        "Final inspection"
-      ],
-      "icon": "FaWater",
+      "icon": "FaTv",
       "types": ["All Brands"]
     },
     {
-      "id": "res-13",
-      "title": "AC Smell Issue",
-      "price": "₹499",
-      "shortDesc": "Deep sanitization and deodorizing treatment to remove bad odors, bacteria, and mold for fresh and healthy air.",
+      "id": "res-7",
+      "title": "Smart AC Upgrade",
+      "price": "On Quote",
+      "shortDesc": "Upgrade your regular AC to smart control with WiFi and mobile app access for convenient operation anytime, anywhere.",
       "details": [
-        "Anti-bacterial cleaning",
-        "Coil disinfectant spray",
-        "Filter wash",
-        "Mold removal",
-        "Odor neutralizer",
-        "Fresh air testing"
+        "WiFi module installation",
+        "Mobile app control",
+        "Voice assistant support",
+        "Smart scheduling",
+        "Energy monitoring",
+        "Easy integration"
       ],
-      "icon": "FaSprayCan",
-      "types": ["Split AC", "Cassette AC"]
+      "icon": "FaWifi",
+      "types": ["Split AC", "Inverter AC"]
     }
   ]
 }

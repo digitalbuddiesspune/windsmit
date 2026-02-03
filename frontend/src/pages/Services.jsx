@@ -8,7 +8,8 @@ import {
   FaBroom, FaFan, FaTint, FaShieldAlt, FaSnowflake, FaWind,
   FaPowerOff, FaThermometerHalf, FaVolumeUp, FaBolt,
   FaTools, FaWater, FaSprayCan, FaHammer, FaPhoneAlt, FaWhatsapp,
-  FaCheckCircle
+  FaCheckCircle, FaGasPump, FaSearch, FaMicrochip, FaProjectDiagram,
+  FaTv, FaWifi
 } from "react-icons/fa";
 
 import servicesData from '../components/Servicess.json';
@@ -35,7 +36,13 @@ const iconMap = {
   FaHammer: FaHammer,
   FaPhoneAlt: FaPhoneAlt,
   FaWhatsapp: FaWhatsapp,
-  FaCheckCircle: FaCheckCircle
+  FaCheckCircle: FaCheckCircle,
+  FaGasPump: FaGasPump,
+  FaSearch: FaSearch,
+  FaMicrochip: FaMicrochip,
+  FaProjectDiagram: FaProjectDiagram,
+  FaTv: FaTv,
+  FaWifi: FaWifi
 };
 
 const Services = () => {
@@ -106,8 +113,8 @@ const acProducts = [
   return (
     <div className="bg-white min-h-screen font-sans selection:bg-green-100 selection:text-green-900">
 
-      {/* 1. HERO SECTION */}
-      <section className="bg-black pt-28 pb-16 md:py-0 overflow-hidden min-h-[90vh] flex items-center relative">
+      {/* 1. HERO SECTION - STICKY FULL SCREEN */}
+<section className="relative md:sticky md:top-0 bg-black overflow-hidden min-h-screen md:h-screen pt-24 md:pt-0 flex items-center z-10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-green-900/20 via-black to-black z-0" />
 
 <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full relative z-10 flex items-center justify-center h-full">
@@ -206,7 +213,7 @@ const acProducts = [
       </section>
 
       {/* 2. ABOUT / TRUST SECTION */}
-      <section className="py-24 bg-gray-50 relative overflow-hidden">
+      <section className="py-24 bg-white relative z-20">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -263,9 +270,8 @@ const acProducts = [
         </div>
       </section>
 
-      {/* 3. NEW SECTION: ROOM AIR CONDITIONING (Horizontal Cards) */}
       {/* 3. ROOM AIR CONDITIONING – HVAC STYLE LAYOUT */}
-<section className="py-24 px-6 bg-white">
+<section className="py-24 px-6 bg-gray-50 relative z-20">
   <div className="max-w-7xl mx-auto">
 
     {/* Heading */}
@@ -348,7 +354,7 @@ const acProducts = [
 </section>
 
       {/* 4. RESIDENTIAL SERVICES GRID */}
-    <section className="py-24 px-6 bg-gray-50">
+    <section className="py-24 px-6 bg-white relative z-20">
   <div className="max-w-7xl mx-auto">
     <div className="text-center mb-20">
       <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Residential Services</h2>
@@ -416,18 +422,18 @@ const acProducts = [
         onClick={() => setShowAllServices(!showAllServices)}
         className="px-10 py-3.5 bg-white border-2 border-green-600 text-green-700 font-bold rounded-full hover:bg-green-600 hover:text-white transition-all shadow-md active:scale-95"
       >
-        {showAllServices ? "Show Less" : "View All 13 Services"}
+        {showAllServices ? "Show Less" : "View All Services"}
       </button>
     </div>
   </div>
 </section>
 
       {/* 5. PROCESS SECTION */}
-      <section className="py-20 bg-green-900 text-white overflow-hidden">
+      <section className="py-20 bg-gray-100 text-gray-900 relative z-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">How We Work</h2>
-            <p className="text-green-200/80 text-lg">Hassle-free service in 4 simple steps.</p>
+            <p className="text-green-500 text-lg">Hassle-free service in 4 simple steps.</p>
           </div>
           <div className="grid md:grid-cols-4 gap-8 relative">
             <div className="hidden md:block absolute top-12 left-0 w-full h-0.5 bg-green-800/50 -z-0" />
@@ -442,12 +448,13 @@ const acProducts = [
                   {i + 1}
                 </div>
                 <h3 className="text-xl font-bold mb-2">{step.title}</h3>
-                <p className="text-green-200 text-sm px-4">{step.desc}</p>
+                <p className="text-green-600 font-medium text-sm px-4">{step.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
+      
 
       {/* MODAL */}
      <AnimatePresence>

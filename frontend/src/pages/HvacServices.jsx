@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 // ADDED Navigation HERE
 import { Autoplay, EffectFade, Pagination, Navigation } from 'swiper/modules'; 
-import { FaBuilding, FaIndustry, FaHospital, FaHotel, FaArrowRight, FaCogs, FaTools, FaCheckCircle, FaWhatsapp, FaPhoneAlt } from 'react-icons/fa';
+import { FaBuilding, FaIndustry, FaHospital, FaHotel, FaArrowRight, FaCheckCircle, FaWhatsapp, FaPhoneAlt } from 'react-icons/fa';
 
 import 'swiper/css';
 import 'swiper/css/effect-fade';
@@ -49,24 +49,25 @@ const HvacServices = () => {
     },
     {
       "id": 3,
-      "name": "VRF System",
+      "name": "VRF / VRV Intelligent Cooling Systems",
       "description": [
-        "VRF systems control temperature precisely by adjusting refrigerant flow to indoor units.",
+        "Smart, scalable, and energy-efficient cooling for modern buildings. Our VRF systems provide individual zone control, silent operation, and lower operating costs.",
         "- Supports multiple zones with a single outdoor unit",
         "- High energy efficiency and precise thermal comfort",
-        "- Scalable for offices, hotels, residences, and commercial spaces",
+        "- Best for: Offices & IT spaces, Hotels & premium residences, Retail & mixed-use buildings",
         "- Designed and installed by Windsmit Air for optimal performance"
       ],
       "image": "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769673815/vrf_system_kx5jkn.png"
     },
     {
       "id": 4,
-      "name": "Evaporative Cooling System",
+      "name": "Evaporative & Hybrid Cooling Solutions",
       "description": [
-        "Evaporative cooling systems supply fresh cool air and remove stale indoor air.",
+        "Cost-effective cooling solutions designed for large volumes and semi-open spaces, ideal for Indian climatic conditions.",
         "- Uses water evaporation to reduce indoor temperature",
         "- Helps lower CO₂ levels and improve air quality",
         "- Ideal for hot, dry climates",
+        "- Best for: Factories & warehouses, Auditoriums & halls, Commercial & industrial sheds",
         "- Integrated with effective ducting and controls by Windsmit Air"
       ],
       "image": "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769673829/evoprative_cooling_sysetem_dxu2af.jpg"
@@ -85,13 +86,13 @@ const HvacServices = () => {
     },
     {
       "id": 6,
-      "name": "Exhaust and Fresh Air Fans",
+      "name": "Exhaust, Fresh Air & Pressurization Systems",
       "description": [
-        "Exhaust and fresh air fans maintain healthy indoor ventilation.",
+        "We engineer reliable ventilation systems that maintain indoor air quality, safety, and regulatory compliance.",
         "- Exhaust fans remove stale or polluted air",
         "- Fresh air fans supply clean outdoor air",
         "- Improve indoor air quality and HVAC efficiency",
-        "- Suitable for residential, commercial, and industrial applications"
+        "- Includes: Staircase & lobby pressurization, Toilet & kitchen exhaust systems, Basement ventilation"
       ],
       "image": "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769673866/Exhaust-Fans_pypbdl.jpg"
     },
@@ -112,8 +113,8 @@ const HvacServices = () => {
   return (
     <div className="bg-white min-h-screen font-sans selection:bg-blue-100 selection:text-blue-900">
 
-      {/* 1. HERO SECTION (Split Layout) */}
-      <section className="bg-black pt-28 pb-16 md:py-0 overflow-hidden min-h-[90vh] flex items-center relative">
+      {/* 1. HERO SECTION - STICKY FULL SCREEN */}
+<section className="relative md:sticky md:top-0 bg-black overflow-hidden min-h-screen md:h-screen pt-24 md:pt-0 flex items-center z-10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-blue-900/20 via-black to-black z-0" />
 
 <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full relative z-10 flex items-center justify-center h-full">
@@ -211,7 +212,7 @@ className="w-[90%] mx-auto max-w-sm md:max-w-md h-[350px] md:h-[400px] flex item
       </section>
 
       {/* 2. ABOUT SECTION */}
-      <section className="py-24 bg-white relative overflow-hidden">
+      <section className="py-24 bg-white relative z-20">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             {/* Left: Text */}
@@ -225,16 +226,27 @@ className="w-[90%] mx-auto max-w-sm md:max-w-md h-[350px] md:h-[400px] flex item
                 <span className="w-8 h-0.5 bg-blue-600"></span> Windsmit Air HVAC
               </h4>
               <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-8 leading-tight">
-                Engineering <span className="text-blue-600">Excellence</span> in <br /> Climate Control
+               Advanced Air Handling & Ventilation System
               </h2>
-              <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
-                <p>
-                  At Windsmit Air, we specialize in high-performance HVAC solutions tailored for industrial and commercial applications. From precision air handling to large-scale VRF implementations, our engineering approach ensures optimal efficiency and reliability.
-                </p>
-                <p>
-                  We integrate cutting-edge technology with robust mechanical design to deliver systems that stand the test of time.
-                </p>
-              </div>
+            <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
+  <p>
+    We design and install standard and custom-built Air Handling Units (AHUs) 
+    for commercial, healthcare, hospitality, and industrial spaces-engineered 
+    for fresh air quality and precise temperature control.
+  </p>
+
+  <div>
+    <h3 className="font-semibold mb-2 text-slate-800">Includes:</h3>
+    <ul className="list-disc pl-6 space-y-2">
+      <li>Custom & packaged AHUs</li>
+      <li>Fresh air and exhaust integration</li>
+      <li>Advanced filtration systems (Pre, Fine & HEPA)</li>
+      <li>Temperature & airflow control</li>
+      <li>Energy-efficient design</li>
+    </ul>
+  </div>
+</div>
+
             </motion.div>
 
             {/* Right: Image */}
@@ -259,7 +271,7 @@ className="w-[90%] mx-auto max-w-sm md:max-w-md h-[350px] md:h-[400px] flex item
 
 
       {/* 3. INDUSTRIES WE SERVE */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-20 bg-gray-50 relative z-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Industries We Serve</h2>
@@ -289,7 +301,7 @@ className="w-[90%] mx-auto max-w-sm md:max-w-md h-[350px] md:h-[400px] flex item
       </section>
 
       {/* 4. DETAILED SERVICES LIST (Parasection) */}
-      <section id="projects" className="py-24 px-6 bg-white">
+      <section id="projects" className="py-24 px-6 bg-white relative z-20">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
             <div className="max-w-2xl">
@@ -347,7 +359,7 @@ className="w-[90%] mx-auto max-w-sm md:max-w-md h-[350px] md:h-[400px] flex item
       </section>
 
       {/* 5. PROCESS / TIMELINE */}
-      <section className="py-24 bg-slate-900 text-white relative">
+      <section className="py-24 bg-gray-100 text-gray-900 relative z-20">
         <div className="max-w-6xl mx-auto px-6 relative z-10">
           <h2 className="text-3xl font-bold mb-16 text-center">Project Execution Framework</h2>
 
@@ -359,14 +371,49 @@ className="w-[90%] mx-auto max-w-sm md:max-w-md h-[350px] md:h-[400px] flex item
               { step: "04", title: "Support", desc: "AMC & 24/7 technical breakdown support." }
             ].map((item, i) => (
               <div key={i} className="relative p-6 border border-white/10 rounded-lg hover:bg-white/5 transition-colors group">
-                <div className="text-5xl font-bold text-white/5 mb-4 group-hover:text-blue-500/20 transition-colors">{item.step}</div>
-                <h3 className="text-xl font-bold mb-3 text-blue-400">{item.title}</h3>
+                <div className="text-5xl font-bold mb-4 text-blue-600 transition-colors">{item.step}</div>
+                <h3 className="text-xl font-bold mb-3 text-blue-600">{item.title}</h3>
                 <p className="text-gray-400">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
+
+
+
+        {/* CTA INSIDE PROCESS SECTION */}
+<motion.div
+  initial={{ opacity: 0, y: 40 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.6 }}
+  className="mt-20 text-center border-t border-white/10 pt-14"
+>
+  <h3 className="text-2xl md:text-3xl font-bold mb-4 leading-snug">
+    Looking for a reliable HVAC partner who understands
+    <br className="hidden md:block" />
+    design, efficiency, and execution?
+  </h3>
+
+  <p className="text-gray-300 mb-8 text-lg">
+    Talk to <span className="text-blue-400 font-semibold">Windsmit Air</span>
+  </p>
+
+  <a
+    href="tel:+919021097544"
+    className="inline-flex items-center gap-3 bg-blue-600 text-white hover:bg-blue-700 px-8 py-4 rounded-full font-bold transition-all shadow-lg hover:shadow-blue-500/30"
+  >
+    Get HVAC Consultation <FaArrowRight />
+  </a>
+</motion.div>
+
       </section>
+
+
+
+
+
+      
 
       {/* MODAL */}
       <AnimatePresence>
