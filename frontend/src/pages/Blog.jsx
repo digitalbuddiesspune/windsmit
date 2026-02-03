@@ -55,16 +55,24 @@ function Blog() {
     return new Date(dateString).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
   }
 
+  const blogHeroBg =
+    'https://res.cloudinary.com/dvkxgrcbv/image/upload/v1770111563/Untitled_1600_x_900_px_1600_x_700_px_q3psx1.svg'
+  const heroStyle = {
+    backgroundImage: `linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url(${blogHeroBg})`,
+    backgroundSize: '150%',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat'
+  }
+
   return (
     <div className="min-h-screen bg-white font-sans selection:bg-emerald-500 selection:text-white">
       
-      {/* --- DARK HERO SECTION (Fixes Navbar Visibility) --- */}
-      <section className="bg-slate-900 pt-20 pb-12 px-6 relative overflow-hidden">
-        
-        {/* Abstract Background Decoration */}
-        <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-emerald-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-blue-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
-
+      {/* --- FULL-SCREEN HERO (static background, like solution pages) --- */}
+      <section
+        className="min-h-screen w-full pt-20 pb-12 px-6 relative flex flex-col items-center justify-center"
+        style={heroStyle}
+        aria-label="Blog hero"
+      >
         <div className="max-w-7xl mx-auto relative z-10 text-center pt-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-emerald-400 text-xs font-bold uppercase tracking-widest mb-4">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
@@ -73,7 +81,7 @@ function Blog() {
           <h1 className="text-3xl md:text-6xl font-bold text-white tracking-tight mb-4 leading-tight">
             Insights & <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">Innovations</span>
           </h1>
-          <p className="text-sm md:text-base text-slate-400 max-w-2xl mx-auto font-light leading-relaxed pb-10">
+          <p className="text-sm md:text-base text-slate-300 max-w-2xl mx-auto font-light leading-relaxed pb-10">
             Expert perspectives on HVAC technology, sustainable cooling, and the future of building management systems.
           </p>
         </div>
