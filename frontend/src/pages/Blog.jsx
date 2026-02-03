@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { FaSearch, FaCalendarAlt, FaArrowRight, FaInbox } from 'react-icons/fa'
 import Footer from '../components/Footer'
 
 function Blog() {
@@ -13,12 +14,8 @@ function Blog() {
   const getApiUrl = () => {
     const envUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
     let cleanUrl = envUrl.replace(/\/+$/, '')
-    if (!cleanUrl.startsWith('http://') && !cleanUrl.startsWith('https://')) {
-      cleanUrl = `https://${cleanUrl}`
-    }
-    if (!cleanUrl.includes('/api') && !cleanUrl.includes('localhost')) {
-      cleanUrl = `${cleanUrl}/api`
-    }
+    if (!cleanUrl.startsWith('http://') && !cleanUrl.startsWith('https://')) cleanUrl = `https://${cleanUrl}`
+    if (!cleanUrl.includes('/api') && !cleanUrl.includes('localhost')) cleanUrl = `${cleanUrl}/api`
     return cleanUrl
   }
 
@@ -27,9 +24,8 @@ function Blog() {
       try {
         setLoading(true)
         const response = await fetch(`${getApiUrl()}/blog?published=true`)
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`)
         const data = await response.json()
-        setPosts(data)
+        setPosts(Array.isArray(data) ? data : [])
       } catch (error) {
         console.error('Error fetching posts:', error)
         setPosts([])
@@ -42,205 +38,149 @@ function Blog() {
 
   const filteredPosts = posts.filter(post => {
     const matchesCategory = selectedCategory === 'all' || post.category === selectedCategory
-    const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                          post.excerpt?.toLowerCase().includes(searchTerm.toLowerCase())
-    return matchesCategory && matchesSearch
+    const titleMatch = post.title?.toLowerCase().includes(searchTerm.toLowerCase())
+    const excerptMatch = post.excerpt?.toLowerCase().includes(searchTerm.toLowerCase())
+    return matchesCategory && (titleMatch || excerptMatch)
   })
 
-  // Logic: First post is "Featured", rest are grid
-  const featuredPost = filteredPosts.length > 0 ? filteredPosts[0] : null
-  const regularPosts = filteredPosts.length > 0 ? filteredPosts.slice(1) : []
-
-  const formatDate = (dateString) => {
-    return new Date(dateString).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
-  }
-
-  const blogHeroBg =
-    'https://res.cloudinary.com/dvkxgrcbv/image/upload/v1770111563/Untitled_1600_x_900_px_1600_x_700_px_q3psx1.svg'
-  const heroStyle = {
-    backgroundImage: `linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url(${blogHeroBg})`,
-    backgroundSize: '150%',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat'
-  }
+  const formatDate = (dateString) =>
+    new Date(dateString).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    })
 
   return (
-    <div className="min-h-screen bg-white font-sans selection:bg-emerald-500 selection:text-white">
-      
-      {/* --- FULL-SCREEN HERO (static background, like solution pages) --- */}
+    <div className="min-h-screen bg-[#F8FAFC] font-sans selection:bg-emerald-500 selection:text-white">
+
+      {/* HERO - full screen like other sections */}
       <section
-        className="min-h-screen w-full pt-20 pb-12 px-6 relative flex flex-col items-center justify-center"
-        style={heroStyle}
+        className="min-h-screen w-full pt-20 pb-12 px-4 sm:px-6 relative flex flex-col items-center justify-center bg-slate-900"
         aria-label="Blog hero"
       >
-        <div className="max-w-7xl mx-auto relative z-10 text-center pt-10">
+        <div className="max-w-7xl mx-auto relative z-10 text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-emerald-400 text-xs font-bold uppercase tracking-widest mb-4">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            The Windsmit Journal
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" aria-hidden />
+            Blog
           </div>
-          <h1 className="text-3xl md:text-6xl font-bold text-white tracking-tight mb-4 leading-tight">
-            Insights & <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">Innovations</span>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight mb-4 leading-tight">
+            Windsmit <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">Journal</span>
           </h1>
-          <p className="text-sm md:text-base text-slate-300 max-w-2xl mx-auto font-light leading-relaxed pb-10">
-            Expert perspectives on HVAC technology, sustainable cooling, and the future of building management systems.
+          <p className="text-sm md:text-base lg:text-lg text-slate-300 max-w-2xl mx-auto font-light leading-relaxed">
+            HVAC insights, maintenance tips and energy efficiency guides.
           </p>
         </div>
       </section>
 
-      {/* --- FLOATING FILTER BAR (Overlaps the Dark Hero) --- */}
-      <div className="max-w-7xl mx-auto px-6 -mt-6 relative z-30">
-        <div className="bg-white rounded-xl shadow-xl shadow-slate-200/50 p-4 flex flex-col md:flex-row items-center justify-between gap-4 border border-slate-100">
-          
-          {/* Categories */}
-          <div className="flex items-center gap-2 overflow-x-auto w-full md:w-auto no-scrollbar pb-2 md:pb-0">
-            {categories.map((category) => (
+      {/* FILTER - overlaps bottom of hero */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 -mt-16 relative z-20">
+        <div className="bg-white rounded-xl shadow-lg p-3 flex flex-col md:flex-row gap-4">
+
+          <div className="flex gap-2 overflow-x-auto">
+            {categories.map(category => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 whitespace-nowrap ${
+                className={`px-4 py-2 rounded-lg text-sm font-medium ${
                   selectedCategory === category
-                    ? 'bg-emerald-500 text-white shadow-md shadow-emerald-500/30'
-                    : 'bg-slate-50 text-slate-600 hover:bg-slate-100'
+                    ? 'bg-emerald-600 text-white'
+                    : 'bg-slate-100'
                 }`}
               >
-                {category === 'all' ? 'View All' : category}
+                {category === 'all' ? 'All Posts' : category}
               </button>
             ))}
           </div>
 
-          {/* Search */}
-          <div className="relative w-full md:w-64">
-            <input 
-              type="text" 
-              placeholder="Search articles..." 
+          <div className="relative ml-auto w-full md:w-72">
+            <FaSearch className="w-4 h-4 text-slate-400 absolute left-3 top-3.5" />
+            <input
+              type="text"
+              placeholder="Search..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition-all"
+              className="w-full pl-10 pr-4 py-3 bg-slate-100 rounded-lg outline-none"
             />
-            <svg className="w-4 h-4 text-slate-400 absolute left-3 top-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
           </div>
         </div>
       </div>
 
-      {/* --- CONTENT SECTION --- */}
-      <div className="max-w-7xl mx-auto px-6 py-16 md:py-20">
-        
+
+      {/* BLOG CARDS - centered grid */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
         {loading ? (
-          <BlogSkeleton />
+          <div className="flex justify-center py-24">
+            <p className="text-slate-500">Loading...</p>
+          </div>
         ) : filteredPosts.length === 0 ? (
-          <div className="text-center py-32">
-            <div className="inline-block p-4 rounded-full bg-slate-100 mb-4">
-               <svg className="w-8 h-8 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-               </svg>
-            </div>
-            <h3 className="text-xl font-bold text-slate-900">No articles found</h3>
-            <p className="text-slate-500 mt-2">Try adjusting your search or filters.</p>
-          </div>
+          <EmptyState />
         ) : (
-          <>
-            {/* --- FEATURED POST (Hero Style) --- */}
-            {featuredPost && (
-              <div className="mb-20">
-                <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6 flex items-center gap-2">
-                  <span className="w-8 h-px bg-slate-300"></span>
-                  Latest Featured
-                </p>
-                
-                <Link to={`/blog/${featuredPost._id || featuredPost.id}`} className="group grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-                   {/* Image Side */}
-                   <div className="relative rounded-3xl overflow-hidden bg-slate-100 flex items-center justify-center shadow-2xl shadow-slate-200/50" style={{ maxHeight: '400px', minHeight: '300px' }}>
-                     <img 
-                        src={featuredPost.image} 
-                        alt={featuredPost.title} 
-                        className="max-w-full max-h-full w-auto h-auto object-contain transform group-hover:scale-105 transition-transform duration-700 ease-out"
-                     />
-                     <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-transparent transition-colors pointer-events-none"></div>
-                   </div>
-
-                   {/* Text Side */}
-                   <div className="flex flex-col justify-center">
-                     <div className="flex items-center gap-3 mb-4 text-sm font-medium text-emerald-600">
-                        <span className="bg-emerald-50 px-3 py-1 rounded-full">{featuredPost.category}</span>
-                        <span className="text-slate-400">&bull;</span>
-                        <span className="text-slate-500">{formatDate(featuredPost.createdAt)}</span>
-                     </div>
-                     <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6 leading-[1.1] group-hover:text-emerald-700 transition-colors">
-                       {featuredPost.title}
-                     </h2>
-                     <p className="text-lg text-slate-600 font-serif leading-relaxed mb-8 line-clamp-3">
-                       {featuredPost.excerpt}
-                     </p>
-                     <div className="flex items-center gap-2 text-slate-900 font-bold group-hover:translate-x-2 transition-transform duration-300">
-                        Read Full Article 
-                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                     </div>
-                   </div>
-                </Link>
-              </div>
-            )}
-
-            {/* --- REGULAR POSTS GRID --- */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
-              {regularPosts.map((post) => (
-                <article key={post._id || post.id} className="group flex flex-col">
-                  
-                  <Link to={`/blog/${post._id || post.id}`} className="block overflow-hidden rounded-2xl mb-6 relative bg-slate-100 flex items-center justify-center shadow-md hover:shadow-xl transition-shadow duration-300" style={{ maxHeight: '250px', minHeight: '200px' }}>
-                    <img 
-                      src={post.image} 
-                      alt={post.title} 
-                      className="max-w-full max-h-full w-auto h-auto object-contain transform group-hover:scale-105 transition-transform duration-500"
+          <div className="flex flex-wrap justify-center gap-6">
+            {filteredPosts.map(post => (
+              <article
+                key={post._id}
+                className="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-lg transition flex flex-col w-full sm:w-[min(100%,320px)] lg:w-[min(100%,340px)]"
+              >
+                {/* image */}
+                <Link to={`/blog/${post._id}`} className="h-44 sm:h-48 overflow-hidden bg-slate-100 block">
+                  {post.image ? (
+                    <img
+                      src={post.image}
+                      alt=""
+                      className="w-full h-full object-cover hover:scale-105 transition duration-300"
                     />
-                    <div className="absolute top-4 left-4">
-                       <span className="bg-white/95 backdrop-blur-sm text-slate-900 text-xs font-bold px-3 py-1 rounded-full shadow-sm">
-                         {post.category}
-                       </span>
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-slate-400">
+                      <span className="text-sm">No image</span>
                     </div>
-                  </Link>
+                  )}
+                </Link>
 
-                  <div className="flex flex-col flex-grow">
-                    <div className="text-xs font-semibold text-slate-400 mb-3 uppercase tracking-wide">
+                {/* content */}
+                <div className="p-5 flex flex-col flex-grow">
+                  <div className="flex items-center gap-2 flex-wrap mb-2">
+                    {post.category && (
+                      <span className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-700">
+                        {post.category}
+                      </span>
+                    )}
+                    <span className="flex items-center gap-1.5 text-sm text-slate-500">
+                      <FaCalendarAlt className="w-3.5 h-3.5 flex-shrink-0" />
                       {formatDate(post.createdAt)}
-                    </div>
-
-                    <h3 className="text-xl font-bold text-slate-900 mb-3 leading-tight group-hover:text-emerald-600 transition-colors">
-                      <Link to={`/blog/${post._id || post.id}`}>
-                        {post.title}
-                      </Link>
-                    </h3>
-
-                    <p className="text-slate-600 text-sm leading-relaxed line-clamp-2 mb-4">
-                      {post.excerpt}
-                    </p>
+                    </span>
                   </div>
-                </article>
-              ))}
-            </div>
-          </>
-        )}
-      </div>
 
-      {/* --- NEWSLETTER SECTION --- */}
-      <section className="bg-slate-50 border-t border-slate-200 py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-slate-900 mb-4">Subscribe to our newsletter</h2>
-          <p className="text-slate-600 mb-8 max-w-lg mx-auto">
-             Get the latest insights on HVAC maintenance and energy efficiency delivered directly to your inbox.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-            <input
-              type="email"
-              placeholder="Your email address"
-              className="flex-1 px-5 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white shadow-sm"
-            />
-            <button className="px-6 py-3 bg-slate-900 text-white font-bold rounded-lg hover:bg-emerald-600 transition-colors shadow-lg shadow-slate-900/20">
-              Subscribe
-            </button>
+                  <h3 className="text-lg font-bold text-slate-900 mb-2 leading-snug line-clamp-2">
+                    <Link to={`/blog/${post._id}`} className="hover:text-emerald-600 transition-colors">
+                      {post.title}
+                    </Link>
+                  </h3>
+
+                  {post.author && (
+                    <p className="text-sm text-slate-500 mb-3 truncate">{post.author}</p>
+                  )}
+
+                  <Link
+                    to={`/blog/${post._id}`}
+                    className="mt-auto text-sm font-semibold text-emerald-600 inline-flex items-center gap-1.5 hover:text-emerald-700"
+                  >
+                    Read full article
+                    <FaArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </article>
+            ))}
           </div>
+        )}
+      </main>
+
+
+      {/* NEWSLETTER */}
+      <section className="px-6 pb-24">
+        <div className="max-w-4xl mx-auto bg-slate-900 rounded-3xl p-10 text-center text-white">
+          <FaInbox className="mx-auto mb-4" />
+          <h2 className="text-2xl font-bold mb-2">Stay updated</h2>
+          <p className="text-slate-400">Get monthly HVAC insights in your inbox</p>
         </div>
       </section>
 
@@ -249,26 +189,9 @@ function Blog() {
   )
 }
 
-const BlogSkeleton = () => (
-  <div className="animate-pulse">
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20 items-center">
-       <div className="bg-slate-200 rounded-3xl w-full" style={{ maxHeight: '400px', minHeight: '300px' }}></div>
-       <div className="space-y-4">
-          <div className="h-4 bg-slate-200 w-32 rounded"></div>
-          <div className="h-12 bg-slate-200 w-full rounded"></div>
-          <div className="h-4 bg-slate-200 w-full rounded"></div>
-          <div className="h-4 bg-slate-200 w-2/3 rounded"></div>
-       </div>
-    </div>
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {[1, 2, 3].map((i) => (
-        <div key={i}>
-          <div className="bg-slate-200 rounded-2xl mb-4" style={{ maxHeight: '250px', minHeight: '200px' }}></div>
-          <div className="h-4 bg-slate-200 w-24 mb-2 rounded"></div>
-          <div className="h-6 bg-slate-200 w-full mb-2 rounded"></div>
-        </div>
-      ))}
-    </div>
+const EmptyState = () => (
+  <div className="text-center py-24">
+    <h3 className="text-xl font-semibold text-slate-600">No posts found</h3>
   </div>
 )
 
