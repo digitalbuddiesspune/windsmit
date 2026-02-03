@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, EffectFade, Pagination } from 'swiper/modules';
+// ADDED Navigation HERE
+import { Autoplay, EffectFade, Pagination, Navigation } from 'swiper/modules'; 
 import { FaBuilding, FaIndustry, FaHospital, FaHotel, FaArrowRight, FaCogs, FaTools, FaCheckCircle, FaWhatsapp, FaPhoneAlt } from 'react-icons/fa';
+
 import 'swiper/css';
 import 'swiper/css/effect-fade';
-import 'swiper/css/pagination';
+
+// ADDED CSS HERE
+import 'swiper/css/navigation';
 
 const HvacServices = () => {
   const [selectedService, setSelectedService] = useState(null);
@@ -112,61 +116,81 @@ const HvacServices = () => {
       <section className="bg-black pt-28 pb-16 md:py-0 overflow-hidden min-h-[90vh] flex items-center relative">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-blue-900/20 via-black to-black z-0" />
 
-        <div className="max-w-7xl mx-auto px-6 w-full relative z-10 flex items-center h-full">
+<div className="max-w-7xl mx-auto px-4 sm:px-6 w-full relative z-10 flex items-center justify-center h-full">
           <div className="grid md:grid-cols-2 gap-12 lg:gap-20 w-full items-center">
 
             {/* LEFT COLUMN: SWIPER */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8 }}
-              className="relative order-1 flex flex-col items-center justify-center min-h-[450px] md:h-full w-full"
-            >
-              {/* Glow effect */}
-              <div
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] pointer-events-none"
-                style={{
-                  background: 'radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(0, 0, 0, 0) 70%)',
-                  filter: 'blur(40px)',
-                }}
-              />
+           {/* LEFT COLUMN: SWIPER */}
+<motion.div
+  initial={{ opacity: 0, scale: 0.9 }}
+  animate={{ opacity: 1, scale: 1 }}
+  transition={{ duration: 0.8 }}
+  className="relative order-2 md:order-2 flex flex-col items-center justify-center min-h-[450px] md:h-full w-full group"
+>
+  {/* Updated Glow effect to Blue for HVAC theme */}
+  <div 
+    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] pointer-events-none"
+    style={{
+      background: 'radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, rgba(0, 0, 0, 0) 70%)',
+      filter: 'blur(40px)',
+    }}
+  />
 
-              <Swiper
-                modules={[Autoplay, EffectFade]}
-                effect="fade"
-                fadeEffect={{ crossFade: true }}
-                slidesPerView={1}
-                centeredSlides={true}
-                loop={true}
-                autoplay={{ delay: 3000, disableOnInteraction: false }}
-                className="w-full max-w-sm md:max-w-md h-[400px] flex items-center justify-center"
-              >
-                {heroImages.map((img, i) => (
-                  <SwiperSlide
-                    key={i}
-                    className="!flex items-center justify-center bg-transparent"
-                  >
-                    <img
-                      src={img}
-                      alt={`Hero Slide ${i}`}
-                      className="max-h-[300px] w-auto object-contain drop-shadow-[0_20px_50px_rgba(59,130,246,0.3)]"
-                    />
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </motion.div>
+  <Swiper
+    modules={[Autoplay, EffectFade, Navigation, Pagination]}
+    navigation={{
+      prevEl: '.swiper-button-prev-custom',
+      nextEl: '.swiper-button-next-custom',
+    }}
+    //pagination={{ clickable: true }}
+    effect="fade"
+    fadeEffect={{ crossFade: true }}
+    slidesPerView={1}
+    centeredSlides={true}
+    loop={true}
+    autoplay={{ delay: 3000, disableOnInteraction: false }}
+className="w-[90%] mx-auto max-w-sm md:max-w-md h-[350px] md:h-[400px] flex items-center justify-center relative"
+  >
+    {heroImages.map((img, i) => (
+      <SwiperSlide 
+        key={i} 
+        className="!flex items-center justify-center bg-transparent"
+      >
+        <img
+          src={img}
+          alt={`Hero Slide ${i}`}
+          className="max-h-[300px] w-auto object-contain drop-shadow-[0_20px_50px_rgba(37,99,235,0.3)]"
+        />
+      </SwiperSlide>
+    ))}
+
+    {/* Left Arrow */}
+    <button className="swiper-button-prev-custom absolute left-0 top-1/2 -translate-y-1/2 z-20 p-3 text-white/40 hover:text-blue-400 transition-all opacity-0 group-hover:opacity-100">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+    </button>
+
+    {/* Right Arrow */}
+    <button className="swiper-button-next-custom absolute right-0 top-1/2 -translate-y-1/2 z-20 p-3 text-white/40 hover:text-blue-400 transition-all opacity-0 group-hover:opacity-100">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="m9 18 6-6-6-6"/>
+      </svg>
+    </button>
+  </Swiper>
+</motion.div>
 
             {/* RIGHT COLUMN: TEXT */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-white text-center md:text-left order-2 flex flex-col justify-center h-full"
+              className="text-white text-center md:text-left md:order-2 order1  flex flex-col justify-center h-full"
             >
              
-              <h1 className="text-4xl md:text-7xl font-bold mb-6 leading-tight">
+              <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
                 Advanced Engineering <br />
-                <span className="text-transparent text-7xl bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
+                <span className="text-transparent text-6xl bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
                   HVAC Systems
                 </span>
               </h1>
@@ -223,9 +247,9 @@ const HvacServices = () => {
             >
               <div className="relative overflow-hidden ">
                 <img
-                  src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769671975/Untitled_1080_x_1080_px_1080_x_1080_px_1_jto2od.png"
+                  src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1770011777/Untitled_1080_x_1080_px_1_emssrc.png"
                   alt="Windsmit Air Engineering"
-                  className="w-full h-[500px] object-cover transform hover:scale-105 transition-transform duration-700"
+                  className="w-full h-[550px] object-cover transform hover:scale-105 transition-transform duration-700"
                 />
               </div>
             </motion.div>
