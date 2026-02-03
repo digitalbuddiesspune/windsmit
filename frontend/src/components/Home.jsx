@@ -12,7 +12,7 @@ const expertiseData = [
     tabLabel: "Air Conditioning",
     heading: "Precision Cooling Systems",
     description: "We engineer cooling solutions that go beyond simple temperature control. Our systems are designed for optimal humidity regulation, energy efficiency, and silent operation suitable for luxury residences and corporate offices.",
-    image: "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769507264/downloadFile_tcfalp.gif",
+    image: "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1770106025/AC_con_kbecl5.gif",
     features: ["Inverter Technology", "Multi-Zone Control", "Eco-friendly Refrigerants", "Smart WiFi Integration"]
   },
   {
@@ -20,7 +20,7 @@ const expertiseData = [
     tabLabel: "Commercial HVAC",
     heading: "Reliable Cooling for Businesses",
     description: "Large-scale air handling for commercial infrastructure. We specialize in ductwork design that maximizes airflow while minimizing noise and energy loss, ensuring your workspace meets all air quality standards.",
-    image: "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769532495/ABUIABADGAAgwuujiQYoovWJhAIwgAU44AM_500x500.gif_penmhb.gif",
+    image: "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1770105694/commerciak_udjazp.webp",
     features: ["Custom AHU Design", "VRF/VRV Systems", "Fresh Air Injection", "Negative Pressure Rooms"]
   },
   {
@@ -28,7 +28,7 @@ const expertiseData = [
     tabLabel: "BMS Automation",
     heading: "Intelligent Building Control",
     description: "Future-proof your facility with our Building Management Systems. Monitor energy usage, detect faults instantly, and automate climate schedules from a central dashboard.",
-    image: "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769507436/downloadFile_a5gosb.gif",
+    image: "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769511211/Air_Conditioning_4_alpusn.png",
     features: ["IoT Sensors", "Remote Monitoring", "Auto-Fault Detection", "Energy Analytics"]
   },
   {
@@ -108,24 +108,23 @@ function OurExpertise() {
   const [activeTab, setActiveTab] = useState(0)
 
   return (
-    <section className="bg-slate-900 py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
+    <section className="bg-slate-900 py-10 sm:py-12 md:py-16 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 font-sans">
       <div className="max-w-7xl mx-auto">
-        
         {/* Section Header */}
-        <div className="mb-10 sm:mb-12 md:mb-16 text-center sm:text-left md:text-center max-w-3xl mx-auto">
-          <span className="text-emerald-500 font-bold uppercase tracking-widest text-xs sm:text-sm mb-2 block">
+        <div className="mb-6 sm:mb-8 md:mb-10 text-center sm:text-left md:text-center max-w-3xl mx-auto">
+          <span className="text-emerald-500 font-semibold uppercase tracking-widest text-xs sm:text-sm mb-1.5 block">
             Technical Mastery
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4">
             Our Expertise
           </h2>
-          <p className="text-sm sm:text-base md:text-lg text-slate-400 leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
           “Engineered comfort backed by deep HVAC knowledge, precise execution, and years of hands-on industry experience.”
           </p>
         </div>
 
         {/* Category Tabs - Single Row */}
-        <div className="mb-6 sm:mb-8">
+        <div className="mb-4 sm:mb-6">
           <div className="flex flex-row gap-2 sm:gap-3 justify-center overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-slate-600 scrollbar-track-slate-800">
             {expertiseData.map((item, index) => (
               <button
@@ -308,7 +307,7 @@ const projectsRef = useRef(null)
   }
 
   return (
-    <div className="w-full bg-slate-50 font-sans text-slate-800">
+    <div className="w-full bg-slate-50 font-sans text-slate-800 antialiased">
       
       {/* --- HERO SECTION --- */}
       <section className="relative w-full overflow-hidden bg-slate-900">
@@ -323,17 +322,15 @@ const projectsRef = useRef(null)
           <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/90"></div>
           
           {/* Hero Content Overlay - Mobile */}
-          <div className="absolute inset-0 z-20 flex items-center justify-center px-4 py-12">
-            <div className="max-w-xl w-full text-white text-center"> 
-              
+          <div className="absolute inset-0 z-20 flex items-center justify-center px-4 py-10">
+            <div className="max-w-xl w-full text-white text-center">
               {/* Main Heading */}
-              <h1 className="text-xl font-bold leading-[1.1] mb-5 tracking-tight">
-              Because Every Breath <br />
-              Deserves <span style={{ color: '#00b050' }}>Better Air.</span>
+              <h1 className="text-xl font-bold leading-[1.1] mb-4 tracking-tight">
+                Because Every Breath <br />
+                Deserves <span style={{ color: '#00b050' }}>Better Air.</span>
               </h1>
-              
               {/* Description */}
-              <p className="text-base text-slate-100 mb-7 leading-relaxed">
+              <p className="text-sm sm:text-base text-slate-100 mb-5 leading-relaxed">
                 Windsmit Air delivers premium HVAC, Air Conditioning, and Building Management solutions designed for health and efficiency.
               </p>
               
@@ -377,17 +374,17 @@ const projectsRef = useRef(null)
               <div className="absolute inset-0 z-20 flex items-center justify-start px-12 lg:px-16 xl:px-24">
                 <div className="max-w-xl text-white text-left">
                   {/* Green horizontal line */}
-                  <div className="w-20 h-1 mb-6 mt-20" style={{ backgroundColor: '#00b050' }}></div>
+                  <div className="w-20 h-1 mb-4 mt-12 lg:mt-16" style={{ backgroundColor: '#00b050' }}></div>
                   
                   {/* Main Heading */}
-                  <h1 className="text-5xl md:text-3xl lg:text-6xl font-bold leading-[1.1] mb-6 tracking-tight">
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] mb-4 lg:mb-6 tracking-tight">
                   Because Every Breath <br />
                   Deserves <span style={{ color: '#00b050' }}>Better Air.</span>
                   </h1>
                   
                   {/* Description */}
-                  <p className="text-lg md:text-xl lg:text-xl text-slate-100 mb-8 md:mb-10 leading-relaxed max-w-xl">
-                  Engineering efficient air-conditioning & HVAC solutions for modern homes, offices, and every indian spaces.
+                  <p className="text-base md:text-lg text-slate-100 mb-6 md:mb-8 leading-relaxed max-w-xl">
+                  Engineering efficient air-conditioning and HVAC solutions for modern homes, offices, and every space.
                   </p>
                   
                   {/* Buttons */}
@@ -408,13 +405,13 @@ const projectsRef = useRef(null)
 
       {/* --- STORIES SECTION --- */}
       {showStories && stories.length > 0 && (
-        <section className="px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 py-8 bg-slate-50">
+        <section className="px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 py-6 sm:py-8 bg-slate-50">
           <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-6">
-              <span className="inline-block px-2.5 py-0.5 bg-emerald-50 text-emerald-600 font-semibold uppercase tracking-widest text-[10px] rounded-full mb-2">
+            <div className="text-center mb-4 sm:mb-5">
+              <span className="inline-block px-2.5 py-0.5 bg-emerald-50 text-emerald-600 font-semibold uppercase tracking-widest text-[10px] rounded-full mb-1.5">
                 Project Highlights
               </span>
-              <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-1.5">
+              <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-1">
                 Our Work in Action
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 max-w-2xl mx-auto">
@@ -498,26 +495,24 @@ const projectsRef = useRef(null)
       )}
 
       {/* --- IDENTITY SECTION --- */}
-      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 bg-white">
-  <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
-    
+      <section className="py-10 sm:py-12 md:py-16 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 bg-white">
+  <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-6 sm:gap-10 lg:gap-12 items-center">
     {/* Left Content */}
-    <div className="space-y-6 sm:space-y-8 md:space-y-10">
+    <div className="space-y-5 sm:space-y-6 md:space-y-8">
       <div>
-        <div className="flex items-center gap-3 mb-3 sm:mb-4">
+        <div className="flex items-center gap-3 mb-2 sm:mb-3">
           <span className="h-px w-8 sm:w-12 bg-emerald-500"></span>
           <span className="text-emerald-600 font-semibold uppercase tracking-widest text-xs sm:text-sm">Our Identity</span>
         </div>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 leading-tight">
           Breathing Life into <br></br> <span style={{ color: '#00b050' }}>Every Space</span>
         </h2>
       </div>
 
-      <div className="space-y-6 sm:space-y-8">
-
+      <div className="space-y-5 sm:space-y-6">
         {/* The Name */}
-        <div className="flex gap-4 sm:gap-5">
-          <div className="flex-shrink-0 mt-1">
+        <div className="flex gap-3 sm:gap-4">
+          <div className="flex-shrink-0 mt-0.5">
             <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
               {/* USER ICON */}
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -529,7 +524,7 @@ const projectsRef = useRef(null)
             </div>
           </div>
           <div>
-            <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2">A Name That Stands for Happier Air</h3>
+            <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-1.5">A Name That Stands for Happier Air</h3>
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
             <span style={{ color: '#00b050' }}>Windsmit Air</span> represents our belief that air should not only cool a space but also uplift the people within it. Smit means smile, symbolizing our commitment to creating healthy, pleasant, and positive indoor environments.
             </p>
@@ -537,8 +532,8 @@ const projectsRef = useRef(null)
         </div>
 
         {/* The Philosophy */}
-        <div className="flex gap-4 sm:gap-5">
-          <div className="flex-shrink-0 mt-1">
+        <div className="flex gap-3 sm:gap-4">
+          <div className="flex-shrink-0 mt-0.5">
             <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-yellow-300 flex items-center justify-center text-yellow-600">
               
               {/* YOUR BULB ICON */}
@@ -551,7 +546,7 @@ const projectsRef = useRef(null)
             </div>
           </div>
           <div>
-            <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2">What Our Logo Represents</h3>
+            <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-1.5">What Our Logo Represents</h3>
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed"> 
             Our logo pays gratitude to the sun, the source of energy and life, <span className="font-semibold text-yellow-300">Yellow</span> radiates warmth and opportunity, <span style={{ color: '#00b050' }}>Green</span> breathes nature and health. The flags above the “I” guide the wind forward - symbolizing our constant pursuit of progress and a WINning direction in all we do.
             </p>
@@ -578,52 +573,45 @@ const projectsRef = useRef(null)
   </div>
 </section>
 
-
-
-  
-
-
-      
-
       {/* --- STATS SECTION --- */}
-      <section className="bg-slate-900 py-12 sm:py-16 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 text-center divide-y sm:divide-y-0 sm:divide-x divide-slate-800">
-           <div className="p-4 sm:p-6">
-             <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2">2022</span>
+      <section className="bg-slate-900 py-10 sm:py-12 md:py-14 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 text-center divide-y sm:divide-y-0 sm:divide-x divide-slate-800">
+           <div className="p-4 sm:p-5">
+             <span className="block text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-1">2022</span>
              <span className="text-emerald-400 text-xs sm:text-sm font-medium uppercase tracking-wider">Year Established</span>
            </div>
-           <div className="p-4 sm:p-6">
+           <div className="p-4 sm:p-5">
              <span
   ref={projectsRef}
-  className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2"
+  className="block text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-1"
 >
   {projectCount}
   <span className="ml-1">+</span>
 </span>
              <span className="text-emerald-400 text-xs sm:text-sm font-medium uppercase tracking-wider">Successful Projects</span>
            </div>
-           <div className="p-4 sm:p-6">
-             <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2">24/7</span>
+           <div className="p-4 sm:p-5">
+             <span className="block text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-1">24/7</span>
              <span className="text-emerald-400 text-xs sm:text-sm font-medium uppercase tracking-wider">Client Support</span>
            </div>
         </div>
       </section>
 
       {/* --- CTA SECTION --- */}
-      <section className="relative bg-white py-0">
+      <section className="relative bg-white py-0 mb-0">
         <div className="grid lg:grid-cols-2">
             <div className="h-64 sm:h-80 md:h-96 lg:h-[500px] w-full relative bg-slate-900 overflow-hidden order-2 lg:order-1">
                 <img 
-                  src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769517424/Black_and_White_Modern_Electrical_Service_Instagram_Post_2_rd97w6.svg" 
+                  src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1770103895/798e4b4f-1d09-4942-a7a2-696e82b51d4b.png" 
                   alt="Technician at work" 
                   className="w-full h-full object-cover object-left"
                 />
             </div>
-            <div className="flex items-center bg-slate-100 px-4 sm:px-6 md:px-12 lg:px-16 py-12 sm:py-16 md:py-20 lg:py-24 order-1 lg:order-2">
+            <div className="flex items-center bg-slate-100 px-4 sm:px-6 md:px-12 lg:px-16 py-10 sm:py-12 md:py-16 lg:py-20 order-1 lg:order-2">
                 <div className="max-w-lg mx-auto lg:mx-0">
-                    <span className="text-emerald-600 font-bold uppercase tracking-wider text-xs sm:text-sm mb-2 block">Get in touch</span>
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-4 sm:mb-6">Ready to upgrade your air quality?</h2>
-                    <p className="text-sm sm:text-base md:text-lg text-slate-600 mb-6 sm:mb-8">
+                    <span className="text-emerald-600 font-semibold uppercase tracking-wider text-xs sm:text-sm mb-1.5 block">Get in touch</span>
+                    <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 mb-3 sm:mb-4">Ready to upgrade your air quality?</h2>
+                    <p className="text-sm sm:text-base text-slate-600 mb-4 sm:mb-6 leading-relaxed">
                         Contact us today for a consultation. Whether it's a new installation or maintaining an existing system, our experts are ready to help.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
@@ -637,11 +625,13 @@ const projectsRef = useRef(null)
       </section>
 
       {/* --- INCLUDED COMPONENTS --- */}
-      <OurExpertise />
-<div className="w-full h-0.5 bg-gray-700"></div>
-<WhyChooseUs />
-<div className="w-full h-0.5 bg-gray-700"></div>
-<Testimonials />
+      <div className="-mt-px">
+        <OurExpertise />
+      </div>
+      <div className="w-full h-0.5 bg-slate-700"></div>
+      <WhyChooseUs />
+      <div className="w-full h-0.5 bg-slate-700"></div>
+      <Testimonials />
       <Footer />
     </div>
   )
