@@ -51,7 +51,7 @@ At Windsmit Air, we collaborate early-so HVAC becomes part of the architecture, 
 
                         <div className="flex flex-col sm:flex-row gap-5">
 
-                            <a href="#partner-with-us" className="flex items-center justify-center gap-3 px-8 py-4  bg-gradient-to-r from-green-400 to-emerald-300 text-black font-bold rounded-full hover:bg-yellow-400 transition-all shadow-lg hover:shadow-yellow-500/30">
+                            <a href="#partner-with-us" className="flex items-center justify-center gap-3 px-8 py-4  bg-gradient-to-r from-green-400 to-emerald-300 text-white font-bold rounded-full hover:bg-yellow-400 transition-all shadow-lg hover:shadow-yellow-500/30">
 
                                 Collaborate With Us <FaArrowRight />
 
