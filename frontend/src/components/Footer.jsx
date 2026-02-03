@@ -117,10 +117,9 @@ function Footer() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
                 <span className="text-sm text-gray-400 leading-relaxed">
-                  Shri Sant Nagaji Maharaj Sanskrutik Bhavan<br />
-                  <span className="text-gray-500">संत नगाजीमहाराज सांस्कृतिक भवन</span><br />
-                  CA Road, Nagpur<br />
-                  <span className="text-xs text-gray-500">(Near Gandhi Statue)</span>
+                  357, Akbari House, Central Ave,<br />
+                  beside Sant Nagaji sabhagruh, Darodkar Square, Mahal,<br />
+                  Nagpur, Maharashtra 440032
                 </span>
               </li>
               <li className="flex items-center">

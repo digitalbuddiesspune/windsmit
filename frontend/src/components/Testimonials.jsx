@@ -4,6 +4,25 @@ import { Link } from 'react-router-dom'
 function Testimonials() {
     const [currentIndex, setCurrentIndex] = useState(0)
     const [isPaused, setIsPaused] = useState(false)
+    const [cardsToShow, setCardsToShow] = useState(() => {
+        if (typeof window === 'undefined') return 3
+        if (window.innerWidth >= 1024) return 3
+        if (window.innerWidth >= 768) return 2
+        return 1
+    })
+
+    // Responsive: 1 card on mobile, 2 on md, 3 on lg+
+    useEffect(() => {
+        const updateCardsToShow = () => {
+            if (typeof window === 'undefined') return
+            if (window.innerWidth >= 1024) setCardsToShow(3)
+            else if (window.innerWidth >= 768) setCardsToShow(2)
+            else setCardsToShow(1)
+        }
+        updateCardsToShow()
+        window.addEventListener('resize', updateCardsToShow)
+        return () => window.removeEventListener('resize', updateCardsToShow)
+    }, [])
 
     const testimonials = [
         {
@@ -34,8 +53,6 @@ function Testimonials() {
         }
     ]
 
-    // Number of cards to show at once
-    const cardsToShow = 3
     const maxIndex = Math.max(0, testimonials.length - cardsToShow)
 
     // Auto-scroll carousel
@@ -62,42 +79,47 @@ function Testimonials() {
     }
 
     return (
-        <section className="w-full bg-slate-900 py-16 md:py-20 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
+        <section className="w-full bg-slate-900 py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
             <div className="max-w-7xl mx-auto">
                 {/* Section Header */}
-                <div className="text-center mb-12 md:mb-16">
-                    <span className="text-emerald-500 font-bold uppercase tracking-widest text-xs sm:text-sm mb-3 block">
+                <div className="text-center mb-8 sm:mb-12 md:mb-16">
+                    <span className="text-emerald-500 font-bold uppercase tracking-widest text-xs sm:text-sm mb-2 sm:mb-3 block">
                         Client Testimonials
                     </span>
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4">
                         What Our Clients Say
                     </h2>
-                    <p className="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">
+                    <p className="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base px-0">
                         Don't just take our word for it. Here's what our satisfied customers have to say about our services.
-                    </p>        </div>{/* Carousel Container - Shows 3 cards at once */}
+                    </p>
+                </div>
+                {/* Carousel Container - 1 card on mobile, 2 on md, 3 on lg+ */}
                 <div
-                    className="relative overflow-hidden px-12 md:px-16"  // Add horizontal padding
+                    className="relative overflow-hidden px-2 sm:px-8 md:px-16"
                     onMouseEnter={() => setIsPaused(true)}
                     onMouseLeave={() => setIsPaused(false)}
                 >
                     {/* Carousel Track */}
                     <div
-                        className="flex transition-transform duration-700 ease-in-out gap-0"
-                        style={{ transform: `translateX(-${currentIndex * (100 / cardsToShow)}%)` }}
+                        className="flex transition-transform duration-700 ease-in-out"
+                        style={{
+                            transform: `translateX(-${currentIndex * (100 / cardsToShow)}%)`,
+                            gap: 0
+                        }}
                     >
                         {testimonials.map((testimonial) => (
                             <div
                                 key={testimonial.id}
-                                className="w-full flex-shrink-0 px-3 md:px-4"
+                                className="flex-shrink-0 px-2 sm:px-3 md:px-4 box-border"
                                 style={{ width: `${100 / cardsToShow}%` }}
                             >
-                                <div className="bg-slate-800 rounded-xl p-6 md:p-8 border border-slate-700 hover:border-emerald-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-emerald-500/10 h-full">
+                                <div className="bg-slate-800 rounded-xl p-4 sm:p-6 md:p-8 border border-slate-700 hover:border-emerald-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-emerald-500/10 h-full">
                                     {/* Rating Stars */}
-                                    <div className="flex gap-1 mb-4">
+                                    <div className="flex gap-0.5 sm:gap-1 mb-3 sm:mb-4">
                                         {[...Array(testimonial.rating)].map((_, i) => (
                                             <svg
                                                 key={i}
-                                                className="w-5 h-5 text-yellow-500 fill-current"
+                                                className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-500 fill-current"
                                                 viewBox="0 0 20 20"
                                             >
                                                 <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
@@ -106,20 +128,20 @@ function Testimonials() {
                                     </div>
 
                                     {/* Testimonial Content */}
-                                    <p className="text-slate-300 mb-6 text-sm sm:text-base leading-relaxed">
+                                    <p className="text-slate-300 mb-4 sm:mb-6 text-xs sm:text-sm md:text-base leading-relaxed">
                                         "{testimonial.content}"
                                     </p>
 
                                     {/* Client Info */}
-                                    <div className="flex items-center gap-4">
-                                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center text-white font-bold text-lg">
+                                    <div className="flex items-center gap-3 sm:gap-4">
+                                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center text-white font-bold text-base sm:text-lg flex-shrink-0">
                                             {testimonial.name.charAt(0)}
                                         </div>
-                                        <div>
-                                            <h4 className="text-white font-semibold text-sm sm:text-base">
+                                        <div className="min-w-0">
+                                            <h4 className="text-white font-semibold text-sm sm:text-base truncate">
                                                 {testimonial.name}
                                             </h4>
-                                            <p className="text-slate-400 text-xs sm:text-sm">
+                                            <p className="text-slate-400 text-xs sm:text-sm truncate">
                                                 {testimonial.position}
                                             </p>
                                         </div>
@@ -134,7 +156,7 @@ function Testimonials() {
                         <>
                             <button
                                 onClick={goToPrevious}
-                                className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/10 backdrop-blur-sm text-white p-2 md:p-3 rounded-full hover:bg-white/20 transition-all duration-300 hover:scale-110 shadow-lg"
+                                className="absolute left-0 sm:left-2 top-1/2 -translate-y-1/2 z-10 bg-white/10 backdrop-blur-sm text-white p-1.5 sm:p-2 md:p-3 rounded-full hover:bg-white/20 transition-all duration-300 hover:scale-110 shadow-lg"
                                 aria-label="Previous testimonials"
                             >
                                 <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -143,7 +165,7 @@ function Testimonials() {
                             </button>
                             <button
                                 onClick={goToNext}
-                                className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/10 backdrop-blur-sm text-white p-2 md:p-3 rounded-full hover:bg-white/20 transition-all duration-300 hover:scale-110 shadow-lg"
+                                className="absolute right-0 sm:right-2 top-1/2 -translate-y-1/2 z-10 bg-white/10 backdrop-blur-sm text-white p-1.5 sm:p-2 md:p-3 rounded-full hover:bg-white/20 transition-all duration-300 hover:scale-110 shadow-lg"
                                 aria-label="Next testimonials"
                             >
                                 <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -156,14 +178,14 @@ function Testimonials() {
 
                 {/* Carousel Indicators */}
                 {testimonials.length > cardsToShow && (
-                    <div className="flex justify-center gap-2 mt-8">
+                    <div className="flex justify-center gap-1.5 sm:gap-2 mt-6 sm:mt-8">
                         {Array.from({ length: maxIndex + 1 }).map((_, index) => (
                             <button
                                 key={index}
                                 onClick={() => goToSlide(index)}
-                                className={`h-2 rounded-full transition-all duration-300 ${index === currentIndex
-                                    ? 'w-8 bg-emerald-500'
-                                    : 'w-2 bg-slate-600 hover:bg-slate-500'
+                                className={`h-1.5 sm:h-2 rounded-full transition-all duration-300 touch-manipulation ${index === currentIndex
+                                    ? 'w-6 sm:w-8 bg-emerald-500'
+                                    : 'w-1.5 sm:w-2 bg-slate-600 hover:bg-slate-500'
                                     }`}
                                 aria-label={`Go to slide ${index + 1}`}
                             />

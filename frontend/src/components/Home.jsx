@@ -123,14 +123,17 @@ function OurExpertise() {
           </p>
         </div>
 
-        {/* Category Tabs - Single Row */}
-        <div className="mb-4 sm:mb-6">
-          <div className="flex flex-row gap-2 sm:gap-3 justify-center overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-slate-600 scrollbar-track-slate-800">
+        {/* Category Tabs - Horizontal scroll on mobile; padding so first/last headings aren't cut off */}
+        <div className="mb-4 sm:mb-6 -mx-4 sm:-mx-6 md:mx-0 px-4 sm:px-6 md:px-0">
+          <div
+            className="flex flex-row gap-2 sm:gap-3 overflow-x-auto overflow-y-hidden pb-2 pl-4 pr-4 sm:pl-4 sm:pr-4 md:pl-0 md:pr-0 md:justify-center scrollbar-thin scrollbar-thumb-slate-600 scrollbar-track-slate-800"
+            style={{ WebkitOverflowScrolling: 'touch' }}
+          >
             {expertiseData.map((item, index) => (
               <button
                 key={item.id}
                 onClick={() => setActiveTab(index)}
-                className={`flex-shrink-0 text-left px-4 sm:px-6 py-3 sm:py-4 rounded-lg transition-all duration-300 border-l-4 group whitespace-nowrap ${
+                className={`flex-shrink-0 min-w-0 text-left px-4 sm:px-6 py-3 sm:py-4 rounded-lg transition-all duration-300 border-l-4 group whitespace-nowrap ${
                   activeTab === index
                     ? "bg-slate-800 border-emerald-500 shadow-lg shadow-black/20"
                     : "bg-transparent border-slate-700 hover:bg-slate-800/50 hover:border-slate-500"
