@@ -14,7 +14,7 @@ const sections = [
   {
     heading: '',
     content: (
-      <div className="w-screen relative left-1/2 -translate-x-1/2 -mt-16 md:-mt-20 mb-2 py-10 md:py-14 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24" style={{ backgroundColor: '#fafaf0' }}>
+      <div className="w-screen relative left-1/2 -translate-x-1/2 -mt-16 md:-mt-20 mb-2 py-10 md:py-14 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 bg-white">
         <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-800 text-center mb-2">
           When Comfort Impacts Taste & Time Spent
         </h2>
@@ -25,11 +25,11 @@ const sections = [
           {problemCards.slice(0, 4).map((card) => (
             <div
               key={card.number}
-              className="relative bg-[#fefefe] rounded-b-lg shadow-md overflow-hidden pt-3"
+              className="relative bg-white border border-slate-200 rounded-b-lg shadow-md overflow-hidden pt-3"
               style={{ boxShadow: '0 4px 14px rgba(0,0,0,0.08)' }}
             >
               <div
-                className="absolute top-0 left-0 right-0 h-3 bg-[#fefefe]"
+                className="absolute top-0 left-0 right-0 h-3 bg-white"
                 style={{
                   maskImage: 'repeating-radial-gradient(circle at 12px 12px, black 10px, transparent 10px)',
                   maskSize: '24px 12px',
@@ -51,11 +51,11 @@ const sections = [
         </div>
         <div className="flex justify-center mt-6 md:mt-8 max-w-7xl mx-auto">
           <div
-            className="relative w-full sm:max-w-[calc(50%-12px)] bg-[#fefefe] rounded-b-lg shadow-md overflow-hidden pt-3"
+            className="relative w-full sm:max-w-[calc(50%-12px)] bg-white border border-slate-200 rounded-b-lg shadow-md overflow-hidden pt-3"
             style={{ boxShadow: '0 4px 14px rgba(0,0,0,0.08)' }}
           >
             <div
-              className="absolute top-0 left-0 right-0 h-3 bg-[#fefefe]"
+              className="absolute top-0 left-0 right-0 h-3 bg-white"
               style={{
                 maskImage: 'repeating-radial-gradient(circle at 12px 12px, black 10px, transparent 10px)',
                 maskSize: '24px 12px',
@@ -83,20 +83,20 @@ const sections = [
   {
     heading: '',
     content: (
-      <div className="w-screen relative left-1/2 -translate-x-1/2 bg-white py-16 md:py-20 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
+      <div className="w-screen relative left-1/2 -translate-x-1/2 bg-slate-900 py-16 md:py-20 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
           {/* Left column - text */}
           <div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-6 flex flex-wrap items-center gap-2">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 flex flex-wrap items-center gap-2">
               <span className="w-1 h-10 sm:h-12 bg-emerald-500 rounded-full flex-shrink-0" aria-hidden />
               <span>Our Solution:</span>
-              <span className="text-emerald-600">HVAC Designed</span>
+              <span className="text-emerald-400">HVAC Designed</span>
               <span>for Dining Experiences</span>
             </h2>
-            <p className="text-slate-600 leading-relaxed mb-6">
+            <p className="text-slate-300 leading-relaxed mb-6">
               We design HVAC systems that balance kitchen exhaust, dining comfort, and ambience—without compromise.
             </p>
-            <p className="font-medium text-slate-800 mb-4">Our restaurant HVAC solutions:</p>
+            <p className="font-medium text-slate-200 mb-4">Our restaurant HVAC solutions:</p>
             <ul className="space-y-4 mb-6">
               {[
                 { icon: 'hood', text: 'Isolate kitchen heat and odours from dining areas.' },
@@ -139,11 +139,11 @@ const sections = [
                       </svg>
                     )}
                   </span>
-                  <span className="text-slate-600 leading-relaxed pt-1.5">{item.text}</span>
+                  <span className="text-slate-300 leading-relaxed pt-1.5">{item.text}</span>
                 </li>
               ))}
             </ul>
-            <p className="text-slate-700 font-medium">
+            <p className="text-slate-200 font-medium">
               Result: Comfortable guests, better dining experiences, and repeat visits.
             </p>
           </div>

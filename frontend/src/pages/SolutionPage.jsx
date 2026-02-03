@@ -176,15 +176,23 @@ function SolutionPage({ title, subtitle, intro, sections = [], heroVariant, hero
 
           {/* CTA */}
           <div className="mt-14 p-6 sm:p-8 rounded-2xl bg-slate-50 border border-slate-100 text-center">
-            <p className="text-slate-700 mb-4 font-medium">
-              Ready to design the right air for your space?
+            <p className="text-slate-700 mb-6 font-medium">
+              From homes to hospitals, every space deserves the right design.
             </p>
-            <Link
-              to="/contact"
-              className="inline-block px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold rounded-lg transition-colors"
-            >
-              Get in Touch
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+              <Link
+                to="/contact"
+                className="inline-block px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold rounded-lg transition-colors"
+              >
+                Get in Touch
+              </Link>
+              <Link
+                to="/contact"
+                className="inline-block px-6 py-3 border-2 border-slate-700 hover:bg-slate-700 hover:text-white text-slate-700 font-semibold rounded-lg transition-colors"
+              >
+                Looking for an Expert?
+              </Link>
+            </div>
           </div>
         </div>
       </section>
