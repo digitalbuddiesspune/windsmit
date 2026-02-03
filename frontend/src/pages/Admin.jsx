@@ -1,20 +1,20 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-// Normalize API URL - remove trailing slashes and ensure proper format
+// Normalize API URL - use /api in dev (Vite proxies to backend) to avoid CORS
 const getApiUrl = () => {
-  const envUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
-  // Remove trailing slashes
-  let cleanUrl = envUrl.replace(/\/+$/, '')
-  // If URL doesn't start with http, add https://
-  if (!cleanUrl.startsWith('http://') && !cleanUrl.startsWith('https://')) {
-    cleanUrl = `https://${cleanUrl}`
+  const envUrl = import.meta.env.VITE_API_URL
+  if (envUrl) {
+    let cleanUrl = envUrl.replace(/\/+$/, '')
+    if (!cleanUrl.startsWith('http://') && !cleanUrl.startsWith('https://')) cleanUrl = `https://${cleanUrl}`
+    if (!cleanUrl.includes('/api') && !cleanUrl.includes('localhost')) cleanUrl = `${cleanUrl}/api`
+    return cleanUrl
   }
-  // Ensure /api is included if not present (for production URLs)
-  if (!cleanUrl.includes('/api') && !cleanUrl.includes('localhost')) {
-    cleanUrl = `${cleanUrl}/api`
+  // Dev: same-origin /api so Vite proxy can forward to backend (no CORS)
+  if (typeof window !== 'undefined' && /localhost:5173|127\.0\.0\.1:5173/.test(window.location.origin)) {
+    return '/api'
   }
-  return cleanUrl
+  return 'http://localhost:5000/api'
 }
 
 const API_URL = getApiUrl()
