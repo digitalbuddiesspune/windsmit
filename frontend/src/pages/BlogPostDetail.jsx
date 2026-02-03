@@ -64,7 +64,7 @@ function BlogPostDetail() {
   if (loading) {
     return (
       <div className="min-h-screen bg-white">
-        <div className="h-[65vh] bg-slate-200 animate-pulse w-full"></div>
+        <div className="h-[65vh] bg-slate-200 animate-pulse sw-full"></div>
         <div className="max-w-4xl mx-auto -mt-32 relative bg-white rounded-t-[3rem] p-12 space-y-8">
            <div className="h-4 bg-slate-100 rounded w-1/4 mx-auto"></div>
            <div className="h-12 bg-slate-100 rounded w-3/4 mx-auto"></div>
@@ -152,7 +152,7 @@ function BlogPostDetail() {
             {/* Article Content */}
             <article className="flex-1 max-w-3xl">
               {post.excerpt && (
-                <p className="text-2xl md:text-3xl text-slate-800 leading-snug  mb-12 text-slate-500/90">
+                <p className="text-2xl md:text-3xl  font-semibold text-slate-800 leading-snug  mb-12 text-slate-500/90">
                   {post.excerpt}
                 </p>
               )}
