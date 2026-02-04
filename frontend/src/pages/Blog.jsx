@@ -127,7 +127,7 @@ function Blog() {
                     <img
                       src={post.image}
                       alt=""
-                      className="w-full h-full object-cover hover:scale-105 transition duration-300"
+                      className="w-full h-full object-contain hover:scale-105 transition duration-300"
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-slate-400">

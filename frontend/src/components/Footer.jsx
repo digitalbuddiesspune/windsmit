@@ -58,7 +58,7 @@ function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/services" className="text-sm text-gray-400 hover:text-[#4CAF50] transition-colors duration-300 inline-block">
+                <Link to="/service" className="text-sm text-gray-400 hover:text-[#4CAF50] transition-colors duration-300 inline-block">
                   Services
                 </Link>
               </li>
@@ -85,20 +85,16 @@ function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/services" className="text-sm text-gray-400 hover:text-[#4CAF50] transition-colors duration-300 inline-block">
+                <Link to="/hvacservice" className="text-sm text-gray-400 hover:text-[#4CAF50] transition-colors duration-300 inline-block">
                   Commercial HVAC
                 </Link>
               </li>
               <li>
-                <Link to="/services" className="text-sm text-gray-400 hover:text-[#4CAF50] transition-colors duration-300 inline-block">
+                <Link to="/bmsservice" className="text-sm text-gray-400 hover:text-[#4CAF50] transition-colors duration-300 inline-block">
                   BMS Systems
                 </Link>
               </li>
-              <li>
-                <Link to="/services" className="text-sm text-gray-400 hover:text-[#4CAF50] transition-colors duration-300 inline-block">
-                  Maintenance & AMC
-                </Link>
-              </li>
+              
               <li>
                 <Link to="/services" className="text-sm text-gray-400 hover:text-[#4CAF50] transition-colors duration-300 inline-block">
                   Retrofitting
