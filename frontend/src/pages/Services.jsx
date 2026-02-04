@@ -52,17 +52,17 @@ const Services = () => {
 
   // Images for the Hero Swiper
   const heroSwiperImages = [
-    "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769512953/Untitled_1080_x_1080_px_2_p2grtr.svg",
-    "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769512077/ductable55-removebg-preview_w3kwse.png",
-    "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769512293/Toweac2-removebg-preview__1_-removebg-preview_sao5e1.png",
+"https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200959/Untitled_1080_x_1080_px_2_y0ew8i_vij1nc.svg",
+    "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200796/ductableac2-removebg-preview_n60gdu_nbzrcr.png",
+    "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200945/Toweac2-removebg-preview__1_-removebg-preview_sao5e1_vp6yde.png",
     
-    "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769513344/cassette-ac-dealer-removebg-preview22_ecx7yj.png"
+    "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200761/casseteac2-removebg-preview_vfevao_gwl8lr.png"
   ];
 
   // Data for "Room Air Conditioning" Section
 const acProducts = [
   {
-    url: "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769512747/Untitled_1080_x_1080_px_1_msyvy1.svg",
+    url: "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200739/Air_Conditioning_wxwyl4_nahbat.png",
     title: "High Wall Split AC",
     desc: "Sleek cooling for modern homes.",
     content: [
@@ -73,7 +73,7 @@ const acProducts = [
     ]
   },
   {
-    url: "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769515524/Gemini_Generated_Image_e3nicqe3nicqe3ni-removebg-preview_1_agc0pc.png",
+    url: "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200810/Gemini_Generated_Image_e3nicqe3nicqe3ni-removebg-preview_1_agc0pc_qca1dd.png",
     title: "Cassette AC",
     desc: "Uniform 360° airflow.",
     content: [
@@ -84,7 +84,7 @@ const acProducts = [
     ]
   },
   {
-    url: "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769515422/Gemini_Generated_Image_28yeej28yeej28ye-removebg-preview_1_iirkfz.png",
+    url: "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200808/Gemini_Generated_Image_28yeej28yeej28ye-removebg-preview_1_iirkfz_nvm9nw.png",
     title: "Ductable AC",
     desc: "Centralized solutions for large spaces.",
     content: [
@@ -96,7 +96,7 @@ const acProducts = [
   },
 
   {
-    url: "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769515403/Gemini_Generated_Image_qrdcjeqrdcjeqrdc-removebg-preview_1_p6wuig.png",
+    url: "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200813/Gemini_Generated_Image_qrdcjeqrdcjeqrdc-removebg-preview_1_p6wuig_jyhzhw.png",
     title: "Tower AC",
     desc: "High-capacity floor standing units.",
     content: [
@@ -257,7 +257,7 @@ const acProducts = [
               className="relative flex justify-center"
             >
               <div className="relative  overflow-hidden">
-                <img src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1770011835/Untitled_design_3_ferdqm.png" alt="Windsmit Quality" className="w-full h-[550px] object-cover transform hover:scale-105 transition-transform duration-700" />
+                <img src="https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200996/Untitled_design_3_ferdqm_rdydia.png" alt="Windsmit Quality" className="w-full h-[550px] object-cover transform hover:scale-105 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-8">
                   <div className="text-white">
                     <p className="text-4xl font-bold">500+</p>

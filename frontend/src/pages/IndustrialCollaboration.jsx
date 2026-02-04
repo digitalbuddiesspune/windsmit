@@ -16,7 +16,7 @@ const IndustrialCollaboration = () => {
                 {/* Background Image with Overlay */}
                 <div className="absolute inset-0 z-0">
                     <img
-                        src={"https://res.cloudinary.com/dvkxgrcbv/image/upload/v1770105208/wmremove-transformed_kq0s5e.jpg"}
+                        src={"https://res.cloudinary.com/dfsvuupuv/image/upload/v1770201020/wmremove-transformed_kq0s5e_sgaght.jpg"}
                         alt="Collaboration with Architects & Designers"
                         className="w-full h-full object-cover"
                     />
@@ -236,7 +236,7 @@ At Windsmit Air, we collaborate early-so HVAC becomes part of the architecture, 
                             {/* Using a grid of smaller interaction images/placeholders to suggest portfolio */}
                             <div className="grid grid-cols-2 gap-4">
                                 <div className="space-y-4">
-                                    <img src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1770052038/photo-1600607686527-6fb886090705_uo38fe.avif" alt="Minimalist Interior" className="rounded-xl w-full h-64 object-cover opacity-80 hover:opacity-100 transition-opacity" />
+                                    <img src="https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200888/photo-1600607686527-6fb886090705_uo38fe_ionire.avif" alt="Minimalist Interior" className="rounded-xl w-full h-64 object-cover opacity-80 hover:opacity-100 transition-opacity" />
                                     <div className="bg-white/10 p-6 rounded-xl backdrop-blur-sm border border-white/10">
                                         <p className="text-3xl font-bold text-[#fff212]">50+</p>
                                         <p className="text-sm text-gray-300">Design Firms Partnered</p>
@@ -247,7 +247,7 @@ At Windsmit Air, we collaborate early-so HVAC becomes part of the architecture, 
                                         <FaDraftingCompass className="text-4xl mb-2" />
                                         <p className="font-bold">Precision Planning</p>
                                     </div>
-                                    <img src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1770052030/photo-1600210492486-724fe5c67fb0_pgkxne.avif" alt="Luxury Living Room" className="rounded-xl w-full h-64 object-cover opacity-80 hover:opacity-100 transition-opacity" />
+                                    <img src="https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200850/photo-1600210492486-724fe5c67fb0_pgkxne_uhc6bj.avif" />
                                 </div>
                             </div>
                         </div>

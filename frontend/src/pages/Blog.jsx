@@ -55,7 +55,7 @@ function Blog() {
 
       {/* HERO - full screen like other sections */}
       <section
-        className="min-h-screen w-full pt-20 pb-12 px-4 sm:px-6 relative flex flex-col items-center justify-center bg-slate-900"
+className="h-[55vh] sm:h-[50vh] md:h-[60vh] w-full pt-20 pb-12 px-4 sm:px-6 relative flex flex-col items-center justify-center bg-slate-900"
         aria-label="Blog hero"
       >
         <div className="max-w-7xl mx-auto relative z-10 text-center">
@@ -127,7 +127,7 @@ function Blog() {
                     <img
                       src={post.image}
                       alt=""
-                      className="w-full h-full object-contain hover:scale-105 transition duration-300"
+                      className="w-fulls h-full object-cover hover:scale-105 transition duration-300"
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-slate-400">
