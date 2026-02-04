@@ -12,7 +12,7 @@ const expertiseData = [
     tabLabel: "Air Conditioning",
     heading: "Precision Cooling Systems",
     description: "We engineer cooling solutions that go beyond simple temperature control. Our systems are designed for optimal humidity regulation, energy efficiency, and silent operation suitable for luxury residences and corporate offices.",
-    image: "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1770106025/AC_con_kbecl5.gif",
+    image: "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200727/AC_con_kbecl5_z9laqc.gif",
     features: ["Inverter Technology", "Multi-Zone Control", "Eco-friendly Refrigerants", "Smart WiFi Integration"]
   },
   {
@@ -20,7 +20,7 @@ const expertiseData = [
     tabLabel: "Commercial HVAC",
     heading: "Reliable Cooling for Businesses",
     description: "Large-scale air handling for commercial infrastructure. We specialize in ductwork design that maximizes airflow while minimizing noise and energy loss, ensuring your workspace meets all air quality standards.",
-    image: "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1770105694/commerciak_udjazp.webp",
+    image: "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200778/commerciak_udjazp_auwikg.webp",
     features: ["Custom AHU Design", "VRF/VRV Systems", "Fresh Air Injection", "Negative Pressure Rooms"]
   },
   {
@@ -28,7 +28,7 @@ const expertiseData = [
     tabLabel: "BMS Automation",
     heading: "Intelligent Building Control",
     description: "Future-proof your facility with our Building Management Systems. Monitor energy usage, detect faults instantly, and automate climate schedules from a central dashboard.",
-    image: "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769511211/Air_Conditioning_4_alpusn.png",
+    image: "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200738/Air_Conditioning_4_alpusn_mtqvtl.png",
     features: ["IoT Sensors", "Remote Monitoring", "Auto-Fault Detection", "Energy Analytics"]
   },
   {
@@ -36,7 +36,7 @@ const expertiseData = [
     tabLabel: "Retrofitting",
     heading: "System Modernization",
     description: "Upgrade your aging infrastructure without a complete tear-down. Our retrofitting services replace critical components to boost efficiency and extend the lifespan of your existing HVAC setup.",
-    image: "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769532246/original-f8d808f97930122a95a552cab6a30133_jnjhvk.gif",
+    image: "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200856/original-f8d808f97930122a95a552cab6a30133_jnjhvk_xrlbyz.gif",
     features: ["Compressor Upgrades", "Duct Sealing", "Digital Thermostat Install", "Filter Upgrades"]
   }
 ]
@@ -84,7 +84,7 @@ const servicesList = [
 const banners = [
   {
     id: 3,
-    image: 'https://res.cloudinary.com/dvkxgrcbv/image/upload/v1770034114/6b47c9f2-5157-4808-990c-7b56ac2cdbff.png',
+    image: 'https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200705/6b47c9f2-5157-4808-990c-7b56ac2cdbff_uwafna.png',
     alt: 'Professional HVAC Engineering'
   }
 ]
@@ -317,7 +317,7 @@ const projectsRef = useRef(null)
         {/* Mobile-only background image */}
         <div className="relative sm:hidden">
           <img
-            src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769261511/497afe2e9cac98cc156cb917956f6939_ogbgpx.jpg"
+            src="https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200716/497afe2e9cac98cc156cb917956f6939_ogbgpx_e5vciw.jpg"
             alt="HVAC System"
             className="w-full h-auto opacity-90"
           />
@@ -483,7 +483,7 @@ const projectsRef = useRef(null)
               
               {/* YOUR BULB ICON */}
               <img 
-                src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769586124/Untitled_design_teizv6.svg"
+                src="https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200998/Untitled_design_teizv6_qtlknh.svg"
                 alt="Philosophy Icon"
                 className="h-8 w-8 sm:h-10 sm:w-10 object-contain"
               />
@@ -505,7 +505,7 @@ const projectsRef = useRef(null)
     <div className="relative order-first lg:order-last">
       <div className="relative rounded-lg overflow-hidden aspect-[4/3]">
         <img
-          src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769173734/output-onlinegiftools_1_ftxcaj.gif"
+          src="https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200849/output-onlinegiftools_1_ftxcaj_do94ye.gif"
           alt="Clean Air Environment"
           className="w-full h-full object-cover transition-transform ease-out"
         />
@@ -547,7 +547,7 @@ const projectsRef = useRef(null)
         <div className="grid lg:grid-cols-2">
             <div className="h-64 sm:h-80 md:h-96 lg:h-[500px] w-full relative bg-slate-900 overflow-hidden order-2 lg:order-1">
                 <img 
-                  src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1770103895/798e4b4f-1d09-4942-a7a2-696e82b51d4b.png" 
+                  src="https://res.cloudinary.com/dfsvuupuv/image/upload/v1770201695/48eccc49-67dc-451c-aec8-263aa64ef258.png" 
                   alt="Technician at work" 
                   className="w-full h-full object-cover object-left"
                 />

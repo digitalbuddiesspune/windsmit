@@ -25,7 +25,7 @@ function About() {
   }, [])
 
   const backgroundStyle = {
-    backgroundImage: `url("https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769668233/Untitled_1920_x_1000_px_2_vny2su.svg")`,
+    backgroundImage: `url("https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200987/Untitled_1920_x_1000_px_2_vny2su_lgvkox.svg")`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
@@ -93,7 +93,7 @@ function About() {
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-20 flex justify-center">
           <div className="w-52 h-52 md:w-60 md:h-60 rounded-full overflow-hidden p-2">
             <img
-              src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769693001/fan_hlwv5q.svg"
+              src="https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200806/fan_hlwv5q_vprkyx.svg"
               alt="Windsmit Air Conditioner"
               className="w-full h-full object-contain transition-transform duration-75 ease-out"
               style={{ transform: `rotate(${scrollRotation}deg)` }}
@@ -135,7 +135,7 @@ function About() {
               <div className="w-full md:w-1/2">
                 <div className="rounded-lg overflow-hidden">
                   <img
-                    src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769159573/visio._jjozfx.png"
+                    src="https://res.cloudinary.com/dfsvuupuv/image/upload/v1770201001/visio._jjozfx_f8g20j.png"
                     alt="Vision"
                     className="w-full h-auto object-cover"
                   />
@@ -161,7 +161,7 @@ function About() {
               <div className="w-full md:w-1/2">
                 <div className="rounded-lg overflow-hidden shadow-lg">
                   <img
-                    src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769680116/kids_qnw0sq.jpg"
+                    src="https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200842/kids_qnw0sq_rs5twr.jpg"
                     alt="Mission"
                     className="w-full h-auto object-cover"
                   />
@@ -267,7 +267,7 @@ function About() {
                 <div className="relative w-full max-w-[200px] sm:max-w-xs lg:max-w-sm">
                   <div className="rounded-2xl overflow-hidden shadow-2xl">
                     <img
-                      src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1770191334/Untitled_1600_x_800_px_1080_x_1080_px_jxw42v.svg"
+                      src="https://res.cloudinary.com/dfsvuupuv/image/upload/v1770202763/Untitled_1600_x_800_px_1080_x_1080_px_gjbvcq.svg"
                       alt="Founder of Windsmit Air"
                       className="w-full h-auto object-cover"
                     />
