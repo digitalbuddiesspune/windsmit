@@ -52,9 +52,9 @@ const Services = () => {
 
   // Images for the Hero Swiper
   const heroSwiperImages = [
-"https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200959/Untitled_1080_x_1080_px_2_y0ew8i_vij1nc.svg",
-    "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200796/ductableac2-removebg-preview_n60gdu_nbzrcr.png",
-    "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200945/Toweac2-removebg-preview__1_-removebg-preview_sao5e1_vp6yde.png",
+    "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769512953/Untitled_1080_x_1080_px_2_p2grtr.svg",
+    "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769512077/ductable55-removebg-preview_w3kwse.png",
+    "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769512293/Toweac2-removebg-preview__1_-removebg-preview_sao5e1.png",
     
     "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200761/casseteac2-removebg-preview_vfevao_gwl8lr.png"
   ];

@@ -20,14 +20,14 @@ function SolutionCategoryIcon({ index, className }) {
 
 // 8 circles: scenarios/spaces for air quality solutions (hospital, hotel, mall, classroom, office, airport, industrial, transport)
 const HERO_IMAGES = [
-  'https://res.cloudinary.com/dvkxgrcbv/image/upload/v1770017719/Untitled_1600_x_900_px_1_m5pmlv.svg', // Residential Homes
-  'https://res.cloudinary.com/dvkxgrcbv/image/upload/v1770018667/Untitled_1600_x_900_px_2_pmntrc.svg', // Commercial offices
-  'https://res.cloudinary.com/dvkxgrcbv/image/upload/v1770024873/Untitled_1600_x_900_px_3_v07evg.svg',  // Educational Institutions
-  'https://res.cloudinary.com/dvkxgrcbv/image/upload/v1770027116/471c95b173.jpg_qjexgv.jpg', // hospital
-  'https://res.cloudinary.com/dvkxgrcbv/image/upload/v1770033035/Banquet_halls.jpg_bxmxly.jpg', // Banquet Halls
-  'https://res.cloudinary.com/dvkxgrcbv/image/upload/v1770041469/406df698-d8bd-4519-834f-a6ebe19ae655.png', // Showrooms
-  'https://res.cloudinary.com/dvkxgrcbv/image/upload/v1770033255/Restaurants_and_cafe.jpg_f3d51m.png', // Restaurants and Cafes
-  'https://res.cloudinary.com/dvkxgrcbv/image/upload/v1770041119/90a04740-ebb9-4f78-8e1d-20b4ddeffa9d.png'   // Industrial Warehouses
+  'https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200971/Untitled_1600_x_900_px_1_m5pmlv_ckydtr.svg', // Residential Homes
+  'https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200974/Untitled_1600_x_900_px_2_pmntrc_gapa1a.svg', // Commercial offices
+  'https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200974/Untitled_1600_x_900_px_3_v07evg_t8mc9i.svg',  // Educational Institutions
+  'https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200713/471c95b173.jpg_qjexgv_zxplj3.jpg', // hospital
+  'https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200748/Banquet_halls.jpg_bxmxly_oixcrl.jpg', // Banquet Halls
+  'https://res.cloudinary.com/dfsvuupuv/image/upload/v1770204870/406df698-d8bd-4519-834f-a6ebe19ae655_y4nmj5.png', // Showrooms
+  'https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200938/Restaurants_and_cafe.jpg_f3d51m_enwosr.png', // Restaurants and Cafes
+  'https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200709/90a04740-ebb9-4f78-8e1d-20b4ddeffa9d_moddfo.png'   // Industrial Warehouses
 ]
 
 /**
