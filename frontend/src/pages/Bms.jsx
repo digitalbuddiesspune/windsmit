@@ -13,9 +13,9 @@ const Bms = () => {
     const [selectedService, setSelectedService] = useState(null);
 
     const heroImages = [
-        "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769681867/ChatGPT_Image_Jan_29_2026_03_44_41_PM_vudkx6.png",
-        "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769681843/ChatGPT_Image_Jan_29__2026__03_40_03_PM-removebg-preview_hulp9v.png",
-        "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769681890/smartthermostats-2048px-2898-3x2-1-removebg-preview_qtcfd7.png"];
+        "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200778/ChatGPT_Image_Jan_29_2026_03_44_41_PM_vudkx6_esqzxc.png",
+        "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200773/ChatGPT_Image_Jan_29__2026__03_40_03_PM-removebg-preview_hulp9v_jmcmex.png",
+        "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200940/smartthermostats-2048px-2898-3x2-1-removebg-preview_qtcfd7_pwlb68.png"];
 
     const bmsData = {
         "title": "BMS",
@@ -23,7 +23,7 @@ const Bms = () => {
             {
                 "id": 1,
                 "name": "Supervisory Controllers",
-                "image": "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769681921/IMG_8261_c6o6hx.jpg",
+                "image": "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200833/IMG_8261_c6o6hx_ijjequ.jpg",
                 "description": "Supervisory controllers form the top layer of the Building Management System, enabling centralized monitoring and control of HVAC and allied systems.",
                 "points": [
                     "Provide centralized control and visualization of building automation systems.",
@@ -35,7 +35,7 @@ const Bms = () => {
             {
                 "id": 2,
                 "name": "DDC Controllers",
-                "image": "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769681933/IMG_8262_hvjazo.jpg",
+                "image": "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200834/IMG_8262_hvjazo_bx7iyc.jpg",
                 "description": "Direct Digital Controllers (DDC) execute real-time control of HVAC equipment using programmed logic and sensor feedback.",
                 "points": [
                     "Control AHUs, chillers, fans, dampers, and valves with high precision.",
@@ -47,7 +47,7 @@ const Bms = () => {
             {
                 "id": 3,
                 "name": "Sensors",
-                "image": "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769681951/IMG_8265_znswu5.jpg",
+                "image": "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200836/IMG_8265_znswu5_enuaqe.jpg",
                 "description": "Sensors provide real-time environmental data essential for accurate HVAC control and indoor comfort management.",
                 "points": [
                     "Measure temperature, humidity, pressure, and air quality parameters.",
@@ -59,7 +59,7 @@ const Bms = () => {
             {
                 "id": 4,
                 "name": "Thermostats",
-                "image": "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769681965/IMG_8266_v4qhb2.jpg",
+                "image": "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200838/IMG_8266_v4qhb2_jbjwyx.jpg",
                 "description": "Thermostats act as local user interfaces for temperature control within HVAC-controlled spaces.",
                 "points": [
                     "Allow occupants to set and adjust desired temperature levels.",
@@ -71,7 +71,7 @@ const Bms = () => {
             {
                 "id": 5,
                 "name": "Valves",
-                "image": "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769681985/IMG_8267_tgcbf9.jpg",
+                "image": "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200841/IMG_8267_tgcbf9_fgqqiv.jpg",
                 "description": "HVAC valves regulate chilled and hot water flow to maintain precise thermal control in buildings.",
                 "points": [
                     "Control water flow to coils in AHUs, FCUs, and terminal units.",
@@ -83,7 +83,7 @@ const Bms = () => {
             {
                 "id": 6,
                 "name": "Panels",
-                "image": "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769681998/IMG_8268_t85a4v.jpg",
+                "image": "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200842/IMG_8268_t85a4v_wkgwiw.jpg",
                 "description": "Control panels house and organize BMS and HVAC control components for safe and reliable system operation.",
                 "points": [
                     "Contain controllers, power supplies, relays, and communication modules.",
@@ -254,7 +254,7 @@ const Bms = () => {
                         >
                             <div className="relative overflow-hidden ">
                                 <img
-                                    src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1770011794/Untitled_1080_x_1080_px_2_ofbif9.png"
+                                    src="https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200955/Untitled_1080_x_1080_px_2_ofbif9_jtw6ay.png"
                                     alt="Windsmit BMS Architecture"
                                     className="w-full h-[600px] object-cover transform hover:scale-105 transition-transform duration-700"
                                 />

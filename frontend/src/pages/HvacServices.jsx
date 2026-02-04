@@ -16,11 +16,11 @@ const HvacServices = () => {
   const [selectedService, setSelectedService] = useState(null);
 
   const heroImages = [
-    "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769606429/IMG_8217_1_alotmv.png",
-    "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769606405/IMG_8214_hry6ni.png",
-    "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769606443/IMG_8220_ahyxjl.png",
-    "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769680750/IMG_8253-removebg-preview_wlf1cz.png",
-    "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769607191/IMG_8221_1_krylvf.png",
+    "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200823/IMG_8217_1_alotmv_yla17t.png",
+    "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200819/IMG_8214_hry6ni_fwz5hx.png",
+    "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200824/IMG_8220_ahyxjl_n8m0kp.png",
+    "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200828/IMG_8253-removebg-preview_wlf1cz_vssc5q.png",
+    "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200824/IMG_8221_1_krylvf_jzm2ip.png",
   ];
 
   const parasection = [
@@ -34,7 +34,7 @@ const HvacServices = () => {
         "- Installed in rooftops or mechanical rooms as modular systems",
         "- Offered with design, installation, commissioning, and maintenance by Windsmit Air"
       ],
-      "image": "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769673623/MainAirhandling_unit_dynaae.webp"
+      "image": "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200846/MainAirhandling_unit_dynaae_lry3jo.webp"
     },
     {
       "id": 2,
@@ -46,7 +46,7 @@ const HvacServices = () => {
         "- Ideal for zoned air distribution in commercial and residential spaces",
         "- Integrated by Windsmit Air into optimized HVAC layouts"
       ],
-      "image": "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769673778/terminalmain_unit_md6ozn.jpg"
+      "image": "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200944/terminalmain_unit_md6ozn_p5ylc2.jpg"
     },
     {
       "id": 3,
@@ -58,7 +58,7 @@ const HvacServices = () => {
         "- Best for: Offices & IT spaces, Hotels & premium residences, Retail & mixed-use buildings",
         "- Designed and installed by Windsmit Air for optimal performance"
       ],
-      "image": "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769673815/vrf_system_kx5jkn.png"
+      "image": "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770201002/vrf_system_kx5jkn_s86pg7.png"
     },
     {
       "id": 4,
@@ -71,7 +71,7 @@ const HvacServices = () => {
         "- Best for: Factories & warehouses, Auditoriums & halls, Commercial & industrial sheds",
         "- Integrated with effective ducting and controls by Windsmit Air"
       ],
-      "image": "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769673829/evoprative_cooling_sysetem_dxu2af.jpg"
+      "image": "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200801/evoprative_cooling_sysetem_dxu2af_gie1gm.jpg"
     },
     {
       "id": 5,
@@ -83,7 +83,7 @@ const HvacServices = () => {
         "- Enable efficient HVAC operation",
         "- Provided by Windsmit Air for tailored airflow solutions"
       ],
-      "image": "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769673851/damper_difuser_rywvjs.jpg"
+      "image": "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200785/damper_difuser_rywvjs_cgudpl.jpg"
     },
     {
       "id": 6,
@@ -95,7 +95,7 @@ const HvacServices = () => {
         "- Improve indoor air quality and HVAC efficiency",
         "- Includes: Staircase & lobby pressurization, Toilet & kitchen exhaust systems, Basement ventilation"
       ],
-      "image": "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769673866/Exhaust-Fans_pypbdl.jpg"
+      "image": "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200803/Exhaust-Fans_pypbdl_wenvu6.jpg"
     },
     {
       "id": 7,
@@ -107,7 +107,7 @@ const HvacServices = () => {
         "- Reduce energy loss from open doors",
         "- Offered by Windsmit Air for commercial and industrial entrances"
       ],
-      "image": "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769673878/Air_Curtain_si1sqq.webp"
+      "image": "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200741/Air_Curtain_si1sqq_n69z85.webp"
     }
   ];
 
@@ -255,7 +255,7 @@ const HvacServices = () => {
             >
               <div className="relative overflow-hidden ">
                 <img
-                  src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1770011777/Untitled_1080_x_1080_px_1_emssrc.png"
+                  src="https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200954/Untitled_1080_x_1080_px_1_emssrc_wjzdyw.png"
                   alt="Windsmit Air Engineering"
                   className="w-full h-[550px] object-cover transform hover:scale-105 transition-transform duration-700"
                 />
