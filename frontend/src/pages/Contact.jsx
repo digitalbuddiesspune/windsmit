@@ -45,7 +45,7 @@ const handleSubmit = async (e) => {
 
   try {
 
-    const response = await fetch("https://formspree.io/f/mojwnnbb", {
+    const response = await fetch("https://formspree.io/f/xrelnodn", {
 
       method: "POST",
 
