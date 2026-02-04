@@ -13,9 +13,9 @@ const Bms = () => {
     const [selectedService, setSelectedService] = useState(null);
 
     const heroImages = [
-        "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200778/ChatGPT_Image_Jan_29_2026_03_44_41_PM_vudkx6_esqzxc.png",
-        "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200773/ChatGPT_Image_Jan_29__2026__03_40_03_PM-removebg-preview_hulp9v_jmcmex.png",
-        "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200940/smartthermostats-2048px-2898-3x2-1-removebg-preview_qtcfd7_pwlb68.png"];
+        "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769681867/ChatGPT_Image_Jan_29_2026_03_44_41_PM_vudkx6.png",
+        "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769681843/ChatGPT_Image_Jan_29__2026__03_40_03_PM-removebg-preview_hulp9v.png",
+        "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769681890/smartthermostats-2048px-2898-3x2-1-removebg-preview_qtcfd7.png"];
 
     const bmsData = {
         "title": "BMS",

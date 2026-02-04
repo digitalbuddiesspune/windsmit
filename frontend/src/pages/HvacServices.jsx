@@ -16,11 +16,11 @@ const HvacServices = () => {
   const [selectedService, setSelectedService] = useState(null);
 
   const heroImages = [
-    "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200823/IMG_8217_1_alotmv_yla17t.png",
-    "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200819/IMG_8214_hry6ni_fwz5hx.png",
-    "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200824/IMG_8220_ahyxjl_n8m0kp.png",
-    "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200828/IMG_8253-removebg-preview_wlf1cz_vssc5q.png",
-    "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200824/IMG_8221_1_krylvf_jzm2ip.png",
+    "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769606429/IMG_8217_1_alotmv.png",
+    "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769606405/IMG_8214_hry6ni.png",
+    "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769606443/IMG_8220_ahyxjl.png",
+    "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769680750/IMG_8253-removebg-preview_wlf1cz.png",
+    "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769607191/IMG_8221_1_krylvf.png",
   ];
 
   const parasection = [
