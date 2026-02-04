@@ -103,7 +103,7 @@ function About() {
       </div>
 
       {/* ================= NORMAL WIDTH CONTENT ================= */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 pt-14 md:pt-16">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 pt-24 md:pt-28 lg:pt-32">
         <div className="max-w-4xl mx-auto mb-12 md:mb-16">
           <div className="bg-slate-50 border-l-4 border-emerald-500 p-5 md:p-6 rounded-r-lg">
             <p className="text-base md:text-lg text-slate-800 font-semibold italic text-center">
