@@ -221,8 +221,10 @@ function Home() {
   const [activeStory, setActiveStory] = useState(null)
   const [showStories, setShowStories] = useState(true)
   const [projectCount, setProjectCount] = useState(0)
-const [hasAnimatedProjects, setHasAnimatedProjects] = useState(false)
-const projectsRef = useRef(null)
+  const [hasAnimatedProjects, setHasAnimatedProjects] = useState(false)
+  const [videos, setVideos] = useState([])
+  const [fullscreenVideo, setFullscreenVideo] = useState(null)
+  const projectsRef = useRef(null)
 
   // Auto-slide logic
   useEffect(() => {
@@ -297,6 +299,39 @@ const projectsRef = useRef(null)
     }
     fetchStories()
   }, [])
+
+  // Fetch videos for "Our Work in Action" section
+  useEffect(() => {
+    const fetchVideos = async () => {
+      try {
+        const API_URL = getApiUrl()
+        const response = await fetch(`${API_URL}/stories?active=true`)
+        if (!response.ok) return
+        const data = await response.json()
+        setVideos(data)
+      } catch {
+        // fail silently on homepage
+      }
+    }
+    fetchVideos()
+  }, [])
+
+  // Close fullscreen video on ESC key
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === 'Escape' && fullscreenVideo) {
+        setFullscreenVideo(null)
+      }
+    }
+    if (fullscreenVideo) {
+      document.addEventListener('keydown', handleEsc)
+      document.body.style.overflow = 'hidden'
+    }
+    return () => {
+      document.removeEventListener('keydown', handleEsc)
+      document.body.style.overflow = 'unset'
+    }
+  }, [fullscreenVideo])
 
   // Accordion toggle logic
   const toggleService = (serviceId) => {
@@ -406,36 +441,115 @@ const projectsRef = useRef(null)
         </div>
       </section>
 
-      {/* --- STORIES SECTION --- */}
- {/* --- STORIES SECTION --- */}
-<section className="px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 py-16 sm:py-20 bg-slate-50">
-  <div className="max-w-7xl mx-auto text-center">
-    {/* Section Header */}
-    <div className="mb-8">
-      <span className="inline-block px-2.5 py-0.5 bg-emerald-50 text-emerald-600 font-semibold uppercase tracking-widest text-xs rounded-full mb-1.5">
-        Project Highlights
-      </span>
-       <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 leading-tight"> Our Work in Action</h2>
-      <p className="text-2xl sm:text-sm text-slate-800 max-w-2xl mx-auto">
-        Explore our recent installations and project showcases
-      </p>
-    </div>
+      {/* --- OUR WORK IN ACTION SECTION --- */}
+      <section className="px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 py-16 sm:py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto text-center">
+          {/* Section Header */}
+          <div className="mb-8">
+            <span className="inline-block px-2.5 py-0.5 bg-emerald-50 text-emerald-600 font-semibold uppercase tracking-widest text-xs rounded-full mb-1.5">
+              Project Highlights
+            </span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 leading-tight">Our Work in Action</h2>
+            <p className="text-sm sm:text-base text-slate-800 max-w-2xl mx-auto mt-2">
+              Explore our recent installations and project showcases
+            </p>
+          </div>
 
-    {/* Centered YouTube Video */}
-    <div className="flex justify-center">
-      <div className="w-full sm:w-3/4 md:w-2/3 lg:w-1/2 aspect-video rounded-xl overflow-hidden shadow-lg">
-        <iframe
-          src="https://www.youtube.com/embed/r7kaIDiYqeY?si=zCJDFwl8bRk-LSOX"
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-          className="w-full h-full rounded-xl"
-        ></iframe>
-      </div>
-    </div>
-  </div>
-</section>
+          {/* Videos Display */}
+          {videos.length === 0 ? (
+            <div className="text-slate-500 py-12">No videos available at the moment.</div>
+          ) : videos.length === 1 ? (
+            // Single video - centered
+            <div className="flex justify-center">
+              <div className="w-full sm:w-3/4 md:w-2/3 lg:w-1/2 aspect-video rounded-xl overflow-hidden shadow-lg relative group cursor-pointer" onClick={() => setFullscreenVideo(videos[0])}>
+                <video
+                  src={videos[0].videoUrl}
+                  className="w-full h-full object-cover"
+                  muted
+                  loop
+                />
+                <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
+                  <div className="w-20 h-20 rounded-full bg-white/90 flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
+                    <svg className="w-14 h-14 text-emerald-600 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : videos.length === 2 ? (
+            // Two videos - equally spaced
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {videos.map((video, index) => (
+                <div key={video._id || index} className="aspect-video rounded-xl overflow-hidden shadow-lg relative group cursor-pointer" onClick={() => setFullscreenVideo(video)}>
+                  <video
+                    src={video.videoUrl}
+                    className="w-full h-full object-cover"
+                    muted
+                    loop
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
+                    <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
+                      <svg className="w-8 h-8 text-emerald-600 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            // Three or more videos - horizontal scroll
+            <div className="overflow-x-auto pb-4 -mx-4 sm:-mx-6 md:mx-0 px-4 sm:px-6 md:px-0">
+              <div className="flex gap-6 min-w-max md:min-w-0 md:grid md:grid-cols-3 lg:grid-cols-4">
+                {videos.map((video, index) => (
+                  <div key={video._id || index} className="flex-shrink-0 w-[300px] sm:w-[400px] md:w-full aspect-video rounded-xl overflow-hidden shadow-lg relative group cursor-pointer" onClick={() => setFullscreenVideo(video)}>
+                    <video
+                      src={video.videoUrl}
+                      className="w-full h-full object-cover"
+                      muted
+                      loop
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
+                      <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
+                        <svg className="w-8 h-8 text-emerald-600 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z"/>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Fullscreen Video Modal */}
+      {fullscreenVideo && (
+        <div 
+          className="fixed inset-0 z-[99999] bg-black/95 flex items-center justify-center p-4"
+          onClick={() => setFullscreenVideo(null)}
+        >
+          <div className="relative w-full max-w-6xl aspect-video" onClick={(e) => e.stopPropagation()}>
+            <button
+              onClick={() => setFullscreenVideo(null)}
+              className="absolute -top-12 right-0 text-white hover:text-emerald-400 transition-colors z-10"
+              aria-label="Close video"
+            >
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <video
+              src={fullscreenVideo.videoUrl}
+              className="w-full h-full rounded-lg"
+              controls
+              autoPlay
+            />
+          </div>
+        </div>
+      )}
 
 
 
