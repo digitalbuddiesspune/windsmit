@@ -262,12 +262,12 @@ function About() {
                 </div>
               </div>
 
-              {/* Owner Image - Right Side */}
-              <div className="w-full lg:w-1/2">
-                <div className="relative">
+              {/* Owner Image - Right Side (sized to balance with text) */}
+              <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
+                <div className="relative w-full max-w-[200px] sm:max-w-xs lg:max-w-sm">
                   <div className="rounded-2xl overflow-hidden shadow-2xl">
                     <img
-                      src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769680116/kids_qnw0sq.jpg"
+                      src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1770191334/Untitled_1600_x_800_px_1080_x_1080_px_jxw42v.svg"
                       alt="Founder of Windsmit Air"
                       className="w-full h-auto object-cover"
                     />
