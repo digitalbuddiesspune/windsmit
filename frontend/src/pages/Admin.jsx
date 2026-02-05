@@ -1,20 +1,13 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-// Normalize API URL - use /api in dev (Vite proxies to backend) to avoid CORS
+// Normalize API URL - use env var or fallback to Render backend
 const getApiUrl = () => {
-  const envUrl = import.meta.env.VITE_API_URL
-  if (envUrl) {
-    let cleanUrl = envUrl.replace(/\/+$/, '')
-    if (!cleanUrl.startsWith('http://') && !cleanUrl.startsWith('https://')) cleanUrl = `https://${cleanUrl}`
-    if (!cleanUrl.includes('/api') && !cleanUrl.includes('localhost')) cleanUrl = `${cleanUrl}/api`
-    return cleanUrl
-  }
-  // Dev: same-origin /api so Vite proxy can forward to backend (no CORS)
-  if (typeof window !== 'undefined' && /localhost:5173|127\.0\.0\.1:5173/.test(window.location.origin)) {
-    return '/api'
-  }
-  return 'http://localhost:5000/api'
+  const envUrl = import.meta.env.VITE_API_URL || 'https://windsmit-backend.onrender.com/api'
+  let cleanUrl = envUrl.replace(/\/+$/, '')
+  if (!cleanUrl.startsWith('http://') && !cleanUrl.startsWith('https://')) cleanUrl = `https://${cleanUrl}`
+  if (!cleanUrl.includes('/api')) cleanUrl = `${cleanUrl}/api`
+  return cleanUrl
 }
 
 const API_URL = getApiUrl()
@@ -177,7 +170,7 @@ function Admin() {
       }
     } catch (error) {
       console.error('Login error:', error)
-      alert(`Error connecting to server.\n\nMake sure:\n1. Backend server is running on http://localhost:5000\n2. You have created an admin account (run: npm run create-admin in backend folder)\n\nError: ${error.message}`)
+      alert(`Error connecting to server.\n\nMake sure the backend is running and accessible.\n\nError: ${error.message}`)
     }
   }
 
