@@ -91,12 +91,12 @@ const banners = [
 
 // Helper to normalize API URL (same pattern as Blog/Admin)
 const getApiUrl = () => {
-  const envUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
+  const envUrl = import.meta.env.VITE_API_URL || 'https://windsmit-backend.onrender.com/api'
   let cleanUrl = envUrl.replace(/\/+$/, '')
   if (!cleanUrl.startsWith('http://') && !cleanUrl.startsWith('https://')) {
     cleanUrl = `https://${cleanUrl}`
   }
-  if (!cleanUrl.includes('/api') && !cleanUrl.includes('localhost')) {
+  if (!cleanUrl.includes('/api')) {
     cleanUrl = `${cleanUrl}/api`
   }
   return cleanUrl
