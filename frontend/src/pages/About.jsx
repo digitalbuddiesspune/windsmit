@@ -82,11 +82,8 @@ function About() {
               <div className="h-1 w-24 bg-amber-400 rounded-full"></div>
             </div>
             <p className="text-base md:text-lg text-slate-200 leading-relaxed">
-              Windsmit Air is an emerging group in the city starting in 2022. We help maintain good indoor air quality through adequate ventilation with filtration and provide thermal comfort.
-            </p>
-            <p className="text-base md:text-lg text-slate-200 leading-relaxed">
-              We offer HVAC equipment design, installation, commissioning, and maintenance to control indoor climate for residential structures—single-family homes, apartments, hotels, marriage halls—and medium to large industrial and office buildings including skyscrapers, hospitals, and malls. We are committed to modernizing India's infrastructure with greener, intelligent buildings and full building automation for energy savings and longer equipment life.
-            </p>
+            At Windsmit Air, we believe HVAC is not just about cooling or heating spaces—it is about engineering healthier environments where people can live, work, and thrive. Since our inception in 2022, we have combined technical precision with forward-thinking design to deliver systems that are energy efficient, intelligent, and future-ready. Every project we undertake reflects our deep commitment to innovation, sustainability, and long-term performance. We are unwavering in our dedication to achieving our mission and vision by continuously upgrading our expertise, adopting advanced technologies, and implementing smart automation solutions that optimize energy consumption and enhance equipment life.
+            </p> 
           </div>
         </div>
 
@@ -129,7 +126,7 @@ function About() {
                   <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">Vision</h2>
                 </div>
                 <p className="text-base md:text-lg text-slate-600 leading-relaxed">
-                  Our two-fold vision is to be the premier provider of innovative, cost-effective, sustainable HVAC solutions and services in every corner of the nation, while educating people on the critical importance of indoor air quality for health and wellness. We also aim to provide a stable, supportive platform to empower talented individuals who are passionate about creating positive change in their communities and society.
+                To become India’s most trusted and progressive HVAC solutions provider, while building a powerful platform that empowers passionate professionals to deliver innovative, sustainable climate solutions and create lasting impact in society.
                 </p>
               </div>
               <div className="w-full md:w-1/2">
@@ -155,7 +152,7 @@ function About() {
                   <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">Mission</h2>
                 </div>
                 <p className="text-base md:text-lg text-slate-600 leading-relaxed">
-                  At Windsmit Air, our purpose is to create a comfortable yet sustainable future without compromising occupant experience. We provide high-quality HVAC solutions that prioritize preservation of natural resources, minimize environmental impact, and promote energy efficiency. Through sustainable practices, we aim to build a better future for generations to come.
+                At Windsmit Air, our mission is to deliver technically advanced and performance-driven HVAC solutions that create comfortable and efficient indoor environments. Through precision design, quality execution, and lifecycle-focused service, we are committed to optimizing system performance, enhancing occupant experience, and upholding responsible engineering practices that support long-term infrastructure excellence.
                 </p>
               </div>
               <div className="w-full md:w-1/2">
