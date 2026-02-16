@@ -12,7 +12,7 @@ const expertiseData = [
     tabLabel: "Air Conditioning",
     heading: "Precision Cooling Systems",
     description: "We engineer cooling solutions that go beyond simple temperature control. Our systems are designed for optimal humidity regulation, energy efficiency, and silent operation suitable for luxury residences and corporate offices.",
-    image: "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200727/AC_con_kbecl5_z9laqc.gif",
+    video: "https://res.cloudinary.com/dfsvuupuv/video/upload/v1771227090/our_expertise-Air_conditioning_xugrmu.mp4",
     features: ["Inverter Technology", "Multi-Zone Control", "Eco-friendly Refrigerants", "Smart WiFi Integration"]
   },
   {
@@ -20,7 +20,7 @@ const expertiseData = [
     tabLabel: "Commercial HVAC",
     heading: "Reliable Cooling for Businesses",
     description: "Large-scale air handling for commercial infrastructure. We specialize in ductwork design that maximizes airflow while minimizing noise and energy loss, ensuring your workspace meets all air quality standards.",
-    image: "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200778/commerciak_udjazp_auwikg.webp",
+    image: "https://res.cloudinary.com/dfsvuupuv/image/upload/v1771227651/PTX_360_tvo2ds.gif",
     features: ["Custom AHU Design", "VRF/VRV Systems", "Fresh Air Injection", "Negative Pressure Rooms"]
   },
   {
@@ -84,7 +84,7 @@ const servicesList = [
 const banners = [
   {
     id: 3,
-    image: 'https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200705/6b47c9f2-5157-4808-990c-7b56ac2cdbff_uwafna.png',
+    image: 'https://res.cloudinary.com/dfsvuupuv/image/upload/v1771226474/home_page-instead_technecian_kegfx7.png',
     alt: 'Professional HVAC Engineering'
   }
 ]
@@ -112,7 +112,7 @@ function OurExpertise() {
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="mb-6 sm:mb-8 md:mb-10 text-center sm:text-left md:text-center max-w-3xl mx-auto">
-          <span className="text-emerald-500 font-semibold uppercase tracking-widest text-xs sm:text-sm mb-1.5 block">
+          <span className="font-semibold uppercase tracking-widest text-xs sm:text-sm mb-1.5 block" style={{ color: '#00b050' }}>
             Technical Mastery
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4">
@@ -135,7 +135,7 @@ function OurExpertise() {
                 onClick={() => setActiveTab(index)}
                 className={`flex-shrink-0 min-w-0 text-left px-4 sm:px-6 py-3 sm:py-4 rounded-lg transition-all duration-300 border-l-4 group whitespace-nowrap ${
                   activeTab === index
-                    ? "bg-slate-800 border-emerald-500 shadow-lg shadow-black/20"
+                    ? "bg-slate-800 border-[#00b050] shadow-lg shadow-black/20"
                     : "bg-transparent border-slate-700 hover:bg-slate-800/50 hover:border-slate-500"
                 }`}
               >
@@ -145,7 +145,7 @@ function OurExpertise() {
                   {item.tabLabel}
                 </h3>
                 {activeTab === index && (
-                  <p className="text-emerald-400 text-xs font-medium uppercase tracking-wider animate-fadeIn">
+                  <p className="text-xs font-medium uppercase tracking-wider animate-fadeIn" style={{ color: '#00b050' }}>
                     Currently Viewing
                   </p>
                 )}
@@ -162,14 +162,26 @@ function OurExpertise() {
                 key={item.id}
                 className="w-full h-full bg-slate-800 rounded-2xl overflow-hidden shadow-2xl border border-slate-700 flex flex-col md:flex-row animate-fadeIn"
               >
-                 {/* Image Side */}
+                 {/* Image / Video Side */}
                  <div className="md:w-1/2 relative h-64 sm:h-80 md:h-auto">
-                   <img 
-                     src={item.image} 
-                     alt={item.heading}
-                     className="absolute inset-0 w-full h-full object-cover"
-                   />
-                   <div className="absolute inset-0 bg-emerald-900/20 mix-blend-multiply"></div>
+                   {item.video ? (
+                     <video
+                       src={item.video}
+                       autoPlay
+                       muted
+                       loop
+                       playsInline
+                       className="absolute inset-0 w-full h-full object-cover"
+                       aria-label={item.heading}
+                     />
+                   ) : (
+                     <img 
+                       src={item.image} 
+                       alt={item.heading}
+                       className="absolute inset-0 w-full h-full object-cover"
+                     />
+                   )}
+                   <div className="absolute inset-0 mix-blend-multiply" style={{ backgroundColor: 'rgba(0,176,80,0.2)' }}></div>
                  </div>
 
                  {/* Content Side */}
@@ -185,7 +197,7 @@ function OurExpertise() {
                      <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Key Features</h4>
                      {item.features.map((feature, i) => (
                        <div key={i} className="flex items-center text-slate-200 text-xs sm:text-sm">
-                         <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mr-3 flex-shrink-0"></div>
+                         <div className="w-1.5 h-1.5 rounded-full mr-3 flex-shrink-0" style={{ backgroundColor: '#00b050' }}></div>
                          {feature}
                        </div>
                      ))}
@@ -446,7 +458,7 @@ function Home() {
         <div className="max-w-7xl mx-auto text-center">
           {/* Section Header */}
           <div className="mb-8">
-            <span className="inline-block px-2.5 py-0.5 bg-emerald-50 text-emerald-600 font-semibold uppercase tracking-widest text-xs rounded-full mb-1.5">
+            <span className="inline-block px-2.5 py-0.5 font-semibold uppercase tracking-widest text-xs rounded-full mb-1.5" style={{ backgroundColor: 'rgba(0,176,80,0.15)', color: '#00b050' }}>
               Project Highlights
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 leading-tight">Our Work in Action</h2>
@@ -470,7 +482,7 @@ function Home() {
                 />
                 <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
                   <div className="w-20 h-20 rounded-full bg-white/90 flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
-                    <svg className="w-14 h-14 text-emerald-600 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-14 h-14 ml-1" style={{ color: '#00b050' }} fill="currentColor" viewBox="0 0 24 24">
                       <path d="M8 5v14l11-7z"/>
                     </svg>
                   </div>
@@ -490,7 +502,7 @@ function Home() {
                   />
                   <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
                     <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
-                      <svg className="w-8 h-8 text-emerald-600 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-8 h-8 ml-1" style={{ color: '#00b050' }} fill="currentColor" viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z"/>
                       </svg>
                     </div>
@@ -512,7 +524,7 @@ function Home() {
                     />
                     <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
                       <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
-                        <svg className="w-8 h-8 text-emerald-600 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-8 h-8 ml-1" style={{ color: '#00b050' }} fill="currentColor" viewBox="0 0 24 24">
                           <path d="M8 5v14l11-7z"/>
                         </svg>
                       </div>
@@ -534,7 +546,7 @@ function Home() {
           <div className="relative w-full max-w-6xl aspect-video" onClick={(e) => e.stopPropagation()}>
             <button
               onClick={() => setFullscreenVideo(null)}
-              className="absolute -top-12 right-0 text-white hover:text-emerald-400 transition-colors z-10"
+              className="absolute -top-12 right-0 text-white hover:text-[#00b050] transition-colors z-10"
               aria-label="Close video"
             >
               <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -560,8 +572,8 @@ function Home() {
     <div className="space-y-5 sm:space-y-6 md:space-y-8">
       <div>
         <div className="flex items-center gap-3 mb-2 sm:mb-3">
-          <span className="h-px w-8 sm:w-12 bg-emerald-500"></span>
-          <span className="text-emerald-600 font-semibold uppercase tracking-widest text-xs sm:text-sm">Our Identity</span>
+          <span className="h-px w-8 sm:w-12" style={{ backgroundColor: '#00b050' }}></span>
+          <span className="font-semibold uppercase tracking-widest text-xs sm:text-sm" style={{ color: '#00b050' }}>Our Identity</span>
         </div>
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 leading-tight">
           Breathing Life into <br></br> <span style={{ color: '#00b050' }}>Every Space</span>
@@ -572,7 +584,7 @@ function Home() {
         {/* The Name */}
         <div className="flex gap-3 sm:gap-4">
           <div className="flex-shrink-0 mt-0.5">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: 'rgba(0,176,80,0.15)', color: '#00b050' }}>
               {/* USER ICON */}
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
@@ -626,7 +638,7 @@ function Home() {
       </div>
 
       {/* Decorative Elements */}
-      <div className="hidden sm:block absolute -bottom-4 sm:-bottom-6 -left-4 sm:-left-6 w-16 h-16 sm:w-24 sm:h-24 bg-emerald-50 rounded-full -z-10"></div>
+      <div className="hidden sm:block absolute -bottom-4 sm:-bottom-6 -left-4 sm:-left-6 w-16 h-16 sm:w-24 sm:h-24 rounded-full -z-10" style={{ backgroundColor: 'rgba(0,176,80,0.1)' }}></div>
       <div className="hidden sm:block absolute -top-4 sm:-top-6 -right-4 sm:-right-6 w-20 h-20 sm:w-32 sm:h-32 bg-yellow-50 rounded-full -z-10"></div>
     </div>
   </div>
@@ -637,7 +649,7 @@ function Home() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 text-center divide-y sm:divide-y-0 sm:divide-x divide-slate-800">
            <div className="p-4 sm:p-5">
              <span className="block text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-1">2022</span>
-             <span className="text-emerald-400 text-xs sm:text-sm font-medium uppercase tracking-wider">Year Established</span>
+             <span className="text-xs sm:text-sm font-medium uppercase tracking-wider" style={{ color: '#00b050' }}>Year Established</span>
            </div>
            <div className="p-4 sm:p-5">
              <span
@@ -647,11 +659,11 @@ function Home() {
   {projectCount}
   <span className="ml-1">+</span>
 </span>
-             <span className="text-emerald-400 text-xs sm:text-sm font-medium uppercase tracking-wider">Successful Projects</span>
+             <span className="text-xs sm:text-sm font-medium uppercase tracking-wider" style={{ color: '#00b050' }}>Successful Projects</span>
            </div>
            <div className="p-4 sm:p-5">
              <span className="block text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-1">24/7</span>
-             <span className="text-emerald-400 text-xs sm:text-sm font-medium uppercase tracking-wider">Client Support</span>
+             <span className="text-xs sm:text-sm font-medium uppercase tracking-wider" style={{ color: '#00b050' }}>Client Support</span>
            </div>
         </div>
       </section>
@@ -660,16 +672,20 @@ function Home() {
       <section className="relative bg-white py-0 mb-0">
         <div className="grid lg:grid-cols-2">
             <div className="h-64 sm:h-80 md:h-96 lg:h-[500px] w-full relative bg-slate-900 overflow-hidden order-2 lg:order-1">
-                <img 
-                  src="https://res.cloudinary.com/dfsvuupuv/image/upload/v1770201695/48eccc49-67dc-451c-aec8-263aa64ef258.png" 
-                  alt="Technician at work" 
+                <video
+                  src="https://res.cloudinary.com/dfsvuupuv/video/upload/v1771226763/Ready_to_upgrade_your_air_conditioining_jlqvwy.mp4"
                   className="w-full h-full object-cover object-left"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  aria-label="Ready to upgrade your air conditioning"
                 />
             </div>
             <div className="flex items-center bg-slate-100 px-4 sm:px-6 md:px-12 lg:px-16 py-10 sm:py-12 md:py-16 lg:py-20 order-1 lg:order-2">
                 <div className="max-w-lg mx-auto lg:mx-0">
-                    <span className="text-emerald-600 font-semibold uppercase tracking-wider text-xs sm:text-sm mb-1.5 block">Get in touch</span>
-                    <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 mb-3 sm:mb-4">Ready to upgrade your air quality?</h2>
+                    <span className="font-semibold uppercase tracking-wider text-xs sm:text-sm mb-1.5 block" style={{ color: '#00b050' }}>Get in touch</span>
+                    <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 mb-3 sm:mb-4">Ready to upgrade your air conditioning?</h2>
                     <p className="text-sm sm:text-base text-slate-600 mb-4 sm:mb-6 leading-relaxed">
                         Contact us today for a consultation. Whether it's a new installation or maintaining an existing system, our experts are ready to help.
                     </p>

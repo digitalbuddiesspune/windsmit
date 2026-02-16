@@ -51,7 +51,7 @@ At Windsmit Air, we collaborate early-so HVAC becomes part of the architecture, 
 
                         <div className="flex flex-col sm:flex-row gap-5">
 
-                            <a href="#partner-with-us" className="flex items-center justify-center gap-3 px-8 py-4  bg-gradient-to-r from-green-400 to-emerald-300 text-white font-bold rounded-full hover:bg-yellow-400 transition-all shadow-lg hover:shadow-yellow-500/30">
+                            <a href="#partner-with-us" className="flex items-center justify-center gap-3 px-8 py-4  bg-gradient-to-r from-[#00b050] to-[#00b050] text-white font-bold rounded-full hover:bg-yellow-400 transition-all shadow-lg hover:shadow-yellow-500/30">
 
                                 Collaborate With Us <FaArrowRight />
 
@@ -145,7 +145,7 @@ At Windsmit Air, we collaborate early-so HVAC becomes part of the architecture, 
 
         >
 
-          <div className="w-12 h-12 bg-gradient-to-r from-green-400 to-emerald-300 text-black rounded-xl flex items-center justify-center text-3xl mb-6 group-hover:bg-[#fff212] group-hover:text-black transition-colors">
+          <div className="w-12 h-12 bg-gradient-to-r from-[#00b050] to-[#00b050] text-black rounded-xl flex items-center justify-center text-3xl mb-6 group-hover:bg-[#fff212] group-hover:text-black transition-colors">
 
             <item.icon />
 
@@ -183,7 +183,7 @@ At Windsmit Air, we collaborate early-so HVAC becomes part of the architecture, 
 
                         <div className="w-full md:w-1/2">
                             <h4 className="text-[#fff212] font-bold tracking-widest uppercase mb-4">Our Promise</h4>
- <h2 className="text-3xl md:text-5xl font-bold mb-8">Why Architects Choose Windsmit Air</h2>                            <div className="space-y-6">
+ <h2 className="text-3xl md:text-5xl font-bold mb-8">Why Architects Choose Windsmit <span className="text-[#00b050]">  Air </span></h2>                            <div className="space-y-6">
                                  {[
 
   {
@@ -283,7 +283,7 @@ At Windsmit Air, we collaborate early-so HVAC becomes part of the architecture, 
 
       href="/contact"
 
-      className="inline-flex items-center justify-center gap-3 px-10 py-4 bg-gradient-to-r from-green-600 to-green-600 text-white font-bold rounded-full hover:scale-105 transition-all shadow-xl"
+      className="inline-flex items-center justify-center gap-3 px-10 py-4 bg-gradient-to-r from-[#00b050] to-[#00b050] text-white font-bold rounded-full hover:scale-105 transition-all shadow-xl"
 
     >
 

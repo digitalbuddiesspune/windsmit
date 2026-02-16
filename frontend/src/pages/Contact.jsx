@@ -116,7 +116,7 @@ const handleSubmit = async (e) => {
 
         <div className="max-w-7xl mx-auto relative w-full">
 
-          <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/25 bg-emerald-500/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-emerald-200">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#00b050]/25 bg-[#00b050]/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-[#00b050]">
 
             Contact Us
 
@@ -148,7 +148,7 @@ const handleSubmit = async (e) => {
 
               </a>
 
-              <a href="mailto:windsmit.air@gmail.com" className="inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/50 px-5 py-3 text-sm text-slate-100 hover:border-emerald-500/40 transition-colors">
+              <a href="mailto:windsmit.air@gmail.com" className="inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/50 px-5 py-3 text-sm text-slate-100 hover:border-[#00b050]/40 transition-colors">
 
                 Email Us
 
@@ -190,13 +190,13 @@ const handleSubmit = async (e) => {
 
                   {/* Phone */}
 
-                  <div className="rounded-xl border border-slate-800 bg-slate-950/30 p-4 hover:border-emerald-500/30 transition-colors">
+                  <div className="rounded-xl border border-slate-800 bg-slate-950/30 p-4 hover:border-[#00b050]/30 transition-colors">
 
                     <div className="flex items-start gap-3">
 
-                      <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center">
+                      <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-[#00b050]/15 border border-[#00b050]/25 flex items-center justify-center">
 
-                        <svg className="w-5 h-5 text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-5 h-5 text-[#00b050]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
 
@@ -208,7 +208,7 @@ const handleSubmit = async (e) => {
 
                         <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">Phone</p>
 
-                        <a href="tel:+919021097544" className="mt-1 block text-sm font-semibold text-white hover:text-emerald-300 transition-colors">
+                        <a href="tel:+919021097544" className="mt-1 block text-sm font-semibold text-white hover:text-[#00b050] transition-colors">
 
                           +91 90210 97544
 
@@ -222,13 +222,13 @@ const handleSubmit = async (e) => {
 
                   {/* Email */}
 
-                  <div className="rounded-xl border border-slate-800 bg-slate-950/30 p-4 hover:border-emerald-500/30 transition-colors">
+                  <div className="rounded-xl border border-slate-800 bg-slate-950/30 p-4 hover:border-[#00b050]/30 transition-colors">
 
                     <div className="flex items-start gap-3">
 
-                      <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center">
+                      <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-[#00b050]/15 border border-[#00b050]/25 flex items-center justify-center">
 
-                        <svg className="w-5 h-5 text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-5 h-5 text-[#00b050]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
 
@@ -240,7 +240,7 @@ const handleSubmit = async (e) => {
 
                         <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">Email</p>
 
-                        <a href="mailto:windsmit.air@gmail.com" className="mt-1 block text-sm font-semibold text-white hover:text-emerald-300 transition-colors break-all">
+                        <a href="mailto:windsmit.air@gmail.com" className="mt-1 block text-sm font-semibold text-white hover:text-[#00b050] transition-colors break-all">
 
                           windsmit.air@gmail.com
 
@@ -256,13 +256,13 @@ const handleSubmit = async (e) => {
 
                 {/* Address */}
 
-                <div className="rounded-xl border border-slate-800 bg-slate-950/30 p-4 hover:border-emerald-500/30 transition-colors">
+                <div className="rounded-xl border border-slate-800 bg-slate-950/30 p-4 hover:border-[#00b050]/30 transition-colors">
 
                   <div className="flex items-start gap-3">
 
-                    <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-[#00b050]/15 border border-[#00b050]/25 flex items-center justify-center">
 
-                      <svg className="w-5 h-5 text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 text-[#00b050]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
 
@@ -288,13 +288,13 @@ House No 357, Akbari House, B/H Sadoday Complex, Central Avenue, Darodkar Sq, Ga
 
                 {/* Business Hours */}
 
-                <div className="rounded-xl border border-slate-800 bg-slate-950/30 p-4 hover:border-emerald-500/30 transition-colors">
+                <div className="rounded-xl border border-slate-800 bg-slate-950/30 p-4 hover:border-[#00b050]/30 transition-colors">
 
                   <div className="flex items-start gap-3">
 
-                    <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-[#00b050]/15 border border-[#00b050]/25 flex items-center justify-center">
 
-                      <svg className="w-5 h-5 text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 text-[#00b050]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
 
@@ -385,9 +385,9 @@ House No 357, Akbari House, B/H Sadoday Complex, Central Avenue, Darodkar Sq, Ga
 
               {submitStatus === 'success' && (
 
-                <div className="mt-5 mb-2 rounded-xl border border-emerald-500/25 bg-emerald-500/10 p-4">
+                <div className="mt-5 mb-2 rounded-xl border border-[#00b050]/25 bg-[#00b050]/10 p-4">
 
-                  <p className="text-emerald-200 text-sm font-medium">Thanks! Your message has been sent successfully.</p>
+                  <p className="text-[#00b050] text-sm font-medium">Thanks! Your message has been sent successfully.</p>
 
                 </div>
 
@@ -401,7 +401,7 @@ House No 357, Akbari House, B/H Sadoday Complex, Central Avenue, Darodkar Sq, Ga
 
                     <label htmlFor="name" className="block text-xs font-semibold text-slate-300 mb-2">
 
-                      Name <span className="text-emerald-500">*</span>
+                      Name <span className="text-[#00b050]">*</span>
 
                     </label>
 
@@ -431,7 +431,7 @@ House No 357, Akbari House, B/H Sadoday Complex, Central Avenue, Darodkar Sq, Ga
 
                     <label htmlFor="email" className="block text-xs font-semibold text-slate-300 mb-2">
 
-                      Email <span className="text-emerald-500">*</span>
+                      Email <span className="text-[#00b050]">*</span>
 
                     </label>
 
@@ -493,7 +493,7 @@ House No 357, Akbari House, B/H Sadoday Complex, Central Avenue, Darodkar Sq, Ga
 
                     <label htmlFor="subject" className="block text-xs font-semibold text-slate-300 mb-2">
 
-                      Subject <span className="text-emerald-500">*</span>
+                      Subject <span className="text-[#00b050]">*</span>
 
                     </label>
 
@@ -525,7 +525,7 @@ House No 357, Akbari House, B/H Sadoday Complex, Central Avenue, Darodkar Sq, Ga
 
                   <label htmlFor="message" className="block text-xs font-semibold text-slate-300 mb-2">
 
-                    Message <span className="text-emerald-500">*</span>
+                    Message <span className="text-[#00b050]">*</span>
 
                   </label>
 
@@ -561,7 +561,7 @@ House No 357, Akbari House, B/H Sadoday Complex, Central Avenue, Darodkar Sq, Ga
 
   // Changed: py-3.5 -> py-2.5, rounded-xl -> rounded-lg, text-sm added
 
-  className="w-full relative overflow-hidden px-6 py-2 rounded-lg text-sm font-extrabold tracking-wide transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 bg-gradient-to-r from-[#fff212] via-[#fff212] to-emerald-400 text-slate-950 active:scale-[0.99]"
+  className="w-full relative overflow-hidden px-6 py-2 rounded-lg text-sm font-extrabold tracking-wide transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 bg-gradient-to-r from-[#fff212] via-[#fff212] to-[#00b050] text-slate-950 active:scale-[0.99]"
 
 >
 
@@ -670,7 +670,7 @@ House No 357, Akbari House, B/H Sadoday Complex, Central Avenue, Darodkar Sq, Ga
 
                     rel="noopener noreferrer"
 
-                    className="inline-flex items-center gap-2 rounded-xl bg-emerald-500 px-4 py-2 text-sm font-bold text-slate-950 hover:bg-[#fff212] transition-colors"
+                    className="inline-flex items-center gap-2 rounded-xl bg-[#00b050] px-4 py-2 text-sm font-bold text-slate-950 hover:bg-[#fff212] transition-colors"
 
                   >
 

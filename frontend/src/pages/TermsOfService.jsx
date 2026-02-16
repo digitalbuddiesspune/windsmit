@@ -9,12 +9,12 @@ function TermsOfService() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(16,185,129,0.1),transparent_50%)]"></div>
         <div className="max-w-7xl mx-auto relative z-10 text-center">
           <div className="flex items-center gap-3 mb-4 justify-center">
-            <span className="h-px w-12 bg-emerald-500"></span>
-            <span className="text-emerald-500 font-semibold uppercase tracking-widest text-xs">Legal</span>
-            <span className="h-px w-12 bg-emerald-500"></span>
+            <span className="h-px w-12 bg-[#00b050]"></span>
+            <span className="text-[#00b050] font-semibold uppercase tracking-widest text-xs">Legal</span>
+            <span className="h-px w-12 bg-[#00b050]"></span>
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 leading-tight">
-            Terms of <span className="text-emerald-400">Service</span>
+            Terms of <span className="text-[#00b050]">Service</span>
           </h1>
           <p className="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto">
             The terms and conditions governing your use of our website and engagement of our HVAC and BMS services.
@@ -30,7 +30,7 @@ function TermsOfService() {
           <div className="space-y-10 text-slate-600">
             <div>
               <h2 className="text-xl font-bold text-slate-900 mb-3 flex items-center gap-2">
-                <span className="w-1 h-6 bg-emerald-500 rounded-full"></span>
+                <span className="w-1 h-6 bg-[#00b050] rounded-full"></span>
                 Agreement to Terms
               </h2>
               <p className="leading-relaxed">
@@ -40,7 +40,7 @@ function TermsOfService() {
 
             <div>
               <h2 className="text-xl font-bold text-slate-900 mb-3 flex items-center gap-2">
-                <span className="w-1 h-6 bg-emerald-500 rounded-full"></span>
+                <span className="w-1 h-6 bg-[#00b050] rounded-full"></span>
                 Services
               </h2>
               <p className="leading-relaxed mb-3">
@@ -50,7 +50,7 @@ function TermsOfService() {
 
             <div>
               <h2 className="text-xl font-bold text-slate-900 mb-3 flex items-center gap-2">
-                <span className="w-1 h-6 bg-emerald-500 rounded-full"></span>
+                <span className="w-1 h-6 bg-[#00b050] rounded-full"></span>
                 User Responsibilities
               </h2>
               <p className="leading-relaxed mb-3">You agree to:</p>
@@ -64,7 +64,7 @@ function TermsOfService() {
 
             <div>
               <h2 className="text-xl font-bold text-slate-900 mb-3 flex items-center gap-2">
-                <span className="w-1 h-6 bg-emerald-500 rounded-full"></span>
+                <span className="w-1 h-6 bg-[#00b050] rounded-full"></span>
                 Limitation of Liability
               </h2>
               <p className="leading-relaxed">
@@ -74,11 +74,11 @@ function TermsOfService() {
 
             <div>
               <h2 className="text-xl font-bold text-slate-900 mb-3 flex items-center gap-2">
-                <span className="w-1 h-6 bg-emerald-500 rounded-full"></span>
+                <span className="w-1 h-6 bg-[#00b050] rounded-full"></span>
                 Contact
               </h2>
               <p className="leading-relaxed">
-                For questions about these Terms of Service, please contact us at <a href="mailto:windsmit.air@gmail.com" className="text-emerald-600 hover:text-emerald-700 font-medium">windsmit.air@gmail.com</a> or through our <Link to="/contact" className="text-emerald-600 hover:text-emerald-700 font-medium">Contact</Link> page.
+                For questions about these Terms of Service, please contact us at <a href="mailto:windsmit.air@gmail.com" className="text-[#00b050] hover:text-[#009040] font-medium">windsmit.air@gmail.com</a> or through our <Link to="/contact" className="text-[#00b050] hover:text-[#009040] font-medium">Contact</Link> page.
               </p>
             </div>
           </div>

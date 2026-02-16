@@ -141,16 +141,16 @@ function BlogPostDetail() {
   if (error || !post) return (
     <div className="min-h-screen flex flex-col items-center justify-center p-10">
       <h2 className="text-2xl font-bold text-slate-800">Post not found</h2>
-      <button onClick={() => navigate('/blog')} className="mt-4 text-emerald-600 font-medium">Return to Blog</button>
+      <button onClick={() => navigate('/blog')} className="mt-4 text-[#00b050] font-medium">Return to Blog</button>
     </div>
   )
 
   return (
-    <div className="min-h-screen bg-white font-sans selection:bg-emerald-100 selection:text-emerald-900">
+    <div className="min-h-screen bg-white font-sans selection:bg-[#00b050]/20 selection:text-[#00b050]">
       
       {/* Slim Progress Bar */}
       <div 
-        className="fixed top-0 left-0 h-1 bg-emerald-500 z-[100] transition-all duration-150 ease-out" 
+        className="fixed top-0 left-0 h-1 bg-[#00b050] z-[100] transition-all duration-150 ease-out" 
         style={{ width: `${readingProgress}%` }} 
       />
 
@@ -171,7 +171,7 @@ function BlogPostDetail() {
             <div className="flex items-center justify-between gap-6 overflow-visible">
               <div className="flex flex-wrap items-center justify-center md:justify-start gap-6 text-slate-300">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-emerald-400 to-teal-600 p-[2px]">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#00b050] to-[#00b050] p-[2px]">
                     <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center text-white font-bold text-sm">
                       {post.author.charAt(0)}
                     </div>
@@ -200,7 +200,7 @@ function BlogPostDetail() {
               <div className="sticky top-32 flex flex-row lg:flex-col gap-3 relative" ref={shareDropdownRef}>
                 <button
                   onClick={() => setShowShareDropdown(!showShareDropdown)}
-                  className="w-12 h-12 rounded-xl bg-slate-50 text-slate-400 hover:bg-white hover:text-emerald-600 hover:shadow-xl hover:shadow-emerald-500/10 border border-transparent hover:border-emerald-100 transition-all duration-300 flex items-center justify-center group"
+                  className="w-12 h-12 rounded-xl bg-slate-50 text-slate-400 hover:bg-white hover:text-[#00b050] hover:shadow-xl hover:shadow-[#00b050]/10 border border-transparent hover:border-[#00b050]/20 transition-all duration-300 flex items-center justify-center group"
                   aria-label="Share"
                 >
                   <svg className="w-5 h-5 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -242,8 +242,8 @@ function BlogPostDetail() {
                     onClick={() => handleShare('whatsapp')}
                     className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-50 transition-colors text-left group"
                   >
-                    <div className="w-10 h-10 rounded-lg bg-slate-50 flex items-center justify-center group-hover:bg-green-50 transition-colors">
-                      <svg className="w-5 h-5 text-slate-400 group-hover:text-green-500" fill="currentColor" viewBox="0 0 24 24">
+                    <div className="w-10 h-10 rounded-lg bg-slate-50 flex items-center justify-center group-hover:bg-[#00b050]/10 transition-colors">
+                      <svg className="w-5 h-5 text-slate-400 group-hover:text-[#00b050]" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
                       </svg>
                     </div>
@@ -266,8 +266,8 @@ function BlogPostDetail() {
                     onClick={() => handleShare('email')}
                     className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-50 transition-colors text-left group"
                   >
-                    <div className="w-10 h-10 rounded-lg bg-slate-50 flex items-center justify-center group-hover:bg-emerald-50 transition-colors">
-                      <svg className="w-5 h-5 text-slate-400 group-hover:text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-10 h-10 rounded-lg bg-slate-50 flex items-center justify-center group-hover:bg-[#00b050]/10 transition-colors">
+                      <svg className="w-5 h-5 text-slate-400 group-hover:text-[#00b050]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                       </svg>
                     </div>
@@ -305,7 +305,7 @@ function BlogPostDetail() {
                 max-w-none
                 prose-headings:text-slate-900 prose-headings:font-bold
                 prose-p:text-slate-600 prose-p:leading-[1.8] prose-p:font-serif
-                prose-blockquote:not-italic prose-blockquote:font-normal prose-blockquote:text-2xl prose-blockquote:text-emerald-700
+                prose-blockquote:not-italic prose-blockquote:font-normal prose-blockquote:text-2xl prose-blockquote:text-[#00b050]
                 prose-img:rounded-3xl prose-img:shadow-2xl
                 first-letter:text-7xl first-letter:font-bold first-letter:text-slate-900 first-letter:float-left first-letter:mr-4 first-letter:mt-2
               ">
@@ -319,7 +319,7 @@ function BlogPostDetail() {
                 <div className="flex items-center gap-3 flex-wrap">
                   <span className="text-sm font-bold text-slate-400 uppercase tracking-wider mr-2">Tags:</span>
                   {['Growth', 'Future', 'Tech'].map(tag => (
-                    <span key={tag} className="px-4 py-1.5 bg-slate-50 text-slate-500 text-xs font-bold rounded-full border border-slate-100 hover:border-emerald-200 hover:text-emerald-600 transition-all cursor-pointer">
+                    <span key={tag} className="px-4 py-1.5 bg-slate-50 text-slate-500 text-xs font-bold rounded-full border border-slate-100 hover:border-[#00b050]/30 hover:text-[#00b050] transition-all cursor-pointer">
                       {tag}
                     </span>
                   ))}
@@ -331,7 +331,7 @@ function BlogPostDetail() {
 
         {/* Footer Navigation */}
         <div className="mt-24 py-16 border-t border-slate-100 text-center">
-          <p className="text-sm font-bold text-emerald-600 uppercase tracking-[0.3em] mb-4">Keep Reading</p>
+          <p className="text-sm font-bold text-[#00b050] uppercase tracking-[0.3em] mb-4">Keep Reading</p>
           <Link to="/blog" className="group">
             <h2 className="text-4xl md:text-5xl font-semibold text-slate-900 group-hover:opacity-70 transition-opacity">
               Explore more stories
