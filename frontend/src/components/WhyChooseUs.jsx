@@ -68,12 +68,12 @@ function WhyChooseUs() {
     <>
       {/* ===== Section Heading (OUTSIDE IMAGE) ===== */}
       <section className="relative z-10 w-full py-16 bg-slate-900 text-center overflow-hidden">
-        <span className="text-emerald-500 font-bold uppercase tracking-widest text-xs sm:text-sm mb-2 block">
+        <span className="text-[#00b050] font-bold uppercase tracking-widest text-xs sm:text-sm mb-2 block">
             Travel to deliver
           </span>
         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white">
           Why choose <br />
-          <span className="text-emerald-400">Windsmit Air?</span>
+          Windsmit <span className="text-[#00b050]">  Air </span>?
         </h2>
         <div className="absolute -bottom-px left-0 right-0 z-20 pointer-events-none">
           <svg
@@ -103,7 +103,7 @@ function WhyChooseUs() {
             {features.map((feature) => (
               <div key={feature.id} className="group h-full">
                 <div className="h-full min-h-[220px] md:min-h-[240px] flex items-start gap-4 rounded-2xl p-5 md:p-6 border border-white/30 bg-white/10 backdrop-blur-md hover:bg-white/15 transition">
-                  <div className="w-12 h-12 md:w-14 md:h-14 rounded-lg bg-emerald-500 flex items-center justify-center text-white shrink-0 shadow-md">
+                  <div className="w-12 h-12 md:w-14 md:h-14 rounded-lg bg-[#00b050] flex items-center justify-center text-white shrink-0 shadow-md">
                     {feature.icon}
                   </div>
 

@@ -71,7 +71,7 @@ const HvacServices = () => {
         "- Best for: Factories & warehouses, Auditoriums & halls, Commercial & industrial sheds",
         "- Integrated with effective ducting and controls by Windsmit Air"
       ],
-      "image": "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200801/evoprative_cooling_sysetem_dxu2af_gie1gm.jpg"
+      "image": "https://res.cloudinary.com/dfsvuupuv/image/upload/v1771238875/benefits-of-evaporative-air-coolers-for-industry.jpg_rlkken.jpg"
     },
     {
       "id": 5,
@@ -83,7 +83,7 @@ const HvacServices = () => {
         "- Enable efficient HVAC operation",
         "- Provided by Windsmit Air for tailored airflow solutions"
       ],
-      "image": "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200785/damper_difuser_rywvjs_cgudpl.jpg"
+      "image": "https://res.cloudinary.com/dfsvuupuv/image/upload/v1771238850/Banner3-Home_yzekgh.png"
     },
     {
       "id": 6,
@@ -107,7 +107,7 @@ const HvacServices = () => {
         "- Reduce energy loss from open doors",
         "- Offered by Windsmit Air for commercial and industrial entrances"
       ],
-      "image": "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200741/Air_Curtain_si1sqq_n69z85.webp"
+      "image": "https://res.cloudinary.com/dfsvuupuv/image/upload/v1771238963/WhatsApp_Image_2026-02-16_at_4.16.55_PM_higqjt.jpg"
     }
   ];
 
@@ -453,7 +453,7 @@ const HvacServices = () => {
                   <a href="tel:+919021097544" className="flex-1 bg-blue-600 text-white py-4 rounded-lg font-bold text-center hover:bg-blue-700 transition flex justify-center items-center gap-2">
                     <FaPhoneAlt /> Call Engineer
                   </a>
-                  <a href={`https://wa.me/919021097544?text=Inquiry regarding ${selectedService.name}`} className="flex-1 border-2 border-green-500 text-green-600 py-4 rounded-lg font-bold text-center hover:bg-green-50 transition flex justify-center items-center gap-2">
+                  <a href={`https://wa.me/919021097544?text=Inquiry regarding ${selectedService.name}`} className="flex-1 border-2 border-[#00b050] text-[#00b050] py-4 rounded-lg font-bold text-center hover:bg-[#00b050]/10 transition flex justify-center items-center gap-2">
                     <FaWhatsapp /> WhatsApp Inquiry
                   </a>
                 </div>

@@ -270,7 +270,7 @@ function Admin() {
   }
 
   const showNotification = (message, type = 'success') => {
-    const bgColor = type === 'success' ? 'bg-emerald-500' : 'bg-red-500'
+    const bgColor = type === 'success' ? 'bg-[#00b050]' : 'bg-red-500'
     const notification = document.createElement('div')
     notification.className = `fixed top-4 right-4 ${bgColor} text-white px-6 py-3 rounded-lg shadow-lg z-50 flex items-center gap-2 animate-slide-in`
     notification.innerHTML = type === 'success' 
@@ -333,7 +333,7 @@ function Admin() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#4CAF50]"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#00b050]"></div>
       </div>
     )
   }
@@ -351,7 +351,7 @@ function Admin() {
                 type="email"
                 name="email"
                 required
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4CAF50] focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#00b050] focus:border-transparent"
                 placeholder="admin@windsmitair.com"
               />
             </div>
@@ -361,13 +361,13 @@ function Admin() {
                 type="password"
                 name="password"
                 required
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4CAF50] focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#00b050] focus:border-transparent"
                 placeholder="Enter password"
               />
             </div>
             <button
               type="submit"
-              className="w-full bg-[#4CAF50] text-white py-2 rounded-lg font-semibold hover:bg-[#45a049] transition-colors"
+              className="w-full bg-[#00b050] text-white py-2 rounded-lg font-semibold hover:bg-[#009040] transition-colors"
             >
               Login
             </button>
@@ -437,7 +437,7 @@ function Admin() {
               onClick={() => setActiveTab('blogs')}
               className={`px-6 py-2.5 rounded-md font-semibold text-sm transition-all duration-200 ${
                 activeTab === 'blogs'
-                  ? 'bg-emerald-500 text-white shadow-sm'
+                  ? 'bg-[#00b050] text-white shadow-sm'
                   : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
               }`}
             >
@@ -457,7 +457,7 @@ function Admin() {
               onClick={() => setActiveTab('stories')}
               className={`px-6 py-2.5 rounded-md font-semibold text-sm transition-all duration-200 ${
                 activeTab === 'stories'
-                  ? 'bg-emerald-500 text-white shadow-sm'
+                  ? 'bg-[#00b050] text-white shadow-sm'
                   : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
               }`}
             >
@@ -504,7 +504,7 @@ function Admin() {
                       required
                       value={formData.title}
                       onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4CAF50] focus:border-transparent"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#00b050] focus:border-transparent"
                     />
                   </div>
                   <div>
@@ -513,7 +513,7 @@ function Admin() {
                       required
                       value={formData.category}
                       onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4CAF50] focus:border-transparent"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#00b050] focus:border-transparent"
                     >
                       <option value="HVAC">HVAC</option>
                       <option value="Air Conditioning">Air Conditioning</option>
@@ -531,7 +531,7 @@ function Admin() {
                     value={formData.excerpt}
                     onChange={(e) => setFormData({ ...formData, excerpt: e.target.value })}
                     rows="2"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4CAF50] focus:border-transparent"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#00b050] focus:border-transparent"
                   />
                 </div>
 
@@ -542,7 +542,7 @@ function Admin() {
                     value={formData.content}
                     onChange={(e) => setFormData({ ...formData, content: e.target.value })}
                     rows="10"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4CAF50] focus:border-transparent"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#00b050] focus:border-transparent"
                   />
                 </div>
 
@@ -554,7 +554,7 @@ function Admin() {
                       required
                       value={formData.image}
                       onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4CAF50] focus:border-transparent"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#00b050] focus:border-transparent"
                     />
                   </div>
                   <div>
@@ -563,7 +563,7 @@ function Admin() {
                       type="text"
                       value={formData.readTime}
                       onChange={(e) => setFormData({ ...formData, readTime: e.target.value })}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4CAF50] focus:border-transparent"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#00b050] focus:border-transparent"
                     />
                   </div>
                 </div>
@@ -574,7 +574,7 @@ function Admin() {
                     type="text"
                     value={formData.author}
                     onChange={(e) => setFormData({ ...formData, author: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4CAF50] focus:border-transparent"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#00b050] focus:border-transparent"
                   />
                 </div>
 
@@ -584,7 +584,7 @@ function Admin() {
                       type="checkbox"
                       checked={formData.published}
                       onChange={(e) => setFormData({ ...formData, published: e.target.checked })}
-                      className="w-4 h-4 text-[#4CAF50] border-gray-300 rounded focus:ring-[#4CAF50]"
+                      className="w-4 h-4 text-[#00b050] border-gray-300 rounded focus:ring-[#00b050]"
                     />
                     <span className="text-sm font-medium text-gray-700">Published</span>
                   </label>
@@ -593,7 +593,7 @@ function Admin() {
                       type="checkbox"
                       checked={formData.featured}
                       onChange={(e) => setFormData({ ...formData, featured: e.target.checked })}
-                      className="w-4 h-4 text-[#4CAF50] border-gray-300 rounded focus:ring-[#4CAF50]"
+                      className="w-4 h-4 text-[#00b050] border-gray-300 rounded focus:ring-[#00b050]"
                     />
                     <span className="text-sm font-medium text-gray-700">Featured</span>
                   </label>
@@ -612,7 +612,7 @@ function Admin() {
                   </button>
                   <button
                     type="submit"
-                    className="px-6 py-2 bg-[#4CAF50] text-white rounded-lg font-semibold hover:bg-[#45a049] transition-colors"
+                    className="px-6 py-2 bg-[#00b050] text-white rounded-lg font-semibold hover:bg-[#009040] transition-colors"
                   >
                     {editingPost ? 'Update Post' : 'Create Post'}
                   </button>
@@ -633,7 +633,7 @@ function Admin() {
                 </div>
                 <button
                   onClick={() => setShowForm(true)}
-                  className="px-4 py-2 bg-emerald-500 text-white rounded-lg font-semibold hover:bg-emerald-600 transition-colors flex items-center gap-2 shadow-sm"
+                  className="px-4 py-2 bg-[#00b050] text-white rounded-lg font-semibold hover:bg-[#009040] transition-colors flex items-center gap-2 shadow-sm"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -644,7 +644,7 @@ function Admin() {
               
               {loadingPosts ? (
                 <div className="p-12 text-center">
-                  <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-500"></div>
+                  <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-[#00b050]"></div>
                   <p className="text-gray-500 mt-4">Loading posts...</p>
                 </div>
               ) : posts.length === 0 ? (
@@ -658,7 +658,7 @@ function Admin() {
                   <p className="text-sm text-gray-400 mb-4">Get started by creating your first post</p>
                   <button
                     onClick={() => setShowForm(true)}
-                    className="px-6 py-2.5 bg-emerald-500 text-white rounded-lg font-semibold hover:bg-emerald-600 transition-colors shadow-sm"
+                    className="px-6 py-2.5 bg-[#00b050] text-white rounded-lg font-semibold hover:bg-[#009040] transition-colors shadow-sm"
                   >
                     Create Your First Post
                   </button>
@@ -673,7 +673,7 @@ function Admin() {
                             <h3 className="text-lg font-semibold text-gray-900">{post.title}</h3>
                             <span className={`px-2.5 py-1 text-xs font-semibold rounded-full ${
                               post.published 
-                                ? 'bg-green-100 text-green-700' 
+                                ? 'bg-[#00b050]/10 text-[#00b050]' 
                                 : 'bg-gray-100 text-gray-600'
                             }`}>
                               {post.published ? 'Published' : 'Draft'}
@@ -746,8 +746,8 @@ function Admin() {
                     </span>
                     <button
                       onClick={handleToggleStories}
-                      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 ${
-                        showStories ? 'bg-emerald-500' : 'bg-gray-300'
+                      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-[#00b050] focus:ring-offset-2 ${
+                        showStories ? 'bg-[#00b050]' : 'bg-gray-300'
                       }`}
                     >
                       <span
@@ -769,7 +769,7 @@ function Admin() {
                   required
                   value={storyFormData.title}
                   onChange={(e) => setStoryFormData({ ...storyFormData, title: e.target.value })}
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-sm bg-white"
+                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#00b050] focus:border-transparent text-sm bg-white"
                   placeholder="e.g., Mall Installation"
                 />
               </div>
@@ -780,13 +780,13 @@ function Admin() {
                   required
                   value={storyFormData.videoUrl}
                   onChange={(e) => setStoryFormData({ ...storyFormData, videoUrl: e.target.value })}
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-sm bg-white"
+                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#00b050] focus:border-transparent text-sm bg-white"
                   placeholder="https://example.com/video.mp4"
                 />
               </div>
               <button
                 type="submit"
-                className="px-6 py-2.5 bg-emerald-500 text-white rounded-lg font-semibold hover:bg-emerald-600 transition-colors text-sm whitespace-nowrap shadow-sm"
+                className="px-6 py-2.5 bg-[#00b050] text-white rounded-lg font-semibold hover:bg-[#009040] transition-colors text-sm whitespace-nowrap shadow-sm"
               >
                 + Add Story
               </button>
@@ -795,7 +795,7 @@ function Admin() {
 
               {loadingStories ? (
                 <div className="p-12 text-center">
-                  <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-500"></div>
+                  <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-[#00b050]"></div>
                   <p className="text-gray-500 mt-4">Loading stories...</p>
                 </div>
               ) : stories.length === 0 ? (
@@ -814,10 +814,10 @@ function Admin() {
                     <div key={story._id} className="px-6 py-5 flex items-center justify-between hover:bg-gray-50 transition-colors group">
                       <div className="flex items-center gap-4 flex-1">
                         <div className="relative flex-shrink-0">
-                          <div className="w-16 h-16 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-white font-bold text-sm shadow-md ring-2 ring-emerald-100">
+                          <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#00b050] to-[#00b050] flex items-center justify-center text-white font-bold text-sm shadow-md ring-2 ring-[#00b050]/20">
                             {story.title.charAt(0).toUpperCase()}
                           </div>
-                          <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-emerald-500 rounded-full border-2 border-white flex items-center justify-center">
+                          <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-[#00b050] rounded-full border-2 border-white flex items-center justify-center">
                             <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
                               <path d="M8 5v14l11-7z"/>
                             </svg>
@@ -828,7 +828,7 @@ function Admin() {
                           <p className="text-xs text-gray-500 truncate">{story.videoUrl}</p>
                           <div className="flex items-center gap-2 mt-1">
                             <span className={`px-2 py-0.5 text-xs font-medium rounded-full ${
-                              story.active ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600'
+                              story.active ? 'bg-[#00b050]/10 text-[#00b050]' : 'bg-gray-100 text-gray-600'
                             }`}>
                               {story.active ? 'Active' : 'Inactive'}
                             </span>
