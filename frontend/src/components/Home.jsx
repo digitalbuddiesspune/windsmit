@@ -20,7 +20,7 @@ const expertiseData = [
     tabLabel: "Commercial HVAC",
     heading: "Reliable Cooling for Businesses",
     description: "Large-scale air handling for commercial infrastructure. We specialize in ductwork design that maximizes airflow while minimizing noise and energy loss, ensuring your workspace meets all air quality standards.",
-    image: "https://res.cloudinary.com/dfsvuupuv/image/upload/v1771227651/PTX_360_tvo2ds.gif",
+    video: "https://res.cloudinary.com/dfsvuupuv/video/upload/v1771329474/animate_qbwsbs.mp4",
     features: ["Custom AHU Design", "VRF/VRV Systems", "Fresh Air Injection", "Negative Pressure Rooms"]
   },
   {
