@@ -26,7 +26,6 @@ function Admin() {
   const [loadingStories, setLoadingStories] = useState(false)
   const [formData, setFormData] = useState({
     title: '',
-    excerpt: '',
     content: '',
     category: 'HVAC',
     author: 'Windsmit Air Team',
@@ -197,7 +196,7 @@ function Admin() {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({ ...formData, excerpt: editingPost?.excerpt ?? '' })
       })
 
       if (response.ok) {
@@ -206,7 +205,6 @@ function Admin() {
         setEditingPost(null)
         setFormData({
           title: '',
-          excerpt: '',
           content: '',
           category: 'HVAC',
           author: 'Windsmit Air Team',
@@ -257,7 +255,6 @@ function Admin() {
     setEditingPost(post)
     setFormData({
       title: post.title,
-      excerpt: post.excerpt,
       content: post.content,
       category: post.category,
       author: post.author,
@@ -522,17 +519,6 @@ function Admin() {
                       <option value="Energy Efficiency">Energy Efficiency</option>
                     </select>
                   </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Excerpt *</label>
-                  <textarea
-                    required
-                    value={formData.excerpt}
-                    onChange={(e) => setFormData({ ...formData, excerpt: e.target.value })}
-                    rows="2"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#00b050] focus:border-transparent"
-                  />
                 </div>
 
                 <div>
