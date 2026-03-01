@@ -71,7 +71,7 @@ const HvacServices = () => {
         "- Best for: Factories & warehouses, Auditoriums & halls, Commercial & industrial sheds",
         "- Integrated with effective ducting and controls by Windsmit Air"
       ],
-      "image": "https://res.cloudinary.com/dfsvuupuv/image/upload/v1771238875/benefits-of-evaporative-air-coolers-for-industry.jpg_rlkken.jpg"
+      "image": "https://res.cloudinary.com/dfsvuupuv/image/upload/v1772350534/WhatsApp_Image_2026-02-27_at_6.02.18_PM_1_zorpbr.jpg"
     },
     {
       "id": 5,
