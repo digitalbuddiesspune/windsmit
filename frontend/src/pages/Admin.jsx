@@ -61,6 +61,9 @@ function Admin() {
           localStorage.removeItem('adminToken')
           setIsAuthenticated(false)
         }
+      } else {
+        // No token, ensure we show login form
+        setIsAuthenticated(false)
       }
       setLoading(false)
     }
@@ -349,8 +352,10 @@ function Admin() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
         <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Admin Login</h1>
-          <p className="text-gray-600 mb-6">Sign in to manage blog posts</p>
+          <div className="text-center mb-6">
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">Admin Login</h1>
+            <p className="text-gray-600">Sign in to manage blog posts and stories</p>
+          </div>
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
@@ -358,6 +363,7 @@ function Admin() {
                 type="email"
                 name="email"
                 required
+                defaultValue="admin@windsmitair.com"
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4CAF50] focus:border-transparent"
                 placeholder="admin@windsmitair.com"
               />
@@ -379,6 +385,11 @@ function Admin() {
               Login
             </button>
           </form>
+          <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+            <p className="text-xs text-blue-800">
+              <strong>Note:</strong> Default credentials are email: <code className="bg-blue-100 px-1 rounded">admin@windsmitair.com</code> and password: <code className="bg-blue-100 px-1 rounded">admin123</code>
+            </p>
+          </div>
         </div>
       </div>
     )
