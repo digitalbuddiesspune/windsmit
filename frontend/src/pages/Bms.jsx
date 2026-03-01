@@ -254,7 +254,7 @@ const Bms = () => {
                         >
                             <div className="relative overflow-hidden ">
                                 <img
-                                    src="https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200955/Untitled_1080_x_1080_px_2_ofbif9_jtw6ay.png"
+                                    src="https://res.cloudinary.com/dfsvuupuv/image/upload/v1771244586/Untitled_1080_x_1080_px_8_mol3rt.png"
                                     alt="Windsmit BMS Architecture"
                                     className="w-full h-[600px] object-cover transform hover:scale-105 transition-transform duration-700"
                                 />
@@ -432,7 +432,7 @@ const Bms = () => {
                                     <a href="tel:+919021097544" className="flex-1 bg-yellow-600 text-white py-4 rounded-lg font-bold text-center hover:bg-yellow-700 transition flex justify-center items-center gap-2">
                                         <FaPhoneAlt /> Call Engineer
                                     </a>
-                                    <a href={`https://wa.me/919021097544?text=Inquiry regarding ${selectedService.name}`} className="flex-1 border-2 border-green-500 text-green-600 py-4 rounded-lg font-bold text-center hover:bg-green-50 transition flex justify-center items-center gap-2">
+                                    <a href={`https://wa.me/919021097544?text=Inquiry regarding ${selectedService.name}`} className="flex-1 border-2 border-[#00b050] text-[#00b050] py-4 rounded-lg font-bold text-center hover:bg-[#00b050]/10 transition flex justify-center items-center gap-2">
                                         <FaWhatsapp /> WhatsApp Inquiry
                                     </a>
                                 </div>

@@ -3,7 +3,7 @@
     {
       "id": "res-1",
       "title": "AC Gas Charging",
-      "price": "₹1,799",
+      "price": "On Quote",
       "shortDesc": "Professional refrigerant gas charging service to restore proper cooling performance and energy efficiency.",
       "details": [
         "Refrigerant gas refill",
@@ -35,7 +35,7 @@
     {
       "id": "res-3",
       "title": "PCB Repair",
-      "price": "₹2,199",
+      "price": "On Quote",
       "shortDesc": "Expert repair of AC circuit boards to fix power, startup, and electronic control issues.",
       "details": [
         "PCB fault diagnosis",
@@ -51,7 +51,7 @@
     {
       "id": "res-4",
       "title": "Copper Piping (Per Ft)",
-      "price": "₹320",
+      "price": "On Quote",
       "shortDesc": "High-quality copper piping installation or replacement for efficient refrigerant flow and long-lasting performance.",
       "details": [
         "Premium copper pipes",
@@ -83,7 +83,7 @@
     {
       "id": "res-6",
       "title": "Remote Control Replacement",
-      "price": "₹650",
+      "price": "On Quote",
       "shortDesc": "Genuine AC remote control replacement with full compatibility and easy setup.",
       "details": [
         "Original remote supply",

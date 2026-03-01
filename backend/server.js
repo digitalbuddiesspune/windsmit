@@ -12,12 +12,13 @@ dotenv.config()
 const app = express()
 const PORT = process.env.PORT || 5000
 
-// CORS: allow frontend (Vite on 5173, etc.) so admin login works from browser
+// CORS: allow frontend (local + production). On Render set FRONTEND_URL to your frontend URL (e.g. https://windsmit.onrender.com).
 const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:3000',
   'http://127.0.0.1:5173',
-  'http://127.0.0.1:3000'
+  'http://127.0.0.1:3000',
+  ...(process.env.FRONTEND_URL ? process.env.FRONTEND_URL.split(',').map(u => u.trim()).filter(Boolean) : [])
 ]
 app.use(cors({
   origin: allowedOrigins,
@@ -29,26 +30,44 @@ app.use(cors({
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-// MongoDB Connection
-mongoose.connect(process.env.MONGODB_URI)
-  .then(() => {
-    console.log('✅ Connected to MongoDB')
-  })
-  .catch((error) => {
-    console.error('❌ MongoDB connection error:', error)
-  })
-
-// Routes
+// Routes (must be registered before startServer so they exist when server listens)
 app.use('/api/auth', authRoutes)
 app.use('/api/blog', blogRoutes)
 app.use('/api/stories', storyRoutes)
 app.use('/api/settings', settingsRoutes)
 
-// Health check
+// Health check (no auth) — use this on Render to confirm server + DB are up
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'OK', message: 'Server is running' })
+  const dbState = mongoose.connection.readyState
+  const dbOk = dbState === 1
+  res.json({
+    status: dbOk ? 'OK' : 'DEGRADED',
+    message: dbOk ? 'Server is running' : 'Server up but MongoDB not connected',
+    mongodb: dbOk ? 'connected' : `readyState ${dbState}`,
+    env: {
+      hasMongoUri: !!process.env.MONGODB_URI,
+      hasJwtSecret: !!process.env.JWT_SECRET,
+      hasFrontendUrl: !!process.env.FRONTEND_URL
+    }
+  })
 })
 
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`)
-})
+// MongoDB Connection — wait for it before accepting requests (avoids 500 on first login on Render)
+const startServer = async () => {
+  try {
+    if (!process.env.MONGODB_URI) {
+      throw new Error('MONGODB_URI is not set in environment')
+    }
+    await mongoose.connect(process.env.MONGODB_URI)
+    console.log('✅ Connected to MongoDB')
+  } catch (error) {
+    console.error('❌ MongoDB connection error:', error.message)
+    process.exit(1)
+  }
+
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on port ${PORT}`)
+  })
+}
+
+startServer()

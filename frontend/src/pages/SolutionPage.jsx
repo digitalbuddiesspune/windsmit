@@ -20,14 +20,14 @@ function SolutionCategoryIcon({ index, className }) {
 
 // 8 circles: scenarios/spaces for air quality solutions (hospital, hotel, mall, classroom, office, airport, industrial, transport)
 const HERO_IMAGES = [
-  'https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200971/Untitled_1600_x_900_px_1_m5pmlv_ckydtr.svg', // Residential Homes
+  'https://res.cloudinary.com/dfsvuupuv/image/upload/v1771228709/__yfjxxc.jpg', // Residential Homes
   'https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200974/Untitled_1600_x_900_px_2_pmntrc_gapa1a.svg', // Commercial offices
-  'https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200974/Untitled_1600_x_900_px_3_v07evg_t8mc9i.svg',  // Educational Institutions
+  'https://res.cloudinary.com/dfsvuupuv/image/upload/v1771237501/a7e09f9c-4b6c-4bb5-8090-6fbfa00eeeb4.png',  // Educational Institutions
   'https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200713/471c95b173.jpg_qjexgv_zxplj3.jpg', // hospital
-  'https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200748/Banquet_halls.jpg_bxmxly_oixcrl.jpg', // Banquet Halls
-  'https://res.cloudinary.com/dfsvuupuv/image/upload/v1770204870/406df698-d8bd-4519-834f-a6ebe19ae655_y4nmj5.png', // Showrooms
+  'https://res.cloudinary.com/dfsvuupuv/image/upload/v1771238003/c0caa763-6375-48b5-ae9c-18ce4b91e27d.png', // Banquet Halls
+  'https://res.cloudinary.com/dfsvuupuv/image/upload/v1771238343/Coventry-Mazda-5_mvjfjx.jpg', // Showrooms
   'https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200938/Restaurants_and_cafe.jpg_f3d51m_enwosr.png', // Restaurants and Cafes
-  'https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200709/90a04740-ebb9-4f78-8e1d-20b4ddeffa9d_moddfo.png'   // Industrial Warehouses
+  'https://res.cloudinary.com/dfsvuupuv/image/upload/v1771240154/13e19676-0c4f-42c0-8cda-841d18b5896c.png'   // Industrial Warehouses
 ]
 
 /**
@@ -131,7 +131,7 @@ function SolutionPage({ title, subtitle, intro, sections = [], heroVariant, hero
                   to={item.to}
                   className="group flex flex-col items-center text-center"
                 >
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 flex items-center justify-center text-slate-800 group-hover:text-emerald-600 transition-colors">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 flex items-center justify-center text-slate-800 group-hover:text-[#00b050] transition-colors">
                     {item.imageUrl && item.imageUrl.trim() !== '' ? (
                       <img
                         src={item.imageUrl}
@@ -143,7 +143,7 @@ function SolutionPage({ title, subtitle, intro, sections = [], heroVariant, hero
                       <SolutionCategoryIcon index={i} className="w-full h-full" />
                     )}
                   </div>
-                  <h3 className="mt-4 font-bold text-slate-900 text-xs sm:text-sm uppercase tracking-wide group-hover:text-emerald-600 transition-colors">
+                  <h3 className="mt-4 font-bold text-slate-900 text-xs sm:text-sm uppercase tracking-wide group-hover:text-[#00b050] transition-colors">
                     {item.label}
                   </h3>
                   {item.description && (
@@ -163,7 +163,7 @@ function SolutionPage({ title, subtitle, intro, sections = [], heroVariant, hero
               <div key={i}>
                 {section.heading ? (
                   <h2 className="text-xl font-bold text-slate-900 mb-3 flex items-center gap-2">
-                    <span className="w-1 h-6 bg-emerald-500 rounded-full"></span>
+                    <span className="w-1 h-6 bg-[#00b050] rounded-full"></span>
                     {section.heading}
                   </h2>
                 ) : null}
@@ -182,7 +182,7 @@ function SolutionPage({ title, subtitle, intro, sections = [], heroVariant, hero
             <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
               <Link
                 to="/contact"
-                className="inline-block px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold rounded-lg transition-colors"
+                className="inline-block px-6 py-3 bg-[#00b050] hover:bg-[#009040] text-white font-semibold rounded-lg transition-colors"
               >
                 Get in Touch
               </Link>

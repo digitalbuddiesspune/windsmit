@@ -88,9 +88,9 @@ const sections = [
           {/* Left column - text */}
           <div>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 flex flex-wrap items-center gap-2">
-              <span className="w-1 h-10 sm:h-12 bg-emerald-500 rounded-full flex-shrink-0" aria-hidden />
+              <span className="w-1 h-10 sm:h-12 bg-[#00b050] rounded-full flex-shrink-0" aria-hidden />
               <span>Our Solution: HVAC Engineered for</span>
-              <span className="text-emerald-400">Event Dynamics</span>
+              <span className="text-[#00b050]">Event Dynamics</span>
             </h2>
             <p className="text-slate-300 leading-relaxed mb-6">
               We design HVAC systems that respond to changing occupancy, lighting heat, and event duration—not fixed assumptions.
@@ -104,7 +104,7 @@ const sections = [
                 { icon: 'energy', text: 'Optimize energy use during partial or short-duration events.' }
               ].map((item, i) => (
                 <li key={i} className="flex gap-3 items-start">
-                  <span className="w-10 h-10 rounded-lg bg-emerald-500 flex-shrink-0 flex items-center justify-center text-white">
+                  <span className="w-10 h-10 rounded-lg bg-[#00b050] flex-shrink-0 flex items-center justify-center text-white">
                     {item.icon === 'crowd' && (
                       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
                         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />

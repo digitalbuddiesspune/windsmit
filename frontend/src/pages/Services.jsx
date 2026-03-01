@@ -112,11 +112,11 @@ const acProducts = [
   const visibleServices = showAllServices ? servicesData.residentialServices : servicesData.residentialServices.slice(0, 4);
 
   return (
-    <div className="bg-white min-h-screen font-sans selection:bg-green-100 selection:text-green-900">
+    <div className="bg-white min-h-screen font-sans selection:bg-[#00b050]/20 selection:text-[#00b050]">
 
       {/* 1. HERO SECTION - STICKY FULL SCREEN */}
 <section className="relative md:sticky md:top-0 bg-black overflow-x-hidden overflow-y-auto min-h-screen md:h-screen pt-20 pb-12 md:pt-0 md:pb-0 flex items-center z-10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-green-900/20 via-black to-black z-0" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-[#00b050]/20 via-black to-black z-0" />
 
 <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 w-full min-w-0 relative z-10 flex items-center justify-center h-full">
           <div className="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-20 w-full min-w-0 items-center">
@@ -167,14 +167,14 @@ const acProducts = [
     {/* CUSTOM NAVIGATION ARROWS (SVG COPY-PASTE) */}
     
     {/* Left Arrow - visible on touch, hover on desktop */}
-    <button className="swiper-button-prev-custom absolute left-0 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-3 text-white/50 hover:text-green-400 transition-all opacity-70 md:opacity-0 md:group-hover:opacity-100" aria-label="Previous slide">
+    <button className="swiper-button-prev-custom absolute left-0 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-3 text-white/50 hover:text-[#00b050] transition-all opacity-70 md:opacity-0 md:group-hover:opacity-100" aria-label="Previous slide">
       <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 sm:w-8 sm:h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="m15 18-6-6 6-6"/>
       </svg>
     </button>
 
     {/* Right Arrow */}
-    <button className="swiper-button-next-custom absolute right-0 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-3 text-white/50 hover:text-green-400 transition-all opacity-70 md:opacity-0 md:group-hover:opacity-100" aria-label="Next slide">
+    <button className="swiper-button-next-custom absolute right-0 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-3 text-white/50 hover:text-[#00b050] transition-all opacity-70 md:opacity-0 md:group-hover:opacity-100" aria-label="Next slide">
       <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 sm:w-8 sm:h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="m9 18 6-6-6-6"/>
       </svg>
@@ -190,7 +190,7 @@ const acProducts = [
             >
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4 md:mb-6 leading-tight break-words">
                 Mastering <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-300">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00b050] to-[#00b050]">
                   Cool Comfort
                 </span>
               </h1>
@@ -199,7 +199,7 @@ const acProducts = [
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-5 justify-center md:justify-start w-full max-w-full flex-wrap">
-                <a href="tel:+919021097544" className="flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto min-h-[48px] px-6 sm:px-8 py-3.5 sm:py-4 bg-white text-black font-bold rounded-full hover:bg-green-400 hover:text-white transition-all shadow-xl hover:shadow-green-500/20 group text-sm sm:text-base flex-shrink-0">
+                <a href="tel:+919021097544" className="flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto min-h-[48px] px-6 sm:px-8 py-3.5 sm:py-4 bg-white text-black font-bold rounded-full hover:bg-[#00b050] hover:text-white transition-all shadow-xl hover:shadow-[#00b050]/20 group text-sm sm:text-base flex-shrink-0">
                   <FaPhoneAlt className="group-hover:rotate-12 transition-transform flex-shrink-0" /> Call Now
                 </a>
                 <a href="https://wa.me/919021097544" className="flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto min-h-[48px] px-6 sm:px-8 py-3.5 sm:py-4 border-2 border-white text-white font-bold rounded-full hover:bg-white/10 transition-all backdrop-blur-md text-sm sm:text-base flex-shrink-0">
@@ -222,11 +222,11 @@ const acProducts = [
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h4 className="text-green-600 font-bold tracking-widest uppercase mb-4 flex items-center gap-2">
-                <span className="w-8 h-0.5 bg-green-600"></span> Why Windsmit Air?
+              <h4 className="text-[#00b050] font-bold tracking-widest uppercase mb-4 flex items-center gap-2">
+                <span className="w-8 h-0.5 bg-[#00b050]"></span> Why Windsmit Air?
               </h4>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 leading-tight">
-                Enhancing Your Indoor <br /> <span className="text-green-600">Air Quality & Comfort</span>
+                Enhancing Your Indoor <br /> <span className="text-[#00b050]">Air Quality & Comfort</span>
               </h2>
               <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
                 <p>
@@ -242,7 +242,7 @@ const acProducts = [
                     "After-Sales Support"
                   ].map((item, i) => (
                     <div key={i} className="flex items-center gap-3 text-gray-700 font-medium">
-                      <FaCheckCircle className="text-green-500 text-lg flex-shrink-0" /> {item}
+                      <FaCheckCircle className="text-[#00b050] text-lg flex-shrink-0" /> {item}
                     </div>
                   ))}
                 </div>
@@ -277,11 +277,11 @@ const acProducts = [
     {/* Heading */}
     <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
       <div className="max-w-2xl">
-        <h4 className="text-green-600 font-bold mb-2 uppercase tracking-wider">
+        <h4 className="text-[#00b050] font-bold mb-2 uppercase tracking-wider">
           Room Cooling Solutions
         </h4>
         <h2 className="text-4xl font-bold text-gray-900 leading-tight">
-          Room <span className="text-green-600">Air Conditioning</span>
+          Room <span className="text-[#00b050]">Air Conditioning</span>
         </h2>
       </div>
       <p className="text-gray-800 max-w-md text-right hidden md:block">
@@ -310,7 +310,7 @@ const acProducts = [
               alt={product.title}
               className="w-full h-full object-contain bg-white p-10 transform group-hover:scale-110 transition-transform duration-700"
             />
-            <div className="absolute inset-0 bg-green-600/5 group-hover:bg-transparent transition-colors duration-500" />
+            <div className="absolute inset-0 bg-[#00b050]/5 group-hover:bg-transparent transition-colors duration-500" />
           </div>
 
           {/* Content */}
@@ -319,14 +319,14 @@ const acProducts = [
               {product.title}
             </h3>
 
-            <p className="text-green-600 font-semibold italic flex items-center gap-2">
+            <p className="text-[#00b050] font-semibold italic flex items-center gap-2">
               <FaSnowflake /> {product.desc}
             </p>
 
            <div className="space-y-3">
   {product.content.map((point, i) => (
     <div key={i} className="flex items-start gap-3 text-gray-600">
-      <FaCheckCircle className="text-green-500 mt-1 shrink-0" />
+      <FaCheckCircle className="text-[#00b050] mt-1 shrink-0" />
       <p className="leading-relaxed">{point}</p>
     </div>
   ))}
@@ -338,7 +338,7 @@ const acProducts = [
                 onClick={() =>
                   window.location.href = `https://wa.me/919021097544?text=Interested in ${product.title}`
                 }
-                className="px-8 py-3 bg-gray-900 text-white font-bold rounded-sm hover:bg-green-600 transition-all uppercase tracking-wide text-sm"
+                className="px-8 py-3 bg-gray-900 text-white font-bold rounded-sm hover:bg-[#00b050] transition-all uppercase tracking-wide text-sm"
               >
                 Check Pricing
               </button>
@@ -358,7 +358,7 @@ const acProducts = [
   <div className="max-w-7xl mx-auto">
     <div className="text-center mb-20">
       <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Residential Services</h2>
-      <div className="w-24 h-1.5 bg-green-500 mx-auto rounded-full" />
+      <div className="w-24 h-1.5 bg-[#00b050] mx-auto rounded-full" />
       <p className="text-gray-500 mt-6 max-w-2xl mx-auto text-lg font-medium">
         Professional maintenance & repair services for long-lasting cooling.
       </p>
@@ -379,12 +379,12 @@ const acProducts = [
               className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all border border-gray-100 flex flex-col items-center text-center group"
             >
               {/* Icon */}
-              <div className="w-16 h-16 bg-green-600 text-white rounded-2xl flex items-center justify-center text-2xl mb-4 shadow-inner">
+              <div className="w-16 h-16 bg-[#00b050] text-white rounded-2xl flex items-center justify-center text-2xl mb-4 shadow-inner">
                 <Icon />
               </div>
 
               {/* Title */}
-              <h3 className="text-xl font-bold text-green-600 mb-4 h-[50px] flex items-center justify-center">
+              <h3 className="text-xl font-bold text-[#00b050] mb-4 h-[50px] flex items-center justify-center">
                 {service.title}
               </h3>
 
@@ -420,7 +420,7 @@ const acProducts = [
     <div className="mt-16 text-center">
       <button
         onClick={() => setShowAllServices(!showAllServices)}
-        className="px-10 py-3.5 bg-white border-2 border-green-600 text-green-700 font-bold rounded-full hover:bg-green-600 hover:text-white transition-all shadow-md active:scale-95"
+        className="px-10 py-3.5 bg-white border-2 border-[#00b050] text-[#00b050] font-bold rounded-full hover:bg-[#00b050] hover:text-white transition-all shadow-md active:scale-95"
       >
         {showAllServices ? "Show Less" : "View All Services"}
       </button>
@@ -433,10 +433,10 @@ const acProducts = [
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">How We Work</h2>
-            <p className="text-green-500 text-lg">Hassle-free service in 4 simple steps.</p>
+            <p className="text-[#00b050] text-lg">Hassle-free service in 4 simple steps.</p>
           </div>
           <div className="grid md:grid-cols-4 gap-8 relative">
-            <div className="hidden md:block absolute top-12 left-0 w-full h-0.5 bg-green-800/50 -z-0" />
+            <div className="hidden md:block absolute top-12 left-0 w-full h-0.5 bg-[#00b050]/50 -z-0" />
             {[
               { title: "Book Service", desc: "Call or WhatsApp us." },
               { title: "Expert Diagnosis", desc: "Thorough analysis." },
@@ -444,11 +444,11 @@ const acProducts = [
               { title: "Cool Comfort", desc: "Enjoy your space." }
             ].map((step, i) => (
               <div key={i} className="relative z-10 text-center group">
-                <div className="w-24 h-24 mx-auto bg-green-800 rounded-full flex items-center justify-center text-3xl font-bold border-4 border-green-900 shadow-xl mb-6 group-hover:scale-110 transition-transform bg-green-800">
+                <div className="w-24 h-24 mx-auto bg-yellow-300 rounded-full flex items-center justify-center text-3xl font-bold border-4 border-yellow-300 shadow-xl mb-6 group-hover:scale-110  transition-transform bg-[#00b050]" style={{ color: '#00b050' }}>
                   {i + 1}
                 </div>
                 <h3 className="text-xl font-bold mb-2">{step.title}</h3>
-                <p className="text-green-600 font-medium text-sm px-4">{step.desc}</p>
+                <p className="text-[#00b050] font-medium text-sm px-4">{step.desc}</p>
               </div>
             ))}
           </div>
@@ -473,13 +473,13 @@ const acProducts = [
         onClick={(e) => e.stopPropagation()}
         className="bg-white rounded-3xl max-w-lg w-full p-8 shadow-2xl relative overflow-hidden"
       >
-        <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-green-400 to-yellow-400" />
+        <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-[#00b050] to-yellow-400" />
         
         <div className="flex justify-between items-start mb-6">
           <div>
             <h3 className="text-2xl font-bold text-gray-900">{selectedService.title}</h3>
             <div className="mt-1">
-              <p className="text-green-600 font-bold text-xl">{selectedService.price}</p>
+              <p className="text-[#00b050] font-bold text-xl">{selectedService.price}</p>
               {/* Added Price Disclaimer */}
               <p className="text-[10px] uppercase tracking-wider text-gray-400 font-medium leading-tight">
                 *Prices shown are indicative; actual charges may vary based on inspection.
@@ -497,7 +497,7 @@ const acProducts = [
         <div className="space-y-3 mb-8">
           {selectedService.details?.map((detail, i) => (
             <div key={i} className="flex items-start gap-3">
-              <FaCheckCircle className="text-green-500 mt-1 shrink-0" />
+              <FaCheckCircle className="text-[#00b050] mt-1 shrink-0" />
               <span className="text-gray-600 text-sm">{detail}</span>
             </div>
           ))}
@@ -505,7 +505,7 @@ const acProducts = [
 
         <a
           href={`https://wa.me/919021097544?text=Hi, I am interested in ${selectedService.title}`}
-          className="flex items-center justify-center gap-2 w-full bg-green-600 text-white py-4 rounded-xl font-bold hover:bg-green-700 transition shadow-lg hover:shadow-green-600/30"
+          className="flex items-center justify-center gap-2 w-full bg-[#00b050] text-white py-4 rounded-xl font-bold hover:bg-[#009040] transition shadow-lg hover:shadow-[#00b050]/30"
         >
           <FaWhatsapp className="text-xl" /> Book via WhatsApp
         </a>

@@ -83,7 +83,7 @@ function Testimonials() {
             <div className="max-w-7xl mx-auto">
                 {/* Section Header */}
                 <div className="text-center mb-8 sm:mb-12 md:mb-16">
-                    <span className="text-emerald-500 font-bold uppercase tracking-widest text-xs sm:text-sm mb-2 sm:mb-3 block">
+                    <span className="text-[#00b050] font-bold uppercase tracking-widest text-xs sm:text-sm mb-2 sm:mb-3 block">
                         Client Testimonials
                     </span>
                     <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4">
@@ -113,7 +113,7 @@ function Testimonials() {
                                 className="flex-shrink-0 px-2 sm:px-3 md:px-4 box-border"
                                 style={{ width: `${100 / cardsToShow}%` }}
                             >
-                                <div className="bg-slate-800 rounded-xl p-4 sm:p-6 md:p-8 border border-slate-700 hover:border-emerald-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-emerald-500/10 h-full">
+                                <div className="bg-slate-800 rounded-xl p-4 sm:p-6 md:p-8 border border-slate-700 hover:border-[#00b050]/50 transition-all duration-300 hover:shadow-xl hover:shadow-[#00b050]/10 h-full">
                                     {/* Rating Stars */}
                                     <div className="flex gap-0.5 sm:gap-1 mb-3 sm:mb-4">
                                         {[...Array(testimonial.rating)].map((_, i) => (
@@ -134,7 +134,7 @@ function Testimonials() {
 
                                     {/* Client Info */}
                                     <div className="flex items-center gap-3 sm:gap-4">
-                                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center text-white font-bold text-base sm:text-lg flex-shrink-0">
+                                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-[#00b050] to-[#00b050] flex items-center justify-center text-white font-bold text-base sm:text-lg flex-shrink-0">
                                             {testimonial.name.charAt(0)}
                                         </div>
                                         <div className="min-w-0">
@@ -184,7 +184,7 @@ function Testimonials() {
                                 key={index}
                                 onClick={() => goToSlide(index)}
                                 className={`h-1.5 sm:h-2 rounded-full transition-all duration-300 touch-manipulation ${index === currentIndex
-                                    ? 'w-6 sm:w-8 bg-emerald-500'
+                                    ? 'w-6 sm:w-8 bg-[#00b050]'
                                     : 'w-1.5 sm:w-2 bg-slate-600 hover:bg-slate-500'
                                     }`}
                                 aria-label={`Go to slide ${index + 1}`}
@@ -198,7 +198,7 @@ function Testimonials() {
                     <p className="text-slate-400 mb-6 text-sm sm:text-base">
                         Let’s design the right air for your space.
                     </p>
-                    <Link to="/contact" className="inline-block px-6 sm:px-8 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/25">
+                    <Link to="/contact" className="inline-block px-6 sm:px-8 py-3 bg-[#00b050] hover:bg-[#009040] text-white font-semibold rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-[#00b050]/25">
                         Request a site visit today!
                     </Link>
                 </div>
