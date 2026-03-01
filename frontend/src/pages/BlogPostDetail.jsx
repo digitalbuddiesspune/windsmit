@@ -50,7 +50,15 @@ function BlogPostDetail() {
   }, [showShareDropdown])
 
   const getApiUrl = () => {
-    const envUrl = import.meta.env.VITE_API_URL || 'https://windsmit-backend.onrender.com/api'
+    const envUrl = import.meta.env.VITE_API_URL
+    if (!envUrl) {
+      console.error('VITE_API_URL is not set in environment variables')
+      // For local dev, use proxy if available
+      if (typeof window !== 'undefined' && /localhost:5173|127\.0\.0\.1:5173/.test(window.location.origin)) {
+        return '/api' // Use Vite proxy for local dev
+      }
+      throw new Error('VITE_API_URL environment variable is required')
+    }
     let cleanUrl = envUrl.replace(/\/+$/, '')
     if (!cleanUrl.startsWith('http://') && !cleanUrl.startsWith('https://')) {
       cleanUrl = `https://${cleanUrl}`

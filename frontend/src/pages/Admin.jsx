@@ -1,9 +1,17 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-// Normalize API URL - use env var or fallback to Render backend
+// Normalize API URL - use env var only (no hardcoded fallbacks)
 const getApiUrl = () => {
-  const envUrl = import.meta.env.VITE_API_URL || 'https://windsmit-backend.onrender.com/api'
+  const envUrl = import.meta.env.VITE_API_URL
+  if (!envUrl) {
+    console.error('VITE_API_URL is not set in environment variables')
+    // For local dev, use proxy if available
+    if (typeof window !== 'undefined' && /localhost:5173|127\.0\.0\.1:5173/.test(window.location.origin)) {
+      return '/api' // Use Vite proxy for local dev
+    }
+    throw new Error('VITE_API_URL environment variable is required')
+  }
   let cleanUrl = envUrl.replace(/\/+$/, '')
   if (!cleanUrl.startsWith('http://') && !cleanUrl.startsWith('https://')) cleanUrl = `https://${cleanUrl}`
   if (!cleanUrl.includes('/api')) cleanUrl = `${cleanUrl}/api`
@@ -26,6 +34,7 @@ function Admin() {
   const [loadingStories, setLoadingStories] = useState(false)
   const [formData, setFormData] = useState({
     title: '',
+    excerpt: '',
     content: '',
     category: 'HVAC',
     author: 'Windsmit Air Team',
@@ -53,6 +62,9 @@ function Admin() {
           localStorage.removeItem('adminToken')
           setIsAuthenticated(false)
         }
+      } else {
+        // No token, ensure we show login form
+        setIsAuthenticated(false)
       }
       setLoading(false)
     }
@@ -155,21 +167,30 @@ function Admin() {
         body: JSON.stringify({ email, password })
       })
 
-      const data = await response.json()
+      let data
+      try {
+        data = await response.json()
+      } catch (parseError) {
+        // If response is not JSON, show generic error
+        throw new Error(`Server error: ${response.status} ${response.statusText}`)
+      }
       
       if (response.ok) {
+        if (!data.token) {
+          throw new Error('No token received from server')
+        }
         localStorage.setItem('adminToken', data.token)
         setIsAuthenticated(true)
         setLoading(false)
         await Promise.all([fetchPosts(), fetchStories(), fetchSettings()])
       } else {
         // Show specific error message
-        const errorMsg = data.error || 'Login failed'
-        alert(`Login Failed: ${errorMsg}\n\nDefault credentials:\nEmail: admin@windsmitair.com\nPassword: admin123`)
+        const errorMsg = data.error || data.message || 'Login failed'
+        alert(`Login Failed: ${errorMsg}\n\nPlease check:\n- Email: ${email}\n- Password is correct\n- Backend server is running\n\nDefault credentials:\nEmail: admin@windsmitair.com\nPassword: admin123`)
       }
     } catch (error) {
       console.error('Login error:', error)
-      alert(`Error connecting to server.\n\nMake sure the backend is running and accessible.\n\nError: ${error.message}`)
+      alert(`Error connecting to server.\n\nMake sure:\n1. Backend server is running and accessible\n2. You have created an admin account\n3. Check browser console for details\n\nError: ${error.message}`)
     }
   }
 
@@ -182,6 +203,14 @@ function Admin() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const token = localStorage.getItem('adminToken')
+
+    // Check if token exists
+    if (!token) {
+      showNotification('You must be logged in to create posts. Please log in again.', 'error')
+      setIsAuthenticated(false)
+      localStorage.removeItem('adminToken')
+      return
+    }
 
     try {
       const url = editingPost 
@@ -196,15 +225,17 @@ function Admin() {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
         },
-        body: JSON.stringify({ ...formData, excerpt: editingPost?.excerpt ?? '' })
+        body: JSON.stringify(formData)
       })
 
       if (response.ok) {
         const wasEditing = !!editingPost
+        const wasPublished = formData.published
         setShowForm(false)
         setEditingPost(null)
         setFormData({
           title: '',
+          excerpt: '',
           content: '',
           category: 'HVAC',
           author: 'Windsmit Air Team',
@@ -214,19 +245,45 @@ function Admin() {
           featured: false
         })
         await fetchPosts()
-        showNotification(wasEditing ? 'Post updated successfully!' : 'Post created successfully!')
+        const successMsg = wasEditing 
+          ? (wasPublished ? 'Post updated successfully!' : 'Post updated successfully! (Note: Post is not published and won\'t appear on blog page)')
+          : (wasPublished ? 'Post created successfully!' : 'Post created successfully! (Note: Post is not published and won\'t appear on blog page)')
+        showNotification(successMsg)
       } else {
-        const data = await response.json()
-        showNotification(data.error || 'Error saving post', 'error')
+        // Handle 401 Unauthorized - token expired or invalid
+        if (response.status === 401) {
+          showNotification('Your session has expired. Please log in again.', 'error')
+          localStorage.removeItem('adminToken')
+          setIsAuthenticated(false)
+          return
+        }
+        
+        // Try to parse error message
+        let errorMessage = 'Error saving post'
+        try {
+          const data = await response.json()
+          errorMessage = data.error || errorMessage
+        } catch (parseError) {
+          errorMessage = `Error: ${response.status} ${response.statusText}`
+        }
+        showNotification(errorMessage, 'error')
       }
     } catch (error) {
-      showNotification('Error saving post', 'error')
+      console.error('Error saving post:', error)
+      showNotification(`Network error: ${error.message}. Please check your connection.`, 'error')
     }
   }
 
   const handleStorySubmit = async (e) => {
     e.preventDefault()
     const token = localStorage.getItem('adminToken')
+
+    if (!token) {
+      showNotification('You must be logged in to create stories. Please log in again.', 'error')
+      setIsAuthenticated(false)
+      localStorage.removeItem('adminToken')
+      return
+    }
 
     try {
       const response = await fetch(`${API_URL}/stories`, {
@@ -243,11 +300,25 @@ function Admin() {
         await fetchStories()
         showNotification('Story created successfully!')
       } else {
-        const data = await response.json()
-        alert(data.error || 'Error creating story')
+        if (response.status === 401) {
+          showNotification('Your session has expired. Please log in again.', 'error')
+          localStorage.removeItem('adminToken')
+          setIsAuthenticated(false)
+          return
+        }
+        
+        let errorMessage = 'Error creating story'
+        try {
+          const data = await response.json()
+          errorMessage = data.error || errorMessage
+        } catch (parseError) {
+          errorMessage = `Error: ${response.status} ${response.statusText}`
+        }
+        showNotification(errorMessage, 'error')
       }
     } catch (error) {
-      alert('Error creating story')
+      console.error('Error creating story:', error)
+      showNotification(`Network error: ${error.message}`, 'error')
     }
   }
 
@@ -255,6 +326,7 @@ function Admin() {
     setEditingPost(post)
     setFormData({
       title: post.title,
+      excerpt: post.excerpt || '',
       content: post.content,
       category: post.category,
       author: post.author,
@@ -284,8 +356,15 @@ function Admin() {
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure you want to delete this post?')) return
 
+    const token = localStorage.getItem('adminToken')
+    if (!token) {
+      showNotification('You must be logged in to delete posts. Please log in again.', 'error')
+      setIsAuthenticated(false)
+      localStorage.removeItem('adminToken')
+      return
+    }
+
     try {
-      const token = localStorage.getItem('adminToken')
       const response = await fetch(`${API_URL}/blog/${id}`, {
         method: 'DELETE',
         headers: {
@@ -297,18 +376,32 @@ function Admin() {
         await fetchPosts()
         showNotification('Post deleted successfully!')
       } else {
+        if (response.status === 401) {
+          showNotification('Your session has expired. Please log in again.', 'error')
+          localStorage.removeItem('adminToken')
+          setIsAuthenticated(false)
+          return
+        }
         showNotification('Error deleting post', 'error')
       }
     } catch (error) {
-      showNotification('Error deleting post', 'error')
+      console.error('Error deleting post:', error)
+      showNotification(`Network error: ${error.message}`, 'error')
     }
   }
 
   const handleDeleteStory = async (id) => {
     if (!window.confirm('Are you sure you want to delete this story?')) return
 
+    const token = localStorage.getItem('adminToken')
+    if (!token) {
+      showNotification('You must be logged in to delete stories. Please log in again.', 'error')
+      setIsAuthenticated(false)
+      localStorage.removeItem('adminToken')
+      return
+    }
+
     try {
-      const token = localStorage.getItem('adminToken')
       const response = await fetch(`${API_URL}/stories/${id}`, {
         method: 'DELETE',
         headers: {
@@ -320,10 +413,17 @@ function Admin() {
         await fetchStories()
         showNotification('Story deleted successfully!')
       } else {
+        if (response.status === 401) {
+          showNotification('Your session has expired. Please log in again.', 'error')
+          localStorage.removeItem('adminToken')
+          setIsAuthenticated(false)
+          return
+        }
         showNotification('Error deleting story', 'error')
       }
     } catch (error) {
-      showNotification('Error deleting story', 'error')
+      console.error('Error deleting story:', error)
+      showNotification(`Network error: ${error.message}`, 'error')
     }
   }
 
@@ -339,8 +439,10 @@ function Admin() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
         <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Admin Login</h1>
-          <p className="text-gray-600 mb-6">Sign in to manage blog posts</p>
+          <div className="text-center mb-6">
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">Admin Login</h1>
+            <p className="text-gray-600">Sign in to manage blog posts and stories</p>
+          </div>
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
@@ -348,7 +450,7 @@ function Admin() {
                 type="email"
                 name="email"
                 required
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#00b050] focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4CAF50] focus:border-transparent"
                 placeholder="admin@windsmitair.com"
               />
             </div>
@@ -369,6 +471,11 @@ function Admin() {
               Login
             </button>
           </form>
+          <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+            <p className="text-xs text-blue-800">
+              <strong>Note:</strong> Default credentials are email: <code className="bg-blue-100 px-1 rounded">admin@windsmitair.com</code> and password: <code className="bg-blue-100 px-1 rounded">admin123</code>
+            </p>
+          </div>
         </div>
       </div>
     )
@@ -522,6 +629,18 @@ function Admin() {
                 </div>
 
                 <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Excerpt *</label>
+                  <textarea
+                    required
+                    value={formData.excerpt}
+                    onChange={(e) => setFormData({ ...formData, excerpt: e.target.value })}
+                    rows="2"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#00b050] focus:border-transparent"
+                    placeholder="Brief summary of the post (will be shown on blog listing page)"
+                  />
+                </div>
+
+                <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Content *</label>
                   <textarea
                     required
@@ -564,25 +683,36 @@ function Admin() {
                   />
                 </div>
 
-                <div className="flex items-center gap-6">
-                  <label className="flex items-center gap-2">
-                    <input
-                      type="checkbox"
-                      checked={formData.published}
-                      onChange={(e) => setFormData({ ...formData, published: e.target.checked })}
-                      className="w-4 h-4 text-[#00b050] border-gray-300 rounded focus:ring-[#00b050]"
-                    />
-                    <span className="text-sm font-medium text-gray-700">Published</span>
-                  </label>
-                  <label className="flex items-center gap-2">
-                    <input
-                      type="checkbox"
-                      checked={formData.featured}
-                      onChange={(e) => setFormData({ ...formData, featured: e.target.checked })}
-                      className="w-4 h-4 text-[#00b050] border-gray-300 rounded focus:ring-[#00b050]"
-                    />
-                    <span className="text-sm font-medium text-gray-700">Featured</span>
-                  </label>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-6">
+                    <label className="flex items-center gap-2 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={formData.published}
+                        onChange={(e) => setFormData({ ...formData, published: e.target.checked })}
+                        className="w-5 h-5 text-[#00b050] border-gray-300 rounded focus:ring-[#00b050] cursor-pointer"
+                      />
+                      <span className={`text-sm font-semibold ${formData.published ? 'text-[#00b050]' : 'text-gray-700'}`}>
+                        Published
+                      </span>
+                    </label>
+                    <label className="flex items-center gap-2 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={formData.featured}
+                        onChange={(e) => setFormData({ ...formData, featured: e.target.checked })}
+                        className="w-5 h-5 text-[#00b050] border-gray-300 rounded focus:ring-[#00b050] cursor-pointer"
+                      />
+                      <span className="text-sm font-medium text-gray-700">Featured</span>
+                    </label>
+                  </div>
+                  {!formData.published && (
+                    <div className="p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+                      <p className="text-sm text-yellow-800">
+                        <strong>Note:</strong> This post is not published. It will not appear on the blog page until you check "Published" and save.
+                      </p>
+                    </div>
+                  )}
                 </div>
 
                 <div className="flex justify-end gap-4 pt-4 border-t border-gray-200">

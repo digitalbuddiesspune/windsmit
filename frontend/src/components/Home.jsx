@@ -91,7 +91,15 @@ const banners = [
 
 // Helper to normalize API URL (same pattern as Blog/Admin)
 const getApiUrl = () => {
-  const envUrl = import.meta.env.VITE_API_URL || 'https://windsmit-backend.onrender.com/api'
+  const envUrl = import.meta.env.VITE_API_URL
+  if (!envUrl) {
+    console.error('VITE_API_URL is not set in environment variables')
+    // For local dev, use proxy if available, otherwise throw error
+    if (typeof window !== 'undefined' && /localhost:5173|127\.0\.0\.1:5173/.test(window.location.origin)) {
+      return '/api' // Use Vite proxy for local dev
+    }
+    throw new Error('VITE_API_URL environment variable is required')
+  }
   let cleanUrl = envUrl.replace(/\/+$/, '')
   if (!cleanUrl.startsWith('http://') && !cleanUrl.startsWith('https://')) {
     cleanUrl = `https://${cleanUrl}`
@@ -459,9 +467,9 @@ function Home() {
           {/* Section Header */}
           <div className="mb-8">
             <span className="inline-block px-2.5 py-0.5 font-semibold uppercase tracking-widest text-xs rounded-full mb-1.5" style={{ backgroundColor: 'rgba(0,176,80,0.15)', color: '#00b050' }}>
-              Project Highlights
+               Highlights
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 leading-tight">Our Work in Action</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 leading-tight">Where We Create & Celebrate</h2>
             <p className="text-sm sm:text-base text-slate-800 max-w-2xl mx-auto mt-2">
               Explore our recent installations and project showcases
             </p>
