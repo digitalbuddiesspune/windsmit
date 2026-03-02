@@ -1,17 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-
-// Normalize API URL - use env var only (no hardcoded fallbacks)
-const getApiUrl = () => {
-  const envUrl = import.meta.env.VITE_API_URL
-  if (!envUrl) {
-    throw new Error('VITE_API_URL environment variable is required. Please set it in your .env file.')
-  }
-  let cleanUrl = envUrl.replace(/\/+$/, '')
-  if (!cleanUrl.startsWith('http://') && !cleanUrl.startsWith('https://')) cleanUrl = `https://${cleanUrl}`
-  if (!cleanUrl.includes('/api')) cleanUrl = `${cleanUrl}/api`
-  return cleanUrl
-}
+import { getApiUrl } from '../config/api'
 
 const API_URL = getApiUrl()
 

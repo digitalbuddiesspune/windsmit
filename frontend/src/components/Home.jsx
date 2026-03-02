@@ -1,8 +1,14 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination, Autoplay } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
 import Footer from './Footer'
 import WhyChooseUs from './WhyChooseUs'
 import Testimonials from './Testimonials'
+import { getApiUrl } from '../config/api'
 
 // --- 1. DATA CONSTANTS ---
 
@@ -88,22 +94,6 @@ const banners = [
     alt: 'Professional HVAC Engineering'
   }
 ]
-
-// Helper to normalize API URL (same pattern as Blog/Admin)
-const getApiUrl = () => {
-  const envUrl = import.meta.env.VITE_API_URL
-  if (!envUrl) {
-    throw new Error('VITE_API_URL environment variable is required. Please set it in your .env file.')
-  }
-  let cleanUrl = envUrl.replace(/\/+$/, '')
-  if (!cleanUrl.startsWith('http://') && !cleanUrl.startsWith('https://')) {
-    cleanUrl = `https://${cleanUrl}`
-  }
-  if (!cleanUrl.includes('/api')) {
-    cleanUrl = `${cleanUrl}/api`
-  }
-  return cleanUrl
-}
 
 // --- 2. INTERNAL COMPONENTS ---
 
@@ -456,7 +446,7 @@ function Home() {
         </div>
       </section>
 
-      {/* --- OUR WORK IN ACTION SECTION --- */}
+      {/* --- OUR WORK IN ACTION SECTION (Stories carousel) --- */}
       <section className="px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 py-16 sm:py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto text-center">
           {/* Section Header */}
@@ -470,42 +460,28 @@ function Home() {
             </p>
           </div>
 
-          {/* Videos Display */}
+          {/* 1–3 stories: centered grid (no carousel). 4+ stories: carousel with arrows & dots */}
           {videos.length === 0 ? (
             <div className="text-slate-500 py-12">No videos available at the moment.</div>
-          ) : videos.length === 1 ? (
-            // Single video - centered
-            <div className="flex justify-center">
-              <div className="w-full sm:w-3/4 md:w-2/3 lg:w-1/2 aspect-video rounded-xl overflow-hidden shadow-lg relative group cursor-pointer" onClick={() => setFullscreenVideo(videos[0])}>
-                <video
-                  src={videos[0].videoUrl}
-                  className="w-full h-full object-cover"
-                  muted
-                  loop
-                />
-                <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
-                  <div className="w-20 h-20 rounded-full bg-white/90 flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
-                    <svg className="w-14 h-14 ml-1" style={{ color: '#00b050' }} fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z"/>
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ) : videos.length === 2 ? (
-            // Two videos - equally spaced
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          ) : videos.length <= 3 ? (
+            /* Starting state: all stories visible, centered, no arrows/dots */
+            <div className={`grid gap-6 max-w-5xl mx-auto justify-items-center ${videos.length === 1 ? 'grid-cols-1 max-w-2xl' : videos.length === 2 ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'}`}>
               {videos.map((video, index) => (
-                <div key={video._id || index} className="aspect-video rounded-xl overflow-hidden shadow-lg relative group cursor-pointer" onClick={() => setFullscreenVideo(video)}>
+                <div
+                  key={video._id || index}
+                  className="aspect-video w-full rounded-xl overflow-hidden shadow-lg relative group cursor-pointer"
+                  onClick={() => setFullscreenVideo(video)}
+                >
                   <video
                     src={video.videoUrl}
                     className="w-full h-full object-cover"
                     muted
                     loop
+                    playsInline
                   />
                   <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
-                    <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
-                      <svg className="w-8 h-8 ml-1" style={{ color: '#00b050' }} fill="currentColor" viewBox="0 0 24 24">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/90 flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
+                      <svg className="w-8 h-8 sm:w-12 sm:h-12 ml-1" style={{ color: '#00b050' }} fill="currentColor" viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z"/>
                       </svg>
                     </div>
@@ -514,27 +490,71 @@ function Home() {
               ))}
             </div>
           ) : (
-            // Three or more videos - horizontal scroll
-            <div className="overflow-x-auto pb-4 -mx-4 sm:-mx-6 md:mx-0 px-4 sm:px-6 md:px-0">
-              <div className="flex gap-6 min-w-max md:min-w-0 md:grid md:grid-cols-3 lg:grid-cols-4">
+            /* 4+ stories: carousel with prev/next and dots */
+            <div className="relative flex flex-col items-center">
+              <Swiper
+                modules={[Navigation, Pagination, Autoplay]}
+                spaceBetween={24}
+                slidesPerView={1}
+                breakpoints={{
+                  640: { slidesPerView: 1 },
+                  768: { slidesPerView: 2 },
+                  1024: { slidesPerView: 3 }
+                }}
+                loop
+                autoplay={{
+                  delay: 3500,
+                  disableOnInteraction: false
+                }}
+                navigation={{
+                  prevEl: '.highlights-prev',
+                  nextEl: '.highlights-next'
+                }}
+                pagination={{
+                  clickable: true,
+                  el: '.highlights-pagination'
+                }}
+                className="w-full max-w-5xl mx-auto"
+              >
                 {videos.map((video, index) => (
-                  <div key={video._id || index} className="flex-shrink-0 w-[300px] sm:w-[400px] md:w-full aspect-video rounded-xl overflow-hidden shadow-lg relative group cursor-pointer" onClick={() => setFullscreenVideo(video)}>
-                    <video
-                      src={video.videoUrl}
-                      className="w-full h-full object-cover"
-                      muted
-                      loop
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
-                      <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
-                        <svg className="w-8 h-8 ml-1" style={{ color: '#00b050' }} fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M8 5v14l11-7z"/>
-                        </svg>
+                  <SwiperSlide key={video._id || index}>
+                    <div
+                      className="aspect-video rounded-xl overflow-hidden shadow-lg relative group cursor-pointer"
+                      onClick={() => setFullscreenVideo(video)}
+                    >
+                      <video
+                        src={video.videoUrl}
+                        className="w-full h-full object-cover"
+                        muted
+                        loop
+                        playsInline
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
+                        <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/90 flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
+                          <svg className="w-8 h-8 sm:w-12 sm:h-12 ml-1" style={{ color: '#00b050' }} fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                          </svg>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </SwiperSlide>
                 ))}
-              </div>
+              </Swiper>
+              <button
+                type="button"
+                className="highlights-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 shadow-lg border border-slate-200 flex items-center justify-center text-slate-600 hover:text-[#00b050] hover:border-[#00b050]/50 transition-all -ml-2 sm:left-4 md:-left-6"
+                aria-label="Previous"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+              </button>
+              <button
+                type="button"
+                className="highlights-next absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 shadow-lg border border-slate-200 flex items-center justify-center text-slate-600 hover:text-[#00b050] hover:border-[#00b050]/50 transition-all -mr-2 sm:right-4 md:-right-6"
+                aria-label="Next"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+              </button>
+              <div className="highlights-pagination flex justify-center gap-2 mt-6 [&_.swiper-pagination-bullet]:bg-slate-300 [&_.swiper-pagination-bullet-active]:bg-[#00b050]" />
             </div>
           )}
         </div>

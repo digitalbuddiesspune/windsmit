@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { FaSearch, FaCalendarAlt, FaArrowRight, FaInbox } from 'react-icons/fa'
 import Footer from '../components/Footer'
+import { getApiUrl } from '../config/api'
 
 function Blog() {
   const [posts, setPosts] = useState([])
@@ -10,17 +11,6 @@ function Blog() {
   const [searchTerm, setSearchTerm] = useState('')
 
   const categories = ['all', 'HVAC', 'Air Conditioning', 'BMS', 'Maintenance', 'Energy Efficiency']
-
-  const getApiUrl = () => {
-    const envUrl = import.meta.env.VITE_API_URL
-    if (!envUrl) {
-      throw new Error('VITE_API_URL environment variable is required. Please set it in your .env file.')
-    }
-    let cleanUrl = envUrl.replace(/\/+$/, '')
-    if (!cleanUrl.startsWith('http://') && !cleanUrl.startsWith('https://')) cleanUrl = `https://${cleanUrl}`
-    if (!cleanUrl.includes('/api')) cleanUrl = `${cleanUrl}/api`
-    return cleanUrl
-  }
 
   useEffect(() => {
     const fetchPosts = async () => {
