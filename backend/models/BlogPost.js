@@ -36,7 +36,9 @@ const blogPostSchema = new mongoose.Schema({
     default: false
   }
 }, {
-  timestamps: true
+  timestamps: true,
+  // Allow fields not defined in schema (for backward compatibility with old excerpt field)
+  strict: false
 })
 
 export default mongoose.model('BlogPost', blogPostSchema)
