@@ -41,7 +41,9 @@ router.get('/:id', async (req, res) => {
 // Create new blog post (protected)
 router.post('/', authenticate, async (req, res) => {
   try {
-    const post = new BlogPost(req.body)
+    // Remove excerpt field if present (legacy field, no longer in schema)
+    const { excerpt, ...postData } = req.body
+    const post = new BlogPost(postData)
     await post.save()
     res.status(201).json(post)
   } catch (error) {
@@ -52,9 +54,11 @@ router.post('/', authenticate, async (req, res) => {
 // Update blog post (protected)
 router.put('/:id', authenticate, async (req, res) => {
   try {
+    // Remove excerpt field if present (legacy field, no longer in schema)
+    const { excerpt, ...updateData } = req.body
     const post = await BlogPost.findByIdAndUpdate(
       req.params.id,
-      req.body,
+      updateData,
       { new: true, runValidators: true }
     )
     if (!post) {
