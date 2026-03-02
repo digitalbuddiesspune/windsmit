@@ -6,6 +6,13 @@ const blogPostSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
+  // Excerpt field - optional for backward compatibility (will be removed after Render redeploy)
+  excerpt: {
+    type: String,
+    required: false,
+    default: '',
+    trim: true
+  },
   content: {
     type: String,
     required: true
