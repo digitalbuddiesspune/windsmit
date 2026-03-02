@@ -8,6 +8,7 @@ import 'swiper/css/pagination'
 import Footer from './Footer'
 import WhyChooseUs from './WhyChooseUs'
 import Testimonials from './Testimonials'
+import { getApiUrl } from '../config/api'
 
 // --- 1. DATA CONSTANTS ---
 
@@ -93,27 +94,6 @@ const banners = [
     alt: 'Professional HVAC Engineering'
   }
 ]
-
-// Helper to normalize API URL (same pattern as Blog/Admin)
-const getApiUrl = () => {
-  const envUrl = import.meta.env.VITE_API_URL
-  if (!envUrl) {
-    console.error('VITE_API_URL is not set in environment variables')
-    // For local dev, use proxy if available, otherwise throw error
-    if (typeof window !== 'undefined' && /localhost:5173|127\.0\.0\.1:5173/.test(window.location.origin)) {
-      return '/api' // Use Vite proxy for local dev
-    }
-    throw new Error('VITE_API_URL environment variable is required')
-  }
-  let cleanUrl = envUrl.replace(/\/+$/, '')
-  if (!cleanUrl.startsWith('http://') && !cleanUrl.startsWith('https://')) {
-    cleanUrl = `https://${cleanUrl}`
-  }
-  if (!cleanUrl.includes('/api')) {
-    cleanUrl = `${cleanUrl}/api`
-  }
-  return cleanUrl
-}
 
 // --- 2. INTERNAL COMPONENTS ---
 

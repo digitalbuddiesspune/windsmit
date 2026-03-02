@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import Footer from '../components/Footer'
+import { getApiUrl } from '../config/api'
 
 // Hook for scroll depth and progress
 const useReadingProgress = () => {
@@ -48,26 +49,6 @@ function BlogPostDetail() {
       document.removeEventListener('mousedown', handleClickOutside)
     }
   }, [showShareDropdown])
-
-  const getApiUrl = () => {
-    const envUrl = import.meta.env.VITE_API_URL
-    if (!envUrl) {
-      console.error('VITE_API_URL is not set in environment variables')
-      // For local dev, use proxy if available
-      if (typeof window !== 'undefined' && /localhost:5173|127\.0\.0\.1:5173/.test(window.location.origin)) {
-        return '/api' // Use Vite proxy for local dev
-      }
-      throw new Error('VITE_API_URL environment variable is required')
-    }
-    let cleanUrl = envUrl.replace(/\/+$/, '')
-    if (!cleanUrl.startsWith('http://') && !cleanUrl.startsWith('https://')) {
-      cleanUrl = `https://${cleanUrl}`
-    }
-    if (!cleanUrl.includes('/api')) {
-      cleanUrl = `${cleanUrl}/api`
-    }
-    return cleanUrl
-  }
 
   useEffect(() => {
     const fetchPost = async () => {
