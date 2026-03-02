@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { FaSearch, FaCalendarAlt, FaArrowRight, FaInbox } from 'react-icons/fa'
 import Footer from '../components/Footer'
+import { getApiUrl } from '../config/api'
 
 function Blog() {
   const [posts, setPosts] = useState([])
@@ -10,22 +11,6 @@ function Blog() {
   const [searchTerm, setSearchTerm] = useState('')
 
   const categories = ['all', 'HVAC', 'Air Conditioning', 'BMS', 'Maintenance', 'Energy Efficiency']
-
-  const getApiUrl = () => {
-    const envUrl = import.meta.env.VITE_API_URL
-    if (!envUrl) {
-      console.error('VITE_API_URL is not set in environment variables')
-      // For local dev, use proxy if available
-      if (typeof window !== 'undefined' && /localhost:5173|127\.0\.0\.1:5173/.test(window.location.origin)) {
-        return '/api' // Use Vite proxy for local dev
-      }
-      throw new Error('VITE_API_URL environment variable is required')
-    }
-    let cleanUrl = envUrl.replace(/\/+$/, '')
-    if (!cleanUrl.startsWith('http://') && !cleanUrl.startsWith('https://')) cleanUrl = `https://${cleanUrl}`
-    if (!cleanUrl.includes('/api')) cleanUrl = `${cleanUrl}/api`
-    return cleanUrl
-  }
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -47,8 +32,8 @@ function Blog() {
   const filteredPosts = posts.filter(post => {
     const matchesCategory = selectedCategory === 'all' || post.category === selectedCategory
     const titleMatch = post.title?.toLowerCase().includes(searchTerm.toLowerCase())
-    const excerptMatch = post.excerpt?.toLowerCase().includes(searchTerm.toLowerCase())
-    return matchesCategory && (titleMatch || excerptMatch)
+    const contentMatch = post.content?.toLowerCase().includes(searchTerm.toLowerCase())
+    return matchesCategory && (titleMatch || contentMatch)
   })
 
   const formatDate = (dateString) =>
