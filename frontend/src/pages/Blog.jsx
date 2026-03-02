@@ -47,8 +47,8 @@ function Blog() {
   const filteredPosts = posts.filter(post => {
     const matchesCategory = selectedCategory === 'all' || post.category === selectedCategory
     const titleMatch = post.title?.toLowerCase().includes(searchTerm.toLowerCase())
-    const excerptMatch = post.excerpt?.toLowerCase().includes(searchTerm.toLowerCase())
-    return matchesCategory && (titleMatch || excerptMatch)
+    const contentMatch = post.content?.toLowerCase().includes(searchTerm.toLowerCase())
+    return matchesCategory && (titleMatch || contentMatch)
   })
 
   const formatDate = (dateString) =>
