@@ -18,7 +18,6 @@ function Admin() {
   const [loadingStories, setLoadingStories] = useState(false)
   const [formData, setFormData] = useState({
     title: '',
-    excerpt: '',
     content: '',
     category: 'HVAC',
     author: 'Windsmit Air Team',
@@ -219,7 +218,6 @@ function Admin() {
         setEditingPost(null)
         setFormData({
           title: '',
-          excerpt: '',
           content: '',
           category: 'HVAC',
           author: 'Windsmit Air Team',
@@ -310,7 +308,6 @@ function Admin() {
     setEditingPost(post)
     setFormData({
       title: post.title,
-      excerpt: post.excerpt || '',
       content: post.content,
       category: post.category,
       author: post.author,
@@ -613,18 +610,6 @@ function Admin() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Excerpt *</label>
-                  <textarea
-                    required
-                    value={formData.excerpt}
-                    onChange={(e) => setFormData({ ...formData, excerpt: e.target.value })}
-                    rows="2"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#00b050] focus:border-transparent"
-                    placeholder="Brief summary of the post (will be shown on blog listing page)"
-                  />
-                </div>
-
-                <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Content *</label>
                   <textarea
                     required
@@ -787,7 +772,6 @@ function Admin() {
                               {post.category}
                             </span>
                           </div>
-                          <p className="text-sm text-gray-600 mb-3 line-clamp-2">{post.excerpt}</p>
                           <div className="flex items-center gap-4 text-xs text-gray-500">
                             <span className="flex items-center gap-1">
                               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

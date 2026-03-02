@@ -73,7 +73,7 @@ function BlogPostDetail() {
   }
 
   const getShareText = () => {
-    return post ? `${post.title} - ${post.excerpt || ''}` : ''
+    return post ? post.title : ''
   }
 
   const handleShare = (platform) => {
@@ -284,12 +284,6 @@ function BlogPostDetail() {
 
             {/* Article Content */}
             <article className="flex-1 max-w-3xl">
-              {post.excerpt && (
-                <p className="text-2xl md:text-3xl  font-semibold text-slate-800 leading-snug  mb-12 text-slate-500/90">
-                  {post.excerpt}
-                </p>
-              )}
-
               <div className="prose prose-lg md:prose-xl prose-slate 
                 max-w-none
                 prose-headings:text-slate-900 prose-headings:font-bold

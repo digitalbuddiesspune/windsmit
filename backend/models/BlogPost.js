@@ -6,11 +6,6 @@ const blogPostSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
-  excerpt: {
-    type: String,
-    required: true,
-    trim: true
-  },
   content: {
     type: String,
     required: true
