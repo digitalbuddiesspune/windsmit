@@ -41,11 +41,7 @@ router.get('/:id', async (req, res) => {
 // Create new blog post (protected)
 router.post('/', authenticate, async (req, res) => {
   try {
-    // Ensure excerpt is not sent or set to empty string (for backward compatibility)
-    const { excerpt, ...postData } = req.body
-    // If excerpt is not provided, set it to empty string for old code compatibility
-    const finalData = { ...postData, excerpt: excerpt || '' }
-    const post = new BlogPost(finalData)
+    const post = new BlogPost(req.body)
     await post.save()
     res.status(201).json(post)
   } catch (error) {
@@ -56,12 +52,9 @@ router.post('/', authenticate, async (req, res) => {
 // Update blog post (protected)
 router.put('/:id', authenticate, async (req, res) => {
   try {
-    // Ensure excerpt is set to empty string if not provided (for backward compatibility)
-    const { excerpt, ...updateData } = req.body
-    const finalData = { ...updateData, excerpt: excerpt || '' }
     const post = await BlogPost.findByIdAndUpdate(
       req.params.id,
-      finalData,
+      req.body,
       { new: true, runValidators: true }
     )
     if (!post) {
