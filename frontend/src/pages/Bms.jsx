@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade, Navigation } from 'swiper/modules'; 
 import { FaBuilding, FaIndustry, FaHospital, FaHotel, FaArrowRight, FaCheckCircle, FaWhatsapp, FaPhoneAlt } from 'react-icons/fa';
 
-// Swiper Styles
+import Footer from '../components/Footer';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/navigation'; // Ensure this is here
@@ -23,7 +23,7 @@ const Bms = () => {
             {
                 "id": 1,
                 "name": "Supervisory Controllers",
-                "image": "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769681921/IMG_8261_c6o6hx.jpg",
+                "image": "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200833/IMG_8261_c6o6hx_ijjequ.jpg",
                 "description": "Supervisory controllers form the top layer of the Building Management System, enabling centralized monitoring and control of HVAC and allied systems.",
                 "points": [
                     "Provide centralized control and visualization of building automation systems.",
@@ -35,7 +35,7 @@ const Bms = () => {
             {
                 "id": 2,
                 "name": "DDC Controllers",
-                "image": "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769681933/IMG_8262_hvjazo.jpg",
+                "image": "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200834/IMG_8262_hvjazo_bx7iyc.jpg",
                 "description": "Direct Digital Controllers (DDC) execute real-time control of HVAC equipment using programmed logic and sensor feedback.",
                 "points": [
                     "Control AHUs, chillers, fans, dampers, and valves with high precision.",
@@ -47,7 +47,7 @@ const Bms = () => {
             {
                 "id": 3,
                 "name": "Sensors",
-                "image": "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769681951/IMG_8265_znswu5.jpg",
+                "image": "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200836/IMG_8265_znswu5_enuaqe.jpg",
                 "description": "Sensors provide real-time environmental data essential for accurate HVAC control and indoor comfort management.",
                 "points": [
                     "Measure temperature, humidity, pressure, and air quality parameters.",
@@ -59,7 +59,7 @@ const Bms = () => {
             {
                 "id": 4,
                 "name": "Thermostats",
-                "image": "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769681965/IMG_8266_v4qhb2.jpg",
+                "image": "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200838/IMG_8266_v4qhb2_jbjwyx.jpg",
                 "description": "Thermostats act as local user interfaces for temperature control within HVAC-controlled spaces.",
                 "points": [
                     "Allow occupants to set and adjust desired temperature levels.",
@@ -71,7 +71,7 @@ const Bms = () => {
             {
                 "id": 5,
                 "name": "Valves",
-                "image": "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769681985/IMG_8267_tgcbf9.jpg",
+                "image": "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200841/IMG_8267_tgcbf9_fgqqiv.jpg",
                 "description": "HVAC valves regulate chilled and hot water flow to maintain precise thermal control in buildings.",
                 "points": [
                     "Control water flow to coils in AHUs, FCUs, and terminal units.",
@@ -83,7 +83,7 @@ const Bms = () => {
             {
                 "id": 6,
                 "name": "Panels",
-                "image": "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769681998/IMG_8268_t85a4v.jpg",
+                "image": "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200842/IMG_8268_t85a4v_wkgwiw.jpg",
                 "description": "Control panels house and organize BMS and HVAC control components for safe and reliable system operation.",
                 "points": [
                     "Contain controllers, power supplies, relays, and communication modules.",
@@ -98,21 +98,20 @@ const Bms = () => {
     return (
         <div className="bg-white min-h-screen font-sans selection:bg-yellow-100 selection:text-yellow-900">
 
-            {/* 1. HERO SECTION (Split Layout) */}
-            <section className="bg-black pt-28 pb-16 md:py-0 overflow-hidden min-h-[90vh] flex items-center relative">
+            {/* 1. HERO SECTION - STICKY FULL SCREEN */}
+<section className="relative md:sticky md:top-0 bg-black overflow-x-hidden overflow-y-auto min-h-screen md:h-screen pt-20 pb-12 md:pt-0 md:pb-0 flex items-center z-10">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-yellow-900/20 via-black to-black z-0" />
 
-<div className="max-w-7xl mx-auto px-4 sm:px-6 w-full relative z-10 flex items-center justify-center h-full">
-                    <div className="grid md:grid-cols-2 gap-12 lg:gap-20 w-full items-center">
+<div className="max-w-7xl mx-auto px-4 sm:px-6 w-full min-w-0 relative z-10 flex items-center justify-center h-full">
+                    <div className="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-20 w-full min-w-0 items-center">
 
                         {/* LEFT COLUMN: SWIPER */}
                        <motion.div
     initial={{ opacity: 0, scale: 0.9 }}
     animate={{ opacity: 1, scale: 1 }}
     transition={{ duration: 0.8 }}
-    className="relative order-1 flex flex-col items-center justify-center min-h-[450px] md:h-full w-full group" // Added 'group' class
+    className="relative order-2 md:order-1 flex flex-col items-center justify-center min-h-[280px] sm:min-h-[360px] md:min-h-[450px] md:h-full w-full min-w-0 group"
 >
-    {/* Glow effect */}
     <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] pointer-events-none"
         style={{
@@ -122,8 +121,8 @@ const Bms = () => {
     />
 
     <Swiper
-        modules={[Autoplay, EffectFade, Navigation]} // 1. Added Navigation here
-        navigation={{ // 2. Linked custom buttons
+        modules={[Autoplay, EffectFade, Navigation]}
+        navigation={{
             prevEl: '.swiper-button-prev-custom',
             nextEl: '.swiper-button-next-custom',
         }}
@@ -133,7 +132,7 @@ const Bms = () => {
         centeredSlides={true}
         loop={true}
         autoplay={{ delay: 3000, disableOnInteraction: false }}
-        className="w-full max-w-sm md:max-w-md h-[300px] flex items-center justify-center relative"
+        className="w-full max-w-sm md:max-w-md h-[260px] sm:h-[300px] md:h-[400px] flex items-center justify-center relative"
     >
         {heroImages.map((img, i) => (
             <SwiperSlide
@@ -143,7 +142,7 @@ const Bms = () => {
                 <img
                     src={img}
                     alt={`Hero Slide ${i}`}
-                    className="max-h-[300px] w-auto object-contain drop-shadow-[0_20px_50px_rgba(234,179,8,0.3)]"
+                    className="max-h-[200px] sm:max-h-[260px] md:max-h-[300px] w-auto object-contain drop-shadow-[0_20px_50px_rgba(234,179,8,0.3)]"
                 />
             </SwiperSlide>
         ))}
@@ -171,23 +170,19 @@ const Bms = () => {
                             initial={{ opacity: 0, x: 50 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8 }}
-                            className="text-white text-center md:text-left md:order-2 order1 flex flex-col justify-center h-full"
+                            className="text-white text-center md:text-left order-1 md:order-2 flex flex-col justify-center h-full min-w-0 w-full"
                         >
-
-                            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                                Smart Building <br />
-                                <span className="text-transparent text-6xl  bg-clip-text bg-gradient-to-r from-yellow-400 to-amber-300">
-                                    Management Systems
-                                </span>
+                            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight break-words">
+                                Smart Control <br />
+                                Smart Buildings
                             </h1>
 
-
-                            <div className="flex flex-col sm:flex-row gap-5 justify-center md:justify-start">
-                                <a href="tel:+919021097544" className="flex items-center justify-center gap-3 px-8 py-4 bg-yellow-600 text-white font-bold rounded-full hover:bg-yellow-700 transition-all shadow-lg hover:shadow-yellow-500/30">
-                                    <FaPhoneAlt /> Consult Engineer
+                            <div className="flex flex-col sm:flex-row gap-3 sm:gap-5 justify-center md:justify-start w-full max-w-full">
+                                <a href="tel:+919021097544" className="flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto min-h-[48px] px-6 sm:px-8 py-3.5 sm:py-4 bg-yellow-600 text-white font-bold rounded-full hover:bg-yellow-700 transition-all shadow-lg hover:shadow-yellow-500/30 text-sm sm:text-base">
+                                    <FaPhoneAlt className="flex-shrink-0" /> Consult Engineer
                                 </a>
-                                <a href="#projects" className="flex items-center justify-center gap-3 px-8 py-4 border border-white/30 text-white font-bold rounded-full hover:bg-white hover:text-slate-900 transition-all backdrop-blur-sm">
-                                    View Solutions <FaArrowRight />
+                                <a href="#projects" className="flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto min-h-[48px] px-6 sm:px-8 py-3.5 sm:py-4 border-2 border-white text-white font-bold rounded-full hover:bg-white hover:text-slate-900 transition-all backdrop-blur-sm text-sm sm:text-base">
+                                    View Solutions <FaArrowRight className="flex-shrink-0" />
                                 </a>
                             </div>
                         </motion.div>
@@ -197,7 +192,7 @@ const Bms = () => {
             </section>
 
             {/* 2. ABOUT SECTION */}
-            <section className="py-24 bg-white relative overflow-hidden">
+            <section className="py-24 bg-white relative z-20">
                 <div className="max-w-7xl mx-auto px-6 relative z-10">
                     <div className="grid md:grid-cols-2 gap-16 items-center">
                         {/* Left: Text */}
@@ -213,14 +208,40 @@ const Bms = () => {
                             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-8 leading-tight">
                                 Intelligent <span className="text-yellow-600">Control</span> For <br /> Modern Infrastructure
                             </h2>
-                            <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
-                                <p>
-                                    We provide comprehensive Building Management Systems (BMS) that empower you to monitor, control, and optimize your entire facility's performance. From HVAC to lighting and security, our solutions ensure seamless integration.
-                                </p>
-                                <p>
-                                    Our expert engineers design custom automation strategies that reduce energy consumption and enhance operational efficiency.
-                                </p>
-                            </div>
+                           <div className="space-y-8 text-lg text-slate-600 leading-relaxed">
+
+  <p>
+    Windsmit Air provides seamless <span className="font-semibold text-slate-800">
+    Building Management System (BMS) integration</span> for HVAC and allied building services,
+    enabling centralized control, energy optimization, and real-time system monitoring.
+  </p>
+
+  {/* WHAT WE DO */}
+  <div>
+    <h3 className="text-xl font-bold text-slate-900 mb-3">What We Do</h3>
+
+    <p className="mb-3">We integrate HVAC systems with BMS to ensure:</p>
+
+    <ul className="space-y-2">
+      {[
+        "Centralized monitoring & control",
+        "Improved energy efficiency",
+        "Enhanced indoor comfort",
+        "Lower operating & maintenance costs"
+      ].map((item, i) => (
+        <li key={i} className="flex items-start gap-2">
+          <span className="text-yellow-600 mt-1">✔</span>
+          {item}
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  {/* BENEFITS */}
+ 
+
+</div>
+
                         </motion.div>
 
                         {/* Right: Image */}
@@ -233,7 +254,7 @@ const Bms = () => {
                         >
                             <div className="relative overflow-hidden ">
                                 <img
-                                    src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1770011794/Untitled_1080_x_1080_px_2_ofbif9.png"
+                                    src="https://res.cloudinary.com/dfsvuupuv/image/upload/v1771244586/Untitled_1080_x_1080_px_8_mol3rt.png"
                                     alt="Windsmit BMS Architecture"
                                     className="w-full h-[600px] object-cover transform hover:scale-105 transition-transform duration-700"
                                 />
@@ -244,7 +265,7 @@ const Bms = () => {
             </section>
 
             {/* 3. INDUSTRIES WE SERVE */}
-            <section className="py-20 bg-yellow-50">
+            <section className="py-20 bg-gray-50 relative z-20">
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Industries We Serve</h2>
@@ -274,14 +295,14 @@ const Bms = () => {
             </section>
 
             {/* 4. DETAILED SERVICES LIST (BMS Items) */}
-            <section id="projects" className="py-24 px-6 bg-white">
+            <section id="projects" className="py-24 px-6 bg-white relative z-20">
                 <div className="max-w-7xl mx-auto">
                     <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
                         <div className="max-w-2xl">
-                            <h4 className="text-yellow-600 font-bold mb-2">我们的 EXPERTISE</h4>
+                            <h4 className="text-yellow-600 font-bold mb-2">OUR EXPERTISE</h4>
                             <h2 className="text-4xl font-bold text-slate-900 leading-tight">Automation Components</h2>
                         </div>
-                        <p className="text-slate-500 max-w-md text-right hidden md:block">
+                        <p className="text-slate-800 max-w-md text-right hidden md:block">
                             State-of-the-art controllers, sensors, and actuators for precise building management.
                         </p>
                     </div>
@@ -331,7 +352,7 @@ const Bms = () => {
             </section>
 
             {/* 5. PROCESS / TIMELINE */}
-            <section className="py-24 bg-slate-900 text-white relative">
+            <section className="py-24 bg-gray-100 text-gray-900 relative z-20">
                 <div className="max-w-6xl mx-auto px-6 relative z-10">
                     <h2 className="text-3xl font-bold mb-16 text-center">Project Execution Framework</h2>
 
@@ -343,13 +364,30 @@ const Bms = () => {
                             { step: "04", title: "Monitoring", desc: "Testing & Handover." }
                         ].map((item, i) => (
                             <div key={i} className="relative p-6 border border-white/10 rounded-lg hover:bg-white/5 transition-colors group">
-                                <div className="text-5xl font-bold text-white/5 mb-4 group-hover:text-yellow-500/20 transition-colors">{item.step}</div>
+                                <div className="text-5xl font-bold mb-4 text-yellow-500 transition-colors">{item.step}</div>
                                 <h3 className="text-xl font-bold mb-3 text-yellow-400">{item.title}</h3>
                                 <p className="text-gray-400">{item.desc}</p>
                             </div>
                         ))}
                     </div>
                 </div>
+
+                <div className="max-w-4xl mx-auto px-6 mt-20 text-center space-y-6 border-t border-white/10 pt-14">
+
+  <h2 className="text-3xl md:text-4xl font-bold">
+    Make your building intelligent, efficient, and future-ready
+  </h2>
+
+  <a
+    href="tel:+919021097544"
+    className="inline-block px-10 py-4 bg-yellow-500 text-black font-bold rounded-full hover:scale-105 transition-all shadow-xl"
+  >
+    Connect for BMS
+  </a>
+
+</div>
+
+                
             </section>
 
             {/* MODAL */}
@@ -394,7 +432,7 @@ const Bms = () => {
                                     <a href="tel:+919021097544" className="flex-1 bg-yellow-600 text-white py-4 rounded-lg font-bold text-center hover:bg-yellow-700 transition flex justify-center items-center gap-2">
                                         <FaPhoneAlt /> Call Engineer
                                     </a>
-                                    <a href={`https://wa.me/919021097544?text=Inquiry regarding ${selectedService.name}`} className="flex-1 border-2 border-green-500 text-green-600 py-4 rounded-lg font-bold text-center hover:bg-green-50 transition flex justify-center items-center gap-2">
+                                    <a href={`https://wa.me/919021097544?text=Inquiry regarding ${selectedService.name}`} className="flex-1 border-2 border-[#00b050] text-[#00b050] py-4 rounded-lg font-bold text-center hover:bg-[#00b050]/10 transition flex justify-center items-center gap-2">
                                         <FaWhatsapp /> WhatsApp Inquiry
                                     </a>
                                 </div>
@@ -403,6 +441,9 @@ const Bms = () => {
                     </motion.div>
                 )}
             </AnimatePresence>
+            <footer className="relative z-20">
+  <Footer />
+</footer>
 
         </div>
     );

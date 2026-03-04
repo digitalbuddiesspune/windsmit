@@ -3,10 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 // ADDED Navigation HERE
 import { Autoplay, EffectFade, Pagination, Navigation } from 'swiper/modules'; 
-import { FaBuilding, FaIndustry, FaHospital, FaHotel, FaArrowRight, FaCogs, FaTools, FaCheckCircle, FaWhatsapp, FaPhoneAlt } from 'react-icons/fa';
+import { FaBuilding, FaIndustry, FaHospital, FaHotel, FaArrowRight, FaCheckCircle, FaWhatsapp, FaPhoneAlt } from 'react-icons/fa';
 
 import 'swiper/css';
 import 'swiper/css/effect-fade';
+import Footer from '../components/Footer';
 
 // ADDED CSS HERE
 import 'swiper/css/navigation';
@@ -33,7 +34,7 @@ const HvacServices = () => {
         "- Installed in rooftops or mechanical rooms as modular systems",
         "- Offered with design, installation, commissioning, and maintenance by Windsmit Air"
       ],
-      "image": "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769673623/MainAirhandling_unit_dynaae.webp"
+      "image": "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200846/MainAirhandling_unit_dynaae_lry3jo.webp"
     },
     {
       "id": 2,
@@ -45,31 +46,32 @@ const HvacServices = () => {
         "- Ideal for zoned air distribution in commercial and residential spaces",
         "- Integrated by Windsmit Air into optimized HVAC layouts"
       ],
-      "image": "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769673778/terminalmain_unit_md6ozn.jpg"
+      "image": "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200944/terminalmain_unit_md6ozn_p5ylc2.jpg"
     },
     {
       "id": 3,
-      "name": "VRF System",
+      "name": "VRF / VRV Intelligent Cooling Systems",
       "description": [
-        "VRF systems control temperature precisely by adjusting refrigerant flow to indoor units.",
+        "Smart, scalable, and energy-efficient cooling for modern buildings. Our VRF systems provide individual zone control, silent operation, and lower operating costs.",
         "- Supports multiple zones with a single outdoor unit",
         "- High energy efficiency and precise thermal comfort",
-        "- Scalable for offices, hotels, residences, and commercial spaces",
+        "- Best for: Offices & IT spaces, Hotels & premium residences, Retail & mixed-use buildings",
         "- Designed and installed by Windsmit Air for optimal performance"
       ],
-      "image": "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769673815/vrf_system_kx5jkn.png"
+      "image": "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770201002/vrf_system_kx5jkn_s86pg7.png"
     },
     {
       "id": 4,
-      "name": "Evaporative Cooling System",
+      "name": "Evaporative & Hybrid Cooling Solutions",
       "description": [
-        "Evaporative cooling systems supply fresh cool air and remove stale indoor air.",
+        "Cost-effective cooling solutions designed for large volumes and semi-open spaces, ideal for Indian climatic conditions.",
         "- Uses water evaporation to reduce indoor temperature",
         "- Helps lower CO₂ levels and improve air quality",
         "- Ideal for hot, dry climates",
+        "- Best for: Factories & warehouses, Auditoriums & halls, Commercial & industrial sheds",
         "- Integrated with effective ducting and controls by Windsmit Air"
       ],
-      "image": "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769673829/evoprative_cooling_sysetem_dxu2af.jpg"
+      "image": "https://res.cloudinary.com/dfsvuupuv/image/upload/v1772350534/WhatsApp_Image_2026-02-27_at_6.02.18_PM_1_zorpbr.jpg"
     },
     {
       "id": 5,
@@ -81,19 +83,19 @@ const HvacServices = () => {
         "- Enable efficient HVAC operation",
         "- Provided by Windsmit Air for tailored airflow solutions"
       ],
-      "image": "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769673851/damper_difuser_rywvjs.jpg"
+      "image": "https://res.cloudinary.com/dfsvuupuv/image/upload/v1771238850/Banner3-Home_yzekgh.png"
     },
     {
       "id": 6,
-      "name": "Exhaust and Fresh Air Fans",
+      "name": "Exhaust, Fresh Air & Pressurization Systems",
       "description": [
-        "Exhaust and fresh air fans maintain healthy indoor ventilation.",
+        "We engineer reliable ventilation systems that maintain indoor air quality, safety, and regulatory compliance.",
         "- Exhaust fans remove stale or polluted air",
         "- Fresh air fans supply clean outdoor air",
         "- Improve indoor air quality and HVAC efficiency",
-        "- Suitable for residential, commercial, and industrial applications"
+        "- Includes: Staircase & lobby pressurization, Toilet & kitchen exhaust systems, Basement ventilation"
       ],
-      "image": "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769673866/Exhaust-Fans_pypbdl.jpg"
+      "image": "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200803/Exhaust-Fans_pypbdl_wenvu6.jpg"
     },
     {
       "id": 7,
@@ -105,29 +107,27 @@ const HvacServices = () => {
         "- Reduce energy loss from open doors",
         "- Offered by Windsmit Air for commercial and industrial entrances"
       ],
-      "image": "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769673878/Air_Curtain_si1sqq.webp"
+      "image": "https://res.cloudinary.com/dfsvuupuv/image/upload/v1771238963/WhatsApp_Image_2026-02-16_at_4.16.55_PM_higqjt.jpg"
     }
   ];
 
   return (
     <div className="bg-white min-h-screen font-sans selection:bg-blue-100 selection:text-blue-900">
 
-      {/* 1. HERO SECTION (Split Layout) */}
-      <section className="bg-black pt-28 pb-16 md:py-0 overflow-hidden min-h-[90vh] flex items-center relative">
+      {/* 1. HERO SECTION - STICKY FULL SCREEN */}
+<section className="relative md:sticky md:top-0 bg-black overflow-x-hidden overflow-y-auto min-h-screen md:h-screen pt-20 pb-12 md:pt-0 md:pb-0 flex items-center z-10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-blue-900/20 via-black to-black z-0" />
 
-<div className="max-w-7xl mx-auto px-4 sm:px-6 w-full relative z-10 flex items-center justify-center h-full">
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-20 w-full items-center">
+<div className="max-w-7xl mx-auto px-4 sm:px-6 w-full min-w-0 relative z-10 flex items-center justify-center h-full">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-20 w-full min-w-0 items-center">
 
             {/* LEFT COLUMN: SWIPER */}
-           {/* LEFT COLUMN: SWIPER */}
 <motion.div
   initial={{ opacity: 0, scale: 0.9 }}
   animate={{ opacity: 1, scale: 1 }}
   transition={{ duration: 0.8 }}
-  className="relative order-2 md:order-2 flex flex-col items-center justify-center min-h-[450px] md:h-full w-full group"
+  className="relative order-2 md:order-1 flex flex-col items-center justify-center min-h-[280px] sm:min-h-[360px] md:min-h-[450px] md:h-full w-full min-w-0 group"
 >
-  {/* Updated Glow effect to Blue for HVAC theme */}
   <div 
     className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] pointer-events-none"
     style={{
@@ -142,14 +142,13 @@ const HvacServices = () => {
       prevEl: '.swiper-button-prev-custom',
       nextEl: '.swiper-button-next-custom',
     }}
-    //pagination={{ clickable: true }}
     effect="fade"
     fadeEffect={{ crossFade: true }}
     slidesPerView={1}
     centeredSlides={true}
     loop={true}
     autoplay={{ delay: 3000, disableOnInteraction: false }}
-className="w-[90%] mx-auto max-w-sm md:max-w-md h-[350px] md:h-[400px] flex items-center justify-center relative"
+    className="w-full max-w-sm md:max-w-md h-[260px] sm:h-[340px] md:h-[400px] flex items-center justify-center relative"
   >
     {heroImages.map((img, i) => (
       <SwiperSlide 
@@ -159,7 +158,7 @@ className="w-[90%] mx-auto max-w-sm md:max-w-md h-[350px] md:h-[400px] flex item
         <img
           src={img}
           alt={`Hero Slide ${i}`}
-          className="max-h-[300px] w-auto object-contain drop-shadow-[0_20px_50px_rgba(37,99,235,0.3)]"
+          className="max-h-[200px] sm:max-h-[260px] md:max-h-[300px] w-auto object-contain drop-shadow-[0_20px_50px_rgba(37,99,235,0.3)]"
         />
       </SwiperSlide>
     ))}
@@ -185,23 +184,21 @@ className="w-[90%] mx-auto max-w-sm md:max-w-md h-[350px] md:h-[400px] flex item
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-white text-center md:text-left md:order-2 order1  flex flex-col justify-center h-full"
+              className="text-white text-center md:text-left order-1 md:order-2 flex flex-col justify-center h-full min-w-0 w-full"
             >
-             
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight break-words">
                 Advanced Engineering <br />
-                <span className="text-transparent text-6xl bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
                   HVAC Systems
                 </span>
               </h1>
-              
 
-              <div className="flex flex-col sm:flex-row gap-5 justify-center md:justify-start">
-                <a href="tel:+919021097544" className="flex items-center justify-center gap-3 px-8 py-4 bg-blue-600 text-white font-bold rounded-full hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-500/30">
-                  <FaPhoneAlt /> Consult Engineer
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-5 justify-center md:justify-start w-full max-w-full">
+                <a href="tel:+919021097544" className="flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto min-h-[48px] px-6 sm:px-8 py-3.5 sm:py-4 bg-blue-600 text-white font-bold rounded-full hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-500/30 text-sm sm:text-base">
+                  <FaPhoneAlt className="flex-shrink-0" /> Consult Engineer
                 </a>
-                <a href="#projects" className="flex items-center justify-center gap-3 px-8 py-4 border border-white/30 text-white font-bold rounded-full hover:bg-white hover:text-slate-900 transition-all backdrop-blur-sm">
-                  View Solutions <FaArrowRight />
+                <a href="#projects" className="flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto min-h-[48px] px-6 sm:px-8 py-3.5 sm:py-4 border-2 border-white text-white font-bold rounded-full hover:bg-white hover:text-slate-900 transition-all backdrop-blur-sm text-sm sm:text-base">
+                  View Solutions <FaArrowRight className="flex-shrink-0" />
                 </a>
               </div>
             </motion.div>
@@ -211,7 +208,7 @@ className="w-[90%] mx-auto max-w-sm md:max-w-md h-[350px] md:h-[400px] flex item
       </section>
 
       {/* 2. ABOUT SECTION */}
-      <section className="py-24 bg-white relative overflow-hidden">
+      <section className="py-24 bg-white relative z-20">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             {/* Left: Text */}
@@ -225,16 +222,27 @@ className="w-[90%] mx-auto max-w-sm md:max-w-md h-[350px] md:h-[400px] flex item
                 <span className="w-8 h-0.5 bg-blue-600"></span> Windsmit Air HVAC
               </h4>
               <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-8 leading-tight">
-                Engineering <span className="text-blue-600">Excellence</span> in <br /> Climate Control
+               Advanced Air Handling & Ventilation System
               </h2>
-              <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
-                <p>
-                  At Windsmit Air, we specialize in high-performance HVAC solutions tailored for industrial and commercial applications. From precision air handling to large-scale VRF implementations, our engineering approach ensures optimal efficiency and reliability.
-                </p>
-                <p>
-                  We integrate cutting-edge technology with robust mechanical design to deliver systems that stand the test of time.
-                </p>
-              </div>
+            <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
+  <p>
+    We design and install standard and custom-built Air Handling Units (AHUs) 
+    for commercial, healthcare, hospitality, and industrial spaces-engineered 
+    for fresh air quality and precise temperature control.
+  </p>
+
+  <div>
+    <h3 className="font-semibold mb-2 text-slate-800">Includes:</h3>
+    <ul className="list-disc pl-6 space-y-2">
+      <li>Custom & packaged AHUs</li>
+      <li>Fresh air and exhaust integration</li>
+      <li>Advanced filtration systems (Pre, Fine & HEPA)</li>
+      <li>Temperature & airflow control</li>
+      <li>Energy-efficient design</li>
+    </ul>
+  </div>
+</div>
+
             </motion.div>
 
             {/* Right: Image */}
@@ -247,7 +255,7 @@ className="w-[90%] mx-auto max-w-sm md:max-w-md h-[350px] md:h-[400px] flex item
             >
               <div className="relative overflow-hidden ">
                 <img
-                  src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1770011777/Untitled_1080_x_1080_px_1_emssrc.png"
+                  src="https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200954/Untitled_1080_x_1080_px_1_emssrc_wjzdyw.png"
                   alt="Windsmit Air Engineering"
                   className="w-full h-[550px] object-cover transform hover:scale-105 transition-transform duration-700"
                 />
@@ -259,7 +267,7 @@ className="w-[90%] mx-auto max-w-sm md:max-w-md h-[350px] md:h-[400px] flex item
 
 
       {/* 3. INDUSTRIES WE SERVE */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-20 bg-gray-50 relative z-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Industries We Serve</h2>
@@ -289,14 +297,14 @@ className="w-[90%] mx-auto max-w-sm md:max-w-md h-[350px] md:h-[400px] flex item
       </section>
 
       {/* 4. DETAILED SERVICES LIST (Parasection) */}
-      <section id="projects" className="py-24 px-6 bg-white">
+      <section id="projects" className="py-24 px-6 bg-white relative z-20">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
             <div className="max-w-2xl">
               <h4 className="text-blue-600 font-bold mb-2">OUR EXPERTISE</h4>
               <h2 className="text-4xl font-bold text-slate-900 leading-tight">Comprehensive HVAC Infrastructure</h2>
             </div>
-            <p className="text-slate-500 max-w-md text-right hidden md:block">
+            <p className="text-slate-800 max-w-md text-right hidden md:block">
               From VRF systems to large-scale ventilation, we design, install, and maintain extensive setups.
             </p>
           </div>
@@ -347,7 +355,7 @@ className="w-[90%] mx-auto max-w-sm md:max-w-md h-[350px] md:h-[400px] flex item
       </section>
 
       {/* 5. PROCESS / TIMELINE */}
-      <section className="py-24 bg-slate-900 text-white relative">
+      <section className="py-24 bg-gray-100 text-gray-900 relative z-20">
         <div className="max-w-6xl mx-auto px-6 relative z-10">
           <h2 className="text-3xl font-bold mb-16 text-center">Project Execution Framework</h2>
 
@@ -359,14 +367,49 @@ className="w-[90%] mx-auto max-w-sm md:max-w-md h-[350px] md:h-[400px] flex item
               { step: "04", title: "Support", desc: "AMC & 24/7 technical breakdown support." }
             ].map((item, i) => (
               <div key={i} className="relative p-6 border border-white/10 rounded-lg hover:bg-white/5 transition-colors group">
-                <div className="text-5xl font-bold text-white/5 mb-4 group-hover:text-blue-500/20 transition-colors">{item.step}</div>
-                <h3 className="text-xl font-bold mb-3 text-blue-400">{item.title}</h3>
+                <div className="text-5xl font-bold mb-4 text-blue-600 transition-colors">{item.step}</div>
+                <h3 className="text-xl font-bold mb-3 text-blue-600">{item.title}</h3>
                 <p className="text-gray-400">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
+
+
+
+        {/* CTA INSIDE PROCESS SECTION */}
+<motion.div
+  initial={{ opacity: 0, y: 40 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.6 }}
+  className="mt-20 text-center border-t border-white/10 pt-14"
+>
+  <h3 className="text-2xl md:text-3xl font-bold mb-4 leading-snug">
+    Looking for a reliable HVAC partner who understands
+    <br className="hidden md:block" />
+    design, efficiency, and execution?
+  </h3>
+
+  <p className="text-gray-300 mb-8 text-lg">
+    Talk to <span className="text-blue-400 font-semibold">Windsmit Air</span>
+  </p>
+
+  <a
+    href="tel:+919021097544"
+    className="inline-flex items-center gap-3 bg-blue-600 text-white hover:bg-blue-700 px-8 py-4 rounded-full font-bold transition-all shadow-lg hover:shadow-blue-500/30"
+  >
+    Get HVAC Consultation <FaArrowRight />
+  </a>
+</motion.div>
+
       </section>
+
+
+
+
+
+      
 
       {/* MODAL */}
       <AnimatePresence>
@@ -410,7 +453,7 @@ className="w-[90%] mx-auto max-w-sm md:max-w-md h-[350px] md:h-[400px] flex item
                   <a href="tel:+919021097544" className="flex-1 bg-blue-600 text-white py-4 rounded-lg font-bold text-center hover:bg-blue-700 transition flex justify-center items-center gap-2">
                     <FaPhoneAlt /> Call Engineer
                   </a>
-                  <a href={`https://wa.me/919021097544?text=Inquiry regarding ${selectedService.name}`} className="flex-1 border-2 border-green-500 text-green-600 py-4 rounded-lg font-bold text-center hover:bg-green-50 transition flex justify-center items-center gap-2">
+                  <a href={`https://wa.me/919021097544?text=Inquiry regarding ${selectedService.name}`} className="flex-1 border-2 border-[#00b050] text-[#00b050] py-4 rounded-lg font-bold text-center hover:bg-[#00b050]/10 transition flex justify-center items-center gap-2">
                     <FaWhatsapp /> WhatsApp Inquiry
                   </a>
                 </div>
@@ -419,6 +462,9 @@ className="w-[90%] mx-auto max-w-sm md:max-w-md h-[350px] md:h-[400px] flex item
           </motion.div>
         )}
       </AnimatePresence>
+      <footer className="relative z-20">
+  <Footer />
+</footer>
 
     </div>
   );

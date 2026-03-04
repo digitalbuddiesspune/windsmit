@@ -38,22 +38,40 @@ function OurExpertise() {
   }
 
   return (
-    <section className="w-full bg-black text-white py-12 md:py-16 lg:py-24 px-4 sm:px-6 md:px-12 relative overflow-hidden">
+    <section className="w-full bg-black text-white py-10 sm:py-12 md:py-16 lg:py-24 px-4 sm:px-6 md:px-12 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
       
       <div className="max-w-[1600px] mx-auto relative z-10">
         {/* Section Title */}
-        <div className="text-center mb-8 md:mb-12 lg:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4">Our Expertise</h2>
-          <div className="h-1 w-20 md:w-24 bg-[#FFEB3B] mx-auto rounded-full"></div>
+        <div className="text-center mb-6 sm:mb-8 md:mb-12 lg:mb-16">
+          <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-3 md:mb-4">Our Expertise</h2>
+          <div className="h-1 w-16 sm:w-20 md:w-24 bg-[#FFEB3B] mx-auto rounded-full"></div>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-6 md:gap-8 items-center">
-          {/* Left Side - Expertise Carousel */}
-          <div className="lg:col-span-4 relative mt-4 md:mt-8 order-2 lg:order-1">
+        {/* Mobile: horizontal tab row (visible only below lg) */}
+        <div className="flex lg:hidden overflow-x-auto gap-2 mb-4 pb-1 -mx-1 no-scrollbar snap-x snap-mandatory">
+          {expertiseKeys.map((key, index) => {
+            const expertise = expertiseData[key]
+            const isActive = index === activeExpertiseIndex
+            return (
+              <button
+                key={key}
+                onClick={() => handleExpertiseClick(index)}
+                className={`flex-shrink-0 snap-start px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 whitespace-nowrap ${
+                  isActive ? 'bg-[#FFEB3B] text-black' : 'bg-white/10 text-white/90 hover:bg-white/15'
+                }`}
+              >
+                {expertise.title}
+              </button>
+            )
+          })}
+        </div>
+
+        <div className="grid lg:grid-cols-12 gap-4 sm:gap-6 md:gap-8 items-center">
+          {/* Left Side - Expertise Carousel (desktop only) */}
+          <div className="hidden lg:block lg:col-span-4 relative mt-4 md:mt-8 order-2 lg:order-1">
             <div className="relative overflow-hidden rounded-xl md:rounded-2xl min-h-[100px] md:min-h-[120px]">
-              {/* Expertise Items Carousel */}
               <div className="relative h-full">
                 {expertiseKeys.map((key, index) => {
                   const expertise = expertiseData[key]
@@ -78,7 +96,6 @@ function OurExpertise() {
                         }`}
                       >
                         <div className="flex items-center gap-3 md:gap-4">
-                          <span className="text-2xl md:text-3xl lg:text-4xl">{expertise.icon}</span>
                           <span className={`text-base md:text-lg lg:text-xl font-bold ${isActive ? 'text-[#FFEB3B]' : 'text-white/80'}`}>
                             {expertise.title}
                           </span>
@@ -88,8 +105,6 @@ function OurExpertise() {
                   )
                 })}
               </div>
-
-              {/* Left Carousel Dots Indicator */}
               <div className="absolute bottom-3 md:bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-2">
                 {expertiseKeys.map((_, index) => (
                   <button
@@ -108,8 +123,8 @@ function OurExpertise() {
           </div>
 
           {/* Right Side - Single Card */}
-          <div className="lg:col-span-8 relative order-1 lg:order-2">
-            <div className="relative w-full rounded-xl md:rounded-2xl overflow-hidden" style={{ aspectRatio: '16/9' }}>
+          <div className="lg:col-span-8 relative order-1 lg:order-2 w-full">
+            <div className="relative w-full rounded-xl md:rounded-2xl overflow-hidden min-h-[280px] sm:min-h-0" style={{ aspectRatio: '16/9' }}>
               <div className="relative w-full h-full bg-gradient-to-br from-gray-900 to-black rounded-xl md:rounded-2xl overflow-hidden">
                 {/* Background Image */}
                 <div className="absolute inset-0 opacity-20">
@@ -121,35 +136,35 @@ function OurExpertise() {
                 </div>
                 
                 {/* Content Overlay */}
-                <div className="relative z-10 h-full flex flex-col justify-center p-4 sm:p-6 md:p-8 lg:p-12">
+                <div className="relative z-10 h-full flex flex-col justify-center p-3 sm:p-6 md:p-8 lg:p-12">
                   <div className="max-w-2xl mx-auto text-center">
-                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4 text-white">
+                    <h3 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 sm:mb-3 md:mb-4 text-white">
                       {currentExpertise.title}
                     </h3>
-                    <div className="h-1 w-12 md:w-16 bg-[#FFEB3B] mb-4 md:mb-6 rounded-full mx-auto"></div>
-                    <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/80 leading-relaxed">
+                    <div className="h-0.5 sm:h-1 w-10 sm:w-12 md:w-16 bg-[#FFEB3B] mb-3 sm:mb-4 md:mb-6 rounded-full mx-auto"></div>
+                    <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-white/80 leading-relaxed line-clamp-6 sm:line-clamp-none">
                       {currentExpertise.description}
                     </p>
                   </div>
                 </div>
               </div>
 
-              {/* Navigation Arrows */}
+              {/* Navigation Arrows - smaller on mobile */}
               <button
                 onClick={goToPrevious}
-                className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 bg-[#FFEB3B] hover:bg-[#FFEB3B]/90 text-black p-2 md:p-3 rounded-full shadow-lg transition-all hover:scale-110"
+                className="absolute left-1 sm:left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 bg-[#FFEB3B] hover:bg-[#FFEB3B]/90 text-black p-1.5 sm:p-2 md:p-3 rounded-full shadow-lg transition-all hover:scale-110"
                 aria-label="Previous expertise"
               >
-                <svg className="w-4 h-4 md:w-5 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
               <button
                 onClick={goToNext}
-                className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 bg-[#FFEB3B] hover:bg-[#FFEB3B]/90 text-black p-2 md:p-3 rounded-full shadow-lg transition-all hover:scale-110"
+                className="absolute right-1 sm:right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 bg-[#FFEB3B] hover:bg-[#FFEB3B]/90 text-black p-1.5 sm:p-2 md:p-3 rounded-full shadow-lg transition-all hover:scale-110"
                 aria-label="Next expertise"
               >
-                <svg className="w-4 h-4 md:w-5 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </button>

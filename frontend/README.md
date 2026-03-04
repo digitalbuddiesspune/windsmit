@@ -1,5 +1,9 @@
 # React + Vite
 
+**If you see "Cannot GET /about" (or any path) after deploy:** The app is a single-page app (SPA). The host must serve `index.html` for all routes.  
+- **Vercel / Netlify:** `vercel.json` and `public/_redirects` are already set.  
+- **Render (static site):** In the Render dashboard → your frontend service → **Redirects/Rewrites** → Add Rule → **Rewrite**, Path: `/*`, Redirect to: `/index.html`.
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:

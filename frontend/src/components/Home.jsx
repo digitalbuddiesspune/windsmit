@@ -1,8 +1,14 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination, Autoplay } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
 import Footer from './Footer'
 import WhyChooseUs from './WhyChooseUs'
 import Testimonials from './Testimonials'
+import { getApiUrl } from '../config/api'
 
 // --- 1. DATA CONSTANTS ---
 
@@ -12,7 +18,7 @@ const expertiseData = [
     tabLabel: "Air Conditioning",
     heading: "Precision Cooling Systems",
     description: "We engineer cooling solutions that go beyond simple temperature control. Our systems are designed for optimal humidity regulation, energy efficiency, and silent operation suitable for luxury residences and corporate offices.",
-    image: "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769507264/downloadFile_tcfalp.gif",
+    video: "https://res.cloudinary.com/dfsvuupuv/video/upload/v1771227090/our_expertise-Air_conditioning_xugrmu.mp4",
     features: ["Inverter Technology", "Multi-Zone Control", "Eco-friendly Refrigerants", "Smart WiFi Integration"]
   },
   {
@@ -20,7 +26,7 @@ const expertiseData = [
     tabLabel: "Commercial HVAC",
     heading: "Reliable Cooling for Businesses",
     description: "Large-scale air handling for commercial infrastructure. We specialize in ductwork design that maximizes airflow while minimizing noise and energy loss, ensuring your workspace meets all air quality standards.",
-    image: "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769532495/ABUIABADGAAgwuujiQYoovWJhAIwgAU44AM_500x500.gif_penmhb.gif",
+    video: "https://res.cloudinary.com/dfsvuupuv/video/upload/v1771329474/animate_qbwsbs.mp4",
     features: ["Custom AHU Design", "VRF/VRV Systems", "Fresh Air Injection", "Negative Pressure Rooms"]
   },
   {
@@ -28,7 +34,7 @@ const expertiseData = [
     tabLabel: "BMS Automation",
     heading: "Intelligent Building Control",
     description: "Future-proof your facility with our Building Management Systems. Monitor energy usage, detect faults instantly, and automate climate schedules from a central dashboard.",
-    image: "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769507436/downloadFile_a5gosb.gif",
+    image: "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200738/Air_Conditioning_4_alpusn_mtqvtl.png",
     features: ["IoT Sensors", "Remote Monitoring", "Auto-Fault Detection", "Energy Analytics"]
   },
   {
@@ -36,7 +42,7 @@ const expertiseData = [
     tabLabel: "Retrofitting",
     heading: "System Modernization",
     description: "Upgrade your aging infrastructure without a complete tear-down. Our retrofitting services replace critical components to boost efficiency and extend the lifespan of your existing HVAC setup.",
-    image: "https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769532246/original-f8d808f97930122a95a552cab6a30133_jnjhvk.gif",
+    image: "https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200856/original-f8d808f97930122a95a552cab6a30133_jnjhvk_xrlbyz.gif",
     features: ["Compressor Upgrades", "Duct Sealing", "Digital Thermostat Install", "Filter Upgrades"]
   }
 ]
@@ -84,23 +90,10 @@ const servicesList = [
 const banners = [
   {
     id: 3,
-    image: 'https://res.cloudinary.com/dvkxgrcbv/image/upload/v1770034114/6b47c9f2-5157-4808-990c-7b56ac2cdbff.png',
+    image: 'https://res.cloudinary.com/dfsvuupuv/image/upload/v1771226474/home_page-instead_technecian_kegfx7.png',
     alt: 'Professional HVAC Engineering'
   }
 ]
-
-// Helper to normalize API URL (same pattern as Blog/Admin)
-const getApiUrl = () => {
-  const envUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
-  let cleanUrl = envUrl.replace(/\/+$/, '')
-  if (!cleanUrl.startsWith('http://') && !cleanUrl.startsWith('https://')) {
-    cleanUrl = `https://${cleanUrl}`
-  }
-  if (!cleanUrl.includes('/api') && !cleanUrl.includes('localhost')) {
-    cleanUrl = `${cleanUrl}/api`
-  }
-  return cleanUrl
-}
 
 // --- 2. INTERNAL COMPONENTS ---
 
@@ -108,32 +101,34 @@ function OurExpertise() {
   const [activeTab, setActiveTab] = useState(0)
 
   return (
-    <section className="bg-slate-900 py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
+    <section className="bg-slate-900 py-10 sm:py-12 md:py-16 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 font-sans">
       <div className="max-w-7xl mx-auto">
-        
         {/* Section Header */}
-        <div className="mb-10 sm:mb-12 md:mb-16 text-center sm:text-left md:text-center max-w-3xl mx-auto">
-          <span className="text-emerald-500 font-bold uppercase tracking-widest text-xs sm:text-sm mb-2 block">
+        <div className="mb-6 sm:mb-8 md:mb-10 text-center sm:text-left md:text-center max-w-3xl mx-auto">
+          <span className="font-semibold uppercase tracking-widest text-xs sm:text-sm mb-1.5 block" style={{ color: '#00b050' }}>
             Technical Mastery
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4">
             Our Expertise
           </h2>
-          <p className="text-sm sm:text-base md:text-lg text-slate-400 leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
           “Engineered comfort backed by deep HVAC knowledge, precise execution, and years of hands-on industry experience.”
           </p>
         </div>
 
-        {/* Category Tabs - Single Row */}
-        <div className="mb-6 sm:mb-8">
-          <div className="flex flex-row gap-2 sm:gap-3 justify-center overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-slate-600 scrollbar-track-slate-800">
+        {/* Category Tabs - Horizontal scroll on mobile; padding so first/last headings aren't cut off */}
+        <div className="mb-4 sm:mb-6 -mx-4 sm:-mx-6 md:mx-0 px-4 sm:px-6 md:px-0">
+          <div
+            className="flex flex-row gap-2 sm:gap-3 overflow-x-auto overflow-y-hidden pb-2 pl-4 pr-4 sm:pl-4 sm:pr-4 md:pl-0 md:pr-0 md:justify-center scrollbar-thin scrollbar-thumb-slate-600 scrollbar-track-slate-800"
+            style={{ WebkitOverflowScrolling: 'touch' }}
+          >
             {expertiseData.map((item, index) => (
               <button
                 key={item.id}
                 onClick={() => setActiveTab(index)}
-                className={`flex-shrink-0 text-left px-4 sm:px-6 py-3 sm:py-4 rounded-lg transition-all duration-300 border-l-4 group whitespace-nowrap ${
+                className={`flex-shrink-0 min-w-0 text-left px-4 sm:px-6 py-3 sm:py-4 rounded-lg transition-all duration-300 border-l-4 group whitespace-nowrap ${
                   activeTab === index
-                    ? "bg-slate-800 border-emerald-500 shadow-lg shadow-black/20"
+                    ? "bg-slate-800 border-[#00b050] shadow-lg shadow-black/20"
                     : "bg-transparent border-slate-700 hover:bg-slate-800/50 hover:border-slate-500"
                 }`}
               >
@@ -143,7 +138,7 @@ function OurExpertise() {
                   {item.tabLabel}
                 </h3>
                 {activeTab === index && (
-                  <p className="text-emerald-400 text-xs font-medium uppercase tracking-wider animate-fadeIn">
+                  <p className="text-xs font-medium uppercase tracking-wider animate-fadeIn" style={{ color: '#00b050' }}>
                     Currently Viewing
                   </p>
                 )}
@@ -160,14 +155,26 @@ function OurExpertise() {
                 key={item.id}
                 className="w-full h-full bg-slate-800 rounded-2xl overflow-hidden shadow-2xl border border-slate-700 flex flex-col md:flex-row animate-fadeIn"
               >
-                 {/* Image Side */}
+                 {/* Image / Video Side */}
                  <div className="md:w-1/2 relative h-64 sm:h-80 md:h-auto">
-                   <img 
-                     src={item.image} 
-                     alt={item.heading}
-                     className="absolute inset-0 w-full h-full object-cover"
-                   />
-                   <div className="absolute inset-0 bg-emerald-900/20 mix-blend-multiply"></div>
+                   {item.video ? (
+                     <video
+                       src={item.video}
+                       autoPlay
+                       muted
+                       loop
+                       playsInline
+                       className="absolute inset-0 w-full h-full object-cover"
+                       aria-label={item.heading}
+                     />
+                   ) : (
+                     <img 
+                       src={item.image} 
+                       alt={item.heading}
+                       className="absolute inset-0 w-full h-full object-cover"
+                     />
+                   )}
+                   <div className="absolute inset-0 mix-blend-multiply" style={{ backgroundColor: 'rgba(0,176,80,0.2)' }}></div>
                  </div>
 
                  {/* Content Side */}
@@ -183,7 +190,7 @@ function OurExpertise() {
                      <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Key Features</h4>
                      {item.features.map((feature, i) => (
                        <div key={i} className="flex items-center text-slate-200 text-xs sm:text-sm">
-                         <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mr-3 flex-shrink-0"></div>
+                         <div className="w-1.5 h-1.5 rounded-full mr-3 flex-shrink-0" style={{ backgroundColor: '#00b050' }}></div>
                          {feature}
                        </div>
                      ))}
@@ -219,8 +226,10 @@ function Home() {
   const [activeStory, setActiveStory] = useState(null)
   const [showStories, setShowStories] = useState(true)
   const [projectCount, setProjectCount] = useState(0)
-const [hasAnimatedProjects, setHasAnimatedProjects] = useState(false)
-const projectsRef = useRef(null)
+  const [hasAnimatedProjects, setHasAnimatedProjects] = useState(false)
+  const [videos, setVideos] = useState([])
+  const [fullscreenVideo, setFullscreenVideo] = useState(null)
+  const projectsRef = useRef(null)
 
   // Auto-slide logic
   useEffect(() => {
@@ -296,6 +305,39 @@ const projectsRef = useRef(null)
     fetchStories()
   }, [])
 
+  // Fetch videos for "Our Work in Action" section
+  useEffect(() => {
+    const fetchVideos = async () => {
+      try {
+        const API_URL = getApiUrl()
+        const response = await fetch(`${API_URL}/stories?active=true`)
+        if (!response.ok) return
+        const data = await response.json()
+        setVideos(data)
+      } catch {
+        // fail silently on homepage
+      }
+    }
+    fetchVideos()
+  }, [])
+
+  // Close fullscreen video on ESC key
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === 'Escape' && fullscreenVideo) {
+        setFullscreenVideo(null)
+      }
+    }
+    if (fullscreenVideo) {
+      document.addEventListener('keydown', handleEsc)
+      document.body.style.overflow = 'hidden'
+    }
+    return () => {
+      document.removeEventListener('keydown', handleEsc)
+      document.body.style.overflow = 'unset'
+    }
+  }, [fullscreenVideo])
+
   // Accordion toggle logic
   const toggleService = (serviceId) => {
     setOpenServices((prev) => {
@@ -308,14 +350,14 @@ const projectsRef = useRef(null)
   }
 
   return (
-    <div className="w-full bg-slate-50 font-sans text-slate-800">
+    <div className="w-full bg-slate-50 font-sans text-slate-800 antialiased">
       
       {/* --- HERO SECTION --- */}
       <section className="relative w-full overflow-hidden bg-slate-900">
         {/* Mobile-only background image */}
         <div className="relative sm:hidden">
           <img
-            src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769261511/497afe2e9cac98cc156cb917956f6939_ogbgpx.jpg"
+            src="https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200716/497afe2e9cac98cc156cb917956f6939_ogbgpx_e5vciw.jpg"
             alt="HVAC System"
             className="w-full h-auto opacity-90"
           />
@@ -323,17 +365,15 @@ const projectsRef = useRef(null)
           <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/90"></div>
           
           {/* Hero Content Overlay - Mobile */}
-          <div className="absolute inset-0 z-20 flex items-center justify-center px-4 py-12">
-            <div className="max-w-xl w-full text-white text-center"> 
-              
+          <div className="absolute inset-0 z-20 flex items-center justify-center px-4 py-10">
+            <div className="max-w-xl w-full text-white text-center">
               {/* Main Heading */}
-              <h1 className="text-xl font-bold leading-[1.1] mb-5 tracking-tight">
-              Because Every Breath <br />
-              Deserves <span style={{ color: '#00b050' }}>Better Air.</span>
+              <h1 className="text-xl font-bold leading-[1.1] mb-4 tracking-tight">
+                Because Every Breath <br />
+                Deserves <span style={{ color: '#00b050' }}>Better Air.</span>
               </h1>
-              
               {/* Description */}
-              <p className="text-base text-slate-100 mb-7 leading-relaxed">
+              <p className="text-sm sm:text-base text-slate-100 mb-5 leading-relaxed">
                 Windsmit Air delivers premium HVAC, Air Conditioning, and Building Management solutions designed for health and efficiency.
               </p>
               
@@ -377,17 +417,17 @@ const projectsRef = useRef(null)
               <div className="absolute inset-0 z-20 flex items-center justify-start px-12 lg:px-16 xl:px-24">
                 <div className="max-w-xl text-white text-left">
                   {/* Green horizontal line */}
-                  <div className="w-20 h-1 mb-6 mt-20" style={{ backgroundColor: '#00b050' }}></div>
+                  <div className="w-20 h-1 mb-4 mt-12 lg:mt-16" style={{ backgroundColor: '#00b050' }}></div>
                   
                   {/* Main Heading */}
-                  <h1 className="text-5xl md:text-3xl lg:text-6xl font-bold leading-[1.1] mb-6 tracking-tight">
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] mb-4 lg:mb-6 tracking-tight">
                   Because Every Breath <br />
                   Deserves <span style={{ color: '#00b050' }}>Better Air.</span>
                   </h1>
                   
                   {/* Description */}
-                  <p className="text-lg md:text-xl lg:text-xl text-slate-100 mb-8 md:mb-10 leading-relaxed max-w-xl">
-                  Engineering efficient air-conditioning & HVAC solutions for modern homes, offices, and every indian spaces.
+                  <p className="text-base md:text-lg text-slate-100 mb-6 md:mb-8 leading-relaxed max-w-xl">
+                  Engineering efficient air-conditioning and HVAC solutions for modern homes, offices, and every space.
                   </p>
                   
                   {/* Buttons */}
@@ -406,119 +446,168 @@ const projectsRef = useRef(null)
         </div>
       </section>
 
-      {/* --- STORIES SECTION --- */}
-      {showStories && stories.length > 0 && (
-        <section className="px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 py-8 bg-slate-50">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-6">
-              <span className="inline-block px-2.5 py-0.5 bg-emerald-50 text-emerald-600 font-semibold uppercase tracking-widest text-[10px] rounded-full mb-2">
-                Project Highlights
-              </span>
-              <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-1.5">
-                Our Work in Action
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-600 max-w-2xl mx-auto">
-                Explore our recent installations and project showcases
-              </p>
-            </div>
+      {/* --- OUR WORK IN ACTION SECTION (Stories carousel) --- */}
+      <section className="px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 py-16 sm:py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto text-center">
+          {/* Section Header */}
+          <div className="mb-8">
+            <span className="inline-block px-2.5 py-0.5 font-semibold uppercase tracking-widest text-xs rounded-full mb-1.5" style={{ backgroundColor: 'rgba(0,176,80,0.15)', color: '#00b050' }}>
+               Highlights
+            </span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 leading-tight">Where We Create & Celebrate</h2>
+            <p className="text-sm sm:text-base text-slate-800 max-w-2xl mx-auto mt-2">
+              Explore our recent installations and project showcases
+            </p>
+          </div>
 
-            <div className="flex items-center justify-center gap-4 sm:gap-5 overflow-x-auto pb-3 scrollbar-thin scrollbar-thumb-slate-300 scrollbar-track-transparent">
-              {stories.map((story) => (
-                <button
-                  key={story._id}
-                  onClick={() => setActiveStory(story)}
-                  className="group flex-shrink-0 flex flex-col items-center gap-2.5 focus:outline-none"
+          {/* 1–3 stories: centered grid (no carousel). 4+ stories: carousel with arrows & dots */}
+          {videos.length === 0 ? (
+            <div className="text-slate-500 py-12">No videos available at the moment.</div>
+          ) : videos.length <= 3 ? (
+            /* Starting state: all stories visible, centered, no arrows/dots */
+            <div className={`grid gap-6 max-w-5xl mx-auto justify-items-center ${videos.length === 1 ? 'grid-cols-1 max-w-2xl' : videos.length === 2 ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'}`}>
+              {videos.map((video, index) => (
+                <div
+                  key={video._id || index}
+                  className="aspect-video w-full rounded-xl overflow-hidden shadow-lg relative group cursor-pointer"
+                  onClick={() => setFullscreenVideo(video)}
                 >
-                  <div className="relative">
-                    <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-br from-emerald-500 via-emerald-600 to-teal-600 p-0.5 group-hover:p-1 transition-all duration-300 shadow-lg shadow-emerald-500/20 group-hover:shadow-xl group-hover:shadow-emerald-500/30">
-                      <div className="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden">
-                        <div className="relative w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-800 to-slate-900">
-                          <span className="text-xs sm:text-sm font-bold text-white text-center px-3 leading-tight z-10 relative">
-                            {story.title}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-emerald-500 rounded-full border-2 border-white flex items-center justify-center shadow-lg group-hover:bg-emerald-400 group-hover:scale-110 transition-all duration-300">
-                      <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <video
+                    src={video.videoUrl}
+                    className="w-full h-full object-cover"
+                    muted
+                    loop
+                    playsInline
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/90 flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
+                      <svg className="w-8 h-8 sm:w-12 sm:h-12 ml-1" style={{ color: '#00b050' }} fill="currentColor" viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z"/>
                       </svg>
                     </div>
                   </div>
-                  <span className="text-xs font-semibold text-slate-800 max-w-[90px] truncate group-hover:text-emerald-600 transition-colors">
-                    {story.title}
-                  </span>
-                </button>
+                </div>
               ))}
             </div>
-          </div>
-
-          {/* Story Modal */}
-          {activeStory && (
-            <div 
-              className="fixed inset-0 z-[120] bg-black/80 backdrop-blur-sm flex items-center justify-center px-4 py-8"
-              onClick={() => setActiveStory(null)}
-            >
-              <div 
-                className="relative bg-slate-900 rounded-xl overflow-hidden max-w-4xl w-full shadow-2xl border border-slate-700"
-                onClick={(e) => e.stopPropagation()}
+          ) : (
+            /* 4+ stories: carousel with prev/next and dots */
+            <div className="relative flex flex-col items-center">
+              <Swiper
+                modules={[Navigation, Pagination, Autoplay]}
+                spaceBetween={24}
+                slidesPerView={1}
+                breakpoints={{
+                  640: { slidesPerView: 1 },
+                  768: { slidesPerView: 2 },
+                  1024: { slidesPerView: 3 }
+                }}
+                loop
+                autoplay={{
+                  delay: 3500,
+                  disableOnInteraction: false
+                }}
+                navigation={{
+                  prevEl: '.highlights-prev',
+                  nextEl: '.highlights-next'
+                }}
+                pagination={{
+                  clickable: true,
+                  el: '.highlights-pagination'
+                }}
+                className="w-full max-w-5xl mx-auto"
               >
-                <button
-                  onClick={() => setActiveStory(null)}
-                  className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/60 backdrop-blur-sm text-white flex items-center justify-center hover:bg-black/80 transition-all hover:scale-110"
-                  aria-label="Close story"
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-                <div className="px-6 py-4 bg-gradient-to-r from-slate-800 to-slate-900 border-b border-slate-700 flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center text-sm font-bold text-white shadow-lg">
-                    WA
-                  </div>
-                  <div>
-                    <p className="text-base font-semibold text-white">
-                      {activeStory.title}
-                    </p>
-                    <p className="text-xs text-slate-400">Windsmit Air</p>
-                  </div>
-                </div>
-                <div className="bg-black flex items-center justify-center aspect-video">
-                  <video
-                    src={activeStory.videoUrl}
-                    controls
-                    autoPlay
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-              </div>
+                {videos.map((video, index) => (
+                  <SwiperSlide key={video._id || index}>
+                    <div
+                      className="aspect-video rounded-xl overflow-hidden shadow-lg relative group cursor-pointer"
+                      onClick={() => setFullscreenVideo(video)}
+                    >
+                      <video
+                        src={video.videoUrl}
+                        className="w-full h-full object-cover"
+                        muted
+                        loop
+                        playsInline
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
+                        <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/90 flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
+                          <svg className="w-8 h-8 sm:w-12 sm:h-12 ml-1" style={{ color: '#00b050' }} fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+              <button
+                type="button"
+                className="highlights-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 shadow-lg border border-slate-200 flex items-center justify-center text-slate-600 hover:text-[#00b050] hover:border-[#00b050]/50 transition-all -ml-2 sm:left-4 md:-left-6"
+                aria-label="Previous"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+              </button>
+              <button
+                type="button"
+                className="highlights-next absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 shadow-lg border border-slate-200 flex items-center justify-center text-slate-600 hover:text-[#00b050] hover:border-[#00b050]/50 transition-all -mr-2 sm:right-4 md:-right-6"
+                aria-label="Next"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+              </button>
+              <div className="highlights-pagination flex justify-center gap-2 mt-6 [&_.swiper-pagination-bullet]:bg-slate-300 [&_.swiper-pagination-bullet-active]:bg-[#00b050]" />
             </div>
           )}
-        </section>
+        </div>
+      </section>
+
+      {/* Fullscreen Video Modal */}
+      {fullscreenVideo && (
+        <div 
+          className="fixed inset-0 z-[99999] bg-black/95 flex items-center justify-center p-4"
+          onClick={() => setFullscreenVideo(null)}
+        >
+          <div className="relative w-full max-w-6xl aspect-video" onClick={(e) => e.stopPropagation()}>
+            <button
+              onClick={() => setFullscreenVideo(null)}
+              className="absolute -top-12 right-0 text-white hover:text-[#00b050] transition-colors z-10"
+              aria-label="Close video"
+            >
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <video
+              src={fullscreenVideo.videoUrl}
+              className="w-full h-full rounded-lg"
+              controls
+              autoPlay
+            />
+          </div>
+        </div>
       )}
 
+
+
       {/* --- IDENTITY SECTION --- */}
-      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 bg-white">
-  <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
-    
+      <section className="py-10 sm:py-12 md:py-16 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 bg-white">
+  <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-6 sm:gap-10 lg:gap-12 items-center">
     {/* Left Content */}
-    <div className="space-y-6 sm:space-y-8 md:space-y-10">
+    <div className="space-y-5 sm:space-y-6 md:space-y-8">
       <div>
-        <div className="flex items-center gap-3 mb-3 sm:mb-4">
-          <span className="h-px w-8 sm:w-12 bg-emerald-500"></span>
-          <span className="text-emerald-600 font-semibold uppercase tracking-widest text-xs sm:text-sm">Our Identity</span>
+        <div className="flex items-center gap-3 mb-2 sm:mb-3">
+          <span className="h-px w-8 sm:w-12" style={{ backgroundColor: '#00b050' }}></span>
+          <span className="font-semibold uppercase tracking-widest text-xs sm:text-sm" style={{ color: '#00b050' }}>Our Identity</span>
         </div>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 leading-tight">
           Breathing Life into <br></br> <span style={{ color: '#00b050' }}>Every Space</span>
         </h2>
       </div>
 
-      <div className="space-y-6 sm:space-y-8">
-
+      <div className="space-y-5 sm:space-y-6">
         {/* The Name */}
-        <div className="flex gap-4 sm:gap-5">
-          <div className="flex-shrink-0 mt-1">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
+        <div className="flex gap-3 sm:gap-4">
+          <div className="flex-shrink-0 mt-0.5">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: 'rgba(0,176,80,0.15)', color: '#00b050' }}>
               {/* USER ICON */}
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
@@ -529,7 +618,7 @@ const projectsRef = useRef(null)
             </div>
           </div>
           <div>
-            <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2">A Name That Stands for Happier Air</h3>
+            <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-1.5">A Name That Stands for Happier Air</h3>
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
             <span style={{ color: '#00b050' }}>Windsmit Air</span> represents our belief that air should not only cool a space but also uplift the people within it. Smit means smile, symbolizing our commitment to creating healthy, pleasant, and positive indoor environments.
             </p>
@@ -537,13 +626,13 @@ const projectsRef = useRef(null)
         </div>
 
         {/* The Philosophy */}
-        <div className="flex gap-4 sm:gap-5">
-          <div className="flex-shrink-0 mt-1">
+        <div className="flex gap-3 sm:gap-4">
+          <div className="flex-shrink-0 mt-0.5">
             <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-yellow-300 flex items-center justify-center text-yellow-600">
               
               {/* YOUR BULB ICON */}
               <img 
-                src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769586124/Untitled_design_teizv6.svg"
+                src="https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200998/Untitled_design_teizv6_qtlknh.svg"
                 alt="Philosophy Icon"
                 className="h-8 w-8 sm:h-10 sm:w-10 object-contain"
               />
@@ -551,8 +640,8 @@ const projectsRef = useRef(null)
             </div>
           </div>
           <div>
-            <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2">What Our Logo Represents</h3>
-            <p className="text-sm sm:text-base text-slate-600 leading-relaxed"> 
+            <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-1.5">What Our Logo Represents</h3>
+            <p className="text-xs sm:text-base text-slate-600 leading-relaxed"> 
             Our logo pays gratitude to the sun, the source of energy and life, <span className="font-semibold text-yellow-300">Yellow</span> radiates warmth and opportunity, <span style={{ color: '#00b050' }}>Green</span> breathes nature and health. The flags above the “I” guide the wind forward - symbolizing our constant pursuit of progress and a WINning direction in all we do.
             </p>
           </div>
@@ -565,65 +654,62 @@ const projectsRef = useRef(null)
     <div className="relative order-first lg:order-last">
       <div className="relative rounded-lg overflow-hidden aspect-[4/3]">
         <img
-          src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769173734/output-onlinegiftools_1_ftxcaj.gif"
+          src="https://res.cloudinary.com/dfsvuupuv/image/upload/v1770200849/output-onlinegiftools_1_ftxcaj_do94ye.gif"
           alt="Clean Air Environment"
           className="w-full h-full object-cover transition-transform ease-out"
         />
       </div>
 
       {/* Decorative Elements */}
-      <div className="hidden sm:block absolute -bottom-4 sm:-bottom-6 -left-4 sm:-left-6 w-16 h-16 sm:w-24 sm:h-24 bg-emerald-50 rounded-full -z-10"></div>
+      <div className="hidden sm:block absolute -bottom-4 sm:-bottom-6 -left-4 sm:-left-6 w-16 h-16 sm:w-24 sm:h-24 rounded-full -z-10" style={{ backgroundColor: 'rgba(0,176,80,0.1)' }}></div>
       <div className="hidden sm:block absolute -top-4 sm:-top-6 -right-4 sm:-right-6 w-20 h-20 sm:w-32 sm:h-32 bg-yellow-50 rounded-full -z-10"></div>
     </div>
   </div>
 </section>
 
-
-
-  
-
-
-      
-
       {/* --- STATS SECTION --- */}
-      <section className="bg-slate-900 py-12 sm:py-16 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 text-center divide-y sm:divide-y-0 sm:divide-x divide-slate-800">
-           <div className="p-4 sm:p-6">
-             <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2">2022</span>
-             <span className="text-emerald-400 text-xs sm:text-sm font-medium uppercase tracking-wider">Year Established</span>
+      <section className="bg-slate-900 py-10 sm:py-12 md:py-14 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 text-center divide-y sm:divide-y-0 sm:divide-x divide-slate-800">
+           <div className="p-4 sm:p-5">
+             <span className="block text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-1">2022</span>
+             <span className="text-xs sm:text-sm font-medium uppercase tracking-wider" style={{ color: '#00b050' }}>Year Established</span>
            </div>
-           <div className="p-4 sm:p-6">
+           <div className="p-4 sm:p-5">
              <span
   ref={projectsRef}
-  className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2"
+  className="block text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-1"
 >
   {projectCount}
   <span className="ml-1">+</span>
 </span>
-             <span className="text-emerald-400 text-xs sm:text-sm font-medium uppercase tracking-wider">Successful Projects</span>
+             <span className="text-xs sm:text-sm font-medium uppercase tracking-wider" style={{ color: '#00b050' }}>Successful Projects</span>
            </div>
-           <div className="p-4 sm:p-6">
-             <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2">24/7</span>
-             <span className="text-emerald-400 text-xs sm:text-sm font-medium uppercase tracking-wider">Client Support</span>
+           <div className="p-4 sm:p-5">
+             <span className="block text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-1">24/7</span>
+             <span className="text-xs sm:text-sm font-medium uppercase tracking-wider" style={{ color: '#00b050' }}>Client Support</span>
            </div>
         </div>
       </section>
 
       {/* --- CTA SECTION --- */}
-      <section className="relative bg-white py-0">
+      <section className="relative bg-white py-0 mb-0">
         <div className="grid lg:grid-cols-2">
             <div className="h-64 sm:h-80 md:h-96 lg:h-[500px] w-full relative bg-slate-900 overflow-hidden order-2 lg:order-1">
-                <img 
-                  src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1769517424/Black_and_White_Modern_Electrical_Service_Instagram_Post_2_rd97w6.svg" 
-                  alt="Technician at work" 
+                <video
+                  src="https://res.cloudinary.com/dfsvuupuv/video/upload/v1771226763/Ready_to_upgrade_your_air_conditioining_jlqvwy.mp4"
                   className="w-full h-full object-cover object-left"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  aria-label="Ready to upgrade your air conditioning"
                 />
             </div>
-            <div className="flex items-center bg-slate-100 px-4 sm:px-6 md:px-12 lg:px-16 py-12 sm:py-16 md:py-20 lg:py-24 order-1 lg:order-2">
+            <div className="flex items-center bg-slate-100 px-4 sm:px-6 md:px-12 lg:px-16 py-10 sm:py-12 md:py-16 lg:py-20 order-1 lg:order-2">
                 <div className="max-w-lg mx-auto lg:mx-0">
-                    <span className="text-emerald-600 font-bold uppercase tracking-wider text-xs sm:text-sm mb-2 block">Get in touch</span>
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-4 sm:mb-6">Ready to upgrade your air quality?</h2>
-                    <p className="text-sm sm:text-base md:text-lg text-slate-600 mb-6 sm:mb-8">
+                    <span className="font-semibold uppercase tracking-wider text-xs sm:text-sm mb-1.5 block" style={{ color: '#00b050' }}>Get in touch</span>
+                    <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 mb-3 sm:mb-4">Ready to upgrade your air conditioning?</h2>
+                    <p className="text-sm sm:text-base text-slate-600 mb-4 sm:mb-6 leading-relaxed">
                         Contact us today for a consultation. Whether it's a new installation or maintaining an existing system, our experts are ready to help.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
@@ -637,11 +723,13 @@ const projectsRef = useRef(null)
       </section>
 
       {/* --- INCLUDED COMPONENTS --- */}
-      <OurExpertise />
-<div className="w-full h-0.5 bg-gray-700"></div>
-<WhyChooseUs />
-<div className="w-full h-0.5 bg-gray-700"></div>
-<Testimonials />
+      <div className="-mt-px">
+        <OurExpertise />
+      </div>
+      <div className="w-full h-0.5 bg-slate-700"></div>
+      <WhyChooseUs />
+      <div className="w-full h-0.5 bg-slate-700"></div>
+      <Testimonials />
       <Footer />
     </div>
   )

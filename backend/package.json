@@ -5,7 +5,8 @@
   "description": "Backend server for Windsmit Air",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node server.js",
+    "dev": "nodemon server.js",
     "create-admin": "node scripts/createAdmin.js",
     "check-admin": "node scripts/checkAdmin.js"
   },

@@ -1,22 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { getApiUrl } from '../config/api'
 
-// Normalize API URL - remove trailing slashes and ensure proper format
-const getApiUrl = () => {
-  const envUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
-  // Remove trailing slashes
-  let cleanUrl = envUrl.replace(/\/+$/, '')
-  // If URL doesn't start with http, add https://
-  if (!cleanUrl.startsWith('http://') && !cleanUrl.startsWith('https://')) {
-    cleanUrl = `https://${cleanUrl}`
-  }
-  // Ensure /api is included if not present (for production URLs)
-  if (!cleanUrl.includes('/api') && !cleanUrl.includes('localhost')) {
-    cleanUrl = `${cleanUrl}/api`
-  }
-  return cleanUrl
-}
-
+// Get API URL - will be empty string if VITE_API_URL is not set (handled gracefully)
 const API_URL = getApiUrl()
 
 function Admin() {
@@ -33,7 +19,6 @@ function Admin() {
   const [loadingStories, setLoadingStories] = useState(false)
   const [formData, setFormData] = useState({
     title: '',
-    excerpt: '',
     content: '',
     category: 'HVAC',
     author: 'Windsmit Air Team',
@@ -61,6 +46,9 @@ function Admin() {
           localStorage.removeItem('adminToken')
           setIsAuthenticated(false)
         }
+      } else {
+        // No token, ensure we show login form
+        setIsAuthenticated(false)
       }
       setLoading(false)
     }
@@ -163,21 +151,30 @@ function Admin() {
         body: JSON.stringify({ email, password })
       })
 
-      const data = await response.json()
+      let data
+      try {
+        data = await response.json()
+      } catch (parseError) {
+        // If response is not JSON, show generic error
+        throw new Error(`Server error: ${response.status} ${response.statusText}`)
+      }
       
       if (response.ok) {
+        if (!data.token) {
+          throw new Error('No token received from server')
+        }
         localStorage.setItem('adminToken', data.token)
         setIsAuthenticated(true)
         setLoading(false)
         await Promise.all([fetchPosts(), fetchStories(), fetchSettings()])
       } else {
         // Show specific error message
-        const errorMsg = data.error || 'Login failed'
-        alert(`Login Failed: ${errorMsg}\n\nDefault credentials:\nEmail: admin@windsmitair.com\nPassword: admin123`)
+        const errorMsg = data.error || data.message || 'Login failed'
+        alert(`Login Failed: ${errorMsg}\n\nPlease check:\n- Email: ${email}\n- Password is correct\n- Backend server is running\n\nDefault credentials:\nEmail: admin@windsmitair.com\nPassword: admin123`)
       }
     } catch (error) {
       console.error('Login error:', error)
-      alert(`Error connecting to server.\n\nMake sure:\n1. Backend server is running on http://localhost:5000\n2. You have created an admin account (run: npm run create-admin in backend folder)\n\nError: ${error.message}`)
+      alert(`Error connecting to server.\n\nMake sure:\n1. Backend server is running and accessible\n2. You have created an admin account\n3. Check browser console for details\n\nError: ${error.message}`)
     }
   }
 
@@ -190,6 +187,14 @@ function Admin() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const token = localStorage.getItem('adminToken')
+
+    // Check if token exists
+    if (!token) {
+      showNotification('You must be logged in to create posts. Please log in again.', 'error')
+      setIsAuthenticated(false)
+      localStorage.removeItem('adminToken')
+      return
+    }
 
     try {
       const url = editingPost 
@@ -209,11 +214,11 @@ function Admin() {
 
       if (response.ok) {
         const wasEditing = !!editingPost
+        const wasPublished = formData.published
         setShowForm(false)
         setEditingPost(null)
         setFormData({
           title: '',
-          excerpt: '',
           content: '',
           category: 'HVAC',
           author: 'Windsmit Air Team',
@@ -223,19 +228,45 @@ function Admin() {
           featured: false
         })
         await fetchPosts()
-        showNotification(wasEditing ? 'Post updated successfully!' : 'Post created successfully!')
+        const successMsg = wasEditing 
+          ? (wasPublished ? 'Post updated successfully!' : 'Post updated successfully! (Note: Post is not published and won\'t appear on blog page)')
+          : (wasPublished ? 'Post created successfully!' : 'Post created successfully! (Note: Post is not published and won\'t appear on blog page)')
+        showNotification(successMsg)
       } else {
-        const data = await response.json()
-        showNotification(data.error || 'Error saving post', 'error')
+        // Handle 401 Unauthorized - token expired or invalid
+        if (response.status === 401) {
+          showNotification('Your session has expired. Please log in again.', 'error')
+          localStorage.removeItem('adminToken')
+          setIsAuthenticated(false)
+          return
+        }
+        
+        // Try to parse error message
+        let errorMessage = 'Error saving post'
+        try {
+          const data = await response.json()
+          errorMessage = data.error || errorMessage
+        } catch (parseError) {
+          errorMessage = `Error: ${response.status} ${response.statusText}`
+        }
+        showNotification(errorMessage, 'error')
       }
     } catch (error) {
-      showNotification('Error saving post', 'error')
+      console.error('Error saving post:', error)
+      showNotification(`Network error: ${error.message}. Please check your connection.`, 'error')
     }
   }
 
   const handleStorySubmit = async (e) => {
     e.preventDefault()
     const token = localStorage.getItem('adminToken')
+
+    if (!token) {
+      showNotification('You must be logged in to create stories. Please log in again.', 'error')
+      setIsAuthenticated(false)
+      localStorage.removeItem('adminToken')
+      return
+    }
 
     try {
       const response = await fetch(`${API_URL}/stories`, {
@@ -252,11 +283,25 @@ function Admin() {
         await fetchStories()
         showNotification('Story created successfully!')
       } else {
-        const data = await response.json()
-        alert(data.error || 'Error creating story')
+        if (response.status === 401) {
+          showNotification('Your session has expired. Please log in again.', 'error')
+          localStorage.removeItem('adminToken')
+          setIsAuthenticated(false)
+          return
+        }
+        
+        let errorMessage = 'Error creating story'
+        try {
+          const data = await response.json()
+          errorMessage = data.error || errorMessage
+        } catch (parseError) {
+          errorMessage = `Error: ${response.status} ${response.statusText}`
+        }
+        showNotification(errorMessage, 'error')
       }
     } catch (error) {
-      alert('Error creating story')
+      console.error('Error creating story:', error)
+      showNotification(`Network error: ${error.message}`, 'error')
     }
   }
 
@@ -264,7 +309,6 @@ function Admin() {
     setEditingPost(post)
     setFormData({
       title: post.title,
-      excerpt: post.excerpt,
       content: post.content,
       category: post.category,
       author: post.author,
@@ -277,7 +321,7 @@ function Admin() {
   }
 
   const showNotification = (message, type = 'success') => {
-    const bgColor = type === 'success' ? 'bg-emerald-500' : 'bg-red-500'
+    const bgColor = type === 'success' ? 'bg-[#00b050]' : 'bg-red-500'
     const notification = document.createElement('div')
     notification.className = `fixed top-4 right-4 ${bgColor} text-white px-6 py-3 rounded-lg shadow-lg z-50 flex items-center gap-2 animate-slide-in`
     notification.innerHTML = type === 'success' 
@@ -294,8 +338,15 @@ function Admin() {
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure you want to delete this post?')) return
 
+    const token = localStorage.getItem('adminToken')
+    if (!token) {
+      showNotification('You must be logged in to delete posts. Please log in again.', 'error')
+      setIsAuthenticated(false)
+      localStorage.removeItem('adminToken')
+      return
+    }
+
     try {
-      const token = localStorage.getItem('adminToken')
       const response = await fetch(`${API_URL}/blog/${id}`, {
         method: 'DELETE',
         headers: {
@@ -307,18 +358,32 @@ function Admin() {
         await fetchPosts()
         showNotification('Post deleted successfully!')
       } else {
+        if (response.status === 401) {
+          showNotification('Your session has expired. Please log in again.', 'error')
+          localStorage.removeItem('adminToken')
+          setIsAuthenticated(false)
+          return
+        }
         showNotification('Error deleting post', 'error')
       }
     } catch (error) {
-      showNotification('Error deleting post', 'error')
+      console.error('Error deleting post:', error)
+      showNotification(`Network error: ${error.message}`, 'error')
     }
   }
 
   const handleDeleteStory = async (id) => {
     if (!window.confirm('Are you sure you want to delete this story?')) return
 
+    const token = localStorage.getItem('adminToken')
+    if (!token) {
+      showNotification('You must be logged in to delete stories. Please log in again.', 'error')
+      setIsAuthenticated(false)
+      localStorage.removeItem('adminToken')
+      return
+    }
+
     try {
-      const token = localStorage.getItem('adminToken')
       const response = await fetch(`${API_URL}/stories/${id}`, {
         method: 'DELETE',
         headers: {
@@ -330,17 +395,24 @@ function Admin() {
         await fetchStories()
         showNotification('Story deleted successfully!')
       } else {
+        if (response.status === 401) {
+          showNotification('Your session has expired. Please log in again.', 'error')
+          localStorage.removeItem('adminToken')
+          setIsAuthenticated(false)
+          return
+        }
         showNotification('Error deleting story', 'error')
       }
     } catch (error) {
-      showNotification('Error deleting story', 'error')
+      console.error('Error deleting story:', error)
+      showNotification(`Network error: ${error.message}`, 'error')
     }
   }
 
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#4CAF50]"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#00b050]"></div>
       </div>
     )
   }
@@ -349,8 +421,10 @@ function Admin() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
         <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Admin Login</h1>
-          <p className="text-gray-600 mb-6">Sign in to manage blog posts</p>
+          <div className="text-center mb-6">
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">Admin Login</h1>
+            <p className="text-gray-600">Sign in to manage blog posts and stories</p>
+          </div>
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
@@ -368,17 +442,22 @@ function Admin() {
                 type="password"
                 name="password"
                 required
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4CAF50] focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#00b050] focus:border-transparent"
                 placeholder="Enter password"
               />
             </div>
             <button
               type="submit"
-              className="w-full bg-[#4CAF50] text-white py-2 rounded-lg font-semibold hover:bg-[#45a049] transition-colors"
+              className="w-full bg-[#00b050] text-white py-2 rounded-lg font-semibold hover:bg-[#009040] transition-colors"
             >
               Login
             </button>
           </form>
+          <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+            <p className="text-xs text-blue-800">
+              <strong>Note:</strong> Default credentials are email: <code className="bg-blue-100 px-1 rounded">admin@windsmitair.com</code> and password: <code className="bg-blue-100 px-1 rounded">admin123</code>
+            </p>
+          </div>
         </div>
       </div>
     )
@@ -444,7 +523,7 @@ function Admin() {
               onClick={() => setActiveTab('blogs')}
               className={`px-6 py-2.5 rounded-md font-semibold text-sm transition-all duration-200 ${
                 activeTab === 'blogs'
-                  ? 'bg-emerald-500 text-white shadow-sm'
+                  ? 'bg-[#00b050] text-white shadow-sm'
                   : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
               }`}
             >
@@ -464,7 +543,7 @@ function Admin() {
               onClick={() => setActiveTab('stories')}
               className={`px-6 py-2.5 rounded-md font-semibold text-sm transition-all duration-200 ${
                 activeTab === 'stories'
-                  ? 'bg-emerald-500 text-white shadow-sm'
+                  ? 'bg-[#00b050] text-white shadow-sm'
                   : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
               }`}
             >
@@ -511,7 +590,7 @@ function Admin() {
                       required
                       value={formData.title}
                       onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4CAF50] focus:border-transparent"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#00b050] focus:border-transparent"
                     />
                   </div>
                   <div>
@@ -520,7 +599,7 @@ function Admin() {
                       required
                       value={formData.category}
                       onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4CAF50] focus:border-transparent"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#00b050] focus:border-transparent"
                     >
                       <option value="HVAC">HVAC</option>
                       <option value="Air Conditioning">Air Conditioning</option>
@@ -532,24 +611,13 @@ function Admin() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Excerpt *</label>
-                  <textarea
-                    required
-                    value={formData.excerpt}
-                    onChange={(e) => setFormData({ ...formData, excerpt: e.target.value })}
-                    rows="2"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4CAF50] focus:border-transparent"
-                  />
-                </div>
-
-                <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Content *</label>
                   <textarea
                     required
                     value={formData.content}
                     onChange={(e) => setFormData({ ...formData, content: e.target.value })}
                     rows="10"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4CAF50] focus:border-transparent"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#00b050] focus:border-transparent"
                   />
                 </div>
 
@@ -561,7 +629,7 @@ function Admin() {
                       required
                       value={formData.image}
                       onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4CAF50] focus:border-transparent"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#00b050] focus:border-transparent"
                     />
                   </div>
                   <div>
@@ -570,7 +638,7 @@ function Admin() {
                       type="text"
                       value={formData.readTime}
                       onChange={(e) => setFormData({ ...formData, readTime: e.target.value })}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4CAF50] focus:border-transparent"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#00b050] focus:border-transparent"
                     />
                   </div>
                 </div>
@@ -581,29 +649,40 @@ function Admin() {
                     type="text"
                     value={formData.author}
                     onChange={(e) => setFormData({ ...formData, author: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4CAF50] focus:border-transparent"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#00b050] focus:border-transparent"
                   />
                 </div>
 
-                <div className="flex items-center gap-6">
-                  <label className="flex items-center gap-2">
-                    <input
-                      type="checkbox"
-                      checked={formData.published}
-                      onChange={(e) => setFormData({ ...formData, published: e.target.checked })}
-                      className="w-4 h-4 text-[#4CAF50] border-gray-300 rounded focus:ring-[#4CAF50]"
-                    />
-                    <span className="text-sm font-medium text-gray-700">Published</span>
-                  </label>
-                  <label className="flex items-center gap-2">
-                    <input
-                      type="checkbox"
-                      checked={formData.featured}
-                      onChange={(e) => setFormData({ ...formData, featured: e.target.checked })}
-                      className="w-4 h-4 text-[#4CAF50] border-gray-300 rounded focus:ring-[#4CAF50]"
-                    />
-                    <span className="text-sm font-medium text-gray-700">Featured</span>
-                  </label>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-6">
+                    <label className="flex items-center gap-2 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={formData.published}
+                        onChange={(e) => setFormData({ ...formData, published: e.target.checked })}
+                        className="w-5 h-5 text-[#00b050] border-gray-300 rounded focus:ring-[#00b050] cursor-pointer"
+                      />
+                      <span className={`text-sm font-semibold ${formData.published ? 'text-[#00b050]' : 'text-gray-700'}`}>
+                        Published
+                      </span>
+                    </label>
+                    <label className="flex items-center gap-2 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={formData.featured}
+                        onChange={(e) => setFormData({ ...formData, featured: e.target.checked })}
+                        className="w-5 h-5 text-[#00b050] border-gray-300 rounded focus:ring-[#00b050] cursor-pointer"
+                      />
+                      <span className="text-sm font-medium text-gray-700">Featured</span>
+                    </label>
+                  </div>
+                  {!formData.published && (
+                    <div className="p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+                      <p className="text-sm text-yellow-800">
+                        <strong>Note:</strong> This post is not published. It will not appear on the blog page until you check "Published" and save.
+                      </p>
+                    </div>
+                  )}
                 </div>
 
                 <div className="flex justify-end gap-4 pt-4 border-t border-gray-200">
@@ -619,7 +698,7 @@ function Admin() {
                   </button>
                   <button
                     type="submit"
-                    className="px-6 py-2 bg-[#4CAF50] text-white rounded-lg font-semibold hover:bg-[#45a049] transition-colors"
+                    className="px-6 py-2 bg-[#00b050] text-white rounded-lg font-semibold hover:bg-[#009040] transition-colors"
                   >
                     {editingPost ? 'Update Post' : 'Create Post'}
                   </button>
@@ -640,7 +719,7 @@ function Admin() {
                 </div>
                 <button
                   onClick={() => setShowForm(true)}
-                  className="px-4 py-2 bg-emerald-500 text-white rounded-lg font-semibold hover:bg-emerald-600 transition-colors flex items-center gap-2 shadow-sm"
+                  className="px-4 py-2 bg-[#00b050] text-white rounded-lg font-semibold hover:bg-[#009040] transition-colors flex items-center gap-2 shadow-sm"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -651,7 +730,7 @@ function Admin() {
               
               {loadingPosts ? (
                 <div className="p-12 text-center">
-                  <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-500"></div>
+                  <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-[#00b050]"></div>
                   <p className="text-gray-500 mt-4">Loading posts...</p>
                 </div>
               ) : posts.length === 0 ? (
@@ -665,7 +744,7 @@ function Admin() {
                   <p className="text-sm text-gray-400 mb-4">Get started by creating your first post</p>
                   <button
                     onClick={() => setShowForm(true)}
-                    className="px-6 py-2.5 bg-emerald-500 text-white rounded-lg font-semibold hover:bg-emerald-600 transition-colors shadow-sm"
+                    className="px-6 py-2.5 bg-[#00b050] text-white rounded-lg font-semibold hover:bg-[#009040] transition-colors shadow-sm"
                   >
                     Create Your First Post
                   </button>
@@ -680,7 +759,7 @@ function Admin() {
                             <h3 className="text-lg font-semibold text-gray-900">{post.title}</h3>
                             <span className={`px-2.5 py-1 text-xs font-semibold rounded-full ${
                               post.published 
-                                ? 'bg-green-100 text-green-700' 
+                                ? 'bg-[#00b050]/10 text-[#00b050]' 
                                 : 'bg-gray-100 text-gray-600'
                             }`}>
                               {post.published ? 'Published' : 'Draft'}
@@ -694,7 +773,6 @@ function Admin() {
                               {post.category}
                             </span>
                           </div>
-                          <p className="text-sm text-gray-600 mb-3 line-clamp-2">{post.excerpt}</p>
                           <div className="flex items-center gap-4 text-xs text-gray-500">
                             <span className="flex items-center gap-1">
                               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -753,8 +831,8 @@ function Admin() {
                     </span>
                     <button
                       onClick={handleToggleStories}
-                      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 ${
-                        showStories ? 'bg-emerald-500' : 'bg-gray-300'
+                      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-[#00b050] focus:ring-offset-2 ${
+                        showStories ? 'bg-[#00b050]' : 'bg-gray-300'
                       }`}
                     >
                       <span
@@ -776,7 +854,7 @@ function Admin() {
                   required
                   value={storyFormData.title}
                   onChange={(e) => setStoryFormData({ ...storyFormData, title: e.target.value })}
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-sm bg-white"
+                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#00b050] focus:border-transparent text-sm bg-white"
                   placeholder="e.g., Mall Installation"
                 />
               </div>
@@ -787,13 +865,13 @@ function Admin() {
                   required
                   value={storyFormData.videoUrl}
                   onChange={(e) => setStoryFormData({ ...storyFormData, videoUrl: e.target.value })}
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-sm bg-white"
+                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#00b050] focus:border-transparent text-sm bg-white"
                   placeholder="https://example.com/video.mp4"
                 />
               </div>
               <button
                 type="submit"
-                className="px-6 py-2.5 bg-emerald-500 text-white rounded-lg font-semibold hover:bg-emerald-600 transition-colors text-sm whitespace-nowrap shadow-sm"
+                className="px-6 py-2.5 bg-[#00b050] text-white rounded-lg font-semibold hover:bg-[#009040] transition-colors text-sm whitespace-nowrap shadow-sm"
               >
                 + Add Story
               </button>
@@ -802,7 +880,7 @@ function Admin() {
 
               {loadingStories ? (
                 <div className="p-12 text-center">
-                  <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-500"></div>
+                  <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-[#00b050]"></div>
                   <p className="text-gray-500 mt-4">Loading stories...</p>
                 </div>
               ) : stories.length === 0 ? (
@@ -821,10 +899,10 @@ function Admin() {
                     <div key={story._id} className="px-6 py-5 flex items-center justify-between hover:bg-gray-50 transition-colors group">
                       <div className="flex items-center gap-4 flex-1">
                         <div className="relative flex-shrink-0">
-                          <div className="w-16 h-16 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-white font-bold text-sm shadow-md ring-2 ring-emerald-100">
+                          <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#00b050] to-[#00b050] flex items-center justify-center text-white font-bold text-sm shadow-md ring-2 ring-[#00b050]/20">
                             {story.title.charAt(0).toUpperCase()}
                           </div>
-                          <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-emerald-500 rounded-full border-2 border-white flex items-center justify-center">
+                          <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-[#00b050] rounded-full border-2 border-white flex items-center justify-center">
                             <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
                               <path d="M8 5v14l11-7z"/>
                             </svg>
@@ -835,7 +913,7 @@ function Admin() {
                           <p className="text-xs text-gray-500 truncate">{story.videoUrl}</p>
                           <div className="flex items-center gap-2 mt-1">
                             <span className={`px-2 py-0.5 text-xs font-medium rounded-full ${
-                              story.active ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600'
+                              story.active ? 'bg-[#00b050]/10 text-[#00b050]' : 'bg-gray-100 text-gray-600'
                             }`}>
                               {story.active ? 'Active' : 'Inactive'}
                             </span>

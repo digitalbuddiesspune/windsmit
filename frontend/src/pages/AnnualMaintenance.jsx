@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaCheckCircle, FaWhatsapp, FaPhoneAlt, FaTools, FaShieldAlt, FaClock, FaLeaf, FaWrench, FaChartLine } from 'react-icons/fa';
 import Footer from '../components/Footer';
@@ -152,7 +152,7 @@ const AnnualMaintenance = () => {
                                 <ul className="space-y-3 mb-8 bg-white p-4 rounded-xl">
                                     {service.features.map((feature, idx) => (
                                         <li key={idx} className="flex items-start gap-3 text-sm text-slate-700 font-medium">
-                                            <FaCheckCircle className="text-green-500 mt-0.5 shrink-0" />
+                                            <FaCheckCircle className="text-[#00b050] mt-0.5 shrink-0" />
                                             <span>{feature}</span>
                                         </li>
                                     ))}
