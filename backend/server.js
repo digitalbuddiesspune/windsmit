@@ -12,38 +12,11 @@ dotenv.config()
 const app = express()
 const PORT = process.env.PORT || 5000
 
-// CORS: allow frontend (local + production). On Render set FRONTEND_URL to your frontend URL.
+// CORS configuration - allow all origins
 app.use(cors({
-  origin: '*',
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'x-firebase-uid'],
+  origin: true, // Allow all origins
+  credentials: true
 }));
-
-const isAllowedOrigin = (origin) => {
-  if (!origin) return true // Allow requests with no origin (mobile apps, Postman, etc.)
-  if (allowedOrigins.includes(origin)) return true
-  // Allow any localhost / 127.0.0.1 / [::1] in development
-  try {
-    const u = new URL(origin)
-    const host = u.hostname.toLowerCase()
-    if (host === 'localhost' || host === '127.0.0.1' || host === '[::1]') return true
-  } catch (_) {}
-  return false
-}
-
-app.use(cors({
-  origin: (origin, callback) => {
-    if (isAllowedOrigin(origin)) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  },
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
-  optionsSuccessStatus: 204
-}))
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
