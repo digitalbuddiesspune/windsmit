@@ -1,0 +1,50 @@
+import mongoose from 'mongoose'
+import Admin from '../models/Admin.js'
+import jwt from 'jsonwebtoken'
+
+const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-in-production'
+
+export async function register(req, res) {
+  try {
+    const { username, email, password } = req.body
+
+    const existingAdmin = await Admin.findOne({ $or: [{ email }, { username }] })
+    if (existingAdmin) {
+      return res.status(400).json({ error: 'Admin already exists' })
+    }
+
+    const admin = new Admin({ username, email, password })
+    await admin.save()
+
+    const token = jwt.sign({ id: admin._id }, JWT_SECRET, { expiresIn: '7d' })
+    res.status(201).json({ token, admin: { id: admin._id, username: admin.username, email: admin.email } })
+  } catch (error) {
+    res.status(400).json({ error: error.message })
+  }
+}
+
+export async function login(req, res) {
+  try {
+    if (mongoose.connection.readyState !== 1) {
+      console.error('Login attempted but MongoDB not connected (readyState:', mongoose.connection.readyState, ')')
+      return res.status(503).json({ error: 'Service temporarily unavailable. Try again in a moment.' })
+    }
+    const { email, password } = req.body
+    if (!email || !password) {
+      return res.status(400).json({ error: 'Email and password are required' })
+    }
+    const admin = await Admin.findOne({ email })
+    if (!admin) {
+      return res.status(401).json({ error: 'Invalid credentials' })
+    }
+    const isMatch = await admin.comparePassword(password)
+    if (!isMatch) {
+      return res.status(401).json({ error: 'Invalid credentials' })
+    }
+    const token = jwt.sign({ id: admin._id }, JWT_SECRET, { expiresIn: '7d' })
+    res.json({ token, admin: { id: admin._id, username: admin.username, email: admin.email } })
+  } catch (error) {
+    console.error('POST /api/auth/login error:', error)
+    res.status(500).json({ error: 'Login failed. Please try again.' })
+  }
+}

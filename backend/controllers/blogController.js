@@ -1,32 +1,26 @@
-import express from 'express'
-import { authenticate } from '../middleware/auth.js'
-import * as blogController from '../controllers/blogController.js'
+import BlogPost from '../models/BlogPost.js'
 
-const router = express.Router()
-
-// Get all blog posts
-router.get('/', async (req, res) => {
+export async function getAll(req, res) {
   try {
     const { category, published } = req.query
     const filter = {}
-    
+
     if (category && category !== 'all') {
       filter.category = category
     }
-    
+
     if (published !== undefined) {
       filter.published = published === 'true'
     }
-    
+
     const posts = await BlogPost.find(filter).sort({ createdAt: -1 })
     res.json(posts)
   } catch (error) {
     res.status(500).json({ error: error.message })
   }
-})
+}
 
-// Get single blog post
-router.get('/:id', async (req, res) => {
+export async function getById(req, res) {
   try {
     const post = await BlogPost.findById(req.params.id)
     if (!post) {
@@ -36,10 +30,9 @@ router.get('/:id', async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: error.message })
   }
-})
+}
 
-// Create new blog post (protected)
-router.post('/', authenticate, async (req, res) => {
+export async function create(req, res) {
   try {
     const post = new BlogPost(req.body)
     await post.save()
@@ -47,10 +40,9 @@ router.post('/', authenticate, async (req, res) => {
   } catch (error) {
     res.status(400).json({ error: error.message })
   }
-})
+}
 
-// Update blog post (protected)
-router.put('/:id', authenticate, async (req, res) => {
+export async function update(req, res) {
   try {
     const post = await BlogPost.findByIdAndUpdate(
       req.params.id,
@@ -64,10 +56,9 @@ router.put('/:id', authenticate, async (req, res) => {
   } catch (error) {
     res.status(400).json({ error: error.message })
   }
-})
+}
 
-// Delete blog post (protected)
-router.delete('/:id', authenticate, async (req, res) => {
+export async function remove(req, res) {
   try {
     const post = await BlogPost.findByIdAndDelete(req.params.id)
     if (!post) {
@@ -77,6 +68,4 @@ router.delete('/:id', authenticate, async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: error.message })
   }
-})
-
-export default router
+}
