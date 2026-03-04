@@ -13,13 +13,11 @@ const app = express()
 const PORT = process.env.PORT || 5000
 
 // CORS: allow frontend (local + production). On Render set FRONTEND_URL to your frontend URL.
-const allowedOrigins = [
-  'http://localhost:5173',
-  'http://localhost:3000',
-  'http://127.0.0.1:5173',
-  'http://127.0.0.1:3000',
-  ...(process.env.FRONTEND_URL ? process.env.FRONTEND_URL.split(',').map(u => u.trim()).filter(Boolean) : [])
-]
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'x-firebase-uid'],
+}));
 
 const isAllowedOrigin = (origin) => {
   if (!origin) return true // Allow requests with no origin (mobile apps, Postman, etc.)
