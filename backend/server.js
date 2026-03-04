@@ -12,55 +12,34 @@ dotenv.config()
 const app = express()
 const PORT = process.env.PORT || 5000
 
-// CORS: allow frontend (local + production). On Render set FRONTEND_URL to your frontend URL.
-const allowedOrigins = [
-  'http://localhost:5173',
-  'http://localhost:3000',
-  'http://127.0.0.1:5173',
-  'http://127.0.0.1:3000',
-  ...(process.env.FRONTEND_URL ? process.env.FRONTEND_URL.split(',').map(u => u.trim()).filter(Boolean) : [])
-]
-const isAllowedOrigin = (origin) => {
-  if (!origin) return false
-  if (allowedOrigins.includes(origin)) return true
-  // Allow any localhost / 127.0.0.1 / [::1] in development
-  try {
-    const u = new URL(origin)
-    const host = u.hostname.toLowerCase()
-    if (host === 'localhost' || host === '127.0.0.1' || host === '[::1]') return true
-  } catch (_) {}
-  return false
-}
+// const allowedOrigins = [
+//   'http://localhost:5173',
+//   'http://localhost:3000',
+//   'https://windsmit.onrender.com',
+//   'https://windsmitair.com'
+// ]
 
-// Handle CORS preflight (OPTIONS) first so /api/* always gets correct headers
-app.use((req, res, next) => {
-  if (req.method === 'OPTIONS' && req.path.startsWith('/api')) {
-    const origin = req.headers.origin
-    if (origin && isAllowedOrigin(origin)) {
-      res.setHeader('Access-Control-Allow-Origin', origin)
-      res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS')
-      res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, Accept')
-      res.setHeader('Access-Control-Allow-Credentials', 'true')
-    }
-    return res.sendStatus(204)
-  }
-  next()
-})
 
 app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin || isAllowedOrigin(origin)) {
-      callback(null, true)
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'x-firebase-uid'],
+}));
+
+app.use(cors({
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl)
+    if (!origin) return callback(null, true)
+
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true)
     } else {
-      callback(new Error('Not allowed by CORS'))
+      return callback(new Error('Not allowed by CORS'))
     }
   },
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
-  optionsSuccessStatus: 204,
-  preflightContinue: false
+  credentials: true
 }))
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
