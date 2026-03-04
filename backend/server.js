@@ -20,8 +20,9 @@ const allowedOrigins = [
   'http://127.0.0.1:3000',
   ...(process.env.FRONTEND_URL ? process.env.FRONTEND_URL.split(',').map(u => u.trim()).filter(Boolean) : [])
 ]
+
 const isAllowedOrigin = (origin) => {
-  if (!origin) return false
+  if (!origin) return true // Allow requests with no origin (mobile apps, Postman, etc.)
   if (allowedOrigins.includes(origin)) return true
   // Allow any localhost / 127.0.0.1 / [::1] in development
   try {
@@ -32,24 +33,9 @@ const isAllowedOrigin = (origin) => {
   return false
 }
 
-// Handle CORS preflight (OPTIONS) first so /api/* always gets correct headers
-app.use((req, res, next) => {
-  if (req.method === 'OPTIONS' && req.path.startsWith('/api')) {
-    const origin = req.headers.origin
-    if (origin && isAllowedOrigin(origin)) {
-      res.setHeader('Access-Control-Allow-Origin', origin)
-      res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS')
-      res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, Accept')
-      res.setHeader('Access-Control-Allow-Credentials', 'true')
-    }
-    return res.sendStatus(204)
-  }
-  next()
-})
-
 app.use(cors({
   origin: (origin, callback) => {
-    if (!origin || isAllowedOrigin(origin)) {
+    if (isAllowedOrigin(origin)) {
       callback(null, true)
     } else {
       callback(new Error('Not allowed by CORS'))
@@ -58,9 +44,9 @@ app.use(cors({
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
-  optionsSuccessStatus: 204,
-  preflightContinue: false
+  optionsSuccessStatus: 204
 }))
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 

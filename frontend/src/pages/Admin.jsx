@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { getApiUrl } from '../config/api'
 
+// Get API URL - will be empty string if VITE_API_URL is not set (handled gracefully)
 const API_URL = getApiUrl()
 
 function Admin() {
